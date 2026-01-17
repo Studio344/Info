@@ -4,75 +4,77 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Studio344 - Portfolio</title>
-  <!-- CSSを読み込み -->
+  <!-- CSS -->
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- GSAP for scroll animations -->
+  <!-- GSAP -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-  <!-- particles.js で幾何学模様を描画 -->
-  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
-
-  <!-- i18next for multi-language support -->
+  
+  <!-- i18next -->
   <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
-     crossorigin="anonymous"></script>
 </head>
 <body>
-  <!-- 固定ヘッダー -->
-  <header id="header" class="header">
+  <!-- Ambient Background Effects -->
+  <div class="aurora-container">
+    <div class="aurora-orb orb-1"></div>
+    <div class="aurora-orb orb-2"></div>
+    <div class="aurora-orb orb-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+  <div class="noise-overlay"></div>
+  <div class="spotlight-overlay"></div>
+
+  <!-- Header -->
+  <header class="header">
     <div class="logo">Studio344</div>
-    <button id="hamburger-menu" class="hamburger-menu" aria-label="Toggle navigation">
-      &#9776;
-    </button>
-    <nav id="nav-menu" class="nav-menu">
-      <a href="#about" data-i18n="nav.about">About</a>
-      <a href="#projects" data-i18n="nav.projects">Projects</a>
-      <a href="#contact" data-i18n="nav.contact">Contact</a>
-      <button id="lang-toggle">EN</button>
+    <nav class="nav-menu">
+      <button id="lang-toggle" class="nav-btn">EN</button>
+      <a href="https://github.com/Studio344" target="_blank" class="nav-icon" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+      </a>
     </nav>
   </header>
 
-  <!-- 幾何学模様を表示する領域：背景の最背面に配置 -->
-  <div id="particles-js"></div>
+  <main class="bento-grid">
+    <!-- Hero Block (Span full or large) -->
+    <div class="bento-card hero-card">
+      <div class="hero-content">
+        <h1 class="glitch-text" data-text="Studio344">Studio344</h1>
+        <p class="typing-text" id="typing"></p>
+      </div>
+    </div>
 
-  <!-- ヒーローセクション（画像＋グラデーション背景） -->
-  <section class="hero">
-    <h1>Studio344</h1>
-    <!-- タイピングアニメの文言を変更 -->
-    <p class="typing-text" id="typing"></p>
-  </section>
+    <!-- About Block -->
+    <div class="bento-card about-card">
+      <h2 data-i18n="about.title">About</h2>
+      <p data-i18n="about.content">
+        某グローバルIT企業にてテクノロジー領域の課題解決に携わるエンジニア。人の役に立つ知識・技術の探求が大好き。
+      </p>
+    </div>
 
-  <!-- About セクション -->
-  <section id="about" class="fade-section">
-    <h2 data-i18n="about.title">About</h2>
-    <p data-i18n="about.content">
-      某グローバルIT企業にてテクノロジー領域の課題解決に携わるエンジニア。人の役に立つ知識・技術の探求が大好き。
-    </p>
-  </section>
+    <!-- Projects Container (Will be populated by JS) -->
+    <!-- We will use a wrapper in JS to inject card-like divs here, or append them to the grid -->
+    <div id="projects-wrapper" class="projects-subgrid">
+        <!-- Projects will be injected here -->
+    </div>
 
-  <!-- Projects セクション -->
-  <section id="projects" class="fade-section">
-    <h2 data-i18n="projects.title">Projects</h2>
-    <div class="projects-container" id="projects-container"></div>
-  </section>
+    <!-- Contact Block / Footer Info -->
+    <div class="bento-card contact-card">
+      <h2 data-i18n="contact.title">Contact</h2>
+      <div class="contact-links">
+        <a href="https://github.com/Studio344" target="_blank" class="contact-item">
+          <span>GitHub</span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2025 Studio344</p>
+      </div>
+    </div>
+  </main>
 
-  <!-- Contact セクション -->
-  <section id="contact" class="fade-section">
-    <h2 data-i18n="contact.title">Contact</h2>
-
-    <p>GitHub: <a href="https://github.com/Studio344" target="_blank">Studio344</a></p>
-  </section>
-
-  <!-- フッター：コピーライト＋ディスクレーマー（控えめに） -->
-  <footer>
-    <p>&copy; 2025 Studio344</p>
-    <p data-i18n="disclaimer" class="footer-disclaimer"></p>
-  </footer>
-
-  <!-- メインロジック読み込み -->
+  <!-- Scripts -->
   <script src="script.js"></script>
   <script src="i18n.js"></script>
 </body>
