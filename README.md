@@ -1,2 +1,2 @@
 ## Info
-- Site: https://himiyosh.github.io/Info/
+- Site: https://Studio344.github.io/Info/
