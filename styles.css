@@ -33,6 +33,38 @@ body {
   position: relative;
 }
 
+/* --- UI Polish --- */
+
+/* 1. Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* 2. Selection Color */
+::selection {
+  background: rgba(147, 51, 234, 0.5);
+  /* Purple tint */
+  color: #fff;
+}
+
+/* 3. Smooth Anchor Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
 /* --- Effects --- */
 
 /* 1. Aurora Background */
@@ -210,6 +242,92 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Hero Content Layout */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-logo-wrapper {
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.hero-logo {
+  width: 150px;
+  height: 150px;
+  /* Fixed height for perfect circle */
+  border-radius: 50%;
+  /* Make it round */
+  object-fit: contain;
+  /* Or cover, depending on the image. Contain is safer for logos. */
+  background: rgba(0, 0, 0, 0.2);
+  /* Subtle backing if transparent */
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero-logo:hover {
+  transform: scale(1.05) rotate(5deg);
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.5));
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.7;
+}
+
+.scroll-indicator span {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+}
+
+.mouse-icon {
+  width: 24px;
+  height: 36px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  position: relative;
+}
+
+.mouse-icon::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  animation: scrollAnim 2s infinite;
+}
+
+@keyframes scrollAnim {
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, 15px);
+    opacity: 0;
+  }
+}
+
+
 .hero-content h1 {
   font-family: var(--font-heading);
   font-size: clamp(4rem, 10vw, 8rem);
@@ -233,21 +351,25 @@ body {
 }
 
 /* About: Smaller Side Card */
-.about-card {
+/* About: Smaller Side Card */
+.about-wrapper {
   grid-column: span 6;
-  /* Changed from 5 for symmetry */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.about-card {
+  width: 100%;
+  height: auto;
+  flex: 1;
+  /* Grow to fill wrapper */
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
-  /* Ensure full height match */
 }
 
-@media (max-width: 900px) {
-  .about-card {
-    grid-column: span 12;
-  }
-}
+/* Removed intermediate breakpoint to keep side-by-side longer */
 
 .about-card h2,
 .contact-card h2,
@@ -269,16 +391,33 @@ body {
 
 /* Projects Wrapper */
 .projects-subgrid {
-  grid-column: span 7;
-  display: grid;
+  grid-column: span 6;
+  /* Changed to 6 so 6+6=12 fits in one row */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* Match grid cell height */
   gap: 1.5rem;
-  grid-template-columns: 1fr;
 }
 
-@media (max-width: 900px) {
-  .projects-subgrid {
-    grid-column: span 12;
-  }
+
+
+
+
+/* Update Project Card to fill Flex Container */
+.project-card {
+  flex: 1;
+  /* Grow to fill wrapper */
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Ensure Grid Stretches */
+.bento-grid {
+  align-items: stretch;
+  /* Explicitly force stretch */
 }
 
 .project-card h3 {
@@ -332,9 +471,14 @@ body {
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
-.footer-copy {
+/* Page Footer */
+.site-footer {
+  text-align: center;
+  padding: 2rem;
   color: var(--text-secondary);
   font-size: 0.9rem;
+  position: relative;
+  z-index: 10;
 }
 
 /* --- Header --- */
@@ -400,7 +544,7 @@ body {
   }
 
   /* Stack earlier on tablet */
-  .about-card,
+  .about-wrapper,
   .projects-subgrid {
     grid-column: span 12;
   }

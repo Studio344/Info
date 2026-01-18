@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((res) => res.json())
     .then((projects) => {
       const container = document.getElementById("projects-wrapper");
+      container.innerHTML = ""; // Clear whitespace/comments to prevent layout glitches
       
       projects.forEach((project, i) => {
         const card = document.createElement("div");
@@ -55,6 +56,48 @@ document.addEventListener("DOMContentLoaded", () => {
         stagger: 0.1,
         ease: "power3.out"
       });
+
+      // --- Reliable Height Equalizer for About & Projects ---
+      function equalizeHeights() {
+        const aboutCard = document.querySelector(".about-card");
+        const projectCards = document.querySelectorAll(".project-card");
+        
+        // Critical safety check
+        if (!aboutCard || projectCards.length === 0) return;
+        
+        // Temporarily reset height to auto to read natural content height
+        // We use requestAnimationFrame to avoid layout thrashing loop if called frequently
+        requestAnimationFrame(() => {
+          aboutCard.style.height = "auto";
+          projectCards.forEach(c => c.style.height = "auto");
+
+          let maxHeight = aboutCard.offsetHeight;
+          projectCards.forEach(c => {
+            maxHeight = Math.max(maxHeight, c.offsetHeight);
+          });
+
+          aboutCard.style.height = `${maxHeight}px`;
+          projectCards.forEach(c => c.style.height = `${maxHeight}px`);
+        });
+      }
+
+      // 1. Initial Call
+      equalizeHeights();
+
+      // 2. Wait for fonts (often changes text wrap/height)
+      document.fonts.ready.then(equalizeHeights);
+
+      // 3. ResizeObserver: watches for any size change on the parent wrapper or window
+      const resizeObserver = new ResizeObserver(() => {
+        equalizeHeights();
+      });
+      
+      // Observe the container (if it changes width, text wraps, height changes)
+      resizeObserver.observe(container);
+      resizeObserver.observe(document.body); // Fallback for window resize
+
+      // 4. Window Resize (Legacy fallback)
+      window.addEventListener("resize", equalizeHeights);
     });
 
   // --- 4. Language Toggle ---
