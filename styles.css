@@ -215,6 +215,7 @@ html {
       rgba(255, 255, 255, 0.4),
       transparent 40%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
@@ -233,6 +234,7 @@ html {
 .hero-card {
   grid-column: span 12;
   min-height: 400px;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -366,7 +368,7 @@ html {
   /* Grow to fill wrapper */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 /* Removed intermediate breakpoint to keep side-by-side longer */
@@ -451,11 +453,14 @@ html {
 .contact-card {
   grid-column: span 12;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
 .contact-links .contact-item {
+  margin-left: 1.5rem;
   color: var(--text-primary);
   text-decoration: none;
   font-size: 1.2rem;
@@ -551,6 +556,10 @@ html {
 
   .hero-content h1 {
     font-size: 3.5rem;
+  }
+
+  .hero-card {
+    margin-bottom: 2rem;
   }
 
   .contact-card {

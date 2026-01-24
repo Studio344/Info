@@ -3,5 +3,10 @@
     "title": "Portfolio",
     "description": "Simple portfolio site. Built with HTML, CSS, JS and modern UI tools like GSAP and particles.js.",
     "link": "https://github.com/Studio344/Info"
+  },
+  {
+    "title": "UCFitness",
+    "description": "Fitness tracking platform with Fitbit integration, group leaderboards, and detailed activity graphs.",
+    "link": "https://ucfitness.studio344.net"
   }
 ]
