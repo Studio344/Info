@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     loadBlogPosts();
 
     // Re-load posts when language changes
+    i18next.on('languageChanged', (lng) => {
+        loadBlogPosts(lng);
     });
 });
 
