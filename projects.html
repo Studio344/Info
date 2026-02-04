@@ -36,14 +36,14 @@
   </header>
 
   <main class="bento-grid">
-    <div class="bento-card text-content-card">
+    <div class="bento-card text-content-card" style="margin-bottom: 0;">
         <h1>All Projects</h1>
-        <p style="margin-bottom: 2rem; color: #aaa;">Studio344 で開発・運用しているプロジェクト一覧です。</p>
+        <p style="margin-bottom: 0; color: #aaa;">Studio344 で開発・運用しているプロジェクト一覧です。</p>
+    </div>
 
-        <!-- Projects Container to be populated by script.js -->
-        <div id="projects-wrapper" class="projects-subgrid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-            <!-- Projects will be injected here -->
-        </div>
+    <!-- Projects Container (Grid Layout) -->
+    <div id="projects-wrapper" style="grid-column: span 12; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+        <!-- Projects will be injected here by script.js -->
     </div>
   </main>
 
