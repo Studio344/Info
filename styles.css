@@ -271,7 +271,8 @@ html {
 }
 
 .card-content-body {
-  padding: 1.5rem;
+  padding: 1.5rem 2rem;
+  /* Standardized side padding (2rem) */
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -681,7 +682,8 @@ html {
   grid-column: span 12;
   text-align: left;
   display: block;
-  padding: 3rem;
+  padding: 2.5rem 2rem;
+  /* Adjusted for alignment */
   line-height: 1.8;
 }
 
