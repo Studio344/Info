@@ -6,6 +6,7 @@ i18next.init({
         translation: {
           nav: {
             about: "About",
+            blog: "Blog",
             projects: "Projects",
             contact: "Contact"
           },
@@ -38,6 +39,7 @@ i18next.init({
         translation: {
           nav: {
             about: "About",
+            blog: "Blog",
             projects: "Projects",
             contact: "Contact"
           },
