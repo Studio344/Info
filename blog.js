@@ -2,15 +2,18 @@ document.addEventListener('DOMContentLoaded', () => {
     loadBlogPosts();
 
     // Re-load posts when language changes
-    i18next.on('languageChanged', () => {
-        loadBlogPosts();
+    i18next.on('languageChanged', (lng) => {
+        loadBlogPosts(lng);
     });
 });
 
-async function loadBlogPosts() {
+async function loadBlogPosts(langOverride) {
     const listUrl = 'assets/posts/list.json';
     const container = document.getElementById('blog-container');
-    const currentLang = i18next.language || 'ja';
+    
+    // Normalize language to 2 characters (e.g., 'en-US' -> 'en')
+    let rawLang = langOverride || i18next.language || 'ja';
+    const currentLang = rawLang.substring(0, 2);
 
     if (!container) return;
 
