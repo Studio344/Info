@@ -24,11 +24,11 @@ i18next.init({
           disclaimer: "[免責事項] このアカウントは個人的利用を目的としています。所属組織の公式見解を代表するものではありません。",
           home: {
             about_content: "某グローバルIT企業に勤務。<br>\"人の役に立ってこそ技術\" という信念のもと、最新のWeb技術からバックエンドアーキテクチャまで幅広く探求しています。<br>このサイトでは、これまでの制作物や技術的な学び（Engineering Logs）を発信していきます。",
-            more_about: "More about me &rarr;",
+            more_about: "More about me →",
             projects_title: "Projects",
-            projects_desc: "View Recent Works &rarr;",
+            projects_desc: "View Recent Works →",
             blog_title: "Blog",
-            blog_desc: "Read Engineering Logs &rarr;",
+            blog_desc: "Read Engineering Logs →",
             connect_title: "Let's Connect",
             gh_label: "GitHub",
             email_label: "Email"
@@ -97,11 +97,11 @@ i18next.init({
           disclaimer: "[Disclaimer] This account is for personal usage. Does not represent the official views of the organization.",
           home: {
             about_content: "Working at a global IT company.<br>Driven by the belief that \"technology exists to help people,\" I explore everything from modern Web tech to backend architecture.<br>Here, I share my works and engineering logs.",
-            more_about: "More about me &rarr;",
+            more_about: "More about me →",
             projects_title: "Projects",
-            projects_desc: "View Recent Works &rarr;",
+            projects_desc: "View Recent Works →",
             blog_title: "Blog",
-            blog_desc: "Read Engineering Logs &rarr;",
+            blog_desc: "Read Engineering Logs →",
             connect_title: "Let's Connect",
             gh_label: "GitHub",
             email_label: "Email"
