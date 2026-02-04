@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <h3>${project.title}</h3>
                     <p>${project.description}</p>
                 </div>
-                <a href="${project.link}" target="_blank" style="margin-top: 1rem; align-self: flex-start;">View Project &rarr;</a>
+                <a href="${project.link}" style="margin-top: 1rem; align-self: flex-start;">View Project &rarr;</a>
             </div>
             `;
             container.appendChild(card);
