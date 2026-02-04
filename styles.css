@@ -228,6 +228,83 @@ html {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
+/* --- Rich Project Cards --- */
+.project-card {
+  padding: 0 !important;
+  /* Reset padding for full-bleed image */
+  display: flex !important;
+  flex-direction: column !important;
+  background: var(--card-bg);
+}
+
+.card-visual-header {
+  height: 200px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.card-visual-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+}
+
+.card-visual-icon {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.project-card:hover .card-visual-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.card-content-body {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Unique Styles for Projects */
+
+/* UCFitness */
+.visual-ucfitness {
+  background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+}
+
+.visual-ucfitness .card-visual-pattern {
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px, 100% 20px;
+}
+
+/* Portfolio */
+.visual-portfolio {
+  background: linear-gradient(135deg, #0f172a 0%, #312e81 100%);
+}
+
+.visual-portfolio .card-visual-pattern {
+  background-image:
+    linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05)),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05));
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+}
+
 /* --- Specific Cards --- */
 
 /* Hero: Full Width */
