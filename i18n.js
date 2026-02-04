@@ -45,7 +45,7 @@ i18next.init({
           },
           contact_page: {
             title: "Contact",
-            desc: "制作依頼、技術的なご相談、その他のお問い合わせは、以下のリンク（SNSまたはメール）よりお気軽にご連絡ください。",
+            desc: "当サイトは個人の趣味によるポートフォリオサイトです。制作依頼やお仕事の募集は受け付けておりません。<br>技術的な交流やご感想などは、以下のリンクよりお気軽にご連絡ください。",
             email: "Email"
           },
           blog_page: {
@@ -97,7 +97,7 @@ i18next.init({
           },
           contact_page: {
             title: "Contact",
-            desc: "For production requests, technical consultations, or other inquiries, please feel free to contact me via the links below (SNS or Email).",
+            desc: "当サイトは個人の趣味によるポートフォリオサイトです。制作依頼やお仕事の募集は受け付けておりません。<br>技術的な交流やご感想などは、以下のリンクよりお気軽にご連絡ください。",
             email: "Email"
           },
           blog_page: {
