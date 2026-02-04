@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms - Studio344</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
+     crossorigin="anonymous"></script>
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+  <div class="aurora-container">
+    <div class="aurora-orb orb-1"></div>
+    <div class="aurora-orb orb-2"></div>
+    <div class="aurora-orb orb-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+  <div class="noise-overlay"></div>
+  <div class="spotlight-overlay"></div>
+
+  <header class="header">
+    <div class="logo"><a href="index.html" style="color:white; text-decoration:none;">Studio344</a></div>
+    <nav class="nav-menu">
+      <a href="index.html" class="nav-btn">Home</a>
+    </nav>
+  </header>
+
+  <main class="bento-grid">
+    <div class="bento-card text-content-card">
+      <h1>利用規約</h1>
+      <p>この利用規約（以下「本規約」）は、Studio344（以下「当方」）がこのウェブサイト上で提供するサービス（以下「本サービス」）の利用条件を定めるものです。</p>
+
+      <h2>1. 適用</h2>
+      <p>本規約は、ユーザーと当方との間の本サービスの利用に関わる一切の関係に適用されるものとします。</p>
+
+      <h2>2. 禁止事項</h2>
+      <p>ユーザーは、本サービスの利用にあたり、以下の行為をしてはなりません。</p>
+      <ul>
+        <li>法令または公序良俗に違反する行為</li>
+        <li>犯罪行為に関連する行為</li>
+        <li>当方のサービスの運営を妨害するおそれのある行為</li>
+        <li>不正アクセスをし、またはこれを試みる行為</li>
+      </ul>
+
+      <h2>3. 免責事項</h2>
+      <p>当方の債務不履行責任は、当方の故意または重過失によらない場合には免責されるものとします。当方は、本サービスに関して、ユーザーと他のユーザーまたは第三者との間において生じた取引、連絡または紛争等について一切責任を負いません。</p>
+
+      <h2>4. 著作権</h2>
+      <p>本サイトに掲載されている全てのコンテンツは、当方が所有しています。書面による許可なく、個人的な目的以外で使用することは禁止されています。</p>
+
+      <p style="margin-top: 3rem; font-size: 0.9rem; color: #666;">最終更新日: 2026年2月4日</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Studio344</p>
+    <div style="margin-top: 0.5rem; display: flex; gap: 1rem; justify-content: center; font-size: 0.8rem;">
+      <a href="privacy-policy.html" style="color: #666; text-decoration: none;">Privacy Policy</a>
+      <a href="terms.html" style="color: #aaa; text-decoration: none;">Terms</a>
+      <a href="contact.html" style="color: #666; text-decoration: none;">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('mousemove', (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      document.documentElement.style.setProperty('--mouse-x', `${x}px`);
+      document.documentElement.style.setProperty('--mouse-y', `${y}px`);
+    });
+  </script>
+</body>
+</html>

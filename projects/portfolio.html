@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Site - Project Details</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
+     crossorigin="anonymous"></script>
+  <link rel="icon" type="image/png" href="../assets/logo.png" />
+  <link rel="stylesheet" href="../styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+  <div class="aurora-container">
+    <div class="aurora-orb orb-1"></div>
+    <div class="aurora-orb orb-2"></div>
+    <div class="aurora-orb orb-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+  <div class="noise-overlay"></div>
+  <div class="spotlight-overlay"></div>
+
+  <header class="header">
+    <div class="logo"><a href="../index.html" style="color:white; text-decoration:none;">Studio344</a></div>
+    <nav class="nav-menu">
+      <a href="../index.html" class="nav-btn">Home</a>
+      <a href="../about.html" class="nav-btn">About</a>
+      <a href="../contact.html" class="nav-btn">Contact</a>
+    </nav>
+  </header>
+
+  <main class="bento-grid">
+    <div class="bento-card text-content-card">
+      <nav style="font-size: 0.9rem; margin-bottom: 2rem; color: #888;">
+        <a href="../index.html" style="color: #aaa; text-decoration: none;">Home</a> &gt; 
+        <span>Projects</span> &gt; 
+        <span style="color: #fff;">Portfolio Site</span>
+      </nav>
+
+      <h1>Studio344 Portfolio</h1>
+      <p style="font-size: 1.2rem; color: #a5b4fc; margin-bottom: 2rem;">Bento Gridデザインを採用した、没入感のあるポートフォリオサイト</p>
+
+      <div style="margin-bottom: 3rem;">
+        <a href="https://github.com/Studio344/Info" target="_blank" class="nav-btn" style="display: inline-block; text-decoration: none; padding: 0.8rem 1.5rem; background: #333; border: 1px solid #555;">View Source Code &rarr;</a>
+      </div>
+
+      <h2>Design Concept</h2>
+      <p>「モダンで未来的、かつ情報の視認性を損なわない」をコンセプトに設計されました。近年トレンドのBento Grid（弁当箱のようなグリッドレイアウト）を採用し、異なるサイズのコンテンツを整然と配置しています。</p>
+
+      <h2>Tech Stack</h2>
+      <ul>
+        <li><strong>Core:</strong> HTML5, CSS3 (Variables, Grid, Flexbox), Vanilla JavaScript</li>
+        <li><strong>Animation:</strong> GSAP (GreenSock Animation Platform) for smooth transitions</li>
+        <li><strong>Effects:</strong> CSS Filter Effects (Blur, Noise), SVG Filters</li>
+        <li><strong>Hosting:</strong> GitHub Pages</li>
+      </ul>
+
+      <h2>Key Features</h2>
+      <h3>1. パフォーマンス重視のVanilla実装</h3>
+      <p>ReactやVueなどのフレームワークを使用せず、素のJavaScriptとCSSで実装することで、最軽量かつ高速な読み込みを実現しています。不要なバンドルサイズを極限まで削減しました。</p>
+
+      <h3>2. ダイナミックな視覚効果</h3>
+      <p>マウスの動きに追従する「スポットライト効果」や、背景で揺らぐ「オーロラ・オーブ」をCSS変数とJSの連携で実装。Canvasを使用せずDOM操作のみで実現することで、モバイルバッテリーへの負荷も考慮しています。</p>
+
+      <h3>3. i18n（国際化）対応</h3>
+      <p>軽量な翻訳ライブラリを活用し、日本語と英語の切り替えをスムーズに行える設計にしています。</p>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Studio344</p>
+    <div style="margin-top: 0.5rem; display: flex; gap: 1rem; justify-content: center; font-size: 0.8rem;">
+      <a href="../privacy-policy.html" style="color: #666; text-decoration: none;">Privacy Policy</a>
+      <a href="../contact.html" style="color: #666; text-decoration: none;">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('mousemove', (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      document.documentElement.style.setProperty('--mouse-x', `${x}px`);
+      document.documentElement.style.setProperty('--mouse-y', `${y}px`);
+    });
+  </script>
+</body>
+</html>

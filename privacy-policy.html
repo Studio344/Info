@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy - Studio344</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
+     crossorigin="anonymous"></script>
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  
+  <meta name="robots" content="noindex" /> 
+  <!-- Temporary noindex until content is ready, or keep indexable? AdSense needs it indexed. Removing noindex for production. -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+  <div class="aurora-container">
+    <div class="aurora-orb orb-1"></div>
+    <div class="aurora-orb orb-2"></div>
+    <div class="aurora-orb orb-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+  <div class="noise-overlay"></div>
+  <div class="spotlight-overlay"></div>
+
+  <header class="header">
+    <div class="logo"><a href="index.html" style="color:white; text-decoration:none;">Studio344</a></div>
+    <nav class="nav-menu">
+      <a href="index.html" class="nav-btn">Home</a>
+    </nav>
+  </header>
+
+  <main class="bento-grid">
+    <div class="bento-card text-content-card">
+      <h1>プライバシーポリシー</h1>
+      
+      <h2>1. 情報の取得</h2>
+      <p>Studio344（以下「当サイト」）では、主に次の2つの方法でユーザー情報を取得することがあります。</p>
+      <ul>
+        <li><strong>クッキー（Cookies）</strong>: 当サイトでは、トラフィックデータの収集のためにGoogle AnalyticsやGoogle AdSenseを使用しています。これらのデータは匿名で収集されており、個人を特定するものではありません。</li>
+      </ul>
+
+      <h2>2. 情報の利用</h2>
+      <p>当サイトで収集された情報は、以下の目的で利用されます。</p>
+      <ul>
+        <li>サイトの利便性向上や改善のための分析</li>
+        <li>ユーザーに適した広告の配信（Google AdSense など）</li>
+      </ul>
+
+      <h2>3. 広告について</h2>
+      <p>当サイトでは、第三者配信の広告サービス（Google AdSense）を利用しています。このような広告配信事業者は、ユーザーの興味に応じた商品やサービスの広告を表示するため、当サイトや他サイトへのアクセスに関する情報「Cookie」(氏名、住所、メール アドレス、電話番号は含まれません) を使用することがあります。</p>
+      <p>Google AdSense に関する詳細は、<a href="https://policies.google.com/technologies/ads?hl=ja" target="_blank">Googleポリシーと規約</a>をご覧ください。</p>
+
+      <h2>4. 免責事項</h2>
+      <p>当サイトのコンテンツ・情報につきまして、可能な限り正確な情報を掲載するよう努めておりますが、誤情報が入り込んだり、情報が古くなっていることもございます。当サイトに掲載された内容によって生じた損害等の一切の責任を負いかねますのでご了承ください。</p>
+
+      <h2>5. お問い合わせ</h2>
+      <p>本ポリシーに関するお問い合わせは、<a href="contact.html">お問い合わせページ</a>よりお願いいたします。</p>
+
+      <p style="margin-top: 3rem; font-size: 0.9rem; color: #666;">最終更新日: 2026年2月4日</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Studio344</p>
+  </footer>
+
+  <script>
+    // Mouse Spotlight Effect (Simplified from script.js)
+    document.addEventListener('mousemove', (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      document.documentElement.style.setProperty('--mouse-x', `${x}px`);
+      document.documentElement.style.setProperty('--mouse-y', `${y}px`);
+    });
+  </script>
+</body>
+</html>

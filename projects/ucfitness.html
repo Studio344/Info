@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UCFitness - Project Details</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
+     crossorigin="anonymous"></script>
+  <link rel="icon" type="image/png" href="../assets/logo.png" />
+  <link rel="stylesheet" href="../styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+  <div class="aurora-container">
+    <div class="aurora-orb orb-1"></div>
+    <div class="aurora-orb orb-2"></div>
+    <div class="aurora-orb orb-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+  <div class="noise-overlay"></div>
+  <div class="spotlight-overlay"></div>
+
+  <header class="header">
+    <div class="logo"><a href="../index.html" style="color:white; text-decoration:none;">Studio344</a></div>
+    <nav class="nav-menu">
+      <a href="../index.html" class="nav-btn">Home</a>
+      <a href="../about.html" class="nav-btn">About</a>
+      <a href="../contact.html" class="nav-btn">Contact</a>
+    </nav>
+  </header>
+
+  <main class="bento-grid">
+    <div class="bento-card text-content-card">
+      <nav style="font-size: 0.9rem; margin-bottom: 2rem; color: #888;">
+        <a href="../index.html" style="color: #aaa; text-decoration: none;">Home</a> &gt; 
+        <span>Projects</span> &gt; 
+        <span style="color: #fff;">UCFitness</span>
+      </nav>
+
+      <h1>UCFitness Dashboard</h1>
+      <p style="font-size: 1.2rem; color: #a5b4fc; margin-bottom: 2rem;">Fitbit APIを活用した、グループ対抗フィットネス・トラッキング・プラットフォーム</p>
+
+      <div style="margin-bottom: 3rem;">
+        <a href="https://ucfitness.studio344.net" target="_blank" class="nav-btn" style="display: inline-block; text-decoration: none; padding: 0.8rem 1.5rem; background: #4f46e5; border: none;">Visit Live Site &rarr;</a>
+      </div>
+
+      <h2>Project Overview</h2>
+      <p>UCFitness は、Fitbitユーザーが自身の活動データ（歩数、心拍数など）を可視化し、グループ間で競争できるダッシュボードアプリケーションです。標準のFitbitアプリでは難しい「特定グループ内でのランキング」や「長期間のデータ推移のカスタム比較」を実現するために開発されました。</p>
+
+      <h2>Tech Stack</h2>
+      <ul>
+        <li><strong>Frontend:</strong> Next.js (App Router), React, TailwindCSS, Recharts</li>
+        <li><strong>Backend:</strong> Supabase (Database, Auth), Next.js API Routes</li>
+        <li><strong>Integration:</strong> Fitbit Web API (OAuth 2.0)</li>
+        <li><strong>Infrastructure:</strong> Vercel (Hosting), Cloudflare</li>
+      </ul>
+
+      <h2>Key Features</h2>
+      <h3>1. グループランキングシステム</h3>
+      <p>ユーザーは特定のグループに参加し、歩数や活動距離を競うことができます。Supabaseのリアルタイム機能を活用し、ランキングは定期的に更新されます。</p>
+
+      <h3>2. セキュアなOAuth認証</h3>
+      <p>NextAuth.js を使用せず、Fitbit APIとの直接的なOAuth 2.0連携を実装。アクセストークンとリフレッシュトークンの管理をサーバーサイド（HttpOnly Cookie）で厳格に行い、セキュリティを担保しています。</p>
+
+      <h3>3. データ可視化</h3>
+      <p>Rechartsライブラリを使用し、日次・週次・月次の活動データをインタラクティブなグラフで表示。APIのレート制限（Rate Limits）を考慮し、データのキャッシング戦略も実装しています。</p>
+
+      <h2>Challenges & Solutions</h2>
+      <p><strong>課題:</strong> Fitbit APIのレート制限（1時間あたり150リクエスト）が厳しく、多人数グループでの一斉更新時に制限に達する問題がありました。</p>
+      <p><strong>解決策:</strong> データの取得をサーバーサイドでバッチ処理化し、結果をSupabaseにキャッシュすることで、Fitbit APIへの直接的なアクセスを最小限に抑えるアーキテクチャを採用しました。また、フロントエンド側でもSWRを活用して不要な再フェッチを防いでいます。</p>
+
+      <h2>Future Roadmap</h2>
+      <p>今後は、Apple Health や Google Fit との連携も視野に入れ、より多くのデバイスユーザーが参加できるプラットフォームへと進化させる予定です。</p>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Studio344</p>
+    <div style="margin-top: 0.5rem; display: flex; gap: 1rem; justify-content: center; font-size: 0.8rem;">
+      <a href="../privacy-policy.html" style="color: #666; text-decoration: none;">Privacy Policy</a>
+      <a href="../contact.html" style="color: #666; text-decoration: none;">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('mousemove', (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      document.documentElement.style.setProperty('--mouse-x', `${x}px`);
+      document.documentElement.style.setProperty('--mouse-y', `${y}px`);
+    });
+  </script>
+</body>
+</html>

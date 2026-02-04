@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - Studio344</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
+     crossorigin="anonymous"></script>
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+  <div class="aurora-container">
+    <div class="aurora-orb orb-1"></div>
+    <div class="aurora-orb orb-2"></div>
+    <div class="aurora-orb orb-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+  <div class="noise-overlay"></div>
+  <div class="spotlight-overlay"></div>
+
+  <header class="header">
+    <div class="logo"><a href="index.html" style="color:white; text-decoration:none;">Studio344</a></div>
+    <nav class="nav-menu">
+      <a href="index.html" class="nav-btn">Home</a>
+      <a href="index.html#projects-wrapper" class="nav-btn">Projects</a>
+      <a href="contact.html" class="nav-btn">Contact</a>
+    </nav>
+  </header>
+
+  <main class="bento-grid">
+    <div class="bento-card text-content-card">
+      <h1>About Studio344</h1>
+      
+      <h2>Mission</h2>
+      <p>Studio344 は、テクノロジーとデザインの融合を通じて、ユーザーの生活に新しい価値と彩りを提供することを目指す個人の開発スタジオです。「使いやすさ」と「美しさ」の両立をテーマに、Webアプリケーションからモバイルアプリまで幅広い開発を行っています。</p>
+
+      <h2>Developer Profile</h2>
+      <p>某グローバルIT企業にて、エンタープライズ向けのソリューション開発やクラウドアーキテクチャの設計・構築に従事。プライベートでは、自身の興味関心に基づき、最新のWeb技術（React, Next.js, WebGLなど）を用いた実験的なプロジェクトや、実用的なツールの開発を行っています。</p>
+      
+      <h3>Technical Skills</h3>
+      <ul>
+        <li><strong>Languages:</strong> JavaScript/TypeScript, Python, Java, Go</li>
+        <li><strong>Frontend:</strong> React, Next.js, Vue.js, TailwindCSS, GSAP, Three.js</li>
+        <li><strong>Backend:</strong> Node.js, Express, Supabase, Firebase</li>
+        <li><strong>Cloud:</strong> AWS, Google Cloud, Azure</li>
+        <li><strong>Tools:</strong> Docker, Git, Figma</li>
+      </ul>
+
+      <h2>Philosophy</h2>
+      <p>「Just Build It.」をモットーに、アイデアを形にすることを最優先しています。失敗を恐れず、常に新しい技術に挑戦し続けることで、エンジニアとしての成長と、より良いプロダクトの創出を目指しています。</p>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Studio344</p>
+    <div style="margin-top: 1rem; display: flex; gap: 1rem; justify-content: center; font-size: 0.8rem;">
+        <a href="privacy-policy.html" style="color: #666; text-decoration: none;">Privacy Policy</a>
+        <a href="contact.html" style="color: #666; text-decoration: none;">Contact</a>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('mousemove', (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      document.documentElement.style.setProperty('--mouse-x', `${x}px`);
+      document.documentElement.style.setProperty('--mouse-y', `${y}px`);
+    });
+  </script>
+</body>
+</html>

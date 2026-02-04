@@ -572,3 +572,47 @@ html {
     padding: 1rem 1.5rem;
   }
 }
+
+/* --- Content Pages --- */
+.text-content-card {
+  grid-column: span 12;
+  text-align: left;
+  display: block;
+  padding: 3rem;
+  line-height: 1.8;
+}
+
+.text-content-card h1 {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(to right, #fff, #cbd5e1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-content-card h2 {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.text-content-card p,
+.text-content-card li {
+  color: #ccc;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+.text-content-card ul {
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.text-content-card a {
+  color: #a5b4fc;
+  text-decoration: underline;
+}
