@@ -687,11 +687,7 @@ html {
   line-height: 1.8;
 }
 
-@media (min-width: 1024px) {
-  .text-content-card {
-    grid-column: 3 / span 8;
-  }
-}
+
 
 .text-content-card h1 {
   font-family: var(--font-heading);
