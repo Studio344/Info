@@ -87,4 +87,21 @@ i18next.init({
       }
     });
   }
+
+  // --- Language Toggle Logic (Moved from script.js) ---
+  document.addEventListener("DOMContentLoaded", () => {
+      const langToggle = document.getElementById("lang-toggle");
+      let currentLang = i18next.language || "ja"; // Sync with initialized lang
+
+      if (langToggle) {
+        // Initialize button text based on current state
+        langToggle.textContent = currentLang === "ja" ? "EN" : "JP";
+
+        langToggle.addEventListener("click", () => {
+          const newLang = i18next.language === "ja" ? "en" : "ja";
+          i18next.changeLanguage(newLang);
+          langToggle.textContent = newLang === "ja" ? "EN" : "JP";
+        });
+      }
+  });
   

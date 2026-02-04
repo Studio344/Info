@@ -128,16 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
   // --- 4. Language Toggle ---
-  const langToggle = document.getElementById("lang-toggle");
-  let currentLang = "ja";
-  
-  if (langToggle) {
-    langToggle.addEventListener("click", () => {
-      currentLang = currentLang === "ja" ? "en" : "ja";
-      langToggle.textContent = currentLang === "ja" ? "EN" : "JP";
-      i18next.changeLanguage(currentLang);
-    });
-  }
+  // Moved to i18n.js for centralized handling across all pages
   
   // Particles removed in favor of CSS Noise/Spotlight
 });
