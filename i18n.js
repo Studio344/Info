@@ -50,7 +50,24 @@ i18next.init({
           },
           blog_page: {
             title: "Blog & Updates",
-            desc: "開発ログや技術的な知見を不定期に更新します。"
+            desc: "開発ログや技術的な知見を不定期に更新します。",
+            articles: {
+                article1: {
+                    date: "2026.02.04",
+                    title: "ユーザビリティと技術発信のためのサイト刷新",
+                    p1: "ユーザー体験の向上と、より詳細な技術情報の発信を目的として、ポートフォリオサイトの構造をシングルページからマルチページ構成へ刷新しました。単なるリンク集ではなく、各プロジェクトの技術的な詳細を「読めるコンテンツ」として提供することを意図しています。",
+                    p2: "主な変更点は以下の通りです。",
+                    li1: "プロジェクト詳細ページの作成（UCFitness, Portfolio）",
+                    li2: "必須ページ（プライバシーポリシー、お問い合わせ）の追加",
+                    li3: "サイトマップの整備"
+                },
+                article2: {
+                    date: "2026.01.20",
+                    title: "UCFitness: Fitbit APIのレート制限との戦い",
+                    p1: "自作のフィットネストラッカー「UCFitness」の開発において最大の壁となったのが、Fitbit APIのAPI Rate Limitです。1ユーザーあたり1時間150リクエストという制限は、リアルタイム性を求めるアプリには少々厳しいものでした。",
+                    p2: "この問題を解決するために、Next.jsのAPI RoutesとSupabaseを組み合わせ、 데이터를バックグラウンドでバッチ取得・キャッシュするアーキテクチャを採用しました。これにより、フロントエンドからの過剰なリクエストを防ぎつつ、ユーザーには高速なランキング表示を提供できるようになりました。"
+                }
+            }
           }
         }
       },
@@ -102,7 +119,24 @@ i18next.init({
           },
           blog_page: {
             title: "Blog & Updates",
-            desc: "I update development logs and technical insights irregularly."
+            desc: "I update development logs and technical insights irregularly.",
+            articles: {
+                article1: {
+                    date: "2026.02.04",
+                    title: "Site Renewal for Usability and Technical Showcase",
+                    p1: "To improve user experience and share more detailed technical information, I revamped the portfolio site structure from a single page to a multi-page layout. The intention is not just a collection of links, but to provide technical details of each project as 'readable content'.",
+                    p2: "Key changes are as follows:",
+                    li1: "Creation of project detail pages (UCFitness, Portfolio)",
+                    li2: "Addition of essential pages (Privacy Policy, Contact)",
+                    li3: "Sitemap configuration"
+                },
+                article2: {
+                    date: "2026.01.20",
+                    title: "UCFitness: Battling Fitbit API Rate Limits",
+                    p1: "The biggest hurdle in developing my custom fitness tracker 'UCFitness' was the Fitbit API Rate Limit. The limit of 150 requests per hour per user was quite strict for an app requiring real-time updates.",
+                    p2: "To solve this, I adopted an architecture combining Next.js API Routes and Supabase to batch fetch and cache data in the background. This prevents excessive requests from the frontend while providing high-speed ranking displays to users."
+                }
+            }
           }
         }
       }
