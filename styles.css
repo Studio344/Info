@@ -468,7 +468,32 @@ html {
   font-size: 1.05rem;
 }
 
-/* Projects Wrapper */
+/* Projects Main Page Grid */
+.projects-page-grid {
+  display: contents;
+}
+
+.projects-page-grid>.project-card {
+  grid-column: span 6;
+  /* Default: 2 columns on standard screens */
+  height: auto;
+}
+
+@media (min-width: 1024px) {
+  .projects-page-grid>.project-card {
+    grid-column: span 4;
+    /* 3 columns on large screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-page-grid>.project-card {
+    grid-column: span 12 !important;
+    /* Stack on mobile */
+  }
+}
+
+/* Projects Wrapper (Legacy/Index) */
 .projects-subgrid {
   grid-column: span 6;
   /* Changed to 6 so 6+6=12 fits in one row */
