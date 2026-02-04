@@ -12,7 +12,7 @@ i18next.init({
           },
           about: {
             title: "About",
-            content: "某グローバルIT企業に勤務。<br>人の役に立つ知識・技術の探求が大好き。"
+            content: "某グローバルIT企業で働いています。<br>技術で誰かの役に立つのが大好きです。"
           },
           projects: {
             title: "Projects"
@@ -20,10 +20,10 @@ i18next.init({
           contact: {
             title: "Contact"
           },
-          // 日本語ディスクレーマー（やや控えめ）
-          disclaimer: "[免責事項] このアカウントは個人的利用を目的としています。所属組織の公式見解を代表するものではありません。",
+          // 日本語ディスクレーマー（フレンドリー）
+          disclaimer: "[免責事項] ここはあくまで個人の趣味サイトです。所属する会社の意見とは一切関係ありません。",
           home: {
-            about_content: "某グローバルIT企業に勤務。<br>\"人の役に立ってこそ技術\" という信念のもと、最新のWeb技術からバックエンドアーキテクチャまで幅広く探求しています。<br>このサイトでは、これまでの制作物や技術的な学び（Engineering Logs）を発信していきます。",
+            about_content: "普段は某グローバルIT企業でエンジニアをしています。<br>「技術は人のためにあってこそ」をモットーに、最新のWeb技術からバックエンドまで、面白そうなことは何でも試しています。<br>このサイトは、そんな私の「作ったもの」や「学んだこと」の置き場所です。",
             more_about: "More about me →",
             projects_title: "Projects",
             projects_desc: "View Recent Works →",
@@ -36,19 +36,19 @@ i18next.init({
           about_page: {
             title: "About Studio344",
             mission_title: "Mission",
-            mission_desc: "Studio344 は、テクノロジーとデザインの融合を通じて、ユーザーの生活に新しい価値と彩りを提供することを目指す個人の開発スタジオです。「使いやすさ」と「美しさ」の両立をテーマに、Webアプリケーションからモバイルアプリまで幅広い開発を行っています。",
+            mission_desc: "Studio344は、テクノロジーとデザインを組み合わせて、日常にちょっとした「便利」や「彩り」をプラスすることを目指す、個人の実験室です。「使いやすさ」と「見た目の良さ」の両方を大切にしながら、Webアプリからモバイルアプリまで、自由に作っています。",
             profile_title: "Developer Profile",
-            profile_desc: "某グローバルIT企業に勤務。<br>プライベートでは、自身の興味関心に基づき、最新のWeb技術（React, Next.js, WebGLなど）を用いた実験的なプロジェクトや、実用的なツールの開発を行っています。",
+            profile_desc: "某グローバルIT企業勤務。<br>プライベートでは「これ面白そう！」と思った最新技術（React, Next.js, WebGLなど）を使って実験的なアプリを作ったり、日々の作業を楽にするツールを作ったりしています。",
             skills_title: "Technical Skills",
             philosophy_title: "Philosophy",
-            philosophy_desc: "「Just Build It.」をモットーに、アイデアを形にすることを最優先しています。失敗を恐れず、常に新しい技術に挑戦し続けることで、エンジニアとしての成長と、より良いプロダクトの創出を目指しています。"
+            philosophy_desc: "「とりあえず作ってみる (Just Build It.)」がモットーです。アイデアがあったら、失敗を恐れずにまず形にしてみる。そうやって新しい技術に触れ続けることで、エンジニアとしてレベルアップしていきたいと思っています。"
           },
           contact_page: {
             title: "Contact",
-            desc: "当サイトは個人の趣味によるポートフォリオサイトです。<br>技術的な交流やご感想などは、以下のリンクよりお気軽にご連絡ください。",
+            desc: "ここは個人の趣味サイトです。<br>技術的な話や、「ここ良かったよ！」等のご感想があれば、以下のリンクからお気軽にどうぞ。",
             email: "Email",
-            email_desc: "直接メールでのお問い合わせはこちらへお願いいたします。",
-            email_note: "※返信には数日いただく場合がございます。",
+            email_desc: "メールでのお問い合わせはこちらから。",
+            email_note: "※すぐには返信できないこともありますが、気長にお待ちください。",
             social_title: "Social Media",
             github_text: "GitHub"
           },
@@ -68,7 +68,7 @@ i18next.init({
           },
           about: {
             title: "About",
-            content: "Engineer working in a global IT company, passionate about solving technical challenges and helping others."
+            content: "I work at a global IT company and love using tech to help people!"
           },
           projects: {
             title: "Projects"
@@ -76,10 +76,10 @@ i18next.init({
           contact: {
             title: "Contact"
           },
-          // 英語ディスクレーマー（控えめ）
-          disclaimer: "[Disclaimer] This account is for personal usage. Does not represent the official views of the organization.",
+          // 英語ディスクレーマー（フレンドリー）
+          disclaimer: "[Disclaimer] This is just a personal hobby site. Opinions are my own, not my employer's.",
           home: {
-            about_content: "Working at a global IT company.<br>Driven by the belief that \"technology exists to help people,\" I explore everything from modern Web tech to backend architecture.<br>Here, I share my works and engineering logs.",
+            about_content: "Currently working as an engineer at a global IT company.<br>I believe technology is best when it helps people. I love exploring everything from the latest Web tech to backend architecture.<br>This site is where I share what I've built and what I've learned along the way.",
             more_about: "More about me →",
             projects_title: "Projects",
             projects_desc: "View Recent Works →",
@@ -92,19 +92,19 @@ i18next.init({
           about_page: {
             title: "About Studio344",
             mission_title: "Mission",
-            mission_desc: "Studio344 is a personal development studio aimed at providing new value and color to users' lives through the fusion of technology and design. With the theme of balancing 'Usability' and 'Beauty', I develop a wide range of applications from Web to mobile apps.",
+            mission_desc: "Studio344 is my personal playground where I aim to add a bit of fun and color to daily life by mixing technology and design. I focus on both 'Usability' and 'Good Looks' while building everything from Web apps to mobile tools.",
             profile_title: "Developer Profile",
-            profile_desc: "Working at a global IT company.<br>In my private time, based on my interests, I work on experimental projects using the latest Web technologies (React, Next.js, WebGL, etc.) and develop practical tools.",
+            profile_desc: "Working at a global IT company.<br>In my free time, I build experimental projects using whatever tech catches my interest (React, Next.js, WebGL, etc.) or create tools to make my own life easier.",
             skills_title: "Technical Skills",
             philosophy_title: "Philosophy",
-            philosophy_desc: "My motto is \"Just Build It.\" I prioritize giving shape to ideas. Not afraid of failure, I aim to grow as an engineer and create better products by constantly challenging new technologies."
+            philosophy_desc: "My motto is \"Just Build It.\" If I have an idea, I try to build it first without fear of failure. I believe that constantly trying out new tech is the best way to grow as an engineer."
           },
           contact_page: {
             title: "Contact",
-            desc: "This is a personal portfolio site for hobby projects.<br>For technical exchanges or feedback, please feel free to contact me via the links below.",
+            desc: "This is a personal hobby site.<br>If you want to talk tech or just share some feedback, feel free to reach out via the links below!",
             email: "Email",
-            email_desc: "Please contact me directly via email here.",
-            email_note: "*Response may take a few days.",
+            email_desc: "Drop me an email here.",
+            email_note: "*I might take a few days to reply, so please bear with me.",
             social_title: "Social Media",
             github_text: "GitHub"
           },
