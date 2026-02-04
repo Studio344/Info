@@ -32,6 +32,25 @@ i18next.init({
             connect_title: "Let's Connect",
             gh_label: "GitHub",
             email_label: "Email"
+          },
+          about_page: {
+            title: "About Studio344",
+            mission_title: "Mission",
+            mission_desc: "Studio344 は、テクノロジーとデザインの融合を通じて、ユーザーの生活に新しい価値と彩りを提供することを目指す個人の開発スタジオです。「使いやすさ」と「美しさ」の両立をテーマに、Webアプリケーションからモバイルアプリまで幅広い開発を行っています。",
+            profile_title: "Developer Profile",
+            profile_desc: "某グローバルIT企業に勤務。<br>プライベートでは、自身の興味関心に基づき、最新のWeb技術（React, Next.js, WebGLなど）を用いた実験的なプロジェクトや、実用的なツールの開発を行っています。",
+            skills_title: "Technical Skills",
+            philosophy_title: "Philosophy",
+            philosophy_desc: "「Just Build It.」をモットーに、アイデアを形にすることを最優先しています。失敗を恐れず、常に新しい技術に挑戦し続けることで、エンジニアとしての成長と、より良いプロダクトの創出を目指しています。"
+          },
+          contact_page: {
+            title: "Contact",
+            desc: "制作依頼、技術的なご相談、その他のお問い合わせは、以下のリンク（SNSまたはメール）よりお気軽にご連絡ください。",
+            email: "Email"
+          },
+          blog_page: {
+            title: "Blog & Updates",
+            desc: "開発ログや技術的な知見を不定期に更新します。"
           }
         }
       },
@@ -65,6 +84,25 @@ i18next.init({
             connect_title: "Let's Connect",
             gh_label: "GitHub",
             email_label: "Email"
+          },
+          about_page: {
+            title: "About Studio344",
+            mission_title: "Mission",
+            mission_desc: "Studio344 is a personal development studio aimed at providing new value and color to users' lives through the fusion of technology and design. With the theme of balancing 'Usability' and 'Beauty', I develop a wide range of applications from Web to mobile apps.",
+            profile_title: "Developer Profile",
+            profile_desc: "Working at a global IT company.<br>In my private time, based on my interests, I work on experimental projects using the latest Web technologies (React, Next.js, WebGL, etc.) and develop practical tools.",
+            skills_title: "Technical Skills",
+            philosophy_title: "Philosophy",
+            philosophy_desc: "My motto is \"Just Build It.\" I prioritize giving shape to ideas. Not afraid of failure, I aim to grow as an engineer and create better products by constantly challenging new technologies."
+          },
+          contact_page: {
+            title: "Contact",
+            desc: "For production requests, technical consultations, or other inquiries, please feel free to contact me via the links below (SNS or Email).",
+            email: "Email"
+          },
+          blog_page: {
+            title: "Blog & Updates",
+            desc: "I update development logs and technical insights irregularly."
           }
         }
       }
