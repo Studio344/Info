@@ -652,8 +652,9 @@ html {
 
   /* Stack earlier on tablet */
   .about-wrapper,
-  .projects-subgrid {
-    grid-column: span 12;
+  .projects-subgrid,
+  .bento-card {
+    grid-column: span 12 !important;
   }
 
   .hero-content h1 {
