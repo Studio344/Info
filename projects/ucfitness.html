@@ -41,37 +41,62 @@
       <p style="font-size: 1.2rem; color: #a5b4fc; margin-bottom: 2rem;">Fitbit APIを活用した、グループ対抗フィットネス・トラッキング・プラットフォーム</p>
 
       <div style="margin-bottom: 3rem;">
-        <a href="https://ucfitness.studio344.net" target="_blank" class="nav-btn" style="display: inline-block; text-decoration: none; padding: 0.8rem 1.5rem; background: #4f46e5; border: none;">Visit Live Site &rarr;</a>
+        <a href="https://ucfitness.studio344.net" target="_blank" class="nav-btn" style="display: inline-block; text-decoration: none; padding: 0.8rem 1.5rem; background: #4f46e5; border: none; font-weight: bold;">
+            Visit Live Site 
+            <span style="margin-left: 5px;">&rarr;</span>
+        </a>
       </div>
 
-      <h2>Project Overview</h2>
-      <p>UCFitness は、Fitbitユーザーが自身の活動データ（歩数、心拍数など）を可視化し、グループ間で競争できるダッシュボードアプリケーションです。標準のFitbitアプリでは難しい「特定グループ内でのランキング」や「長期間のデータ推移のカスタム比較」を実現するために開発されました。</p>
+      <h2>Core Features</h2>
+      <p>UCFitness は「究極のソーシャルフィットネスダッシュボード」として、以下の3つのコア機能を提供します。</p>
 
-      <h2>Tech Stack</h2>
-      <ul>
-        <li><strong>Frontend:</strong> Next.js (App Router), React, TailwindCSS, Recharts</li>
-        <li><strong>Backend:</strong> Supabase (Database, Auth), Next.js API Routes</li>
-        <li><strong>Integration:</strong> Fitbit Web API (OAuth 2.0)</li>
-        <li><strong>Infrastructure:</strong> Vercel (Hosting), Cloudflare</li>
-      </ul>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; margin-bottom: 3rem;">
+        <!-- Feature 1 -->
+        <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="color: #4f46e5; margin-bottom: 1rem;">
+                <!-- Chart Icon -->
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+            </div>
+            <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem;">リアルタイムランキング</h3>
+            <p style="font-size: 0.9rem; color: #ccc;">順位をリアルタイムで追跡。日次、週次、月次で同僚や友人と歩数・活動量を比較できます。</p>
+        </div>
 
-      <h2>Key Features</h2>
-      <h3>1. グループランキングシステム</h3>
-      <p>ユーザーは特定のグループに参加し、歩数や活動距離を競うことができます。Supabaseのリアルタイム機能を活用し、ランキングは定期的に更新されます。</p>
+        <!-- Feature 2 -->
+        <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="color: #9333ea; margin-bottom: 1rem;">
+                <!-- Users Icon -->
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            </div>
+            <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem;">グループバトル</h3>
+            <p style="font-size: 0.9rem; color: #ccc;">グループに参加してチーム対抗戦。個人のスコアだけでなく、チーム全体の合計値で競い合いましょう。</p>
+        </div>
 
-      <h3>2. セキュアなOAuth認証</h3>
-      <p>NextAuth.js を使用せず、Fitbit APIとの直接的なOAuth 2.0連携を実装。アクセストークンとリフレッシュトークンの管理をサーバーサイド（HttpOnly Cookie）で厳格に行い、セキュリティを担保しています。</p>
+        <!-- Feature 3 -->
+        <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="color: #06b6d4; margin-bottom: 1rem;">
+                <!-- Award/Badge Icon -->
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+            </div>
+            <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem;">バッジ獲得</h3>
+            <p style="font-size: 0.9rem; color: #ccc;">マイルストーン到達や連続記録（ストリーク）でユニークなバッジをアンロック。成果を可視化します。</p>
+        </div>
+      </div>
 
-      <h3>3. データ可視化</h3>
-      <p>Rechartsライブラリを使用し、日次・週次・月次の活動データをインタラクティブなグラフで表示。APIのレート制限（Rate Limits）を考慮し、データのキャッシング戦略も実装しています。</p>
+      <h2>Tech Stack Detail</h2>
+      <div style="margin-bottom: 2rem;">
+        <p>最新のモダンWeb技術スタックを採用し、高速かつスケーラブルなアプリケーションを構築しました。</p>
+        <ul style="margin-top: 1rem;">
+            <li><strong>Frontend Framework:</strong> Next.js (App Router) - サーバーコンポーネントによる高速な初期表示を実現。</li>
+            <li><strong>UI Library:</strong> TailwindCSS & Shadcn/UI - 美しく一貫性のあるデザインシステムを構築。</li>
+            <li><strong>Authentication:</strong> OAuth 2.0 (Fitbit Web API) - セキュアなトークン管理と自動リフレッシュ機能。</li>
+            <li><strong>Database & Realtime:</strong> Supabase (PostgreSQL) - ランキングのリアルタイム更新（Live Subscription）に使用。</li>
+            <li><strong>Deployment:</strong> Vercel + Cloudflare - エッジネットワークを活用したグローバル配信。</li>
+        </ul>
+      </div>
 
-      <h2>Challenges & Solutions</h2>
-      <p><strong>課題:</strong> Fitbit APIのレート制限（1時間あたり150リクエスト）が厳しく、多人数グループでの一斉更新時に制限に達する問題がありました。</p>
-      <p><strong>解決策:</strong> データの取得をサーバーサイドでバッチ処理化し、結果をSupabaseにキャッシュすることで、Fitbit APIへの直接的なアクセスを最小限に抑えるアーキテクチャを採用しました。また、フロントエンド側でもSWRを活用して不要な再フェッチを防いでいます。</p>
-
-      <h2>Future Roadmap</h2>
-      <p>今後は、Apple Health や Google Fit との連携も視野に入れ、より多くのデバイスユーザーが参加できるプラットフォームへと進化させる予定です。</p>
-
+      <h2>Architecture Highlights</h2>
+      <p><strong>Fitbit API Rate Limit 対策:</strong></p>
+      <p>ユーザー数が増加してもAPI制限に抵触しないよう、独自のキャッシングレイヤーを実装しています。個別のユーザーリクエストごとにAPIを叩くのではなく、サーバーサイドワーカーが定期的にデータを収集・集計し、データベースを更新する「非同期集計アーキテクチャ」を採用しました。</p>
     </div>
   </main>
 
