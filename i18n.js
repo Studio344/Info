@@ -45,8 +45,12 @@ i18next.init({
           },
           contact_page: {
             title: "Contact",
-            desc: "当サイトは個人の趣味によるポートフォリオサイトです。制作依頼やお仕事の募集は受け付けておりません。<br>技術的な交流やご感想などは、以下のリンクよりお気軽にご連絡ください。",
-            email: "Email"
+            desc: "当サイトは個人の趣味によるポートフォリオサイトです。<br>技術的な交流やご感想などは、以下のリンクよりお気軽にご連絡ください。",
+            email: "Email",
+            email_desc: "直接メールでのお問い合わせはこちらへお願いいたします。",
+            email_note: "※返信には数日いただく場合がございます。",
+            social_title: "Social Media",
+            github_text: "GitHub"
           },
           blog_page: {
             title: "Blog & Updates",
@@ -114,8 +118,12 @@ i18next.init({
           },
           contact_page: {
             title: "Contact",
-            desc: "当サイトは個人の趣味によるポートフォリオサイトです。制作依頼やお仕事の募集は受け付けておりません。<br>技術的な交流やご感想などは、以下のリンクよりお気軽にご連絡ください。",
-            email: "Email"
+            desc: "This is a personal portfolio site for hobby projects.<br>For technical exchanges or feedback, please feel free to contact me via the links below.",
+            email: "Email",
+            email_desc: "Please contact me directly via email here.",
+            email_note: "*Response may take a few days.",
+            social_title: "Social Media",
+            github_text: "GitHub"
           },
           blog_page: {
             title: "Blog & Updates",
