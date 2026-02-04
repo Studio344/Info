@@ -11,7 +11,7 @@ i18next.init({
           },
           about: {
             title: "About",
-            content: "某グローバルIT企業にてテクノロジー領域の課題解決に携わるエンジニア。人の役に立つ知識・技術の探求が大好き。"
+            content: "某グローバルIT企業に勤務。<br>人の役に立つ知識・技術の探求が大好き。"
           },
           projects: {
             title: "Projects"
