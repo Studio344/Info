@@ -29,11 +29,6 @@ i18next.init(
             about_content:
               "某グローバルIT企業でエンジニアをしています。<br>仕事とは別に、趣味として個人開発を楽しんでいます。<br><br>このサイトでは、趣味で作ったものや技術的な学び（Engineering Logs）を発信していきます。",
             more_about: "More about me →",
-            hero_tagline: "テクノロジーとものづくりを楽しむ、個人の趣味ポートフォリオ",
-            skills_title: "Tech Stack",
-            stat_projects: "Projects",
-            stat_posts: "Blog Posts",
-            stat_tech: "Technologies",
             projects_title: "Projects",
             projects_desc: "View Recent Works →",
             blog_title: "Blog",
@@ -96,25 +91,16 @@ i18next.init(
             tech_title: "技術スタック",
             tech_intro:
               "フレームワークに頼らず、Web標準技術をベースに構築。軽量でありながら、リッチなビジュアル表現を実現しています。",
-            tech_html:
-              "<strong>HTML5 / CSS3:</strong> セマンティックなマークアップとCSS変数・Grid・Flexboxによるレスポンシブレイアウト。",
-            tech_js:
-              "<strong>Vanilla JavaScript:</strong> フレームワークなしの素のJSで全機能を実装。バンドルサイズゼロ。",
-            tech_gsap:
-              "<strong>GSAP + ScrollTrigger:</strong> スクロール連動アニメーションと滑らかなトランジション。",
-            tech_i18n:
-              "<strong>i18next:</strong> 日英2言語対応。ページリロードなしの動的な言語切り替え。",
-            tech_hosting:
-              "<strong>GitHub Pages:</strong> 静的ホスティングでゼロコスト運用。独自ドメイン + HTTPS対応。",
+            tech_html: "<strong>HTML5 / CSS3:</strong> セマンティックなマークアップとCSS変数・Grid・Flexboxによるレスポンシブレイアウト。",
+            tech_js: "<strong>Vanilla JavaScript:</strong> フレームワークなしの素のJSで全機能を実装。バンドルサイズゼロ。",
+            tech_gsap: "<strong>GSAP + ScrollTrigger:</strong> スクロール連動アニメーションと滑らかなトランジション。",
+            tech_i18n: "<strong>i18next:</strong> 日英2言語対応。ページリロードなしの動的な言語切り替え。",
+            tech_hosting: "<strong>GitHub Pages:</strong> 静的ホスティングでゼロコスト運用。独自ドメイン + HTTPS対応。",
             perf_title: "パフォーマンス",
-            perf_desc:
-              "フレームワークレスの恩恵により、Lighthouseで高スコアを達成。外部依存を最小限に抑え、初回ロードを高速化しています。",
-            perf_score:
-              "Lighthouse スコア: <strong>95+</strong>（Performance / Accessibility / Best Practices / SEO）",
-            perf_size:
-              "ページサイズ: <strong>< 200KB</strong>（画像除く初回転送量）",
-            perf_deps:
-              "外部依存: <strong>GSAP + i18next のみ</strong>（ノーバンドラー構成）",
+            perf_desc: "フレームワークレスの恩恵により、Lighthouseで高スコアを達成。外部依存を最小限に抑え、初回ロードを高速化しています。",
+            perf_score: "Lighthouse スコア: <strong>95+</strong>（Performance / Accessibility / Best Practices / SEO）",
+            perf_size: "ページサイズ: <strong>< 200KB</strong>（画像除く初回転送量）",
+            perf_deps: "外部依存: <strong>GSAP + i18next のみ</strong>（ノーバンドラー構成）",
           },
           ucfitness_page: {
             title: "UCFitness",
@@ -227,11 +213,6 @@ i18next.init(
             about_content:
               "Working as an engineer at a global IT company.<br>Outside of work, I enjoy building things as a personal hobby.<br><br>This site serves as a log of my hobby projects and engineering insights.",
             more_about: "More about me →",
-            hero_tagline: "A personal hobby portfolio exploring technology and building things",
-            skills_title: "Tech Stack",
-            stat_projects: "Projects",
-            stat_posts: "Blog Posts",
-            stat_tech: "Technologies",
             projects_title: "Projects",
             projects_desc: "View Recent Works →",
             blog_title: "Blog",
@@ -294,25 +275,16 @@ i18next.init(
             tech_title: "Tech Stack",
             tech_intro:
               "Built on web standards without framework dependencies. Lightweight yet capable of rich visual expression.",
-            tech_html:
-              "<strong>HTML5 / CSS3:</strong> Semantic markup with CSS variables, Grid, and Flexbox for responsive layouts.",
-            tech_js:
-              "<strong>Vanilla JavaScript:</strong> All features built with plain JS. Zero bundle size overhead.",
-            tech_gsap:
-              "<strong>GSAP + ScrollTrigger:</strong> Scroll-driven animations and smooth transitions.",
-            tech_i18n:
-              "<strong>i18next:</strong> Bilingual (JA/EN) support with dynamic language switching — no page reload needed.",
-            tech_hosting:
-              "<strong>GitHub Pages:</strong> Zero-cost static hosting with custom domain + HTTPS.",
+            tech_html: "<strong>HTML5 / CSS3:</strong> Semantic markup with CSS variables, Grid, and Flexbox for responsive layouts.",
+            tech_js: "<strong>Vanilla JavaScript:</strong> All features built with plain JS. Zero bundle size overhead.",
+            tech_gsap: "<strong>GSAP + ScrollTrigger:</strong> Scroll-driven animations and smooth transitions.",
+            tech_i18n: "<strong>i18next:</strong> Bilingual (JA/EN) support with dynamic language switching — no page reload needed.",
+            tech_hosting: "<strong>GitHub Pages:</strong> Zero-cost static hosting with custom domain + HTTPS.",
             perf_title: "Performance",
-            perf_desc:
-              "Thanks to the framework-free approach, the site achieves high Lighthouse scores. External dependencies are kept minimal for fast initial loads.",
-            perf_score:
-              "Lighthouse Score: <strong>95+</strong> (Performance / Accessibility / Best Practices / SEO)",
-            perf_size:
-              "Page Size: <strong>< 200KB</strong> (initial transfer excluding images)",
-            perf_deps:
-              "External Deps: <strong>GSAP + i18next only</strong> (no bundler configuration)",
+            perf_desc: "Thanks to the framework-free approach, the site achieves high Lighthouse scores. External dependencies are kept minimal for fast initial loads.",
+            perf_score: "Lighthouse Score: <strong>95+</strong> (Performance / Accessibility / Best Practices / SEO)",
+            perf_size: "Page Size: <strong>< 200KB</strong> (initial transfer excluding images)",
+            perf_deps: "External Deps: <strong>GSAP + i18next only</strong> (no bundler configuration)",
           },
           ucfitness_page: {
             title: "UCFitness",
