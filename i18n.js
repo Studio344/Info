@@ -71,7 +71,7 @@ i18next.init(
             view_project: "詳細を見る →",
           },
           portfolio_page: {
-            title: "Studio344 Portfolio",
+            title: "Portfolio",
             subtitle:
               "Bento Gridデザインを採用した、没入感のあるポートフォリオサイト",
             view_source: "View Source Code →",
@@ -243,7 +243,7 @@ i18next.init(
             view_project: "View Project →",
           },
           portfolio_page: {
-            title: "Studio344 Portfolio",
+            title: "Portfolio",
             subtitle: "An immersive portfolio site featuring Bento Grid design",
             view_source: "View Source Code →",
             features_title: "Core Features",
