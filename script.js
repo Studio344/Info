@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Technologies: DOMからバッジ数をカウント
   if (statTech) {
     const badges = document.querySelectorAll(".skill-badge");
-    statTech.textContent = badges.length > 0 ? badges.length + "+" : "-";
+    statTech.textContent = badges.length > 0 ? badges.length + "+ tech" : "";
   }
 
   // Projects: projects.jsonからカウント
