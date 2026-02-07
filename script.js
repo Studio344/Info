@@ -28,6 +28,33 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(typeWriter, 1000);
   }
 
+  // --- Auto-count Stats ---
+  const statProjects = document.getElementById("stat-projects-count");
+  const statPosts = document.getElementById("stat-posts-count");
+  const statTech = document.getElementById("stat-tech-count");
+
+  // Technologies: DOMからバッジ数をカウント
+  if (statTech) {
+    const badges = document.querySelectorAll(".skill-badge");
+    statTech.textContent = badges.length > 0 ? badges.length + "+" : "-";
+  }
+
+  // Projects: projects.jsonからカウント
+  if (statProjects) {
+    fetch("projects.json")
+      .then((r) => r.json())
+      .then((data) => { statProjects.textContent = data.length; })
+      .catch(() => { statProjects.textContent = "-"; });
+  }
+
+  // Blog Posts: assets/posts/list.jsonからカウント
+  if (statPosts) {
+    fetch("assets/posts/list.json")
+      .then((r) => r.json())
+      .then((data) => { statPosts.textContent = data.length; })
+      .catch(() => { statPosts.textContent = "-"; });
+  }
+
   // --- 3. Projects Loading ---
   fetch("projects.json")
     .then((res) => res.json())
