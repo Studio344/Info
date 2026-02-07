@@ -24,10 +24,10 @@ i18next.init(
           },
           // 日本語ディスクレーマー（標準的）
           disclaimer:
-            "[免責事項] 本サイトは個人のポートフォリオであり、所属する組織の公式見解を代表するものではありません。",
+            "[免責事項] 本サイトは個人のポートフォリオであり、<br>所属する組織の公式見解を代表するものではありません。",
           home: {
             about_content:
-              "某グローバルIT企業でエンジニアをしています。「技術は人のためにあってこそ」をモットーに、最新のWeb技術からバックエンドまで幅広く技術を探求しています。<br><br>このサイトでは、これまでの制作物や技術的な学び（Engineering Logs）を発信していきます。",
+              "某グローバルIT企業でエンジニアをしています。<br>「技術は人のためにあってこそ」をモットーに、最新のWeb技術からバックエンドまで幅広く技術を探求しています。<br><br>このサイトでは、これまでの制作物や技術的な学び（Engineering Logs）を発信していきます。",
             more_about: "More about me →",
             projects_title: "Projects",
             projects_desc: "View Recent Works →",
@@ -41,18 +41,18 @@ i18next.init(
             title: "About Studio344",
             mission_title: "Mission",
             mission_desc:
-              "Studio344は、テクノロジーとデザインを融合させ、日常に「便利」や「彩り」をプラスすることを目指す個人の開発スタジオです。<br><br>「使いやすさ」と「美しさ」の両立をテーマに、Webアプリからモバイルアプリまで幅広く開発しています。",
+              "Studio344は、テクノロジーとデザインを融合させ、<br>日常に「便利」や「彩り」をプラスすることを目指す個人の開発スタジオです。<br><br>「使いやすさ」と「美しさ」の両立をテーマに、<br>Webアプリからモバイルアプリまで幅広く開発しています。",
             profile_title: "Developer Profile",
             profile_desc:
-              "某グローバルIT企業勤務。<br><br>プライベートでは、関心を持った最新技術（React, Next.js, WebGLなど）を用いた実験的なプロジェクトや、日々の課題を解決するツールの開発を行っています。",
+              "某グローバルIT企業勤務。<br><br>プライベートでは、関心を持った最新技術（React, Next.js, WebGLなど）を用いた実験的なプロジェクトや、<br>日々の課題を解決するツールの開発を行っています。",
             skills_title: "Technical Skills",
             philosophy_title: "Philosophy",
             philosophy_desc:
-              "「Just Build It.」がモットーです。アイデアがあれば、失敗を恐れずにまず形にしてみる。新しい技術に挑戦し続けることで、エンジニアとしての成長を目指しています。",
+              "「Just Build It.」がモットーです。<br>アイデアがあれば、失敗を恐れずにまず形にしてみる。<br>新しい技術に挑戦し続けることで、エンジニアとしての成長を目指しています。",
           },
           contact_page: {
             title: "Contact",
-            desc: "当サイトは個人のポートフォリオサイトです。技術的な交流やご感想などがございましたら、以下のリンクよりお気軽にご連絡ください。",
+            desc: "当サイトは個人のポートフォリオサイトです。<br>技術的な交流やご感想などがございましたら、以下のリンクよりお気軽にご連絡ください。",
             email: "Email",
             email_desc: "メールでのお問い合わせはこちらからお願いいたします。",
             email_note:
@@ -142,7 +142,7 @@ i18next.init(
             "[Disclaimer] This is a personal portfolio. Opinions are my own and do not represent my employer.",
           home: {
             about_content:
-              'Working as an engineer at a global IT company. With the belief that "technology exists to help people," I explore a wide range of fields from modern Web tech to backend architecture.<br><br>This site serves as a log of my works and engineering insights.',
+              'Working as an engineer at a global IT company.<br>With the belief that "technology exists to help people," I explore a wide range of fields from modern Web tech to backend architecture.<br><br>This site serves as a log of my works and engineering insights.',
             more_about: "More about me →",
             projects_title: "Projects",
             projects_desc: "View Recent Works →",
@@ -156,18 +156,18 @@ i18next.init(
             title: "About Studio344",
             mission_title: "Mission",
             mission_desc:
-              'Studio344 is a personal development studio aiming to add value and color to daily life through the fusion of technology and design.<br><br>Focusing on balancing "Usability" and "Aesthetics," I develop various applications from Web to mobile apps.',
+              'Studio344 is a personal development studio aiming to add value and color<br>to daily life through the fusion of technology and design.<br><br>Focusing on balancing "Usability" and "Aesthetics,"<br>I develop various applications from Web to mobile apps.',
             profile_title: "Developer Profile",
             profile_desc:
-              "Working at a global IT company.<br><br>In my private time, I work on experimental projects using the latest Web technologies (React, Next.js, WebGL, etc.) and develop practical tools to solve daily problems.",
+              "Working at a global IT company.<br><br>In my private time, I work on experimental projects<br>using the latest Web technologies (React, Next.js, WebGL, etc.)<br>and develop practical tools to solve daily problems.",
             skills_title: "Technical Skills",
             philosophy_title: "Philosophy",
             philosophy_desc:
-              'My motto is "Just Build It." When I have an idea, I try to give it shape without fear of failure. By constantly challenging new technologies, I aim to grow as an engineer.',
+              'My motto is "Just Build It."<br>When I have an idea, I try to give it shape without fear of failure.<br>By constantly challenging new technologies, I aim to grow as an engineer.',
           },
           contact_page: {
             title: "Contact",
-            desc: "This is a personal portfolio site. For technical exchanges or feedback, please feel free to contact me via the links below.",
+            desc: "This is a personal portfolio site.<br>For technical exchanges or feedback, please feel free to contact me via the links below.",
             email: "Email",
             email_desc: "Please contact me via email here.",
             email_note:
