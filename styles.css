@@ -1033,17 +1033,21 @@ html {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 16px;
   padding: 1.5rem;
-  text-decoration: none;
+  text-decoration: none !important;
   color: inherit;
-  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 5;
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
   animation: blogCardFadeIn 0.5s ease both;
 }
 
 .blog-preview-card,
 .blog-preview-card:hover,
 .blog-preview-card:visited,
+.blog-preview-card:active,
 .blog-preview-card *  {
-  text-decoration: none;
+  text-decoration: none !important;
 }
 
 .blog-preview-card:hover {

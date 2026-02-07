@@ -119,7 +119,14 @@ async function loadBlogPosts(langOverride) {
             const card = document.createElement('a');
             card.href = `blog-post.html?id=${post.id}`;
             card.className = 'blog-preview-card';
+            card.setAttribute('role', 'link');
             card.style.animationDelay = `${index * 0.08}s`;
+
+            // Fallback: ensure navigation works even if native <a> is blocked
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.location.href = card.href;
+            });
 
             const tagsHtml = post.tags.map(t => `<span class="blog-preview-tag">${t}</span>`).join('');
 
