@@ -1033,6 +1033,13 @@ html {
   animation: blogCardFadeIn 0.5s ease both;
 }
 
+.blog-preview-card,
+.blog-preview-card:hover,
+.blog-preview-card:visited,
+.blog-preview-card *  {
+  text-decoration: none;
+}
+
 .blog-preview-card:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(99, 102, 241, 0.4);
