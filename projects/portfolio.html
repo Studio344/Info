@@ -314,7 +314,7 @@
         </div>
 
         <h2 data-i18n="portfolio_page.design_title">Design Concept</h2>
-        <p data-i18n="portfolio_page.design_desc" style="margin-bottom: 3rem;">
+        <p data-i18n="portfolio_page.design_desc" style="margin-bottom: 3rem">
           「モダンで未来的、かつ情報の視認性を損なわない」をコンセプトに設計されました。近年トレンドのBento
           Gridを採用し、アクセスしやすさとビジュアルの美しさを両立しています。
         </p>
@@ -325,31 +325,187 @@
           <p data-i18n="portfolio_page.tech_intro">
             フレームワークに頼らず、Web標準技術をベースに構築。軽量でありながら、リッチなビジュアル表現を実現しています。
           </p>
-          <div style="margin-top: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem;">
+          <div
+            style="
+              margin-top: 1.2rem;
+              display: flex;
+              flex-direction: column;
+              gap: 0.5rem;
+            "
+          >
             <!-- HTML5/CSS3 -->
-            <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-              <span style="font-size: 0.9rem; color: #ccc; line-height: 1.4;" data-i18n="portfolio_page.tech_html"><strong>HTML5 / CSS3:</strong> セマンティックなマークアップとCSS変数・Grid・Flexboxによるレスポンシブレイアウト。</span>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                padding: 0.6rem 0.8rem;
+                background: rgba(255, 255, 255, 0.04);
+                border-radius: 8px;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+              "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#f97316"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="flex-shrink: 0"
+              >
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+              <span
+                style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
+                data-i18n="portfolio_page.tech_html"
+                ><strong>HTML5 / CSS3:</strong>
+                セマンティックなマークアップとCSS変数・Grid・Flexboxによるレスポンシブレイアウト。</span
+              >
             </div>
             <!-- Vanilla JS -->
-            <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"></path><line x1="8" y1="16" x2="8.01" y2="16"></line><line x1="8" y1="20" x2="8.01" y2="20"></line><line x1="12" y1="18" x2="12.01" y2="18"></line><line x1="12" y1="22" x2="12.01" y2="22"></line><line x1="16" y1="16" x2="16.01" y2="16"></line><line x1="16" y1="20" x2="16.01" y2="20"></line></svg>
-              <span style="font-size: 0.9rem; color: #ccc; line-height: 1.4;" data-i18n="portfolio_page.tech_js"><strong>Vanilla JavaScript:</strong> フレームワークなしの素のJSで全機能を実装。バンドルサイズゼロ。</span>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                padding: 0.6rem 0.8rem;
+                background: rgba(255, 255, 255, 0.04);
+                border-radius: 8px;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+              "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#eab308"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="flex-shrink: 0"
+              >
+                <path
+                  d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"
+                ></path>
+                <line x1="8" y1="16" x2="8.01" y2="16"></line>
+                <line x1="8" y1="20" x2="8.01" y2="20"></line>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                <line x1="12" y1="22" x2="12.01" y2="22"></line>
+                <line x1="16" y1="16" x2="16.01" y2="16"></line>
+                <line x1="16" y1="20" x2="16.01" y2="20"></line>
+              </svg>
+              <span
+                style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
+                data-i18n="portfolio_page.tech_js"
+                ><strong>Vanilla JavaScript:</strong>
+                フレームワークなしの素のJSで全機能を実装。バンドルサイズゼロ。</span
+              >
             </div>
             <!-- GSAP -->
-            <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
-              <span style="font-size: 0.9rem; color: #ccc; line-height: 1.4;" data-i18n="portfolio_page.tech_gsap"><strong>GSAP + ScrollTrigger:</strong> スクロール連動アニメーションと滑らかなトランジション。</span>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                padding: 0.6rem 0.8rem;
+                background: rgba(255, 255, 255, 0.04);
+                border-radius: 8px;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+              "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#22c55e"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="flex-shrink: 0"
+              >
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+              <span
+                style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
+                data-i18n="portfolio_page.tech_gsap"
+                ><strong>GSAP + ScrollTrigger:</strong>
+                スクロール連動アニメーションと滑らかなトランジション。</span
+              >
             </div>
             <!-- i18next -->
-            <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-              <span style="font-size: 0.9rem; color: #ccc; line-height: 1.4;" data-i18n="portfolio_page.tech_i18n"><strong>i18next:</strong> 日英2言語対応。ページリロードなしの動的な言語切り替え。</span>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                padding: 0.6rem 0.8rem;
+                background: rgba(255, 255, 255, 0.04);
+                border-radius: 8px;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+              "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#06b6d4"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="flex-shrink: 0"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path
+                  d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                ></path>
+              </svg>
+              <span
+                style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
+                data-i18n="portfolio_page.tech_i18n"
+                ><strong>i18next:</strong>
+                日英2言語対応。ページリロードなしの動的な言語切り替え。</span
+              >
             </div>
             <!-- Hosting -->
-            <div style="display: flex; align-items: center; gap: 0.75rem; padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.04); border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
-              <span style="font-size: 0.9rem; color: #ccc; line-height: 1.4;" data-i18n="portfolio_page.tech_hosting"><strong>GitHub Pages:</strong> 静的ホスティングでゼロコスト運用。独自ドメイン + HTTPS対応。</span>
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                padding: 0.6rem 0.8rem;
+                background: rgba(255, 255, 255, 0.04);
+                border-radius: 8px;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+              "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#a855f7"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="flex-shrink: 0"
+              >
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+              </svg>
+              <span
+                style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
+                data-i18n="portfolio_page.tech_hosting"
+                ><strong>GitHub Pages:</strong>
+                静的ホスティングでゼロコスト運用。独自ドメイン +
+                HTTPS対応。</span
+              >
             </div>
           </div>
         </div>
@@ -357,24 +513,98 @@
         <!-- パフォーマンス -->
         <h2 data-i18n="portfolio_page.perf_title">パフォーマンス</h2>
         <div style="margin-bottom: 2rem">
-          <p data-i18n="portfolio_page.perf_desc" style="margin-bottom: 1.2rem;">
+          <p data-i18n="portfolio_page.perf_desc" style="margin-bottom: 1.2rem">
             フレームワークレスの恩恵により、Lighthouseで高スコアを達成。外部依存を最小限に抑え、初回ロードを高速化しています。
           </p>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.8rem;">
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+              gap: 0.8rem;
+            "
+          >
             <!-- Score -->
-            <div style="background: rgba(255,255,255,0.04); padding: 1rem 1.2rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06); text-align: center;">
-              <div style="font-size: 2rem; font-weight: bold; color: #22c55e; margin-bottom: 0.3rem;">95+</div>
-              <div style="font-size: 0.8rem; color: #999;" data-i18n="portfolio_page.perf_score">Lighthouse スコア: <strong>95+</strong>（Performance / Accessibility / Best Practices / SEO）</div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.04);
+                padding: 1rem 1.2rem;
+                border-radius: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                text-align: center;
+              "
+            >
+              <div
+                style="
+                  font-size: 2rem;
+                  font-weight: bold;
+                  color: #22c55e;
+                  margin-bottom: 0.3rem;
+                "
+              >
+                95+
+              </div>
+              <div
+                style="font-size: 0.8rem; color: #999"
+                data-i18n="portfolio_page.perf_score"
+              >
+                Lighthouse スコア: <strong>95+</strong>（Performance /
+                Accessibility / Best Practices / SEO）
+              </div>
             </div>
             <!-- Size -->
-            <div style="background: rgba(255,255,255,0.04); padding: 1rem 1.2rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06); text-align: center;">
-              <div style="font-size: 2rem; font-weight: bold; color: #3b82f6; margin-bottom: 0.3rem;">&lt; 200KB</div>
-              <div style="font-size: 0.8rem; color: #999;" data-i18n="portfolio_page.perf_size">ページサイズ: <strong>< 200KB</strong>（画像除く初回転送量）</div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.04);
+                padding: 1rem 1.2rem;
+                border-radius: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                text-align: center;
+              "
+            >
+              <div
+                style="
+                  font-size: 2rem;
+                  font-weight: bold;
+                  color: #3b82f6;
+                  margin-bottom: 0.3rem;
+                "
+              >
+                &lt; 200KB
+              </div>
+              <div
+                style="font-size: 0.8rem; color: #999"
+                data-i18n="portfolio_page.perf_size"
+              >
+                ページサイズ: <strong>< 200KB</strong>（画像除く初回転送量）
+              </div>
             </div>
             <!-- Deps -->
-            <div style="background: rgba(255,255,255,0.04); padding: 1rem 1.2rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.06); text-align: center;">
-              <div style="font-size: 2rem; font-weight: bold; color: #f59e0b; margin-bottom: 0.3rem;">2</div>
-              <div style="font-size: 0.8rem; color: #999;" data-i18n="portfolio_page.perf_deps">外部依存: <strong>GSAP + i18next のみ</strong>（ノーバンドラー構成）</div>
+            <div
+              style="
+                background: rgba(255, 255, 255, 0.04);
+                padding: 1rem 1.2rem;
+                border-radius: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.06);
+                text-align: center;
+              "
+            >
+              <div
+                style="
+                  font-size: 2rem;
+                  font-weight: bold;
+                  color: #f59e0b;
+                  margin-bottom: 0.3rem;
+                "
+              >
+                2
+              </div>
+              <div
+                style="font-size: 0.8rem; color: #999"
+                data-i18n="portfolio_page.perf_deps"
+              >
+                外部依存:
+                <strong>GSAP + i18next のみ</strong>（ノーバンドラー構成）
+              </div>
             </div>
           </div>
         </div>

@@ -356,6 +356,67 @@ html {
   box-shadow: 0 8px 36px rgba(0, 0, 0, 0.5);
 }
 
+/* Hero Tagline */
+.hero-tagline {
+  opacity: 0;
+  animation: fadeInUp 1s ease 2s forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Skills Badge Row */
+.skills-badge-card {
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+}
+
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--badge-color, #ccc);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.skill-badge svg {
+  stroke: var(--badge-color, #ccc);
+}
+
+.skill-badge:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--badge-color, #ccc);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Stat Cards */
+.stat-card {
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
 /* Scroll Indicator */
 .scroll-indicator {
   margin-top: 4rem;
@@ -951,5 +1012,17 @@ html {
 
   .skills-grid {
     grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    grid-column: 1 / -1 !important;
+  }
+
+  .skills-badge-card {
+    padding: 1rem !important;
+  }
+
+  .hero-tagline {
+    font-size: 0.85rem !important;
   }
 }
