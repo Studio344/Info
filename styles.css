@@ -683,38 +683,38 @@ html {
 
 /* GitHub */
 .sns-github {
-  background: linear-gradient(135deg, rgba(110, 118, 129, 0.08) 0%, rgba(110, 118, 129, 0.03) 100%);
-  border: 1px solid rgba(110, 118, 129, 0.2);
+  background: linear-gradient(135deg, rgba(110, 118, 129, 0.15) 0%, rgba(110, 118, 129, 0.06) 100%);
+  border: 1px solid rgba(110, 118, 129, 0.3);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
 }
 .sns-github:hover {
-  background: linear-gradient(135deg, rgba(110, 118, 129, 0.14) 0%, rgba(110, 118, 129, 0.06) 100%);
-  border-color: rgba(110, 118, 129, 0.4);
-  box-shadow: 0 6px 24px rgba(110, 118, 129, 0.12);
+  background: linear-gradient(135deg, rgba(110, 118, 129, 0.22) 0%, rgba(110, 118, 129, 0.1) 100%);
+  border-color: rgba(110, 118, 129, 0.5);
+  box-shadow: 0 6px 24px rgba(110, 118, 129, 0.18);
 }
 
 /* X (Twitter) */
 .sns-x {
-  background: linear-gradient(135deg, rgba(29, 161, 242, 0.07) 0%, rgba(29, 161, 242, 0.02) 100%);
-  border: 1px solid rgba(29, 161, 242, 0.15);
+  background: linear-gradient(135deg, rgba(29, 161, 242, 0.13) 0%, rgba(29, 161, 242, 0.04) 100%);
+  border: 1px solid rgba(29, 161, 242, 0.25);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
 }
 .sns-x:hover {
-  background: linear-gradient(135deg, rgba(29, 161, 242, 0.13) 0%, rgba(29, 161, 242, 0.05) 100%);
-  border-color: rgba(29, 161, 242, 0.35);
-  box-shadow: 0 6px 24px rgba(29, 161, 242, 0.1);
+  background: linear-gradient(135deg, rgba(29, 161, 242, 0.2) 0%, rgba(29, 161, 242, 0.08) 100%);
+  border-color: rgba(29, 161, 242, 0.45);
+  box-shadow: 0 6px 24px rgba(29, 161, 242, 0.15);
 }
 
 /* Instagram */
 .sns-instagram {
-  background: linear-gradient(135deg, rgba(193, 53, 132, 0.07) 0%, rgba(252, 176, 69, 0.04) 100%);
-  border: 1px solid rgba(193, 53, 132, 0.15);
+  background: linear-gradient(135deg, rgba(193, 53, 132, 0.13) 0%, rgba(252, 176, 69, 0.07) 100%);
+  border: 1px solid rgba(193, 53, 132, 0.25);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
 }
 .sns-instagram:hover {
-  background: linear-gradient(135deg, rgba(193, 53, 132, 0.13) 0%, rgba(252, 176, 69, 0.08) 100%);
-  border-color: rgba(193, 53, 132, 0.35);
-  box-shadow: 0 6px 24px rgba(193, 53, 132, 0.1);
+  background: linear-gradient(135deg, rgba(193, 53, 132, 0.2) 0%, rgba(252, 176, 69, 0.12) 100%);
+  border-color: rgba(193, 53, 132, 0.45);
+  box-shadow: 0 6px 24px rgba(193, 53, 132, 0.15);
 }
 
 @media (max-width: 600px) {
