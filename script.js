@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   // --- 1. Mouse Tracking for Spotlight Effects ---
   const body = document.body;
-  
+
   document.addEventListener("mousemove", (e) => {
     const x = e.clientX;
     const y = e.clientY;
-    
+
     // Set custom properties for CSS to use
     body.style.setProperty("--mouse-x", `${x}px`);
     body.style.setProperty("--mouse-y", `${y}px`);
@@ -33,32 +33,26 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((res) => res.json())
     .then((projects) => {
       const container = document.getElementById("projects-wrapper");
-      
+
       if (container) {
-          container.innerHTML = ""; // Clear whitespace/comments to prevent layout glitches
-          
-          projects.forEach((project, i) => {
-            const card = document.createElement("div");
-            card.className = "bento-card project-card"; // Apply bento styling
-            
-            // Add staggered animation delay if needed
-            card.style.animationDelay = `${i * 0.1}s`;
+        container.innerHTML = ""; // Clear whitespace/comments to prevent layout glitches
 
-            // Determine visual style based on title (or add a field in json in future)
-            let visualClass = "visual-portfolio"; // default
-            let iconSvg = "";
-            
-            if (project.title === "UCFitness") {
-                visualClass = "visual-ucfitness";
-                // Activity / Pulse Icon
-                iconSvg = `<svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`;
-            } else if (project.title === "Portfolio") {
-                visualClass = "visual-portfolio";
-                // Code / Bracket Icon
-                iconSvg = `<svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`;
-            }
+        projects.forEach((project, i) => {
+          const card = document.createElement("div");
+          card.className = "bento-card project-card"; // Apply bento styling
 
-            card.innerHTML = `
+          // Add staggered animation delay if needed
+          card.style.animationDelay = `${i * 0.1}s`;
+
+          // プロジェクトごとの視覚スタイルとアイコンをJSONから取得
+          const iconMap = {
+            code: `<svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
+            pulse: `<svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+          };
+          let visualClass = project.visualClass || "visual-portfolio";
+          let iconSvg = iconMap[project.icon] || iconMap["code"];
+
+          card.innerHTML = `
             <div class="card-visual-header ${visualClass}">
                 <div class="card-visual-pattern"></div>
                 <div class="card-visual-icon">${iconSvg}</div>
@@ -71,40 +65,40 @@ document.addEventListener("DOMContentLoaded", () => {
                 <a href="${project.link}" style="margin-top: 1rem; align-self: flex-start;">View Project &rarr;</a>
             </div>
             `;
-            container.appendChild(card);
-          });
+          container.appendChild(card);
+        });
 
-          // Animate entry with GSAP
-          gsap.from(".bento-card", {
-            y: 50,
-            opacity: 0,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: "power3.out"
-          });
+        // Animate entry with GSAP
+        gsap.from(".bento-card", {
+          y: 50,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power3.out",
+        });
       }
 
       // --- Reliable Height Equalizer for About & Projects ---
       function equalizeHeights() {
         const aboutCard = document.querySelector(".about-card");
         const projectCards = document.querySelectorAll(".project-card");
-        
+
         // Critical safety check - require BOTH to be present to equalize
         if (!aboutCard || projectCards.length === 0) return;
-        
+
         // Temporarily reset height to auto to read natural content height
         // We use requestAnimationFrame to avoid layout thrashing loop if called frequently
         requestAnimationFrame(() => {
           aboutCard.style.height = "auto";
-          projectCards.forEach(c => c.style.height = "auto");
+          projectCards.forEach((c) => (c.style.height = "auto"));
 
           let maxHeight = aboutCard.offsetHeight;
-          projectCards.forEach(c => {
+          projectCards.forEach((c) => {
             maxHeight = Math.max(maxHeight, c.offsetHeight);
           });
 
           aboutCard.style.height = `${maxHeight}px`;
-          projectCards.forEach(c => c.style.height = `${maxHeight}px`);
+          projectCards.forEach((c) => (c.style.height = `${maxHeight}px`));
         });
       }
 
@@ -118,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const resizeObserver = new ResizeObserver(() => {
         equalizeHeights();
       });
-      
+
       // Observe the container (if it changes width, text wraps, height changes)
       resizeObserver.observe(container);
       resizeObserver.observe(document.body); // Fallback for window resize
@@ -129,6 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // --- 4. Language Toggle ---
   // Moved to i18n.js for centralized handling across all pages
-  
+
   // Particles removed in favor of CSS Noise/Spotlight
 });

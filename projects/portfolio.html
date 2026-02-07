@@ -1,111 +1,272 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio Site - Project Details</title>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
-     crossorigin="anonymous"></script>
-  <link rel="icon" type="image/png" href="../assets/logo.png" />
-  <link rel="stylesheet" href="../styles.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-</head>
-<body>
-  <div class="aurora-container">
-    <div class="aurora-orb orb-1"></div>
-    <div class="aurora-orb orb-2"></div>
-    <div class="aurora-orb orb-3"></div>
-  </div>
-  <div class="grid-overlay"></div>
-  <div class="noise-overlay"></div>
-  <div class="spotlight-overlay"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Site - Project Details</title>
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="icon" type="image/png" href="../assets/logo.png" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  </head>
+  <body>
+    <div class="aurora-container">
+      <div class="aurora-orb orb-1"></div>
+      <div class="aurora-orb orb-2"></div>
+      <div class="aurora-orb orb-3"></div>
+    </div>
+    <div class="grid-overlay"></div>
+    <div class="noise-overlay"></div>
+    <div class="spotlight-overlay"></div>
 
-  <header class="header">
-    <div class="logo"><a href="../index.html" style="color:white; text-decoration:none;">Studio344</a></div>
-    <nav class="nav-menu">
-      <a href="../about.html" class="nav-btn" data-i18n="nav.about">About</a>
-      <a href="../blog.html" class="nav-btn" data-i18n="nav.blog">Blog</a>
-      <a href="../projects.html" class="nav-btn" data-i18n="nav.projects">Projects</a>
-      <a href="../contact.html" class="nav-btn" data-i18n="nav.contact">Contact</a>
-      <button id="lang-toggle" class="nav-btn">EN</button>
-      <a href="https://github.com/Studio344" target="_blank" class="nav-icon" aria-label="GitHub">
-        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-      </a>
-    </nav>
-  </header>
-
-  <main class="bento-grid">
-    <div class="bento-card text-content-card">
-      <nav style="font-size: 0.9rem; margin-bottom: 2rem; color: #888;">
-        <a href="../index.html" style="color: #aaa; text-decoration: none;">Home</a> &gt; 
-        <span>Projects</span> &gt; 
-        <span style="color: #fff;">Portfolio Site</span>
+    <header class="header">
+      <div class="logo">
+        <a href="../index.html" style="color: white; text-decoration: none"
+          >Studio344</a
+        >
+      </div>
+      <button class="hamburger" aria-label="メニュー" aria-expanded="false">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+      <nav class="nav-menu">
+        <a href="../about.html" class="nav-btn" data-i18n="nav.about">About</a>
+        <a href="../blog.html" class="nav-btn" data-i18n="nav.blog">Blog</a>
+        <a href="../projects.html" class="nav-btn" data-i18n="nav.projects"
+          >Projects</a
+        >
+        <a href="../contact.html" class="nav-btn" data-i18n="nav.contact"
+          >Contact</a
+        >
+        <button id="lang-toggle" class="nav-btn">EN</button>
+        <a
+          href="https://github.com/Studio344"
+          target="_blank"
+          class="nav-icon"
+          aria-label="GitHub"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+            ></path>
+          </svg>
+        </a>
       </nav>
+    </header>
+    <div class="nav-menu-overlay"></div>
 
-      <h1>Studio344 Portfolio</h1>
-      <p style="font-size: 1.2rem; color: #a5b4fc; margin-bottom: 2rem;">Bento Gridデザインを採用した、没入感のあるポートフォリオサイト</p>
+    <main class="bento-grid">
+      <div class="bento-card text-content-card">
+        <nav style="font-size: 0.9rem; margin-bottom: 2rem; color: #888">
+          <a href="../index.html" style="color: #aaa; text-decoration: none"
+            >Home</a
+          >
+          &gt; <span>Projects</span> &gt;
+          <span style="color: #fff">Portfolio Site</span>
+        </nav>
 
-      <div style="margin-bottom: 3rem;">
-        <a href="https://github.com/Studio344/Info" target="_blank" class="nav-btn" style="display: inline-block; text-decoration: none; padding: 0.8rem 1.5rem; background: #333; border: 1px solid #555;">View Source Code &rarr;</a>
+        <h1>Studio344 Portfolio</h1>
+        <p style="font-size: 1.2rem; color: #a5b4fc; margin-bottom: 2rem">
+          Bento Gridデザインを採用した、没入感のあるポートフォリオサイト
+        </p>
+
+        <div style="margin-bottom: 3rem">
+          <a
+            href="https://github.com/Studio344/Info"
+            target="_blank"
+            class="nav-btn"
+            style="
+              display: inline-block;
+              text-decoration: none;
+              padding: 0.8rem 1.5rem;
+              background: #333;
+              border: 1px solid #555;
+            "
+            >View Source Code &rarr;</a
+          >
+        </div>
+
+        <h2>Core Features</h2>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+          "
+        >
+          <!-- Feature 1 -->
+          <div
+            style="
+              background: rgba(255, 255, 255, 0.05);
+              padding: 1.5rem;
+              border-radius: 12px;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+            "
+          >
+            <div style="color: #a5b4fc; margin-bottom: 1rem">
+              <!-- Lightning Icon -->
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polygon
+                  points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+                ></polygon>
+              </svg>
+            </div>
+            <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem">
+              Vanilla Implementation
+            </h3>
+            <p style="font-size: 0.9rem; color: #ccc">
+              ReactやVueを使用せず、素のJavaScriptとCSSのみで構築。Lighthouseスコアはほぼ満点を達成し、最軽量のロード時間を実現。
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div
+            style="
+              background: rgba(255, 255, 255, 0.05);
+              padding: 1.5rem;
+              border-radius: 12px;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+            "
+          >
+            <div style="color: #6366f1; margin-bottom: 1rem">
+              <!-- Sparkles Icon -->
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"
+                />
+              </svg>
+            </div>
+            <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem">
+              Dynamic Aesthetics
+            </h3>
+            <p style="font-size: 0.9rem; color: #ccc">
+              CSS変数とJSを連携させ、マウス位置に追従するスポットライト効果や、SVGフィルターによるノイズテクスチャを実装。
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div
+            style="
+              background: rgba(255, 255, 255, 0.05);
+              padding: 1.5rem;
+              border-radius: 12px;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+            "
+          >
+            <div style="color: #0d9488; margin-bottom: 1rem">
+              <!-- Globe Icon -->
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path
+                  d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                ></path>
+              </svg>
+            </div>
+            <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem">
+              i18n Support
+            </h3>
+            <p style="font-size: 0.9rem; color: #ccc">
+              i18next
+              ライブラリを活用した、スムーズな日英言語切り替え機能。コンテンツのグローバル対応を意識した設計。
+            </p>
+          </div>
+        </div>
+
+        <h2>Design Concept</h2>
+        <p>
+          「モダンで未来的、かつ情報の視認性を損なわない」をコンセプトに設計されました。近年トレンドのBento
+          Gridを採用し、アクセスしやすさとビジュアルの美しさを両立しています。
+        </p>
       </div>
+    </main>
 
-      <h2>Core Features</h2>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem; margin-bottom: 3rem;">
-        <!-- Feature 1 -->
-        <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-            <div style="color: #a5b4fc; margin-bottom: 1rem;">
-                <!-- Lightning Icon -->
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-            </div>
-            <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem;">Vanilla Implementation</h3>
-            <p style="font-size: 0.9rem; color: #ccc;">ReactやVueを使用せず、素のJavaScriptとCSSのみで構築。Lighthouseスコアはほぼ満点を達成し、最軽量のロード時間を実現。</p>
-        </div>
-
-        <!-- Feature 2 -->
-        <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-            <div style="color: #6366f1; margin-bottom: 1rem;">
-                <!-- Sparkles Icon -->
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
-            </div>
-            <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem;">Dynamic Aesthetics</h3>
-            <p style="font-size: 0.9rem; color: #ccc;">CSS変数とJSを連携させ、マウス位置に追従するスポットライト効果や、SVGフィルターによるノイズテクスチャを実装。</p>
-        </div>
-
-        <!-- Feature 3 -->
-        <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-            <div style="color: #0d9488; margin-bottom: 1rem;">
-                <!-- Globe Icon -->
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-            </div>
-            <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem;">i18n Support</h3>
-            <p style="font-size: 0.9rem; color: #ccc;">i18next ライブラリを活用した、スムーズな日英言語切り替え機能。コンテンツのグローバル対応を意識した設計。</p>
-        </div>
+    <footer class="site-footer">
+      <p>&copy; 2026 Studio344</p>
+      <div
+        style="
+          margin-top: 0.5rem;
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+          font-size: 0.8rem;
+        "
+      >
+        <a
+          href="../privacy-policy.html"
+          style="color: #666; text-decoration: none"
+          >Privacy Policy</a
+        >
+        <a href="../terms.html" style="color: #666; text-decoration: none"
+          >Terms</a
+        >
+        <a href="../contact.html" style="color: #666; text-decoration: none"
+          >Contact</a
+        >
       </div>
+    </footer>
 
-      <h2>Design Concept</h2>
-      <p>「モダンで未来的、かつ情報の視認性を損なわない」をコンセプトに設計されました。近年トレンドのBento Gridを採用し、アクセスしやすさとビジュアルの美しさを両立しています。</p>
-
-    </div>
-  </main>
-
-  <footer class="site-footer">
-    <p>&copy; 2026 Studio344</p>
-    <div style="margin-top: 0.5rem; display: flex; gap: 1rem; justify-content: center; font-size: 0.8rem;">
-      <a href="../privacy-policy.html" style="color: #666; text-decoration: none;">Privacy Policy</a>
-      <a href="../terms.html" style="color: #666; text-decoration: none;">Terms</a>
-      <a href="../contact.html" style="color: #666; text-decoration: none;">Contact</a>
-    </div>
-  </footer>
-
-  <script>
-    document.addEventListener('mousemove', (e) => {
-      const x = e.clientX;
-      const y = e.clientY;
-      document.documentElement.style.setProperty('--mouse-x', `${x}px`);
-      document.documentElement.style.setProperty('--mouse-y', `${y}px`);
-    });
-  </script>
-  <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js"></script>
-  <script src="../i18n.js"></script>
-</body>
+    <script>
+      document.addEventListener("mousemove", (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+        document.documentElement.style.setProperty("--mouse-x", `${x}px`);
+        document.documentElement.style.setProperty("--mouse-y", `${y}px`);
+      });
+    </script>
+    <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js"></script>
+    <script src="../i18n.js"></script>
+  </body>
 </html>

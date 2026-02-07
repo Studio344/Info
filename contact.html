@@ -1,82 +1,182 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact - Studio344</title>
-  <meta name="description" content="Studio344へのお問い合わせ、技術的な交流やご感想はこちらから。" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
-     crossorigin="anonymous"></script>
-  <link rel="icon" type="image/png" href="assets/logo.png" />
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-</head>
-<body>
-  <div class="aurora-container">
-    <div class="aurora-orb orb-1"></div>
-    <div class="aurora-orb orb-2"></div>
-    <div class="aurora-orb orb-3"></div>
-  </div>
-  <div class="grid-overlay"></div>
-  <div class="noise-overlay"></div>
-  <div class="spotlight-overlay"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Studio344</title>
+    <meta
+      name="description"
+      content="Studio344へのお問い合わせ、技術的な交流やご感想はこちらから。"
+    />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  </head>
+  <body>
+    <div class="aurora-container">
+      <div class="aurora-orb orb-1"></div>
+      <div class="aurora-orb orb-2"></div>
+      <div class="aurora-orb orb-3"></div>
+    </div>
+    <div class="grid-overlay"></div>
+    <div class="noise-overlay"></div>
+    <div class="spotlight-overlay"></div>
 
-  <header class="header">
-    <div class="logo"><a href="index.html" style="color:white; text-decoration:none;">Studio344</a></div>
-    <nav class="nav-menu">
-      <a href="about.html" class="nav-btn" data-i18n="nav.about">About</a>
-      <a href="blog.html" class="nav-btn" data-i18n="nav.blog">Blog</a>
-      <a href="projects.html" class="nav-btn" data-i18n="nav.projects">Projects</a>
-      <a href="contact.html" class="nav-btn" data-i18n="nav.contact">Contact</a>
-      <button id="lang-toggle" class="nav-btn">EN</button>
-      <a href="https://github.com/Studio344" target="_blank" class="nav-icon" aria-label="GitHub">
-        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-      </a>
-    </nav>
-  </header>
-
-  <main class="bento-grid">
-    <div class="bento-card text-content-card">
-      <h1 data-i18n="contact_page.title">Contact</h1>
-      <p data-i18n="contact_page.desc">ご質問、お仕事のご依頼、その他お問い合わせは以下の方法で受け付けております。</p>
-      
-      <div style="margin-top: 2rem;">
-        <h2 data-i18n="contact_page.email">Email</h2>
-        <p data-i18n="contact_page.email_desc">直接メールでのお問い合わせはこちらへお願いいたします。</p>
-        <a href="mailto:Studio344.net@gmail.com" style="font-size: 1.2rem; font-weight: bold;">Studio344.net@gmail.com</a>
-        <p style="font-size: 0.8rem; margin-top: 0.5rem;" data-i18n="contact_page.email_note"></p>
+    <header class="header">
+      <div class="logo">
+        <a href="index.html" style="color: white; text-decoration: none"
+          >Studio344</a
+        >
       </div>
+      <button class="hamburger" aria-label="メニュー" aria-expanded="false">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+      <nav class="nav-menu">
+        <a href="about.html" class="nav-btn" data-i18n="nav.about">About</a>
+        <a href="blog.html" class="nav-btn" data-i18n="nav.blog">Blog</a>
+        <a href="projects.html" class="nav-btn" data-i18n="nav.projects"
+          >Projects</a
+        >
+        <a href="contact.html" class="nav-btn" data-i18n="nav.contact"
+          >Contact</a
+        >
+        <button id="lang-toggle" class="nav-btn">EN</button>
+        <a
+          href="https://github.com/Studio344"
+          target="_blank"
+          class="nav-icon"
+          aria-label="GitHub"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+            ></path>
+          </svg>
+        </a>
+      </nav>
+    </header>
+    <div class="nav-menu-overlay"></div>
 
-      <div style="margin-top: 3rem;">
-        <h2 data-i18n="contact_page.social_title">Social Media</h2>
-        <div class="contact-links" style="margin-top: 1rem;">
-            <a href="https://github.com/Studio344" target="_blank" class="contact-item">
-              <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+    <main class="bento-grid">
+      <div class="bento-card text-content-card">
+        <h1 data-i18n="contact_page.title">Contact</h1>
+        <p data-i18n="contact_page.desc">
+          ご質問、お仕事のご依頼、その他お問い合わせは以下の方法で受け付けております。
+        </p>
+
+        <div style="margin-top: 2rem">
+          <h2 data-i18n="contact_page.email">Email</h2>
+          <p data-i18n="contact_page.email_desc">
+            直接メールでのお問い合わせはこちらへお願いいたします。
+          </p>
+          <a
+            id="email-link"
+            style="font-size: 1.2rem; font-weight: bold; cursor: pointer"
+          ></a>
+          <p
+            style="font-size: 0.8rem; margin-top: 0.5rem"
+            data-i18n="contact_page.email_note"
+          ></p>
+          <script>
+            // メールアドレスの難読化（スパムボット対策）
+            (function () {
+              var u = "Studio344.net";
+              var d = "gmail.com";
+              var el = document.getElementById("email-link");
+              if (el) {
+                el.href = "mail" + "to:" + u + "@" + d;
+                el.textContent = u + "@" + d;
+              }
+            })();
+          </script>
+        </div>
+
+        <div style="margin-top: 3rem">
+          <h2 data-i18n="contact_page.social_title">Social Media</h2>
+          <div class="contact-links" style="margin-top: 1rem">
+            <a
+              href="https://github.com/Studio344"
+              target="_blank"
+              class="contact-item"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                ></path>
+              </svg>
               <span data-i18n="contact_page.github_text">GitHub</span>
             </a>
+          </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <footer class="site-footer">
-    <p>&copy; 2026 Studio344</p>
-    <div style="margin-top: 0.5rem; display: flex; gap: 1rem; justify-content: center; font-size: 0.8rem;">
-        <a href="privacy-policy.html" style="color: #666; text-decoration: none;">Privacy Policy</a>
-        <a href="terms.html" style="color: #666; text-decoration: none;">Terms</a>
-        <a href="contact.html" style="color: #666; text-decoration: none;">Contact</a>
-    </div>
-  </footer>
+    <footer class="site-footer">
+      <p>&copy; 2026 Studio344</p>
+      <div
+        style="
+          margin-top: 0.5rem;
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+          font-size: 0.8rem;
+        "
+      >
+        <a href="privacy-policy.html" style="color: #666; text-decoration: none"
+          >Privacy Policy</a
+        >
+        <a href="terms.html" style="color: #666; text-decoration: none"
+          >Terms</a
+        >
+        <a href="contact.html" style="color: #666; text-decoration: none"
+          >Contact</a
+        >
+      </div>
+    </footer>
 
-  <script>
-    document.addEventListener('mousemove', (e) => {
-      const x = e.clientX;
-      const y = e.clientY;
-      document.documentElement.style.setProperty('--mouse-x', `${x}px`);
-      document.documentElement.style.setProperty('--mouse-y', `${y}px`);
-    });
-  </script>
-  <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js"></script>
-  <script src="i18n.js"></script>
-</body>
+    <script>
+      document.addEventListener("mousemove", (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+        document.documentElement.style.setProperty("--mouse-x", `${x}px`);
+        document.documentElement.style.setProperty("--mouse-y", `${y}px`);
+      });
+    </script>
+    <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js"></script>
+    <script src="i18n.js"></script>
+  </body>
 </html>

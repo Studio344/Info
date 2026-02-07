@@ -1,84 +1,163 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terms - Studio344</title>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
-     crossorigin="anonymous"></script>
-  <link rel="icon" type="image/png" href="assets/logo.png" />
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-</head>
-<body>
-  <div class="aurora-container">
-    <div class="aurora-orb orb-1"></div>
-    <div class="aurora-orb orb-2"></div>
-    <div class="aurora-orb orb-3"></div>
-  </div>
-  <div class="grid-overlay"></div>
-  <div class="noise-overlay"></div>
-  <div class="spotlight-overlay"></div>
-
-  <header class="header">
-    <div class="logo"><a href="index.html" style="color:white; text-decoration:none;">Studio344</a></div>
-    <nav class="nav-menu">
-      <a href="about.html" class="nav-btn" data-i18n="nav.about">About</a>
-      <a href="blog.html" class="nav-btn" data-i18n="nav.blog">Blog</a>
-      <a href="projects.html" class="nav-btn" data-i18n="nav.projects">Projects</a>
-      <a href="contact.html" class="nav-btn" data-i18n="nav.contact">Contact</a>
-      <button id="lang-toggle" class="nav-btn">EN</button>
-      <a href="https://github.com/Studio344" target="_blank" class="nav-icon" aria-label="GitHub">
-        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-      </a>
-    </nav>
-  </header>
-
-  <main class="bento-grid">
-    <div class="bento-card text-content-card">
-      <h1>利用規約</h1>
-      <p>この利用規約（以下「本規約」）は、Studio344（以下「当方」）がこのウェブサイト上で提供するサービス（以下「本サービス」）の利用条件を定めるものです。</p>
-
-      <h2>1. 適用</h2>
-      <p>本規約は、ユーザーと当方との間の本サービスの利用に関わる一切の関係に適用されるものとします。</p>
-
-      <h2>2. 禁止事項</h2>
-      <p>ユーザーは、本サービスの利用にあたり、以下の行為をしてはなりません。</p>
-      <ul>
-        <li>法令または公序良俗に違反する行為</li>
-        <li>犯罪行為に関連する行為</li>
-        <li>当方のサービスの運営を妨害するおそれのある行為</li>
-        <li>不正アクセスをし、またはこれを試みる行為</li>
-      </ul>
-
-      <h2>3. 免責事項</h2>
-      <p>当方の債務不履行責任は、当方の故意または重過失によらない場合には免責されるものとします。当方は、本サービスに関して、ユーザーと他のユーザーまたは第三者との間において生じた取引、連絡または紛争等について一切責任を負いません。</p>
-
-      <h2>4. 著作権</h2>
-      <p>本サイトに掲載されている全てのコンテンツは、当方が所有しています。書面による許可なく、個人的な目的以外で使用することは禁止されています。</p>
-
-      <p style="margin-top: 3rem; font-size: 0.9rem; color: #666;">最終更新日: 2026年2月4日</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms - Studio344</title>
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  </head>
+  <body>
+    <div class="aurora-container">
+      <div class="aurora-orb orb-1"></div>
+      <div class="aurora-orb orb-2"></div>
+      <div class="aurora-orb orb-3"></div>
     </div>
-  </main>
+    <div class="grid-overlay"></div>
+    <div class="noise-overlay"></div>
+    <div class="spotlight-overlay"></div>
 
-  <footer class="site-footer">
-    <p>&copy; 2026 Studio344</p>
-    <div style="margin-top: 0.5rem; display: flex; gap: 1rem; justify-content: center; font-size: 0.8rem;">
-      <a href="privacy-policy.html" style="color: #666; text-decoration: none;">Privacy Policy</a>
-      <a href="terms.html" style="color: #aaa; text-decoration: none;">Terms</a>
-      <a href="contact.html" style="color: #666; text-decoration: none;">Contact</a>
-    </div>
-  </footer>
+    <header class="header">
+      <div class="logo">
+        <a href="index.html" style="color: white; text-decoration: none"
+          >Studio344</a
+        >
+      </div>
+      <button class="hamburger" aria-label="メニュー" aria-expanded="false">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+      <nav class="nav-menu">
+        <a href="about.html" class="nav-btn" data-i18n="nav.about">About</a>
+        <a href="blog.html" class="nav-btn" data-i18n="nav.blog">Blog</a>
+        <a href="projects.html" class="nav-btn" data-i18n="nav.projects"
+          >Projects</a
+        >
+        <a href="contact.html" class="nav-btn" data-i18n="nav.contact"
+          >Contact</a
+        >
+        <button id="lang-toggle" class="nav-btn">EN</button>
+        <a
+          href="https://github.com/Studio344"
+          target="_blank"
+          class="nav-icon"
+          aria-label="GitHub"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+            ></path>
+          </svg>
+        </a>
+      </nav>
+    </header>
+    <div class="nav-menu-overlay"></div>
 
-  <script>
-    document.addEventListener('mousemove', (e) => {
-      const x = e.clientX;
-      const y = e.clientY;
-      document.documentElement.style.setProperty('--mouse-x', `${x}px`);
-      document.documentElement.style.setProperty('--mouse-y', `${y}px`);
-    });
-  </script>
-  <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js"></script>
-  <script src="i18n.js"></script>
-</body>
+    <main class="bento-grid">
+      <div class="bento-card text-content-card">
+        <h1 data-i18n="terms.title">利用規約</h1>
+        <p data-i18n="terms.intro">
+          この利用規約（以下「本規約」）は、Studio344（以下「当方」）がこのウェブサイト上で提供するサービス（以下「本サービス」）の利用条件を定めるものです。
+        </p>
+
+        <h2 data-i18n="terms.scope_title">1. 適用</h2>
+        <p data-i18n="terms.scope_desc">
+          本規約は、ユーザーと当方との間の本サービスの利用に関わる一切の関係に適用されるものとします。
+        </p>
+
+        <h2 data-i18n="terms.prohibited_title">2. 禁止事項</h2>
+        <p data-i18n="terms.prohibited_desc">
+          ユーザーは、本サービスの利用にあたり、以下の行為をしてはなりません。
+        </p>
+        <ul>
+          <li data-i18n="terms.prohibited_law">
+            法令または公序良俗に違反する行為
+          </li>
+          <li data-i18n="terms.prohibited_crime">犯罪行為に関連する行為</li>
+          <li data-i18n="terms.prohibited_disrupt">
+            当方のサービスの運営を妨害するおそれのある行為
+          </li>
+          <li data-i18n="terms.prohibited_access">
+            不正アクセスをし、またはこれを試みる行為
+          </li>
+        </ul>
+
+        <h2 data-i18n="terms.disclaimer_title">3. 免責事項</h2>
+        <p data-i18n="terms.disclaimer_desc">
+          当方の債務不履行責任は、当方の故意または重過失によらない場合には免責されるものとします。当方は、本サービスに関して、ユーザーと他のユーザーまたは第三者との間において生じた取引、連絡または紛争等について一切責任を負いません。
+        </p>
+
+        <h2 data-i18n="terms.copyright_title">4. 著作権</h2>
+        <p data-i18n="terms.copyright_desc">
+          本サイトに掲載されている全てのコンテンツは、当方が所有しています。書面による許可なく、個人的な目的以外で使用することは禁止されています。
+        </p>
+
+        <p
+          style="margin-top: 3rem; font-size: 0.9rem; color: #666"
+          data-i18n="terms.updated"
+        >
+          最終更新日: 2026年2月4日
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Studio344</p>
+      <div
+        style="
+          margin-top: 0.5rem;
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+          font-size: 0.8rem;
+        "
+      >
+        <a href="privacy-policy.html" style="color: #666; text-decoration: none"
+          >Privacy Policy</a
+        >
+        <a href="terms.html" style="color: #aaa; text-decoration: none"
+          >Terms</a
+        >
+        <a href="contact.html" style="color: #666; text-decoration: none"
+          >Contact</a
+        >
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("mousemove", (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+        document.documentElement.style.setProperty("--mouse-x", `${x}px`);
+        document.documentElement.style.setProperty("--mouse-y", `${y}px`);
+      });
+    </script>
+    <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js"></script>
+    <script src="i18n.js"></script>
+  </body>
 </html>

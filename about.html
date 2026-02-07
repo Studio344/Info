@@ -1,85 +1,158 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About - Studio344</title>
-  <meta name="description" content="Studio344の開発者プロフィール、ミッション、技術スキル、開発哲学について。" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
-     crossorigin="anonymous"></script>
-  <link rel="icon" type="image/png" href="assets/logo.png" />
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-</head>
-<body>
-  <div class="aurora-container">
-    <div class="aurora-orb orb-1"></div>
-    <div class="aurora-orb orb-2"></div>
-    <div class="aurora-orb orb-3"></div>
-  </div>
-  <div class="grid-overlay"></div>
-  <div class="noise-overlay"></div>
-  <div class="spotlight-overlay"></div>
-
-  <header class="header">
-    <div class="logo"><a href="index.html" style="color:white; text-decoration:none;">Studio344</a></div>
-    <nav class="nav-menu">
-      <a href="about.html" class="nav-btn" data-i18n="nav.about">About</a>
-      <a href="blog.html" class="nav-btn" data-i18n="nav.blog">Blog</a>
-      <a href="projects.html" class="nav-btn" data-i18n="nav.projects">Projects</a>
-      <a href="contact.html" class="nav-btn" data-i18n="nav.contact">Contact</a>
-      <button id="lang-toggle" class="nav-btn">EN</button>
-      <a href="https://github.com/Studio344" target="_blank" class="nav-icon" aria-label="GitHub">
-        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-      </a>
-    </nav>
-  </header>
-
-  <main class="bento-grid">
-    <div class="bento-card text-content-card">
-      <h1 data-i18n="about_page.title">About Studio344</h1>
-      
-      <h2 data-i18n="about_page.mission_title">Mission</h2>
-      <p data-i18n="about_page.mission_desc">Studio344 は、テクノロジーとデザインの融合を通じて、ユーザーの生活に新しい価値と彩りを提供することを目指す個人の開発スタジオです。「使いやすさ」と「美しさ」の両立をテーマに、Webアプリケーションからモバイルアプリまで幅広い開発を行っています。</p>
-
-      <h2 data-i18n="about_page.profile_title">Developer Profile</h2>
-      <p data-i18n="about_page.profile_desc">
-        某グローバルIT企業に勤務。<br>
-        プライベートでは、自身の興味関心に基づき、最新のWeb技術（React, Next.js, WebGLなど）を用いた実験的なプロジェクトや、実用的なツールの開発を行っています。
-      </p>
-      
-      <h3 data-i18n="about_page.skills_title">Technical Skills</h3>
-      <ul>
-        <li><strong>Languages:</strong> JavaScript/TypeScript, Python, Java, Go</li>
-        <li><strong>Frontend:</strong> React, Next.js, Vue.js, TailwindCSS, GSAP, Three.js</li>
-        <li><strong>Backend:</strong> Node.js, Express, Supabase</li>
-        <li><strong>Tools:</strong> Docker, Git</li>
-      </ul>
-
-      <h2 data-i18n="about_page.philosophy_title">Philosophy</h2>
-      <p data-i18n="about_page.philosophy_desc">「Just Build It.」をモットーに、アイデアを形にすることを最優先しています。失敗を恐れず、常に新しい技術に挑戦し続けることで、エンジニアとしての成長と、より良いプロダクトの創出を目指しています。</p>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About - Studio344</title>
+    <meta
+      name="description"
+      content="Studio344の開発者プロフィール、ミッション、技術スキル、開発哲学について。"
+    />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="icon" type="image/png" href="assets/logo.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  </head>
+  <body>
+    <div class="aurora-container">
+      <div class="aurora-orb orb-1"></div>
+      <div class="aurora-orb orb-2"></div>
+      <div class="aurora-orb orb-3"></div>
     </div>
-  </main>
+    <div class="grid-overlay"></div>
+    <div class="noise-overlay"></div>
+    <div class="spotlight-overlay"></div>
 
-  <footer class="site-footer">
-    <p>&copy; 2026 Studio344</p>
-    <div style="margin-top: 0.5rem; display: flex; gap: 1rem; justify-content: center; font-size: 0.8rem;">
-        <a href="privacy-policy.html" style="color: #666; text-decoration: none;">Privacy Policy</a>
-        <a href="terms.html" style="color: #666; text-decoration: none;">Terms</a>
-        <a href="contact.html" style="color: #666; text-decoration: none;">Contact</a>
-    </div>
-  </footer>
+    <header class="header">
+      <div class="logo">
+        <a href="index.html" style="color: white; text-decoration: none"
+          >Studio344</a
+        >
+      </div>
+      <button class="hamburger" aria-label="メニュー" aria-expanded="false">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+      <nav class="nav-menu">
+        <a href="about.html" class="nav-btn" data-i18n="nav.about">About</a>
+        <a href="blog.html" class="nav-btn" data-i18n="nav.blog">Blog</a>
+        <a href="projects.html" class="nav-btn" data-i18n="nav.projects"
+          >Projects</a
+        >
+        <a href="contact.html" class="nav-btn" data-i18n="nav.contact"
+          >Contact</a
+        >
+        <button id="lang-toggle" class="nav-btn">EN</button>
+        <a
+          href="https://github.com/Studio344"
+          target="_blank"
+          class="nav-icon"
+          aria-label="GitHub"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+            ></path>
+          </svg>
+        </a>
+      </nav>
+    </header>
+    <div class="nav-menu-overlay"></div>
 
-  <script>
-    document.addEventListener('mousemove', (e) => {
-      const x = e.clientX;
-      const y = e.clientY;
-      document.documentElement.style.setProperty('--mouse-x', `${x}px`);
-      document.documentElement.style.setProperty('--mouse-y', `${y}px`);
-    });
-  </script>
-  <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js"></script>
-  <script src="i18n.js"></script>
-</body>
+    <main class="bento-grid">
+      <div class="bento-card text-content-card">
+        <h1 data-i18n="about_page.title">About Studio344</h1>
+
+        <h2 data-i18n="about_page.mission_title">Mission</h2>
+        <p data-i18n="about_page.mission_desc">
+          Studio344
+          は、テクノロジーとデザインの融合を通じて、ユーザーの生活に新しい価値と彩りを提供することを目指す個人の開発スタジオです。「使いやすさ」と「美しさ」の両立をテーマに、Webアプリケーションからモバイルアプリまで幅広い開発を行っています。
+        </p>
+
+        <h2 data-i18n="about_page.profile_title">Developer Profile</h2>
+        <p data-i18n="about_page.profile_desc">
+          某グローバルIT企業に勤務。<br />
+          プライベートでは、自身の興味関心に基づき、最新のWeb技術（React,
+          Next.js,
+          WebGLなど）を用いた実験的なプロジェクトや、実用的なツールの開発を行っています。
+        </p>
+
+        <h3 data-i18n="about_page.skills_title">Technical Skills</h3>
+        <ul>
+          <li>
+            <strong>Languages:</strong> JavaScript/TypeScript, Python, Java, Go
+          </li>
+          <li>
+            <strong>Frontend:</strong> React, Next.js, Vue.js, TailwindCSS,
+            GSAP, Three.js
+          </li>
+          <li><strong>Backend:</strong> Node.js, Express, Supabase</li>
+          <li><strong>Tools:</strong> Docker, Git</li>
+        </ul>
+
+        <h2 data-i18n="about_page.philosophy_title">Philosophy</h2>
+        <p data-i18n="about_page.philosophy_desc">
+          「Just Build
+          It.」をモットーに、アイデアを形にすることを最優先しています。失敗を恐れず、常に新しい技術に挑戦し続けることで、エンジニアとしての成長と、より良いプロダクトの創出を目指しています。
+        </p>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Studio344</p>
+      <div
+        style="
+          margin-top: 0.5rem;
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+          font-size: 0.8rem;
+        "
+      >
+        <a href="privacy-policy.html" style="color: #666; text-decoration: none"
+          >Privacy Policy</a
+        >
+        <a href="terms.html" style="color: #666; text-decoration: none"
+          >Terms</a
+        >
+        <a href="contact.html" style="color: #666; text-decoration: none"
+          >Contact</a
+        >
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("mousemove", (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+        document.documentElement.style.setProperty("--mouse-x", `${x}px`);
+        document.documentElement.style.setProperty("--mouse-y", `${y}px`);
+      });
+    </script>
+    <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js"></script>
+    <script src="i18n.js"></script>
+  </body>
 </html>
