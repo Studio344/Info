@@ -14,7 +14,7 @@ i18next.init(
           about: {
             title: "About",
             content:
-              "某グローバルIT企業に勤務しています。技術で誰かの役に立つことが好きです。",
+              "某グローバルIT企業に勤務。趣味でWebアプリやツールを作っています。",
           },
           projects: {
             title: "Projects",
@@ -24,10 +24,10 @@ i18next.init(
           },
           // 日本語ディスクレーマー（標準的）
           disclaimer:
-            "[免責事項] 本サイトは個人のポートフォリオであり、<br>所属する組織の公式見解を代表するものではありません。",
+            "[免責事項] 本サイトは個人の趣味ポートフォリオであり、<br>所属する組織の公式見解を代表するものではありません。",
           home: {
             about_content:
-              "某グローバルIT企業でエンジニアをしています。<br>「技術は人のためにあってこそ」をモットーに、最新のWeb技術からバックエンドまで幅広く技術を探求しています。<br><br>このサイトでは、これまでの制作物や技術的な学び（Engineering Logs）を発信していきます。",
+              "某グローバルIT企業でエンジニアをしています。<br>仕事とは別に、趣味として個人開発を楽しんでいます。<br><br>このサイトでは、趣味で作ったものや技術的な学び（Engineering Logs）を発信していきます。",
             more_about: "More about me →",
             projects_title: "Projects",
             projects_desc: "View Recent Works →",
@@ -39,16 +39,16 @@ i18next.init(
           },
           about_page: {
             title: "About Studio344",
-            mission_title: "Mission",
+            mission_title: "Studio344 とは",
             mission_desc:
-              "Studio344は、テクノロジーとデザインを融合させ、<br>日常に「便利」や「彩り」をプラスすることを目指す個人の開発スタジオです。<br><br>「使いやすさ」と「美しさ」の両立をテーマに、<br>Webアプリからモバイルアプリまで幅広く開発しています。",
-            profile_title: "Developer Profile",
+              "Studio344は、テクノロジーとものづくりが好きな個人の趣味アカウントです。<br>仕事とは別に、興味のある技術を自由に試したり、個人開発を楽しむための場として運営しています。<br><br>「面白そう」と思ったらまず手を動かす。<br>そんなスタンスで、Webアプリやツールなどを気ままに作っています。",
+            profile_title: "Profile",
             profile_desc:
-              "某グローバルIT企業勤務。<br><br>プライベートでは、関心を持った最新技術（React, Next.js, WebGLなど）を用いた実験的なプロジェクトや、<br>日々の課題を解決するツールの開発を行っています。",
+              "某グローバルIT企業でエンジニアとして勤務。<br><br>業務外の時間で、気になった技術（React, Next.js, WebGLなど）を触ったり、<br>日常のちょっとした不便を解消するツールを作ったりしています。",
             skills_title: "Technical Skills",
             philosophy_title: "Philosophy",
             philosophy_desc:
-              "「Just Build It.」がモットーです。<br>アイデアがあれば、失敗を恐れずにまず形にしてみる。<br>新しい技術に挑戦し続けることで、エンジニアとしての成長を目指しています。",
+              "「Just Build It.」がモットーです。<br>完璧を目指すより、まず動くものを作ってみる。<br>趣味だからこそ、失敗を気にせず新しいことに挑戦できると思っています。",
           },
           contact_page: {
             title: "Contact",
@@ -66,7 +66,7 @@ i18next.init(
           },
           projects_page: {
             title: "All Projects",
-            desc: "Studio344 で開発・運用しているプロジェクト一覧です。",
+            desc: "Studio344 で趣味として開発したプロジェクト一覧です。",
             view_project: "詳細を見る →",
           },
           privacy: {
@@ -130,7 +130,7 @@ i18next.init(
           about: {
             title: "About",
             content:
-              "Engineer working in a global IT company, passionate about using technology to help others.",
+              "Engineer at a global IT company. I build web apps and tools as a hobby.",
           },
           projects: {
             title: "Projects",
@@ -140,10 +140,10 @@ i18next.init(
           },
           // 英語ディスクレーマー（標準的）
           disclaimer:
-            "[Disclaimer] This is a personal portfolio. Opinions are my own and do not represent my employer.",
+            "[Disclaimer] This is a personal hobby portfolio. Opinions are my own and do not represent my employer.",
           home: {
             about_content:
-              'Working as an engineer at a global IT company.<br>With the belief that "technology exists to help people," I explore a wide range of fields from modern Web tech to backend architecture.<br><br>This site serves as a log of my works and engineering insights.',
+              'Working as an engineer at a global IT company.<br>Outside of work, I enjoy building things as a personal hobby.<br><br>This site serves as a log of my hobby projects and engineering insights.',
             more_about: "More about me →",
             projects_title: "Projects",
             projects_desc: "View Recent Works →",
@@ -155,16 +155,16 @@ i18next.init(
           },
           about_page: {
             title: "About Studio344",
-            mission_title: "Mission",
+            mission_title: "What is Studio344?",
             mission_desc:
-              'Studio344 is a personal development studio aiming to add value and color<br>to daily life through the fusion of technology and design.<br><br>Focusing on balancing "Usability" and "Aesthetics,"<br>I develop various applications from Web to mobile apps.',
-            profile_title: "Developer Profile",
+              'Studio344 is a personal hobby account for someone who loves technology and building things.<br>It\'s a space where I freely experiment with interesting tech and enjoy personal development, separate from work.<br><br>If something looks fun, I just start building it.<br>With that mindset, I casually create web apps, tools, and whatever else catches my interest.',
+            profile_title: "Profile",
             profile_desc:
-              "Working at a global IT company.<br><br>In my private time, I work on experimental projects<br>using the latest Web technologies (React, Next.js, WebGL, etc.)<br>and develop practical tools to solve daily problems.",
+              "Working as an engineer at a global IT company.<br><br>In my free time, I tinker with technologies that catch my eye (React, Next.js, WebGL, etc.)<br>and build small tools to solve everyday inconveniences.",
             skills_title: "Technical Skills",
             philosophy_title: "Philosophy",
             philosophy_desc:
-              'My motto is "Just Build It."<br>When I have an idea, I try to give it shape without fear of failure.<br>By constantly challenging new technologies, I aim to grow as an engineer.',
+              'My motto is "Just Build It."<br>Rather than aiming for perfection, I prefer to just make something that works first.<br>Because it\'s a hobby, I can challenge new things without worrying about failure.',
           },
           contact_page: {
             title: "Contact",
@@ -182,7 +182,7 @@ i18next.init(
           },
           projects_page: {
             title: "All Projects",
-            desc: "A list of projects developed and maintained by Studio344.",
+            desc: "A list of hobby projects built under Studio344.",
             view_project: "View Project →",
           },
           privacy: {
