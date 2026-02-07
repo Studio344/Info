@@ -13,7 +13,7 @@
   <meta property="og:title" content="Studio344 - Portfolio" />
   <meta property="og:description" content="Immersive portfolio site featuring Bento Grid layout and cosmic aesthetics." />
   <meta property="og:image" content="assets/logo.png" />
-  <meta property="og:url" content="https://studio344.github.io/Info/" />
+  <meta property="og:url" content="https://studio344.net/" />
   <meta property="og:type" content="website" />
 
   <!-- CSS -->
@@ -24,7 +24,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   
   <!-- i18next -->
-  <script src="https://unpkg.com/i18next@21.6.16/dist/umd/i18next.min.js"></script>
+  <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js"></script>
 </head>
 <body>
   <!-- Ambient Background Effects -->
@@ -84,7 +84,7 @@
     </div>
 
     <!-- Projects Nav: Span 5 -->
-    <div class="bento-card project-card visual-portfolio" style="grid-column: span 5; height: auto; min-height: 300px; cursor: pointer;" onclick="location.href='projects.html'">
+    <a href="projects.html" class="bento-card project-card visual-portfolio" style="grid-column: span 5; height: auto; min-height: 300px; cursor: pointer; text-decoration: none; color: inherit;">
         <div class="card-visual-header" style="height: 100%; border-bottom: none; position: absolute; width: 100%; z-index: 1;">
             <div class="card-visual-pattern"></div>
             <!-- Code Icon -->
@@ -98,11 +98,11 @@
                 <p style="color: #ccc;" data-i18n="home.projects_desc">View Recent Works &rarr;</p>
             </div>
         </div>
-    </div>
+    </a>
 
     <!-- Row 2: Blog Hub (5) & Contact (7) -->
     <!-- Blog Nav: Span 5 -->
-    <div class="bento-card project-card visual-ucfitness" style="grid-column: span 5; height: auto; min-height: 300px; cursor: pointer; background: linear-gradient(135deg, #10b981 0%, #059669 100%);" onclick="location.href='blog.html'">
+    <a href="blog.html" class="bento-card project-card visual-ucfitness" style="grid-column: span 5; height: auto; min-height: 300px; cursor: pointer; background: linear-gradient(135deg, #10b981 0%, #059669 100%); text-decoration: none; color: inherit;">
         <div class="card-visual-header" style="height: 100%; border-bottom: none; position: absolute; width: 100%; z-index: 1;">
             <div class="card-visual-pattern"></div>
             <!-- Book/Pen Icon -->
@@ -116,7 +116,7 @@
                 <p style="color: #ccc;" data-i18n="home.blog_desc">Read Engineering Logs &rarr;</p>
             </div>
         </div>
-    </div>
+    </a>
 
     <!-- Quick Connect: Span 7 -->
     <div class="bento-card contact-card" style="grid-column: span 7; height: auto; justify-content: center; align-items: center; text-align: center;">
