@@ -829,6 +829,12 @@ html {
   text-decoration: underline;
 }
 
+.text-content-card a.blog-preview-card,
+.text-content-card a.blog-preview-card * {
+  text-decoration: none;
+  color: inherit;
+}
+
 /* Markdown Content Styles */
 .markdown-content h1 {
   font-size: 1.5rem;
