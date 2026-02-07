@@ -156,7 +156,7 @@
 
       <!-- Tech Stack Badges -->
       <div class="bento-card skills-badge-card" style="grid-column: 1 / -1; height: auto; padding: 1.5rem 2rem;">
-        <h3 data-i18n="home.skills_title" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; color: #666; margin-bottom: 1rem;">Tech Stack</h3>
+        <h3 data-i18n="home.skills_title" style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(165, 180, 252, 0.6); margin-bottom: 1rem;">Tech Stack</h3>
         <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
           <span class="skill-badge" style="--badge-color: #f97316;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg> HTML5</span>
           <span class="skill-badge" style="--badge-color: #3b82f6;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg> CSS3</span>
@@ -185,14 +185,14 @@
         <div style="font-size: 0.85rem; color: #888; margin-top: 0.4rem; text-transform: uppercase; letter-spacing: 0.1em;" data-i18n="home.stat_tech">Technologies</div>
       </div>
 
-      <!-- Projects (6) + Blog (6) = 12 -->
+      <!-- Projects(4) + Blog(4) + Connect(4) = 12 -->
       <a
         href="projects.html"
         class="bento-card project-card visual-portfolio"
         style="
-          grid-column: span 6;
+          grid-column: span 4;
           height: auto;
-          min-height: 300px;
+          min-height: 250px;
           cursor: pointer;
           text-decoration: none;
           color: inherit;
@@ -262,14 +262,14 @@
         </div>
       </a>
 
-      <!-- Blog Nav: Span 6 -->
+      <!-- Blog Nav: Span 4 -->
       <a
         href="blog.html"
         class="bento-card project-card visual-ucfitness"
         style="
-          grid-column: span 6;
+          grid-column: span 4;
           height: auto;
-          min-height: 300px;
+          min-height: 250px;
           cursor: pointer;
           background: linear-gradient(135deg, #10b981 0%, #059669 100%);
           text-decoration: none;
@@ -342,102 +342,33 @@
         </div>
       </a>
 
-      <!-- Quick Connect: Full Width -->
+      <!-- Connect: Span 4 -->
       <div
         class="bento-card contact-card"
         style="
-          grid-column: 1 / -1;
+          grid-column: span 4;
           height: auto;
+          min-height: 250px;
+          display: flex;
+          flex-direction: column;
           justify-content: center;
           align-items: center;
           text-align: center;
         "
       >
-        <h3 data-i18n="home.connect_title">Let's Connect</h3>
-        <div
-          class="contact-links"
-          style="
-            margin-top: 1rem;
-            margin-left: 0;
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-          "
-        >
-          <a
-            href="https://github.com/Studio344"
-            target="_blank"
-            class="contact-item"
-            style="margin-left: 0; flex-direction: column"
-          >
-            <div
-              style="
-                background: rgba(255, 255, 255, 0.1);
-                padding: 1rem;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              "
-            >
-              <svg
-                viewBox="0 0 24 24"
-                width="32"
-                height="32"
-                stroke="currentColor"
-                stroke-width="2"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-                ></path>
-              </svg>
+        <h3 data-i18n="home.connect_title" style="font-size: 1.4rem; margin-bottom: 1.2rem;">Let's Connect</h3>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="https://github.com/Studio344" target="_blank" class="contact-item" style="flex-direction: column; text-decoration: none; color: inherit;">
+            <div style="background: rgba(255,255,255,0.1); padding: 0.8rem; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+              <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
             </div>
-            <span
-              style="font-size: 0.9rem; margin-top: 0.5rem; color: #ccc"
-              data-i18n="home.gh_label"
-              >GitHub</span
-            >
+            <span style="font-size: 0.8rem; margin-top: 0.4rem; color: #ccc" data-i18n="home.gh_label">GitHub</span>
           </a>
-          <a
-            href="contact.html"
-            class="contact-item"
-            style="margin-left: 0; flex-direction: column"
-          >
-            <div
-              style="
-                background: rgba(255, 255, 255, 0.1);
-                padding: 1rem;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              "
-            >
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                ></path>
-                <polyline points="22,6 12,13 2,6"></polyline>
-              </svg>
+          <a href="contact.html" class="contact-item" style="flex-direction: column; text-decoration: none; color: inherit;">
+            <div style="background: rgba(255,255,255,0.1); padding: 0.8rem; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
             </div>
-            <span
-              style="font-size: 0.9rem; margin-top: 0.5rem; color: #ccc"
-              data-i18n="home.email_label"
-              >Email</span
-            >
+            <span style="font-size: 0.8rem; margin-top: 0.4rem; color: #ccc" data-i18n="home.email_label">Email</span>
           </a>
         </div>
       </div>

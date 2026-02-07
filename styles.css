@@ -990,7 +990,9 @@ html {
 }
 
 @media (max-width: 600px) {
-  .stat-card {
+  .stat-card,
+  .project-card,
+  .contact-card {
     grid-column: 1 / -1 !important;
   }
 
