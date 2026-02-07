@@ -33,5 +33,26 @@
         "baseFilename": "2026-01-20-fitbit",
         "emoji": "⌚",
         "tags": ["Fitbit API", "Rate Limit"]
+    },
+    {
+        "id": "css-bento-layout",
+        "date": "2026.01.15",
+        "baseFilename": "2026-01-15-css-bento-layout",
+        "emoji": "🍱",
+        "tags": ["CSS Grid", "Bento Layout", "Responsive"]
+    },
+    {
+        "id": "github-pages-deploy",
+        "date": "2026.01.10",
+        "baseFilename": "2026-01-10-github-pages-deploy",
+        "emoji": "🚀",
+        "tags": ["GitHub Pages", "Deploy", "DNS"]
+    },
+    {
+        "id": "web-performance",
+        "date": "2026.01.05",
+        "baseFilename": "2026-01-05-web-performance",
+        "emoji": "⚡",
+        "tags": ["Lighthouse", "Performance", "SEO"]
     }
 ]

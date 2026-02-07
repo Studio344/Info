@@ -90,6 +90,50 @@
         </p>
 
         <div style="margin-top: 2rem">
+          <h2 data-i18n="contact_page.form_title">お問い合わせフォーム</h2>
+          <p data-i18n="contact_page.form_desc">
+            以下のフォームからもお問い合わせいただけます。
+          </p>
+          <form
+            action="https://formspree.io/f/xpwzgkjq"
+            method="POST"
+            class="contact-form"
+            style="margin-top: 1.5rem"
+          >
+            <div class="form-group">
+              <label for="contact-name" data-i18n="contact_page.form_name">お名前</label>
+              <input
+                type="text"
+                id="contact-name"
+                name="name"
+                required
+                autocomplete="name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="contact-email" data-i18n="contact_page.form_email">メールアドレス</label>
+              <input
+                type="email"
+                id="contact-email"
+                name="email"
+                required
+                autocomplete="email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="contact-message" data-i18n="contact_page.form_message">メッセージ</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <button type="submit" class="form-submit-btn" data-i18n="contact_page.form_submit">送信する</button>
+          </form>
+        </div>
+
+        <div style="margin-top: 3rem">
           <h2 data-i18n="contact_page.email">Email</h2>
           <p data-i18n="contact_page.email_desc">
             直接メールでのお問い合わせはこちらへお願いいたします。
