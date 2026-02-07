@@ -829,11 +829,7 @@ html {
   text-decoration: underline;
 }
 
-.text-content-card a.blog-preview-card,
-.text-content-card a.blog-preview-card * {
-  text-decoration: none;
-  color: inherit;
-}
+/* Blog preview cards are now <div>, no anchor override needed */
 
 /* Markdown Content Styles */
 .markdown-content h1 {
@@ -1043,9 +1039,6 @@ html {
 }
 
 .blog-preview-card,
-.blog-preview-card:hover,
-.blog-preview-card:visited,
-.blog-preview-card:active,
 .blog-preview-card *  {
   text-decoration: none !important;
 }

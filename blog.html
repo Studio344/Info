@@ -89,11 +89,24 @@
           開発ログや技術的な知見を不定期に更新します。
         </p>
 
-        <div
-          id="blog-container"
-          class="blog-preview-grid"
-        >
+        <div id="blog-container" class="blog-preview-grid">
           <!-- Preview cards will be injected here by blog.js -->
+        </div>
+
+        <!-- SPA: 記事全文表示エリア (デフォルト非表示) -->
+        <div id="blog-single-view" style="display: none">
+          <a
+            href="#"
+            id="blog-back-btn"
+            class="blog-back-link"
+            data-i18n="blog_post.back"
+            >← ブログ一覧に戻る</a
+          >
+          <div
+            id="blog-single-content"
+            class="markdown-content"
+            style="margin-top: 1.5rem"
+          ></div>
         </div>
       </div>
     </main>
