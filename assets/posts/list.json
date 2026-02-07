@@ -1,8 +1,23 @@
 [
     {
+        "id": "gsap-portfolio",
+        "date": "2026.02.07",
+        "baseFilename": "2026-02-07-gsap-portfolio"
+    },
+    {
         "id": "renewal",
         "date": "2026.02.04",
         "baseFilename": "2026-02-04-renewal"
+    },
+    {
+        "id": "i18n-multilingual",
+        "date": "2026.02.01",
+        "baseFilename": "2026-02-01-i18n-multilingual"
+    },
+    {
+        "id": "nextjs-supabase-auth",
+        "date": "2026.01.27",
+        "baseFilename": "2026-01-27-nextjs-supabase-auth"
     },
     {
         "id": "fitbit",
