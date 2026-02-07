@@ -60,18 +60,10 @@ i18next.init(
           contact_page: {
             title: "Contact",
             desc: "当サイトは個人のポートフォリオサイトです。<br>技術的な交流やご感想などがございましたら、以下のリンクよりお気軽にご連絡ください。",
-            form_title: "お問い合わせフォーム",
-            form_desc: "以下のフォームからもお問い合わせいただけます。",
-            form_name: "お名前",
-            form_email: "メールアドレス",
-            form_message: "メッセージ",
-            form_submit: "送信する",
-            email: "Email",
-            email_desc: "メールでのお問い合わせはこちらからお願いいたします。",
-            email_note:
-              "※返信には数日いただく場合がございます。あらかじめご了承ください。",
             social_title: "Social Media",
             github_text: "GitHub",
+            x_text: "X (Twitter)",
+            instagram_text: "Instagram",
           },
           blog_page: {
             title: "Blog & Updates",
@@ -269,18 +261,10 @@ i18next.init(
           contact_page: {
             title: "Contact",
             desc: "This is a personal portfolio site.<br>For technical exchanges or feedback, please feel free to contact me via the links below.",
-            form_title: "Contact Form",
-            form_desc: "You can also reach me using the form below.",
-            form_name: "Name",
-            form_email: "Email Address",
-            form_message: "Message",
-            form_submit: "Send",
-            email: "Email",
-            email_desc: "Please contact me via email here.",
-            email_note:
-              "*Response may take a few days. Thank you for your understanding.",
             social_title: "Social Media",
             github_text: "GitHub",
+            x_text: "X (Twitter)",
+            instagram_text: "Instagram",
           },
           blog_page: {
             title: "Blog & Updates",
