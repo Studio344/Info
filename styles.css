@@ -356,6 +356,62 @@ html {
   box-shadow: 0 8px 36px rgba(0, 0, 0, 0.5);
 }
 
+/* Hero Tagline */
+.hero-tagline {
+  font-size: 1rem;
+  color: rgba(165, 180, 252, 0.7);
+  margin-top: 0.5rem;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards 2s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Skills Badge Card */
+.skills-badge-card {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid color-mix(in srgb, var(--badge-color) 40%, transparent);
+  color: var(--badge-color);
+  transition: all 0.2s ease;
+}
+
+.skill-badge:hover {
+  background: color-mix(in srgb, var(--badge-color) 15%, transparent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--badge-color) 20%, transparent);
+}
+
+/* Stat Card */
+.stat-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
 /* Scroll Indicator */
 .scroll-indicator {
   margin-top: 4rem;
@@ -934,6 +990,18 @@ html {
 }
 
 @media (max-width: 600px) {
+  .stat-card {
+    grid-column: 1 / -1 !important;
+  }
+
+  .skills-badge-card {
+    padding: 1rem !important;
+  }
+
+  .hero-tagline {
+    font-size: 0.85rem;
+  }
+
   .about-hero {
     flex-direction: column;
     text-align: center;

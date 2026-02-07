@@ -29,6 +29,11 @@ i18next.init(
             about_content:
               "某グローバルIT企業でエンジニアをしています。<br>仕事とは別に、趣味として個人開発を楽しんでいます。<br><br>このサイトでは、趣味で作ったものや技術的な学び（Engineering Logs）を発信していきます。",
             more_about: "More about me →",
+            hero_tagline: "テクノロジーとものづくりを楽しむ、個人の趣味ポートフォリオ",
+            skills_title: "Tech Stack",
+            stat_projects: "Projects",
+            stat_posts: "Blog Posts",
+            stat_tech: "Technologies",
             projects_title: "Projects",
             projects_desc: "View Recent Works →",
             blog_title: "Blog",
@@ -213,6 +218,11 @@ i18next.init(
             about_content:
               "Working as an engineer at a global IT company.<br>Outside of work, I enjoy building things as a personal hobby.<br><br>This site serves as a log of my hobby projects and engineering insights.",
             more_about: "More about me →",
+            hero_tagline: "A personal hobby portfolio exploring technology and building things",
+            skills_title: "Tech Stack",
+            stat_projects: "Projects",
+            stat_posts: "Blog Posts",
+            stat_tech: "Technologies",
             projects_title: "Projects",
             projects_desc: "View Recent Works →",
             blog_title: "Blog",
