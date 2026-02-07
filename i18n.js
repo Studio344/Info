@@ -88,6 +88,19 @@ i18next.init(
             design_title: "デザインコンセプト",
             design_desc:
               "「モダンで未来的、かつ情報の視認性を損なわない」をコンセプトに設計されました。近年トレンドのBento Gridを採用し、アクセスしやすさとビジュアルの美しさを両立しています。",
+            tech_title: "技術スタック",
+            tech_intro:
+              "フレームワークに頼らず、Web標準技術をベースに構築。軽量でありながら、リッチなビジュアル表現を実現しています。",
+            tech_html: "<strong>HTML5 / CSS3:</strong> セマンティックなマークアップとCSS変数・Grid・Flexboxによるレスポンシブレイアウト。",
+            tech_js: "<strong>Vanilla JavaScript:</strong> フレームワークなしの素のJSで全機能を実装。バンドルサイズゼロ。",
+            tech_gsap: "<strong>GSAP + ScrollTrigger:</strong> スクロール連動アニメーションと滑らかなトランジション。",
+            tech_i18n: "<strong>i18next:</strong> 日英2言語対応。ページリロードなしの動的な言語切り替え。",
+            tech_hosting: "<strong>GitHub Pages:</strong> 静的ホスティングでゼロコスト運用。独自ドメイン + HTTPS対応。",
+            perf_title: "パフォーマンス",
+            perf_desc: "フレームワークレスの恩恵により、Lighthouseで高スコアを達成。外部依存を最小限に抑え、初回ロードを高速化しています。",
+            perf_score: "Lighthouse スコア: <strong>95+</strong>（Performance / Accessibility / Best Practices / SEO）",
+            perf_size: "ページサイズ: <strong>< 200KB</strong>（画像除く初回転送量）",
+            perf_deps: "外部依存: <strong>GSAP + i18next のみ</strong>（ノーバンドラー構成）",
           },
           ucfitness_page: {
             title: "UCFitness",
@@ -259,6 +272,19 @@ i18next.init(
             design_title: "Design Concept",
             design_desc:
               "Designed with the concept of being modern and futuristic while maintaining information readability. Adopting the trending Bento Grid layout to balance accessibility and visual beauty.",
+            tech_title: "Tech Stack",
+            tech_intro:
+              "Built on web standards without framework dependencies. Lightweight yet capable of rich visual expression.",
+            tech_html: "<strong>HTML5 / CSS3:</strong> Semantic markup with CSS variables, Grid, and Flexbox for responsive layouts.",
+            tech_js: "<strong>Vanilla JavaScript:</strong> All features built with plain JS. Zero bundle size overhead.",
+            tech_gsap: "<strong>GSAP + ScrollTrigger:</strong> Scroll-driven animations and smooth transitions.",
+            tech_i18n: "<strong>i18next:</strong> Bilingual (JA/EN) support with dynamic language switching — no page reload needed.",
+            tech_hosting: "<strong>GitHub Pages:</strong> Zero-cost static hosting with custom domain + HTTPS.",
+            perf_title: "Performance",
+            perf_desc: "Thanks to the framework-free approach, the site achieves high Lighthouse scores. External dependencies are kept minimal for fast initial loads.",
+            perf_score: "Lighthouse Score: <strong>95+</strong> (Performance / Accessibility / Best Practices / SEO)",
+            perf_size: "Page Size: <strong>< 200KB</strong> (initial transfer excluding images)",
+            perf_deps: "External Deps: <strong>GSAP + i18next only</strong> (no bundler configuration)",
           },
           ucfitness_page: {
             title: "UCFitness",
