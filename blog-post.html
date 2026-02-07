@@ -84,16 +84,10 @@
 
     <main class="bento-grid">
       <div class="bento-card text-content-card">
-        <h1 data-i18n="blog_page.title">Blog & Updates</h1>
-        <p data-i18n="blog_page.desc" style="margin-bottom: 2rem; color: #aaa">
-          開発ログや技術的な知見を不定期に更新します。
-        </p>
+        <a href="blog.html" class="blog-back-link" data-i18n="blog_post.back">← ブログ一覧に戻る</a>
 
-        <div
-          id="blog-container"
-          class="blog-preview-grid"
-        >
-          <!-- Preview cards will be injected here by blog.js -->
+        <div id="blog-post-content" class="markdown-content" style="margin-top: 1.5rem">
+          <!-- Single post will be injected here -->
         </div>
       </div>
     </main>
@@ -132,6 +126,55 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js"></script>
     <script src="i18n.js"></script>
-    <script src="blog.js"></script>
+    <script>
+      // Load single blog post based on URL parameter
+      document.addEventListener('DOMContentLoaded', () => {
+        loadSinglePost();
+        i18next.on('languageChanged', () => loadSinglePost());
+      });
+
+      async function loadSinglePost() {
+        const params = new URLSearchParams(window.location.search);
+        const postId = params.get('id');
+        const container = document.getElementById('blog-post-content');
+
+        if (!postId || !container) {
+          window.location.href = 'blog.html';
+          return;
+        }
+
+        let rawLang = i18next.language || 'ja';
+        const currentLang = rawLang.substring(0, 2);
+
+        try {
+          // Fetch post list to find filename
+          const listRes = await fetch('assets/posts/list.json');
+          const posts = await listRes.json();
+          const post = posts.find(p => p.id === postId);
+
+          if (!post) {
+            container.innerHTML = '<p style="color: #888;">記事が見つかりませんでした。</p>';
+            return;
+          }
+
+          // Update page title
+          document.title = `${post.id} - Blog - Studio344`;
+
+          // Fetch markdown
+          const filename = `assets/posts/${post.baseFilename}.${currentLang}.md`;
+          const mdRes = await fetch(filename);
+          if (!mdRes.ok) throw new Error('Failed to load post');
+          const mdText = await mdRes.text();
+
+          container.innerHTML = `
+            <span style="font-size: 0.85rem; color: #6366f1; margin-bottom: 1rem; display: block;">${post.date}</span>
+            ${marked.parse(mdText)}
+          `;
+        } catch (err) {
+          console.error('Error loading post:', err);
+          container.innerHTML = '<p style="color: #888;">記事の読み込みに失敗しました。</p>';
+        }
+      }
+    </script>
   </body>
 </html>

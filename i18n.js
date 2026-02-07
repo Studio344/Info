@@ -71,6 +71,9 @@ i18next.init(
             title: "Blog & Updates",
             desc: "開発ログや技術的な知見を不定期に更新します。",
           },
+          blog_post: {
+            back: "← ブログ一覧に戻る",
+          },
           projects_page: {
             title: "All Projects",
             desc: "Studio344 で趣味として開発したプロジェクト一覧です。",
@@ -270,6 +273,9 @@ i18next.init(
           blog_page: {
             title: "Blog & Updates",
             desc: "I update development logs and technical insights irregularly.",
+          },
+          blog_post: {
+            back: "← Back to Blog",
           },
           projects_page: {
             title: "All Projects",

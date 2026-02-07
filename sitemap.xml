@@ -22,8 +22,13 @@
   </url>
   <url>
     <loc>https://studio344.net/blog.html</loc>
-    <lastmod>2026-02-04</lastmod>
+    <lastmod>2026-02-07</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://studio344.net/blog-post.html</loc>
+    <lastmod>2026-02-07</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://studio344.net/projects/ucfitness.html</loc>
