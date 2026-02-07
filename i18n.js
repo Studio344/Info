@@ -69,6 +69,60 @@ i18next.init(
             desc: "Studio344 で趣味として開発したプロジェクト一覧です。",
             view_project: "詳細を見る →",
           },
+          portfolio_page: {
+            title: "Studio344 Portfolio",
+            subtitle:
+              "Bento Gridデザインを採用した、没入感のあるポートフォリオサイト",
+            view_source: "View Source Code →",
+            features_title: "主な特徴",
+            feature1_title: "Vanilla Implementation",
+            feature1_desc:
+              "ReactやVueを使用せず、素のJavaScriptとCSSのみで構築。Lighthouseスコアはほぼ満点を達成し、最軽量のロード時間を実現。",
+            feature2_title: "Dynamic Aesthetics",
+            feature2_desc:
+              "CSS変数とJSを連携させ、マウス位置に追従するスポットライト効果や、SVGフィルターによるノイズテクスチャを実装。",
+            feature3_title: "i18n Support",
+            feature3_desc:
+              "i18nextライブラリを活用した、スムーズな日英言語切り替え機能。コンテンツのグローバル対応を意識した設計。",
+            design_title: "デザインコンセプト",
+            design_desc:
+              "「モダンで未来的、かつ情報の視認性を損なわない」をコンセプトに設計されました。近年トレンドのBento Gridを採用し、アクセスしやすさとビジュアルの美しさを両立しています。",
+          },
+          ucfitness_page: {
+            title: "UCFitness Dashboard",
+            subtitle:
+              "Fitbit APIを活用した、グループ対抗フィットネス・トラッキング・プラットフォーム",
+            visit_site: "Visit Live Site →",
+            features_title: "主な機能",
+            features_intro:
+              "UCFitness は「究極のソーシャルフィットネスダッシュボード」として、以下の3つのコア機能を提供します。",
+            feature1_title: "リアルタイムランキング",
+            feature1_desc:
+              "順位をリアルタイムで追跡。日次、週次、月次で同僚や友人と歩数・活動量を比較できます。",
+            feature2_title: "グループバトル",
+            feature2_desc:
+              "グループに参加してチーム対抗戦。個人のスコアだけでなく、チーム全体の合計値で競い合いましょう。",
+            feature3_title: "バッジ獲得",
+            feature3_desc:
+              "マイルストーン到達や連続記録（ストリーク）でユニークなバッジをアンロック。成果を可視化します。",
+            tech_title: "技術スタック",
+            tech_intro:
+              "最新のモダンWeb技術スタックを採用し、高速かつスケーラブルなアプリケーションを構築しました。",
+            tech_frontend:
+              "<strong>Frontend Framework:</strong> Next.js (App Router) - サーバーコンポーネントによる高速な初期表示を実現。",
+            tech_ui:
+              "<strong>UI Library:</strong> TailwindCSS & Shadcn/UI - 美しく一貫性のあるデザインシステムを構築。",
+            tech_auth:
+              "<strong>Authentication:</strong> OAuth 2.0 (Fitbit Web API) - セキュアなトークン管理と自動リフレッシュ機能。",
+            tech_db:
+              "<strong>Database & Realtime:</strong> Supabase (PostgreSQL) - ランキングのリアルタイム更新（Live Subscription）に使用。",
+            tech_deploy:
+              "<strong>Deployment:</strong> Vercel + Cloudflare - エッジネットワークを活用したグローバル配信。",
+            arch_title: "アーキテクチャのポイント",
+            arch_subtitle: "Fitbit API Rate Limit 対策:",
+            arch_desc:
+              "ユーザー数が増加してもAPI制限に抵触しないよう、独自のキャッシングレイヤーを実装しています。個別のユーザーリクエストごとにAPIを叩くのではなく、サーバーサイドワーカーが定期的にデータを収集・集計し、データベースを更新する「非同期集計アーキテクチャ」を採用しました。",
+          },
           privacy: {
             title: "プライバシーポリシー",
             info_title: "1. 情報の取得",
@@ -184,6 +238,60 @@ i18next.init(
             title: "All Projects",
             desc: "A list of hobby projects built under Studio344.",
             view_project: "View Project →",
+          },
+          portfolio_page: {
+            title: "Studio344 Portfolio",
+            subtitle:
+              "An immersive portfolio site featuring Bento Grid design",
+            view_source: "View Source Code →",
+            features_title: "Core Features",
+            feature1_title: "Vanilla Implementation",
+            feature1_desc:
+              "Built with pure JavaScript and CSS only, without React or Vue. Achieved near-perfect Lighthouse scores with ultra-fast load times.",
+            feature2_title: "Dynamic Aesthetics",
+            feature2_desc:
+              "Linking CSS variables with JS to create a spotlight effect that follows mouse movement and noise textures via SVG filters.",
+            feature3_title: "i18n Support",
+            feature3_desc:
+              "Smooth Japanese/English language switching powered by the i18next library. Designed with global content delivery in mind.",
+            design_title: "Design Concept",
+            design_desc:
+              "Designed with the concept of being modern and futuristic while maintaining information readability. Adopting the trending Bento Grid layout to balance accessibility and visual beauty.",
+          },
+          ucfitness_page: {
+            title: "UCFitness Dashboard",
+            subtitle:
+              "A group fitness tracking platform powered by the Fitbit API",
+            visit_site: "Visit Live Site →",
+            features_title: "Core Features",
+            features_intro:
+              "UCFitness serves as the ultimate social fitness dashboard, offering three core features.",
+            feature1_title: "Real-time Leaderboard",
+            feature1_desc:
+              "Track rankings in real time. Compare steps and activity levels with colleagues and friends on a daily, weekly, and monthly basis.",
+            feature2_title: "Group Battles",
+            feature2_desc:
+              "Join a group and compete in team battles. Compete not just on individual scores, but on the combined totals of your entire team.",
+            feature3_title: "Badge Collection",
+            feature3_desc:
+              "Unlock unique badges by reaching milestones or maintaining streaks. Visualize your achievements.",
+            tech_title: "Tech Stack Detail",
+            tech_intro:
+              "Built with a modern web technology stack for a fast and scalable application.",
+            tech_frontend:
+              "<strong>Frontend Framework:</strong> Next.js (App Router) - Fast initial rendering with server components.",
+            tech_ui:
+              "<strong>UI Library:</strong> TailwindCSS & Shadcn/UI - A beautiful and consistent design system.",
+            tech_auth:
+              "<strong>Authentication:</strong> OAuth 2.0 (Fitbit Web API) - Secure token management with automatic refresh.",
+            tech_db:
+              "<strong>Database & Realtime:</strong> Supabase (PostgreSQL) - Used for real-time leaderboard updates (Live Subscription).",
+            tech_deploy:
+              "<strong>Deployment:</strong> Vercel + Cloudflare - Global delivery via edge networks.",
+            arch_title: "Architecture Highlights",
+            arch_subtitle: "Fitbit API Rate Limit Strategy:",
+            arch_desc:
+              "A custom caching layer is implemented to avoid hitting API limits as user count grows. Instead of making API calls per individual user request, a server-side worker periodically collects and aggregates data, updating the database via an asynchronous aggregation architecture.",
           },
           privacy: {
             title: "Privacy Policy",

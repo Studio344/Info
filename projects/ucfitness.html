@@ -88,8 +88,8 @@
           <span style="color: #fff">UCFitness</span>
         </nav>
 
-        <h1>UCFitness Dashboard</h1>
-        <p style="font-size: 1.2rem; color: #a5b4fc; margin-bottom: 2rem">
+        <h1 data-i18n="ucfitness_page.title">UCFitness Dashboard</h1>
+        <p style="font-size: 1.2rem; color: #a5b4fc; margin-bottom: 2rem" data-i18n="ucfitness_page.subtitle">
           Fitbit
           APIを活用した、グループ対抗フィットネス・トラッキング・プラットフォーム
         </p>
@@ -113,8 +113,8 @@
           </a>
         </div>
 
-        <h2>Core Features</h2>
-        <p>
+        <h2 data-i18n="ucfitness_page.features_title">Core Features</h2>
+        <p data-i18n="ucfitness_page.features_intro">
           UCFitness
           は「究極のソーシャルフィットネスダッシュボード」として、以下の3つのコア機能を提供します。
         </p>
@@ -154,10 +154,10 @@
                 <line x1="6" y1="20" x2="6" y2="14"></line>
               </svg>
             </div>
-            <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem">
+            <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem" data-i18n="ucfitness_page.feature1_title">
               リアルタイムランキング
             </h3>
-            <p style="font-size: 0.9rem; color: #ccc">
+            <p style="font-size: 0.9rem; color: #ccc" data-i18n="ucfitness_page.feature1_desc">
               順位をリアルタイムで追跡。日次、週次、月次で同僚や友人と歩数・活動量を比較できます。
             </p>
           </div>
@@ -189,10 +189,10 @@
                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
               </svg>
             </div>
-            <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem">
+            <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem" data-i18n="ucfitness_page.feature2_title">
               グループバトル
             </h3>
-            <p style="font-size: 0.9rem; color: #ccc">
+            <p style="font-size: 0.9rem; color: #ccc" data-i18n="ucfitness_page.feature2_desc">
               グループに参加してチーム対抗戦。個人のスコアだけでなく、チーム全体の合計値で競い合いましょう。
             </p>
           </div>
@@ -224,47 +224,47 @@
                 ></polyline>
               </svg>
             </div>
-            <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem">
+            <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem" data-i18n="ucfitness_page.feature3_title">
               バッジ獲得
             </h3>
-            <p style="font-size: 0.9rem; color: #ccc">
+            <p style="font-size: 0.9rem; color: #ccc" data-i18n="ucfitness_page.feature3_desc">
               マイルストーン到達や連続記録（ストリーク）でユニークなバッジをアンロック。成果を可視化します。
             </p>
           </div>
         </div>
 
-        <h2>Tech Stack Detail</h2>
+        <h2 data-i18n="ucfitness_page.tech_title">Tech Stack Detail</h2>
         <div style="margin-bottom: 2rem">
-          <p>
+          <p data-i18n="ucfitness_page.tech_intro">
             最新のモダンWeb技術スタックを採用し、高速かつスケーラブルなアプリケーションを構築しました。
           </p>
           <ul style="margin-top: 1rem">
-            <li>
+            <li data-i18n="ucfitness_page.tech_frontend">
               <strong>Frontend Framework:</strong> Next.js (App Router) -
               サーバーコンポーネントによる高速な初期表示を実現。
             </li>
-            <li>
+            <li data-i18n="ucfitness_page.tech_ui">
               <strong>UI Library:</strong> TailwindCSS & Shadcn/UI -
               美しく一貫性のあるデザインシステムを構築。
             </li>
-            <li>
+            <li data-i18n="ucfitness_page.tech_auth">
               <strong>Authentication:</strong> OAuth 2.0 (Fitbit Web API) -
               セキュアなトークン管理と自動リフレッシュ機能。
             </li>
-            <li>
+            <li data-i18n="ucfitness_page.tech_db">
               <strong>Database & Realtime:</strong> Supabase (PostgreSQL) -
               ランキングのリアルタイム更新（Live Subscription）に使用。
             </li>
-            <li>
+            <li data-i18n="ucfitness_page.tech_deploy">
               <strong>Deployment:</strong> Vercel + Cloudflare -
               エッジネットワークを活用したグローバル配信。
             </li>
           </ul>
         </div>
 
-        <h2>Architecture Highlights</h2>
-        <p><strong>Fitbit API Rate Limit 対策:</strong></p>
-        <p>
+        <h2 data-i18n="ucfitness_page.arch_title">Architecture Highlights</h2>
+        <p><strong data-i18n="ucfitness_page.arch_subtitle">Fitbit API Rate Limit 対策:</strong></p>
+        <p data-i18n="ucfitness_page.arch_desc">
           ユーザー数が増加してもAPI制限に抵触しないよう、独自のキャッシングレイヤーを実装しています。個別のユーザーリクエストごとにAPIを叩くのではなく、サーバーサイドワーカーが定期的にデータを収集・集計し、データベースを更新する「非同期集計アーキテクチャ」を採用しました。
         </p>
       </div>
