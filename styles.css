@@ -810,3 +810,147 @@ html {
 .markdown-content li {
   margin-bottom: 0.5rem;
 }
+
+/* ===== About Page - Rich Layout ===== */
+.about-hero {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.about-hero-logo {
+  flex-shrink: 0;
+  width: 140px;
+  height: 140px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.about-hero-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-hero-text h1 {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.about-hero-text .about-tagline {
+  color: #a5b4fc;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.about-section {
+  margin-bottom: 2.5rem;
+}
+
+.about-section h2 {
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.about-section h2 .section-icon {
+  display: inline-flex;
+  width: 28px;
+  height: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(165, 180, 252, 0.1);
+  color: #a5b4fc;
+  flex-shrink: 0;
+}
+
+.about-section p {
+  color: #ccc;
+  line-height: 1.8;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.skill-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.2rem;
+}
+
+.skill-card .skill-label {
+  font-size: 0.8rem;
+  color: #a5b4fc;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.skill-card .skill-items {
+  color: #ccc;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.about-quote {
+  background: rgba(165, 180, 252, 0.05);
+  border-left: 3px solid #a5b4fc;
+  border-radius: 0 12px 12px 0;
+  padding: 1.5rem 2rem;
+  margin-top: 1rem;
+}
+
+.about-quote .quote-text {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  color: #a5b4fc;
+  margin-bottom: 0.5rem;
+}
+
+.about-quote .quote-desc {
+  color: #aaa;
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .about-hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .about-hero-logo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .about-hero-text h1 {
+    font-size: 1.8rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}

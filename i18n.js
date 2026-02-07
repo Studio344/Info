@@ -39,6 +39,7 @@ i18next.init(
           },
           about_page: {
             title: "About Studio344",
+            tagline: "テクノロジーとものづくりが好きな、個人の趣味アカウント。",
             mission_title: "Studio344 とは",
             mission_desc:
               "Studio344は、テクノロジーとものづくりが好きな個人の趣味アカウントです。<br>仕事とは別に、興味のある技術を自由に試したり、個人開発を楽しむための場として運営しています。<br><br>「面白そう」と思ったらまず手を動かす。<br>そんなスタンスで、Webアプリやツールなどを気ままに作っています。",
@@ -48,7 +49,7 @@ i18next.init(
             skills_title: "Technical Skills",
             philosophy_title: "Philosophy",
             philosophy_desc:
-              "「Just Build It.」がモットーです。<br>完璧を目指すより、まず動くものを作ってみる。<br>趣味だからこそ、失敗を気にせず新しいことに挑戦できると思っています。",
+              "完璧を目指すより、まず動くものを作ってみる。<br>趣味だからこそ、失敗を気にせず新しいことに挑戦できると思っています。",
           },
           contact_page: {
             title: "Contact",
@@ -197,7 +198,7 @@ i18next.init(
             "[Disclaimer] This is a personal hobby portfolio. Opinions are my own and do not represent my employer.",
           home: {
             about_content:
-              'Working as an engineer at a global IT company.<br>Outside of work, I enjoy building things as a personal hobby.<br><br>This site serves as a log of my hobby projects and engineering insights.',
+              "Working as an engineer at a global IT company.<br>Outside of work, I enjoy building things as a personal hobby.<br><br>This site serves as a log of my hobby projects and engineering insights.",
             more_about: "More about me →",
             projects_title: "Projects",
             projects_desc: "View Recent Works →",
@@ -209,16 +210,18 @@ i18next.init(
           },
           about_page: {
             title: "About Studio344",
+            tagline:
+              "A personal hobby account for someone who loves technology and building things.",
             mission_title: "What is Studio344?",
             mission_desc:
-              'Studio344 is a personal hobby account for someone who loves technology and building things.<br>It\'s a space where I freely experiment with interesting tech and enjoy personal development, separate from work.<br><br>If something looks fun, I just start building it.<br>With that mindset, I casually create web apps, tools, and whatever else catches my interest.',
+              "Studio344 is a personal hobby account for someone who loves technology and building things.<br>It's a space where I freely experiment with interesting tech and enjoy personal development, separate from work.<br><br>If something looks fun, I just start building it.<br>With that mindset, I casually create web apps, tools, and whatever else catches my interest.",
             profile_title: "Profile",
             profile_desc:
               "Working as an engineer at a global IT company.<br><br>In my free time, I tinker with technologies that catch my eye (React, Next.js, WebGL, etc.)<br>and build small tools to solve everyday inconveniences.",
             skills_title: "Technical Skills",
             philosophy_title: "Philosophy",
             philosophy_desc:
-              'My motto is "Just Build It."<br>Rather than aiming for perfection, I prefer to just make something that works first.<br>Because it\'s a hobby, I can challenge new things without worrying about failure.',
+              "Rather than aiming for perfection, I prefer to just make something that works first.<br>Because it's a hobby, I can challenge new things without worrying about failure.",
           },
           contact_page: {
             title: "Contact",
@@ -241,8 +244,7 @@ i18next.init(
           },
           portfolio_page: {
             title: "Studio344 Portfolio",
-            subtitle:
-              "An immersive portfolio site featuring Bento Grid design",
+            subtitle: "An immersive portfolio site featuring Bento Grid design",
             view_source: "View Source Code →",
             features_title: "Core Features",
             feature1_title: "Vanilla Implementation",

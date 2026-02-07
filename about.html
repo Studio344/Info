@@ -84,35 +84,149 @@
 
     <main class="bento-grid">
       <div class="bento-card text-content-card">
-        <h1 data-i18n="about_page.title">About Studio344</h1>
+        <!-- ヒーローセクション: ロゴ + タイトル -->
+        <div class="about-hero">
+          <div class="about-hero-logo">
+            <img
+              src="assets/logo-white.png"
+              alt="Studio344 Logo"
+              width="140"
+              height="140"
+            />
+          </div>
+          <div class="about-hero-text">
+            <h1 data-i18n="about_page.title">About Studio344</h1>
+            <p class="about-tagline" data-i18n="about_page.tagline">
+              テクノロジーとものづくりが好きな、個人の趣味アカウント。
+            </p>
+          </div>
+        </div>
 
-        <h2 data-i18n="about_page.mission_title">Studio344 とは</h2>
-        <p data-i18n="about_page.mission_desc">
-          Studio344は、テクノロジーとものづくりが好きな個人の趣味アカウントです。仕事とは別に、興味のある技術を自由に試したり、個人開発を楽しむための場として運営しています。「面白そう」と思ったらまず手を動かす。そんなスタンスで、Webアプリやツールなどを気ままに作っています。
-        </p>
+        <!-- Studio344 とは -->
+        <div class="about-section">
+          <h2>
+            <span class="section-icon">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 16v-4" />
+                <path d="M12 8h.01" />
+              </svg>
+            </span>
+            <span data-i18n="about_page.mission_title">Studio344 とは</span>
+          </h2>
+          <p data-i18n="about_page.mission_desc">
+            Studio344は、テクノロジーとものづくりが好きな個人の趣味アカウントです。仕事とは別に、興味のある技術を自由に試したり、個人開発を楽しむための場として運営しています。「面白そう」と思ったらまず手を動かす。そんなスタンスで、Webアプリやツールなどを気ままに作っています。
+          </p>
+        </div>
 
-        <h2 data-i18n="about_page.profile_title">Profile</h2>
-        <p data-i18n="about_page.profile_desc">
-          某グローバルIT企業でエンジニアとして勤務。業務外の時間で、気になった技術（React, Next.js, WebGLなど）を触ったり、日常のちょっとした不便を解消するツールを作ったりしています。
-        </p>
+        <!-- Profile -->
+        <div class="about-section">
+          <h2>
+            <span class="section-icon">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+            </span>
+            <span data-i18n="about_page.profile_title">Profile</span>
+          </h2>
+          <p data-i18n="about_page.profile_desc">
+            某グローバルIT企業でエンジニアとして勤務。業務外の時間で、気になった技術（React,
+            Next.js,
+            WebGLなど）を触ったり、日常のちょっとした不便を解消するツールを作ったりしています。
+          </p>
+        </div>
 
-        <h3 data-i18n="about_page.skills_title">Technical Skills</h3>
-        <ul>
-          <li>
-            <strong>Languages:</strong> JavaScript/TypeScript, Python, Java, Go
-          </li>
-          <li>
-            <strong>Frontend:</strong> React, Next.js, Vue.js, TailwindCSS,
-            GSAP, Three.js
-          </li>
-          <li><strong>Backend:</strong> Node.js, Express, Supabase</li>
-          <li><strong>Tools:</strong> Docker, Git</li>
-        </ul>
+        <!-- Technical Skills -->
+        <div class="about-section">
+          <h2>
+            <span class="section-icon">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="16 18 22 12 16 6" />
+                <polyline points="8 6 2 12 8 18" />
+              </svg>
+            </span>
+            <span data-i18n="about_page.skills_title">Technical Skills</span>
+          </h2>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <div class="skill-label">Languages</div>
+              <div class="skill-items">
+                JavaScript / TypeScript, Python, Java, Go
+              </div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-label">Frontend</div>
+              <div class="skill-items">
+                React, Next.js, Vue.js, TailwindCSS, GSAP, Three.js
+              </div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-label">Backend</div>
+              <div class="skill-items">Node.js, Express, Supabase</div>
+            </div>
+            <div class="skill-card">
+              <div class="skill-label">Tools</div>
+              <div class="skill-items">Docker, Git, Vercel, Cloudflare</div>
+            </div>
+          </div>
+        </div>
 
-        <h2 data-i18n="about_page.philosophy_title">Philosophy</h2>
-        <p data-i18n="about_page.philosophy_desc">
-          「Just Build It.」がモットー。完璧を目指すより、まず動くものを作ってみる。趣味だからこそ、失敗を気にせず新しいことに挑戦できると思っています。
-        </p>
+        <!-- Philosophy -->
+        <div class="about-section">
+          <h2>
+            <span class="section-icon">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"
+                />
+              </svg>
+            </span>
+            <span data-i18n="about_page.philosophy_title">Philosophy</span>
+          </h2>
+          <div class="about-quote">
+            <div class="quote-text">"Just Build It."</div>
+            <p class="quote-desc" data-i18n="about_page.philosophy_desc">
+              完璧を目指すより、まず動くものを作ってみる。趣味だからこそ、失敗を気にせず新しいことに挑戦できると思っています。
+            </p>
+          </div>
+        </div>
       </div>
     </main>
 
