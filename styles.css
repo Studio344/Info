@@ -683,32 +683,38 @@ html {
 
 /* GitHub */
 .sns-github {
-  background: linear-gradient(135deg, #2b3137 0%, #0d1117 100%);
-  border: 1px solid rgba(110, 118, 129, 0.4);
-  box-shadow: 0 4px 20px rgba(13, 17, 23, 0.4);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(110, 118, 129, 0.25);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 .sns-github:hover {
-  box-shadow: 0 8px 32px rgba(110, 118, 129, 0.3), 0 0 20px rgba(110, 118, 129, 0.15);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(110, 118, 129, 0.45);
+  box-shadow: 0 6px 24px rgba(110, 118, 129, 0.15);
 }
 
 /* X (Twitter) */
 .sns-x {
-  background: linear-gradient(135deg, #1a1a2e 0%, #000000 100%);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 .sns-x:hover {
-  box-shadow: 0 8px 32px rgba(29, 161, 242, 0.2), 0 0 20px rgba(29, 161, 242, 0.1);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(29, 161, 242, 0.3);
+  box-shadow: 0 6px 24px rgba(29, 161, 242, 0.1);
 }
 
 /* Instagram */
 .sns-instagram {
-  background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 20px rgba(131, 58, 180, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(200, 100, 180, 0.2);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }
 .sns-instagram:hover {
-  box-shadow: 0 8px 32px rgba(253, 29, 29, 0.3), 0 0 20px rgba(252, 176, 69, 0.2);
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(200, 100, 180, 0.4);
+  box-shadow: 0 6px 24px rgba(200, 100, 180, 0.12);
 }
 
 @media (max-width: 600px) {
