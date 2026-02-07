@@ -377,15 +377,13 @@ html {
   }
 }
 
-/* Skill Badges */
+/* Skill Badges (icon-only) */
 .skill-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  padding: 0.4rem 0.85rem;
+  justify-content: center;
+  padding: 0.45rem;
   border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 500;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid color-mix(in srgb, var(--badge-color) 40%, transparent);
   color: var(--badge-color);

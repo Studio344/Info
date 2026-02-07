@@ -43,16 +43,24 @@ document.addEventListener("DOMContentLoaded", () => {
   if (statProjects) {
     fetch("projects.json")
       .then((r) => r.json())
-      .then((data) => { statProjects.textContent = data.length; })
-      .catch(() => { statProjects.textContent = "-"; });
+      .then((data) => {
+        statProjects.textContent = data.length;
+      })
+      .catch(() => {
+        statProjects.textContent = "-";
+      });
   }
 
   // Blog Posts: assets/posts/list.jsonからカウント
   if (statPosts) {
     fetch("assets/posts/list.json")
       .then((r) => r.json())
-      .then((data) => { statPosts.textContent = data.length; })
-      .catch(() => { statPosts.textContent = "-"; });
+      .then((data) => {
+        statPosts.textContent = data.length;
+      })
+      .catch(() => {
+        statPosts.textContent = "-";
+      });
   }
 
   // --- 3. Projects Loading ---
