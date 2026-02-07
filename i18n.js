@@ -67,6 +67,7 @@ i18next.init(
           projects_page: {
             title: "All Projects",
             desc: "Studio344 で開発・運用しているプロジェクト一覧です。",
+            view_project: "詳細を見る →",
           },
           privacy: {
             title: "プライバシーポリシー",
@@ -182,6 +183,7 @@ i18next.init(
           projects_page: {
             title: "All Projects",
             desc: "A list of projects developed and maintained by Studio344.",
+            view_project: "View Project →",
           },
           privacy: {
             title: "Privacy Policy",

@@ -34,23 +34,42 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((projects) => {
       const container = document.getElementById("projects-wrapper");
 
-      if (container) {
-        container.innerHTML = ""; // Clear whitespace/comments to prevent layout glitches
+      // アイコンマップ（共通）
+      const iconMap = {
+        code: `<svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
+        pulse: `<svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+      };
+
+      // 言語対応のプロジェクトカード描画関数
+      function renderProjects(animate) {
+        if (!container) return;
+        const lang =
+          typeof i18next !== "undefined" && i18next.language
+            ? i18next.language
+            : "ja";
+        const viewText =
+          typeof i18next !== "undefined"
+            ? i18next.t("projects_page.view_project")
+            : "View Project →";
+
+        container.innerHTML = "";
 
         projects.forEach((project, i) => {
-          const card = document.createElement("div");
-          card.className = "bento-card project-card"; // Apply bento styling
+          const title =
+            lang === "ja" && project.title_ja
+              ? project.title_ja
+              : project.title;
+          const desc =
+            lang === "ja" && project.description_ja
+              ? project.description_ja
+              : project.description;
 
-          // Add staggered animation delay if needed
+          const card = document.createElement("div");
+          card.className = "bento-card project-card";
           card.style.animationDelay = `${i * 0.1}s`;
 
-          // プロジェクトごとの視覚スタイルとアイコンをJSONから取得
-          const iconMap = {
-            code: `<svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,
-            pulse: `<svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
-          };
-          let visualClass = project.visualClass || "visual-portfolio";
-          let iconSvg = iconMap[project.icon] || iconMap["code"];
+          const visualClass = project.visualClass || "visual-portfolio";
+          const iconSvg = iconMap[project.icon] || iconMap["code"];
 
           card.innerHTML = `
             <div class="card-visual-header ${visualClass}">
@@ -59,23 +78,33 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="card-content-body">
                 <div>
-                    <h3>${project.title}</h3>
-                    <p>${project.description}</p>
+                    <h3>${title}</h3>
+                    <p>${desc}</p>
                 </div>
-                <a href="${project.link}" style="margin-top: 1rem; align-self: flex-start;">View Project &rarr;</a>
+                <a href="${project.link}" style="margin-top: 1rem; align-self: flex-start;">${viewText}</a>
             </div>
             `;
           container.appendChild(card);
         });
 
-        // Animate entry with GSAP
-        gsap.from(".bento-card", {
-          y: 50,
-          opacity: 0,
-          duration: 0.8,
-          stagger: 0.1,
-          ease: "power3.out",
-        });
+        // アニメーション
+        if (animate && typeof gsap !== "undefined") {
+          gsap.from(".project-card", {
+            y: animate === "initial" ? 50 : 30,
+            opacity: 0,
+            duration: animate === "initial" ? 0.8 : 0.5,
+            stagger: animate === "initial" ? 0.1 : 0.08,
+            ease: "power3.out",
+          });
+        }
+      }
+
+      // 初回描画
+      renderProjects("initial");
+
+      // 言語切替時にプロジェクトカードを再描画
+      if (typeof i18next !== "undefined") {
+        i18next.on("languageChanged", () => renderProjects("switch"));
       }
 
       // --- Reliable Height Equalizer for About & Projects ---
@@ -114,7 +143,9 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       // Observe the container (if it changes width, text wraps, height changes)
-      resizeObserver.observe(container);
+      if (container) {
+        resizeObserver.observe(container);
+      }
       resizeObserver.observe(document.body); // Fallback for window resize
 
       // 4. Window Resize (Legacy fallback)

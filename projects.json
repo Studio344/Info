@@ -1,14 +1,18 @@
 [
   {
     "title": "Portfolio",
+    "title_ja": "ポートフォリオ",
     "description": "Simple portfolio site. Built with HTML, CSS, JS and modern UI tools like GSAP and particles.js.",
+    "description_ja": "HTML、CSS、JavaScript、GSAPなどのモダンUIツールで構築したシンプルなポートフォリオサイト。",
     "link": "projects/portfolio.html",
     "visualClass": "visual-portfolio",
     "icon": "code"
   },
   {
     "title": "UCFitness",
+    "title_ja": "UCFitness",
     "description": "Fitness tracking platform with Fitbit integration, group leaderboards, and detailed activity graphs.",
+    "description_ja": "Fitbit連携、グループリーダーボード、詳細なアクティビティグラフを備えたフィットネス追跡プラットフォーム。",
     "link": "projects/ucfitness.html",
     "visualClass": "visual-ucfitness",
     "icon": "pulse"
