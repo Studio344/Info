@@ -344,17 +344,16 @@ html {
   /* Fixed height for perfect circle */
   border-radius: 50%;
   /* Make it round */
-  object-fit: contain;
-  /* Or cover, depending on the image. Contain is safer for logos. */
-  background: rgba(0, 0, 0, 0.2);
-  /* Subtle backing if transparent */
-  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
-  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.5s ease;
 }
 
 .hero-logo:hover {
   transform: scale(1.05) rotate(5deg);
-  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.5));
+  box-shadow: 0 8px 36px rgba(0, 0, 0, 0.5);
 }
 
 /* Scroll Indicator */
