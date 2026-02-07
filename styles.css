@@ -377,11 +377,7 @@ html {
   }
 }
 
-/* Skills Badge Card */
-.skills-badge-card {
-  background: rgba(255, 255, 255, 0.03);
-}
-
+/* Skill Badges */
 .skill-badge {
   display: inline-flex;
   align-items: center;
@@ -990,14 +986,9 @@ html {
 }
 
 @media (max-width: 600px) {
-  .stat-card,
   .project-card,
   .contact-card {
     grid-column: 1 / -1 !important;
-  }
-
-  .skills-badge-card {
-    padding: 1rem !important;
   }
 
   .hero-tagline {
