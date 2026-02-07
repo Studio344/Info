@@ -95,6 +95,8 @@ async function loadBlogPosts(langOverride) {
                 return {
                     id: post.id,
                     date: post.date,
+                    emoji: post.emoji || '📝',
+                    tags: post.tags || [],
                     title: extractTitle(mdText),
                     excerpt: extractExcerpt(mdText)
                 };
@@ -119,13 +121,19 @@ async function loadBlogPosts(langOverride) {
             card.className = 'blog-preview-card';
             card.style.animationDelay = `${index * 0.08}s`;
 
+            const tagsHtml = post.tags.map(t => `<span class="blog-preview-tag">${t}</span>`).join('');
+
             card.innerHTML = `
                 <div class="blog-preview-header">
+                    <span class="blog-preview-emoji">${post.emoji}</span>
                     <span class="blog-preview-date">${post.date}</span>
                 </div>
                 <h3 class="blog-preview-title">${post.title}</h3>
                 <p class="blog-preview-excerpt">${post.excerpt}</p>
-                <span class="blog-preview-readmore">${readMoreText}</span>
+                <div class="blog-preview-footer">
+                    <div class="blog-preview-tags">${tagsHtml}</div>
+                    <span class="blog-preview-readmore">${readMoreText}</span>
+                </div>
             `;
             container.appendChild(card);
         });

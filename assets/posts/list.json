@@ -2,26 +2,36 @@
     {
         "id": "gsap-portfolio",
         "date": "2026.02.07",
-        "baseFilename": "2026-02-07-gsap-portfolio"
+        "baseFilename": "2026-02-07-gsap-portfolio",
+        "emoji": "✨",
+        "tags": ["GSAP", "CSS Grid", "GitHub Pages"]
     },
     {
         "id": "renewal",
         "date": "2026.02.04",
-        "baseFilename": "2026-02-04-renewal"
+        "baseFilename": "2026-02-04-renewal",
+        "emoji": "🔄",
+        "tags": ["Design", "Architecture"]
     },
     {
         "id": "i18n-multilingual",
         "date": "2026.02.01",
-        "baseFilename": "2026-02-01-i18n-multilingual"
+        "baseFilename": "2026-02-01-i18n-multilingual",
+        "emoji": "🌍",
+        "tags": ["i18next", "JA/EN"]
     },
     {
         "id": "nextjs-supabase-auth",
         "date": "2026.01.27",
-        "baseFilename": "2026-01-27-nextjs-supabase-auth"
+        "baseFilename": "2026-01-27-nextjs-supabase-auth",
+        "emoji": "🔐",
+        "tags": ["Next.js", "Supabase", "OAuth"]
     },
     {
         "id": "fitbit",
         "date": "2026.01.20",
-        "baseFilename": "2026-01-20-fitbit"
+        "baseFilename": "2026-01-20-fitbit",
+        "emoji": "⌚",
+        "tags": ["Fitbit API", "Rate Limit"]
     }
 ]
