@@ -90,7 +90,7 @@ i18next.init(
               "「モダンで未来的、かつ情報の視認性を損なわない」をコンセプトに設計されました。近年トレンドのBento Gridを採用し、アクセスしやすさとビジュアルの美しさを両立しています。",
           },
           ucfitness_page: {
-            title: "UCFitness Dashboard",
+            title: "UCFitness",
             subtitle:
               "Fitbit APIを活用した、グループ対抗フィットネス・トラッキング・プラットフォーム",
             visit_site: "Visit Live Site →",
@@ -261,7 +261,7 @@ i18next.init(
               "Designed with the concept of being modern and futuristic while maintaining information readability. Adopting the trending Bento Grid layout to balance accessibility and visual beauty.",
           },
           ucfitness_page: {
-            title: "UCFitness Dashboard",
+            title: "UCFitness",
             subtitle:
               "A group fitness tracking platform powered by the Fitbit API",
             visit_site: "Visit Live Site →",
