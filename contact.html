@@ -134,33 +134,6 @@
         </div>
 
         <div style="margin-top: 3rem">
-          <h2 data-i18n="contact_page.email">Email</h2>
-          <p data-i18n="contact_page.email_desc">
-            直接メールでのお問い合わせはこちらへお願いいたします。
-          </p>
-          <a
-            id="email-link"
-            style="font-size: 1.2rem; font-weight: bold; cursor: pointer"
-          ></a>
-          <p
-            style="font-size: 0.8rem; margin-top: 0.5rem"
-            data-i18n="contact_page.email_note"
-          ></p>
-          <script>
-            // メールアドレスの難読化（スパムボット対策）
-            (function () {
-              var u = "Studio344.net";
-              var d = "gmail.com";
-              var el = document.getElementById("email-link");
-              if (el) {
-                el.href = "mail" + "to:" + u + "@" + d;
-                el.textContent = u + "@" + d;
-              }
-            })();
-          </script>
-        </div>
-
-        <div style="margin-top: 3rem">
           <h2 data-i18n="contact_page.social_title">Social Media</h2>
           <div class="contact-links" style="margin-top: 1rem">
             <a
