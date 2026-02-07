@@ -611,79 +611,115 @@ html {
   gap: 1rem;
 }
 
-.contact-links .contact-item {
-  margin-left: 1.5rem;
-  color: var(--text-primary);
+/* --- SNS Cards (Contact Page) --- */
+.sns-cards-wrapper {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+}
+
+.sns-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 2rem 2.2rem;
+  border-radius: 20px;
   text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: 600;
+  color: #fff;
+  min-width: 150px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sns-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sns-card:hover {
+  transform: translateY(-6px) scale(1.03);
+}
+
+.sns-card:hover::before {
+  opacity: 1;
+}
+
+.sns-icon-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  transition: color 0.2s;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
-.contact-links .contact-item:hover {
-  color: #fff;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+.sns-card:hover .sns-icon-circle {
+  transform: scale(1.12) rotate(-5deg);
+  background: rgba(255, 255, 255, 0.25);
 }
 
-/* --- Contact Form --- */
-.contact-form .form-group {
-  margin-bottom: 1.2rem;
+.sns-label {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
-.contact-form label {
-  display: block;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #ccc;
-  margin-bottom: 0.4rem;
+.sns-handle {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  font-weight: 400;
 }
 
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  color: #ededed;
-  font-size: 0.95rem;
-  font-family: inherit;
-  transition: border-color 0.2s ease, background 0.2s ease;
-  box-sizing: border-box;
+/* GitHub */
+.sns-github {
+  background: linear-gradient(135deg, #2b3137 0%, #0d1117 100%);
+  border: 1px solid rgba(110, 118, 129, 0.4);
+  box-shadow: 0 4px 20px rgba(13, 17, 23, 0.4);
+}
+.sns-github:hover {
+  box-shadow: 0 8px 32px rgba(110, 118, 129, 0.3), 0 0 20px rgba(110, 118, 129, 0.15);
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: rgba(99, 102, 241, 0.5);
-  background: rgba(255, 255, 255, 0.08);
+/* X (Twitter) */
+.sns-x {
+  background: linear-gradient(135deg, #1a1a2e 0%, #000000 100%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+.sns-x:hover {
+  box-shadow: 0 8px 32px rgba(29, 161, 242, 0.2), 0 0 20px rgba(29, 161, 242, 0.1);
 }
 
-.contact-form textarea {
-  resize: vertical;
-  min-height: 120px;
+/* Instagram */
+.sns-instagram {
+  background: linear-gradient(135deg, #833ab4 0%, #fd1d1d 50%, #fcb045 100%);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px rgba(131, 58, 180, 0.3);
+}
+.sns-instagram:hover {
+  box-shadow: 0 8px 32px rgba(253, 29, 29, 0.3), 0 0 20px rgba(252, 176, 69, 0.2);
 }
 
-.form-submit-btn {
-  display: inline-block;
-  padding: 0.75rem 2rem;
-  background: rgba(99, 102, 241, 0.2);
-  border: 1px solid rgba(99, 102, 241, 0.3);
-  border-radius: 12px;
-  color: #a5b4fc;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-}
-
-.form-submit-btn:hover {
-  background: rgba(99, 102, 241, 0.35);
-  border-color: rgba(99, 102, 241, 0.5);
-  transform: translateY(-1px);
+@media (max-width: 600px) {
+  .sns-cards-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+  .sns-card {
+    width: 100%;
+    max-width: 280px;
+  }
 }
 
 /* Page Footer */
