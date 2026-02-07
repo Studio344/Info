@@ -271,8 +271,8 @@ html {
 }
 
 .card-content-body {
-  padding: 1.5rem 2rem;
-  /* Standardized side padding (2rem) */
+  padding: 0.8rem 1.5rem;
+  /* Standardized side padding */
   flex: 1;
   display: flex;
   flex-direction: column;
