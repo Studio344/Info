@@ -37,48 +37,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(typeWriter, 1000);
   }
 
-  // --- 3. 3D Tilt Effect ---
-  // Exposed globally so script.js can call it after loading dynamic content
+  // --- 3. 3D Tilt Effect (現在無効) ---
   window.initTilt = () => {
-    /*
-    // Disabled by user request (Phase 2 reverted)
-    const cards = document.querySelectorAll(".bento-card");
-    const maxRotate = 2; // degrees
-
-    cards.forEach(card => {
-      // Avoid double-binding
-      if (card.dataset.tiltInitialized) return;
-      card.dataset.tiltInitialized = "true";
-
-      card.addEventListener("mousemove", (e) => {
-        const rect = card.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-
-        // Mouse relative to card center
-        const mouseX = e.clientX - centerX;
-        const mouseY = e.clientY - centerY;
-
-        // Calculate rotation
-        // Rotate X (up/down tilt) depends on Y position (if mouse is top, tilt up)
-        // If mouse is at top (negative Y), we want positive RotateX? No, standard CSS rotateX:
-        // Positive rotateX tips the top away (bottom towards viewer).
-        // Negative rotateX tips the top towards viewer.
-        // So if mouse is top (negative Y), we want negative rotateX.
-        const rotateX = (mouseY / (rect.height / 2)) * -maxRotate;
-        const rotateY = (mouseX / (rect.width / 2)) * maxRotate;
-
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.01, 1.01, 1.01)`;
-
-        // Optional: Update internal glare if we want specific glare logic here
-        // But styles.css handles glare via mouse-x/y on body, so it works globally.
-      });
-
-      card.addEventListener("mouseleave", () => {
-        card.style.transform = "";
-      });
-    });
-    */
+    // 将来的にGSAPベースのチルトエフェクトを再実装予定
   };
 
   // --- 4. Dynamic Copyright ---
@@ -123,5 +84,5 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Run initially for static content
-  // initTilt(); // Disabled by user request
+  // initTilt();
 });

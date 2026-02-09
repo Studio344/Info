@@ -1,4 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;900&display=swap');
+/* Google Fonts は各HTMLの <link> タグで読み込み (パフォーマンス最適化) */
+
+/* ===== Skip Link (A11y) ===== */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 10000;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-glow);
+  color: #fff;
+  border-radius: 0 0 8px 8px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ===== Footer Link ===== */
+.footer-link {
+  color: #999;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #ccc;
+}
+
+/* ===== Focus Visible ===== */
+:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
 
 :root {
   --bg-color: #030303;

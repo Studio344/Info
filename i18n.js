@@ -40,7 +40,11 @@ i18next
     updateContent();
   });
 
-i18next.on("languageChanged", () => updateContent());
+i18next.on("languageChanged", (lng) => {
+  // HTMLのlang属性を更新 (SEO + スクリーンリーダー対応)
+  document.documentElement.lang = lng.substring(0, 2);
+  updateContent();
+});
 
 function updateContent() {
   document.querySelectorAll("[data-i18n]").forEach((el) => {
