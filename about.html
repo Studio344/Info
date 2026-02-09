@@ -1,273 +1,194 @@
 <!doctype html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>About - Studio344</title>
-    <meta
-      name="description"
-      content="Studio344のプロフィール。趣味で個人開発を楽しむエンジニアのポートフォリオ。"
-    />
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
-      crossorigin="anonymous"
-    ></script>
-    <meta property="og:title" content="About - Studio344" />
-    <meta property="og:description" content="Studio344のプロフィール。趣味で個人開発を楽しむエンジニアのポートフォリオ。" />
-    <meta property="og:image" content="https://studio344.net/assets/logo-banner-black.png" />
-    <meta property="og:url" content="https://studio344.net/about.html" />
-    <meta property="og:type" content="website" />
-    <link rel="canonical" href="https://studio344.net/about.html" />
-    <link rel="icon" type="image/png" href="assets/logo-black.png" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  </head>
-  <body>
-    <div class="aurora-container">
-      <div class="aurora-orb orb-1"></div>
-      <div class="aurora-orb orb-2"></div>
-      <div class="aurora-orb orb-3"></div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="view-transition" content="same-origin" />
+  <title>About - Studio344</title>
+  <meta name="description" content="Studio344のプロフィール。趣味で個人開発を楽しむエンジニアのポートフォリオ。" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
+    crossorigin="anonymous"></script>
+  <meta property="og:title" content="About - Studio344" />
+  <meta property="og:description" content="Studio344のプロフィール。趣味で個人開発を楽しむエンジニアのポートフォリオ。" />
+  <meta property="og:image" content="https://studio344.net/assets/logo-banner-black.png" />
+  <meta property="og:url" content="https://studio344.net/about.html" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://studio344.net/about.html" />
+  <link rel="icon" type="image/png" href="assets/logo-black.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+
+<body>
+  <div class="aurora-container">
+    <div class="aurora-orb orb-1"></div>
+    <div class="aurora-orb orb-2"></div>
+    <div class="aurora-orb orb-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+  <div class="noise-overlay"></div>
+  <div class="spotlight-overlay"></div>
+
+  <header class="header">
+    <div class="logo">
+      <a href="index.html" style="color: white; text-decoration: none">Studio344</a>
     </div>
-    <div class="grid-overlay"></div>
-    <div class="noise-overlay"></div>
-    <div class="spotlight-overlay"></div>
-
-    <header class="header">
-      <div class="logo">
-        <a href="index.html" style="color: white; text-decoration: none"
-          >Studio344</a
-        >
-      </div>
-      <button class="hamburger" aria-label="メニュー" aria-expanded="false">
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <line x1="3" y1="6" x2="21" y2="6" />
-          <line x1="3" y1="12" x2="21" y2="12" />
-          <line x1="3" y1="18" x2="21" y2="18" />
+    <button class="hamburger" aria-label="メニュー" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+    <nav class="nav-menu">
+      <a href="about.html" class="nav-btn" data-i18n="nav.about">About</a>
+      <a href="blog.html" class="nav-btn" data-i18n="nav.blog">Blog</a>
+      <a href="projects.html" class="nav-btn" data-i18n="nav.projects">Projects</a>
+      <a href="contact.html" class="nav-btn" data-i18n="nav.contact">Contact</a>
+      <button id="lang-toggle" class="nav-btn">EN</button>
+      <a href="https://github.com/Studio344" target="_blank" class="nav-icon" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path
+            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+          </path>
         </svg>
-      </button>
-      <nav class="nav-menu">
-        <a href="about.html" class="nav-btn" data-i18n="nav.about">About</a>
-        <a href="blog.html" class="nav-btn" data-i18n="nav.blog">Blog</a>
-        <a href="projects.html" class="nav-btn" data-i18n="nav.projects"
-          >Projects</a
-        >
-        <a href="contact.html" class="nav-btn" data-i18n="nav.contact"
-          >Contact</a
-        >
-        <button id="lang-toggle" class="nav-btn">EN</button>
-        <a
-          href="https://github.com/Studio344"
-          target="_blank"
-          class="nav-icon"
-          aria-label="GitHub"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
-            stroke="currentColor"
-            stroke-width="2"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path
-              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-            ></path>
-          </svg>
-        </a>
-      </nav>
-    </header>
-    <div class="nav-menu-overlay"></div>
+      </a>
+    </nav>
+  </header>
+  <div class="nav-menu-overlay"></div>
 
-    <main class="bento-grid">
-      <div class="bento-card text-content-card">
-        <!-- ヒーローセクション: ロゴ + タイトル -->
-        <div class="about-hero">
-          <div class="about-hero-logo">
-            <img
-              src="assets/logo-black.png"
-              alt="Studio344 Logo"
-              width="140"
-              height="140"
-            />
-          </div>
-          <div class="about-hero-text">
-            <h1 data-i18n="about_page.title">About Studio344</h1>
-            <p class="about-tagline" data-i18n="about_page.tagline">
-              テクノロジーとものづくりが好きな、個人の趣味アカウント。
-            </p>
-          </div>
+  <main class="bento-grid">
+    <div class="bento-card text-content-card">
+      <!-- ヒーローセクション: ロゴ + タイトル -->
+      <div class="about-hero">
+        <div class="about-hero-logo">
+          <img src="assets/logo-black.png" alt="Studio344 Logo" width="140" height="140" />
         </div>
-
-        <!-- Studio344 とは -->
-        <div class="about-section">
-          <h2>
-            <span class="section-icon">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 16v-4" />
-                <path d="M12 8h.01" />
-              </svg>
-            </span>
-            <span data-i18n="about_page.mission_title">Studio344 とは</span>
-          </h2>
-          <p data-i18n="about_page.mission_desc">
-            Studio344は、テクノロジーとものづくりが好きな個人の趣味アカウントです。仕事とは別に、興味のある技術を自由に試したり、個人開発を楽しむための場として運営しています。「面白そう」と思ったらまず手を動かす。そんなスタンスで、Webアプリやツールなどを気ままに作っています。
+        <div class="about-hero-text">
+          <h1 data-i18n="about_page.title">About Studio344</h1>
+          <p class="about-tagline" data-i18n="about_page.tagline">
+            テクノロジーとものづくりが好きな、個人の趣味アカウント。
           </p>
         </div>
+      </div>
 
-        <!-- Profile -->
-        <div class="about-section">
-          <h2>
-            <span class="section-icon">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-                <circle cx="12" cy="7" r="4" />
-              </svg>
-            </span>
-            <span data-i18n="about_page.profile_title">Profile</span>
-          </h2>
-          <p data-i18n="about_page.profile_desc">
-            某グローバルIT企業でエンジニアとして勤務。業務外の時間で、気になった技術（React,
-            Next.js,
-            WebGLなど）を触ったり、日常のちょっとした不便を解消するツールを作ったりしています。
-          </p>
-        </div>
+      <!-- Studio344 とは -->
+      <div class="about-section">
+        <h2>
+          <span class="section-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
+          </span>
+          <span data-i18n="about_page.mission_title">Studio344 とは</span>
+        </h2>
+        <p data-i18n="about_page.mission_desc">
+          Studio344は、テクノロジーとものづくりが好きな個人の趣味アカウントです。仕事とは別に、興味のある技術を自由に試したり、個人開発を楽しむための場として運営しています。「面白そう」と思ったらまず手を動かす。そんなスタンスで、Webアプリやツールなどを気ままに作っています。
+        </p>
+      </div>
 
-        <!-- Technical Skills -->
-        <div class="about-section">
-          <h2>
-            <span class="section-icon">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="16 18 22 12 16 6" />
-                <polyline points="8 6 2 12 8 18" />
-              </svg>
-            </span>
-            <span data-i18n="about_page.skills_title">Technical Skills</span>
-          </h2>
-          <div class="skills-grid">
-            <div class="skill-card">
-              <div class="skill-label">Languages</div>
-              <div class="skill-items">
-                JavaScript / TypeScript, Python, Java, Go
-              </div>
-            </div>
-            <div class="skill-card">
-              <div class="skill-label">Frontend</div>
-              <div class="skill-items">
-                React, Next.js, Vue.js, TailwindCSS, GSAP, Three.js
-              </div>
-            </div>
-            <div class="skill-card">
-              <div class="skill-label">Backend</div>
-              <div class="skill-items">Node.js, Express, Supabase</div>
-            </div>
-            <div class="skill-card">
-              <div class="skill-label">Tools</div>
-              <div class="skill-items">Docker, Git, Vercel, Cloudflare</div>
+      <!-- Profile -->
+      <div class="about-section">
+        <h2>
+          <span class="section-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+          </span>
+          <span data-i18n="about_page.profile_title">Profile</span>
+        </h2>
+        <p data-i18n="about_page.profile_desc">
+          某グローバルIT企業でエンジニアとして勤務。業務外の時間で、気になった技術（React,
+          Next.js,
+          WebGLなど）を触ったり、日常のちょっとした不便を解消するツールを作ったりしています。
+        </p>
+      </div>
+
+      <!-- Technical Skills -->
+      <div class="about-section">
+        <h2>
+          <span class="section-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+          </span>
+          <span data-i18n="about_page.skills_title">Technical Skills</span>
+        </h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-label">Languages</div>
+            <div class="skill-items">
+              JavaScript / TypeScript, Python, Java, Go
             </div>
           </div>
-        </div>
-
-        <!-- Philosophy -->
-        <div class="about-section">
-          <h2>
-            <span class="section-icon">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path
-                  d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"
-                />
-              </svg>
-            </span>
-            <span data-i18n="about_page.philosophy_title">Philosophy</span>
-          </h2>
-          <div class="about-quote">
-            <div class="quote-text">"Just Build It."</div>
-            <p class="quote-desc" data-i18n="about_page.philosophy_desc">
-              完璧を目指すより、まず動くものを作ってみる。趣味だからこそ、失敗を気にせず新しいことに挑戦できると思っています。
-            </p>
+          <div class="skill-card">
+            <div class="skill-label">Frontend</div>
+            <div class="skill-items">
+              React, Next.js, Vue.js, TailwindCSS, GSAP, Three.js
+            </div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-label">Backend</div>
+            <div class="skill-items">Node.js, Express, Supabase</div>
+          </div>
+          <div class="skill-card">
+            <div class="skill-label">Tools</div>
+            <div class="skill-items">Docker, Git, Vercel, Cloudflare</div>
           </div>
         </div>
       </div>
-    </main>
 
-    <footer class="site-footer">
-      <p>&copy; 2026 Studio344</p>
-      <div
-        style="
+      <!-- Philosophy -->
+      <div class="about-section">
+        <h2>
+          <span class="section-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+            </svg>
+          </span>
+          <span data-i18n="about_page.philosophy_title">Philosophy</span>
+        </h2>
+        <div class="about-quote">
+          <div class="quote-text">"Just Build It."</div>
+          <p class="quote-desc" data-i18n="about_page.philosophy_desc">
+            完璧を目指すより、まず動くものを作ってみる。趣味だからこそ、失敗を気にせず新しいことに挑戦できると思っています。
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="copyright-year">2026</span> Studio344</p>
+    <div style="
           margin-top: 0.5rem;
           display: flex;
           gap: 1rem;
           justify-content: center;
           font-size: 0.8rem;
-        "
-      >
-        <a href="privacy-policy.html" style="color: #666; text-decoration: none"
-          >Privacy Policy</a
-        >
-        <a href="terms.html" style="color: #666; text-decoration: none"
-          >Terms</a
-        >
-        <a href="contact.html" style="color: #666; text-decoration: none"
-          >Contact</a
-        >
-      </div>
-    </footer>
+        ">
+      <a href="privacy-policy.html" style="color: #666; text-decoration: none">Privacy Policy</a>
+      <a href="terms.html" style="color: #666; text-decoration: none">Terms</a>
+      <a href="contact.html" style="color: #666; text-decoration: none">Contact</a>
+    </div>
+  </footer>
 
-    <script>
-      document.addEventListener("mousemove", (e) => {
-        const x = e.clientX;
-        const y = e.clientY;
-        document.documentElement.style.setProperty("--mouse-x", `${x}px`);
-        document.documentElement.style.setProperty("--mouse-y", `${y}px`);
-      });
-    </script>
-    <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js"></script>
-    <script src="i18n.js"></script>
-  </body>
+  <script src="assets/js/ui.js"></script>
+  <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js"></script>
+  <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.min.js"></script>
+  <script src="i18n.js"></script>
+</body>
+
 </html>

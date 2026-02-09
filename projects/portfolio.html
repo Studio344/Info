@@ -4,9 +4,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="view-transition" content="same-origin" />
   <title>Portfolio Site - Project Details</title>
   <meta name="description"
     content="Studio344ポートフォリオサイトの技術詳細。HTML/CSS/JS、GSAP、ScrollTriggerを活用したモダンなBento Grid UIの設計と実装。" />
+  <meta property="og:title" content="Portfolio Site Project | Studio344" />
+  <meta property="og:description" content="Bento Gridデザイン、マウス追従エフェクト、Vanilla JSによる実装詳細。" />
+  <meta property="og:image" content="https://studio344.net/assets/logo-banner-black.png" />
+  <meta property="og:url" content="https://studio344.net/projects/portfolio.html" />
+  <meta property="og:type" content="article" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
     crossorigin="anonymous"></script>
   <link rel="canonical" href="https://studio344.net/projects/portfolio.html" />
@@ -57,10 +63,10 @@
 
   <main class="bento-grid">
     <div class="bento-card text-content-card">
-      <nav style="font-size: 0.9rem; margin-bottom: 2rem; color: #888">
-        <a href="../index.html" style="color: #aaa; text-decoration: none">Home</a>
-        &gt; <span>Projects</span> &gt;
-        <span style="color: #fff">Portfolio Site</span>
+      <nav class="breadcrumb-nav">
+        <a href="../index.html">Home</a>
+        &gt; <a href="../projects.html">Projects</a> &gt;
+        <span>Portfolio Site</span>
       </nav>
 
       <h1 data-i18n="portfolio_page.title">Portfolio</h1>
@@ -425,6 +431,7 @@
 
   <script src="../assets/js/ui.js"></script>
   <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js"></script>
+  <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.min.js"></script>
   <script src="../i18n.js"></script>
 </body>
 

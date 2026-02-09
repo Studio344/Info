@@ -1,0 +1,150 @@
+{
+  "nav": {
+    "about": "About",
+    "blog": "Blog",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "about": {
+    "title": "About",
+    "content": "某グローバルIT企業に勤務。趣味でWebアプリやツールを作っています。"
+  },
+  "projects": {
+    "title": "Projects"
+  },
+  "contact": {
+    "title": "Contact"
+  },
+  "disclaimer": "[免責事項] 本サイトは個人の趣味ポートフォリオであり、<br>所属する組織の公式見解を代表するものではありません。",
+  "home": {
+    "about_content": "某グローバルIT企業でエンジニアをしています。<br>仕事とは別に、趣味として個人開発を楽しんでいます。<br>このサイトでは、趣味で作ったものや技術的な学び（Engineering Logs）を発信していきます。",
+    "more_about": "More about me →",
+    "hero_tagline": "テクノロジーとものづくりを楽しむ、個人の趣味ポートフォリオ",
+    "skills_title": "Tech Stack",
+    "stat_projects": "Projects",
+    "stat_posts": "Blog Posts",
+    "stat_tech": "Technologies",
+    "projects_title": "Projects",
+    "projects_desc": "works →",
+    "blog_title": "Blog",
+    "blog_desc": "posts →",
+    "connect_title": "Let's Connect",
+    "gh_label": "GitHub",
+    "email_label": "Email"
+  },
+  "about_page": {
+    "title": "About Studio344",
+    "tagline": "テクノロジーとものづくりが好きな、個人の趣味アカウント。",
+    "mission_title": "Studio344 とは",
+    "mission_desc": "Studio344は、テクノロジーとものづくりが好きな個人の趣味アカウントです。<br>仕事とは別に、興味のある技術を自由に試したり、個人開発を楽しむための場として運営しています。<br><br>「面白そう」と思ったらまず手を動かす。<br>そんなスタンスで、Webアプリやツールなどを気ままに作っています。",
+    "profile_title": "Profile",
+    "profile_desc": "某グローバルIT企業でエンジニアとして勤務。<br><br>業務外の時間で、気になった技術（React, Next.js, WebGLなど）を触ったり、<br>日常のちょっとした不便を解消するツールを作ったりしています。",
+    "skills_title": "Technical Skills",
+    "philosophy_title": "Philosophy",
+    "philosophy_desc": "完璧を目指すより、まず動くものを作ってみる。<br>趣味だからこそ、失敗を気にせず新しいことに挑戦できると思っています。"
+  },
+  "contact_page": {
+    "title": "Contact",
+    "desc": "当サイトは個人のポートフォリオサイトです。<br>技術的な交流やご感想などがございましたら、以下のリンクよりお気軽にご連絡ください。",
+    "social_title": "Social Media",
+    "github_text": "GitHub",
+    "x_text": "X (Twitter)",
+    "instagram_text": "Instagram"
+  },
+  "blog_page": {
+    "title": "Blog & Updates",
+    "desc": "開発ログや技術的な知見を不定期に更新します。"
+  },
+  "blog_post": {
+    "back": "← ブログ一覧に戻る"
+  },
+  "projects_page": {
+    "title": "All Projects",
+    "desc": "Studio344 で趣味として開発したプロジェクト一覧です。",
+    "view_project": "詳細を見る →"
+  },
+  "portfolio_page": {
+    "title": "Portfolio",
+    "subtitle": "Bento Gridデザインを採用した、没入感のあるポートフォリオサイト",
+    "view_source": "View Source Code →",
+    "features_title": "主な特徴",
+    "feature1_title": "Vanilla Implementation",
+    "feature1_desc": "ReactやVueを使用せず、素のJavaScriptとCSSのみで構築。Lighthouseスコアはほぼ満点を達成し、最軽量のロード時間を実現。",
+    "feature2_title": "Dynamic Aesthetics",
+    "feature2_desc": "CSS変数とJSを連携させ、マウス位置に追従するスポットライト効果や、SVGフィルターによるノイズテクスチャを実装。",
+    "feature3_title": "i18n Support",
+    "feature3_desc": "i18nextライブラリを活用した、スムーズな日英言語切り替え機能。コンテンツのグローバル対応を意識した設計。",
+    "design_title": "デザインコンセプト",
+    "design_desc": "「モダンで未来的、かつ情報の視認性を損なわない」をコンセプトに設計されました。近年トレンドのBento Gridを採用し、アクセスしやすさとビジュアルの美しさを両立しています。",
+    "tech_title": "技術スタック",
+    "tech_intro": "フレームワークに頼らず、Web標準技術をベースに構築。軽量でありながら、リッチなビジュアル表現を実現しています。",
+    "tech_html": "<strong>HTML5 / CSS3:</strong> セマンティックなマークアップとCSS変数・Grid・Flexboxによるレスポンシブレイアウト。",
+    "tech_js": "<strong>Vanilla JavaScript:</strong> フレームワークなしの素のJSで全機能を実装。バンドルサイズゼロ。",
+    "tech_gsap": "<strong>GSAP + ScrollTrigger:</strong> スクロール連動アニメーションと滑らかなトランジション。",
+    "tech_i18n": "<strong>i18next:</strong> 日英2言語対応。ページリロードなしの動的な言語切り替え。",
+    "tech_hosting": "<strong>GitHub Pages:</strong> 静的ホスティングでゼロコスト運用。独自ドメイン + HTTPS対応。",
+    "perf_title": "パフォーマンス",
+    "perf_desc": "フレームワークレスの恩恵により、Lighthouseで高スコアを達成。外部依存を最小限に抑え、初回ロードを高速化しています。",
+    "perf_score": "Lighthouse スコア: <strong>95+</strong>（Performance / Accessibility / Best Practices / SEO）",
+    "perf_size": "ページサイズ: <strong>< 200KB</strong>（画像除く初回転送量）",
+    "perf_deps": "外部依存: <strong>GSAP + i18next のみ</strong>（ノーバンドラー構成）"
+  },
+  "ucfitness_page": {
+    "title": "UCFitness",
+    "subtitle": "Fitbit APIを活用した、グループ対抗フィットネス・トラッキング・プラットフォーム",
+    "visit_site": "Visit Live Site →",
+    "features_title": "主な機能",
+    "features_intro": "UCFitness は「究極のソーシャルフィットネスダッシュボード」として、以下の3つのコア機能を提供します。",
+    "feature1_title": "リアルタイムランキング",
+    "feature1_desc": "順位をリアルタイムで追跡。日次、週次、月次で同僚や友人と歩数・活動量を比較できます。",
+    "feature2_title": "グループバトル",
+    "feature2_desc": "グループに参加してチーム対抗戦。個人のスコアだけでなく、チーム全体の合計値で競い合いましょう。",
+    "feature3_title": "バッジ獲得",
+    "feature3_desc": "マイルストーン到達や連続記録（ストリーク）でユニークなバッジをアンロック。成果を可視化します。",
+    "tech_title": "技術スタック",
+    "tech_intro": "最新のモダンWeb技術スタックを採用し、高速かつスケーラブルなアプリケーションを構築しました。",
+    "tech_frontend": "<strong>Frontend Framework:</strong> Next.js (App Router) - サーバーコンポーネントによる高速な初期表示を実現。",
+    "tech_ui": "<strong>UI Library:</strong> TailwindCSS & Shadcn/UI - 美しく一貫性のあるデザインシステムを構築。",
+    "tech_auth": "<strong>Authentication:</strong> OAuth 2.0 (Fitbit Web API) - セキュアなトークン管理と自動リフレッシュ機能。",
+    "tech_db": "<strong>Database & Realtime:</strong> Supabase (PostgreSQL) - ランキングのリアルタイム更新（Live Subscription）に使用。",
+    "tech_deploy": "<strong>Deployment:</strong> Vercel + Cloudflare - エッジネットワークを活用したグローバル配信。",
+    "arch_title": "アーキテクチャのポイント",
+    "arch_subtitle": "Fitbit API Rate Limit 対策:",
+    "arch_desc": "ユーザー数が増加してもAPI制限に抵触しないよう、独自のキャッシングレイヤーを実装しています。個別のユーザーリクエストごとにAPIを叩くのではなく、サーバーサイドワーカーが定期的にデータを収集・集計し、データベースを更新する「非同期集計アーキテクチャ」を採用しました。"
+  },
+  "privacy": {
+    "title": "プライバシーポリシー",
+    "info_title": "1. 情報の取得",
+    "info_desc": "Studio344（以下「当サイト」）では、主に次の方法でユーザー情報を取得することがあります。",
+    "info_cookies": "<strong>クッキー（Cookies）</strong>: 当サイトでは、トラフィックデータの収集のためにGoogle AnalyticsやGoogle AdSenseを使用しています。これらのデータは匿名で収集されており、個人を特定するものではありません。",
+    "usage_title": "2. 情報の利用",
+    "usage_desc": "当サイトで収集された情報は、以下の目的で利用されます。",
+    "usage_analytics": "サイトの利便性向上や改善のための分析",
+    "usage_ads": "ユーザーに適した広告の配信（Google AdSense など）",
+    "ads_title": "3. 広告について",
+    "ads_desc": "当サイトでは、第三者配信の広告サービス（Google AdSense）を利用しています。このような広告配信事業者は、ユーザーの興味に応じた商品やサービスの広告を表示するため、当サイトや他サイトへのアクセスに関する情報「Cookie」(氏名、住所、メール アドレス、電話番号は含まれません) を使用することがあります。",
+    "ads_link": "Google AdSense に関する詳細は、<a href=\"https://policies.google.com/technologies/ads?hl=ja\" target=\"_blank\">Googleポリシーと規約</a>をご覧ください。",
+    "disclaimer_title": "4. 免責事項",
+    "disclaimer_desc": "当サイトのコンテンツ・情報につきまして、可能な限り正確な情報を掲載するよう努めておりますが、誤情報が入り込んだり、情報が古くなっていることもございます。当サイトに掲載された内容によって生じた損害等の一切の責任を負いかねますのでご了承ください。",
+    "contact_title": "5. お問い合わせ",
+    "contact_desc": "本ポリシーに関するお問い合わせは、<a href=\"contact.html\">お問い合わせページ</a>よりお願いいたします。",
+    "updated": "最終更新日: 2026年2月4日"
+  },
+  "terms": {
+    "title": "利用規約",
+    "intro": "この利用規約（以下「本規約」）は、Studio344（以下「当方」）がこのウェブサイト上で提供するサービス（以下「本サービス」）の利用条件を定めるものです。",
+    "scope_title": "1. 適用",
+    "scope_desc": "本規約は、ユーザーと当方との間の本サービスの利用に関わる一切の関係に適用されるものとします。",
+    "prohibited_title": "2. 禁止事項",
+    "prohibited_desc": "ユーザーは、本サービスの利用にあたり、以下の行為をしてはなりません。",
+    "prohibited_law": "法令または公序良俗に違反する行為",
+    "prohibited_crime": "犯罪行為に関連する行為",
+    "prohibited_disrupt": "当方のサービスの運営を妨害するおそれのある行為",
+    "prohibited_access": "不正アクセスをし、またはこれを試みる行為",
+    "disclaimer_title": "3. 免責事項",
+    "disclaimer_desc": "当方の債務不履行責任は、当方の故意または重過失によらない場合には免責されるものとします。当方は、本サービスに関して、ユーザーと他のユーザーまたは第三者との間において生じた取引、連絡または紛争等について一切責任を負いません。",
+    "copyright_title": "4. 著作権",
+    "copyright_desc": "本サイトに掲載されている全てのコンテンツは、当方が所有しています。書面による許可なく、個人的な目的以外で使用することは禁止されています。",
+    "updated": "最終更新日: 2026年2月4日"
+  }
+}

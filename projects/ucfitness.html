@@ -1,348 +1,241 @@
 <!doctype html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>UCFitness - Project Details</title>
-    <meta
-      name="description"
-      content="UCFitnessの技術詳細。Next.js、Supabase、Fitbit OAuth連携によるフィットネス追跡プラットフォームの設計とアーキテクチャ。"
-    />
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="canonical" href="https://studio344.net/projects/ucfitness.html" />
-    <link rel="icon" type="image/png" href="../assets/logo-black.png" />
-    <link rel="stylesheet" href="../styles.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  </head>
-  <body>
-    <div class="aurora-container">
-      <div class="aurora-orb orb-1"></div>
-      <div class="aurora-orb orb-2"></div>
-      <div class="aurora-orb orb-3"></div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="view-transition" content="same-origin" />
+  <title>UCFitness - Project Details</title>
+  <meta name="description" content="UCFitnessの技術詳細。Next.js、Supabase、Fitbit OAuth連携によるフィットネス追跡プラットフォームの設計とアーキテクチャ。" />
+  <meta property="og:title" content="UCFitness - Project Details | Studio344" />
+  <meta property="og:description" content="Next.js, Supabase, Fitbit APIを活用した、グループ対抗フィットネス・トラッキング・プラットフォーム。" />
+  <meta property="og:image" content="https://studio344.net/assets/logo-banner-black.png" />
+  <meta property="og:url" content="https://studio344.net/projects/ucfitness.html" />
+  <meta property="og:type" content="article" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
+    crossorigin="anonymous"></script>
+  <link rel="canonical" href="https://studio344.net/projects/ucfitness.html" />
+  <link rel="icon" type="image/png" href="../assets/logo-black.png" />
+  <link rel="stylesheet" href="../styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+
+<body>
+  <div class="aurora-container">
+    <div class="aurora-orb orb-1"></div>
+    <div class="aurora-orb orb-2"></div>
+    <div class="aurora-orb orb-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+  <div class="noise-overlay"></div>
+  <div class="spotlight-overlay"></div>
+
+  <header class="header">
+    <div class="logo">
+      <a href="../index.html" style="color: white; text-decoration: none">Studio344</a>
     </div>
-    <div class="grid-overlay"></div>
-    <div class="noise-overlay"></div>
-    <div class="spotlight-overlay"></div>
-
-    <header class="header">
-      <div class="logo">
-        <a href="../index.html" style="color: white; text-decoration: none"
-          >Studio344</a
-        >
-      </div>
-      <button class="hamburger" aria-label="メニュー" aria-expanded="false">
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <line x1="3" y1="6" x2="21" y2="6" />
-          <line x1="3" y1="12" x2="21" y2="12" />
-          <line x1="3" y1="18" x2="21" y2="18" />
+    <button class="hamburger" aria-label="メニュー" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+    <nav class="nav-menu">
+      <a href="../about.html" class="nav-btn" data-i18n="nav.about">About</a>
+      <a href="../blog.html" class="nav-btn" data-i18n="nav.blog">Blog</a>
+      <a href="../projects.html" class="nav-btn" data-i18n="nav.projects">Projects</a>
+      <a href="../contact.html" class="nav-btn" data-i18n="nav.contact">Contact</a>
+      <button id="lang-toggle" class="nav-btn">EN</button>
+      <a href="https://github.com/Studio344" target="_blank" class="nav-icon" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path
+            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+          </path>
         </svg>
-      </button>
-      <nav class="nav-menu">
-        <a href="../about.html" class="nav-btn" data-i18n="nav.about">About</a>
-        <a href="../blog.html" class="nav-btn" data-i18n="nav.blog">Blog</a>
-        <a href="../projects.html" class="nav-btn" data-i18n="nav.projects"
-          >Projects</a
-        >
-        <a href="../contact.html" class="nav-btn" data-i18n="nav.contact"
-          >Contact</a
-        >
-        <button id="lang-toggle" class="nav-btn">EN</button>
-        <a
-          href="https://github.com/Studio344"
-          target="_blank"
-          class="nav-icon"
-          aria-label="GitHub"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
-            stroke="currentColor"
-            stroke-width="2"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path
-              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-            ></path>
-          </svg>
-        </a>
+      </a>
+    </nav>
+  </header>
+  <div class="nav-menu-overlay"></div>
+
+  <main class="bento-grid">
+    <div class="bento-card text-content-card">
+      <nav class="breadcrumb-nav">
+        <a href="../index.html">Home</a>
+        &gt; <a href="../projects.html">Projects</a> &gt;
+        <span>UCFitness</span>
       </nav>
-    </header>
-    <div class="nav-menu-overlay"></div>
 
-    <main class="bento-grid">
-      <div class="bento-card text-content-card">
-        <nav style="font-size: 0.9rem; margin-bottom: 2rem; color: #888">
-          <a href="../index.html" style="color: #aaa; text-decoration: none"
-            >Home</a
-          >
-          &gt; <span>Projects</span> &gt;
-          <span style="color: #fff">UCFitness</span>
-        </nav>
+      <h1 data-i18n="ucfitness_page.title">UCFitness</h1>
+      <p style="font-size: 1.2rem; color: #a5b4fc; margin-bottom: 2rem" data-i18n="ucfitness_page.subtitle">
+        Fitbit
+        APIを活用した、グループ対抗フィットネス・トラッキング・プラットフォーム
+      </p>
 
-        <h1 data-i18n="ucfitness_page.title">UCFitness</h1>
-        <p
-          style="font-size: 1.2rem; color: #a5b4fc; margin-bottom: 2rem"
-          data-i18n="ucfitness_page.subtitle"
-        >
-          Fitbit
-          APIを活用した、グループ対抗フィットネス・トラッキング・プラットフォーム
-        </p>
-
-        <div style="margin-bottom: 3rem">
-          <a
-            href="https://ucfitness.studio344.net"
-            target="_blank"
-            class="nav-btn"
-            style="
+      <div style="margin-bottom: 3rem">
+        <a href="https://ucfitness.studio344.net" target="_blank" class="nav-btn" style="
               display: inline-block;
               text-decoration: none;
               padding: 0.8rem 1.5rem;
               background: #4f46e5;
               border: none;
               font-weight: bold;
-            "
-          >
-            Visit Live Site
-            <span style="margin-left: 5px">&rarr;</span>
-          </a>
-        </div>
+            ">
+          Visit Live Site
+          <span style="margin-left: 5px">&rarr;</span>
+        </a>
+      </div>
 
-        <!-- サイトプレビュー -->
-        <div
-          style="
+      <!-- サイトプレビュー -->
+      <div style="
             margin-bottom: 3rem;
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
             background: rgba(0, 0, 0, 0.3);
-          "
-        >
-          <div
-            style="
+          ">
+        <div style="
               display: flex;
               align-items: center;
               gap: 6px;
               padding: 0.5rem 0.8rem;
               background: rgba(255, 255, 255, 0.06);
               border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            "
-          >
-            <span
-              style="
+            ">
+          <span style="
                 width: 10px;
                 height: 10px;
                 border-radius: 50%;
                 background: #ff5f57;
-              "
-            ></span>
-            <span
-              style="
+              "></span>
+          <span style="
                 width: 10px;
                 height: 10px;
                 border-radius: 50%;
                 background: #ffbd2e;
-              "
-            ></span>
-            <span
-              style="
+              "></span>
+          <span style="
                 width: 10px;
                 height: 10px;
                 border-radius: 50%;
                 background: #28c840;
-              "
-            ></span>
-            <span
-              style="
+              "></span>
+          <span style="
                 flex: 1;
                 text-align: center;
                 font-size: 0.75rem;
                 color: #888;
-              "
-              >ucfitness.studio344.net</span
-            >
-          </div>
-          <iframe
-            src="https://ucfitness.studio344.net"
-            style="
+              ">ucfitness.studio344.net</span>
+        </div>
+        <iframe src="https://ucfitness.studio344.net" style="
               width: 100%;
               height: 420px;
               border: none;
               pointer-events: none;
-            "
-            loading="lazy"
-            title="UCFitness Preview"
-          ></iframe>
-        </div>
+            " loading="lazy" title="UCFitness Preview"></iframe>
+      </div>
 
-        <h2 data-i18n="ucfitness_page.features_title">Core Features</h2>
-        <p data-i18n="ucfitness_page.features_intro">
-          UCFitness
-          は「究極のソーシャルフィットネスダッシュボード」として、以下の3つのコア機能を提供します。
-        </p>
+      <h2 data-i18n="ucfitness_page.features_title">Core Features</h2>
+      <p data-i18n="ucfitness_page.features_intro">
+        UCFitness
+        は「究極のソーシャルフィットネスダッシュボード」として、以下の3つのコア機能を提供します。
+      </p>
 
-        <div
-          style="
+      <div style="
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
             margin-bottom: 3rem;
-          "
-        >
-          <!-- Feature 1 -->
-          <div
-            style="
+          ">
+        <!-- Feature 1 -->
+        <div style="
               background: rgba(255, 255, 255, 0.05);
               padding: 1.5rem;
               border-radius: 12px;
               border: 1px solid rgba(255, 255, 255, 0.1);
-            "
-          >
-            <div style="color: #4f46e5; margin-bottom: 1rem">
-              <!-- Chart Icon -->
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <line x1="18" y1="20" x2="18" y2="10"></line>
-                <line x1="12" y1="20" x2="12" y2="4"></line>
-                <line x1="6" y1="20" x2="6" y2="14"></line>
-              </svg>
-            </div>
-            <h3
-              style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem"
-              data-i18n="ucfitness_page.feature1_title"
-            >
-              リアルタイムランキング
-            </h3>
-            <p
-              style="font-size: 0.9rem; color: #ccc"
-              data-i18n="ucfitness_page.feature1_desc"
-            >
-              順位をリアルタイムで追跡。日次、週次、月次で同僚や友人と歩数・活動量を比較できます。
-            </p>
+            ">
+          <div style="color: #4f46e5; margin-bottom: 1rem">
+            <!-- Chart Icon -->
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"></line>
+              <line x1="12" y1="20" x2="12" y2="4"></line>
+              <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
           </div>
-
-          <!-- Feature 2 -->
-          <div
-            style="
-              background: rgba(255, 255, 255, 0.05);
-              padding: 1.5rem;
-              border-radius: 12px;
-              border: 1px solid rgba(255, 255, 255, 0.1);
-            "
-          >
-            <div style="color: #9333ea; margin-bottom: 1rem">
-              <!-- Users Icon -->
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                <circle cx="9" cy="7" r="4"></circle>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-              </svg>
-            </div>
-            <h3
-              style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem"
-              data-i18n="ucfitness_page.feature2_title"
-            >
-              グループバトル
-            </h3>
-            <p
-              style="font-size: 0.9rem; color: #ccc"
-              data-i18n="ucfitness_page.feature2_desc"
-            >
-              グループに参加してチーム対抗戦。個人のスコアだけでなく、チーム全体の合計値で競い合いましょう。
-            </p>
-          </div>
-
-          <!-- Feature 3 -->
-          <div
-            style="
-              background: rgba(255, 255, 255, 0.05);
-              padding: 1.5rem;
-              border-radius: 12px;
-              border: 1px solid rgba(255, 255, 255, 0.1);
-            "
-          >
-            <div style="color: #06b6d4; margin-bottom: 1rem">
-              <!-- Award/Badge Icon -->
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <circle cx="12" cy="8" r="7"></circle>
-                <polyline
-                  points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"
-                ></polyline>
-              </svg>
-            </div>
-            <h3
-              style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem"
-              data-i18n="ucfitness_page.feature3_title"
-            >
-              バッジ獲得
-            </h3>
-            <p
-              style="font-size: 0.9rem; color: #ccc"
-              data-i18n="ucfitness_page.feature3_desc"
-            >
-              マイルストーン到達や連続記録（ストリーク）でユニークなバッジをアンロック。成果を可視化します。
-            </p>
-          </div>
+          <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem" data-i18n="ucfitness_page.feature1_title">
+            リアルタイムランキング
+          </h3>
+          <p style="font-size: 0.9rem; color: #ccc" data-i18n="ucfitness_page.feature1_desc">
+            順位をリアルタイムで追跡。日次、週次、月次で同僚や友人と歩数・活動量を比較できます。
+          </p>
         </div>
 
-        <h2 data-i18n="ucfitness_page.tech_title">Tech Stack Detail</h2>
-        <div style="margin-bottom: 2rem">
-          <p data-i18n="ucfitness_page.tech_intro">
-            最新のモダンWeb技術スタックを採用し、高速かつスケーラブルなアプリケーションを構築しました。
+        <!-- Feature 2 -->
+        <div style="
+              background: rgba(255, 255, 255, 0.05);
+              padding: 1.5rem;
+              border-radius: 12px;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+            ">
+          <div style="color: #9333ea; margin-bottom: 1rem">
+            <!-- Users Icon -->
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem" data-i18n="ucfitness_page.feature2_title">
+            グループバトル
+          </h3>
+          <p style="font-size: 0.9rem; color: #ccc" data-i18n="ucfitness_page.feature2_desc">
+            グループに参加してチーム対抗戦。個人のスコアだけでなく、チーム全体の合計値で競い合いましょう。
           </p>
-          <div
-            class="tech-stack-list"
-            style="
+        </div>
+
+        <!-- Feature 3 -->
+        <div style="
+              background: rgba(255, 255, 255, 0.05);
+              padding: 1.5rem;
+              border-radius: 12px;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+            ">
+          <div style="color: #06b6d4; margin-bottom: 1rem">
+            <!-- Award/Badge Icon -->
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="7"></circle>
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+            </svg>
+          </div>
+          <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem" data-i18n="ucfitness_page.feature3_title">
+            バッジ獲得
+          </h3>
+          <p style="font-size: 0.9rem; color: #ccc" data-i18n="ucfitness_page.feature3_desc">
+            マイルストーン到達や連続記録（ストリーク）でユニークなバッジをアンロック。成果を可視化します。
+          </p>
+        </div>
+      </div>
+
+      <h2 data-i18n="ucfitness_page.tech_title">Tech Stack Detail</h2>
+      <div style="margin-bottom: 2rem">
+        <p data-i18n="ucfitness_page.tech_intro">
+          最新のモダンWeb技術スタックを採用し、高速かつスケーラブルなアプリケーションを構築しました。
+        </p>
+        <div class="tech-stack-list" style="
               margin-top: 1.2rem;
               display: flex;
               flex-direction: column;
               gap: 0.5rem;
-            "
-          >
-            <!-- Frontend -->
-            <div
-              style="
+            ">
+          <!-- Frontend -->
+          <div style="
                 display: flex;
                 align-items: center;
                 gap: 0.75rem;
@@ -350,33 +243,19 @@
                 background: rgba(255, 255, 255, 0.04);
                 border-radius: 8px;
                 border: 1px solid rgba(255, 255, 255, 0.06);
-              "
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#4f46e5"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                style="flex-shrink: 0"
-              >
-                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                <polyline points="2 17 12 22 22 17"></polyline>
-                <polyline points="2 12 12 17 22 12"></polyline>
-              </svg>
-              <span
-                style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
-                data-i18n="ucfitness_page.tech_frontend"
-                ><strong>Frontend Framework:</strong> Next.js (App Router) -
-                サーバーコンポーネントによる高速な初期表示を実現。</span
-              >
-            </div>
-            <!-- UI -->
-            <div
-              style="
+              ">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4f46e5" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+            <span style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
+              data-i18n="ucfitness_page.tech_frontend"><strong>Frontend Framework:</strong> Next.js (App Router) -
+              サーバーコンポーネントによる高速な初期表示を実現。</span>
+          </div>
+          <!-- UI -->
+          <div style="
                 display: flex;
                 align-items: center;
                 gap: 0.75rem;
@@ -384,33 +263,19 @@
                 background: rgba(255, 255, 255, 0.04);
                 border-radius: 8px;
                 border: 1px solid rgba(255, 255, 255, 0.06);
-              "
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#9333ea"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                style="flex-shrink: 0"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="3" y1="9" x2="21" y2="9"></line>
-                <line x1="9" y1="21" x2="9" y2="9"></line>
-              </svg>
-              <span
-                style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
-                data-i18n="ucfitness_page.tech_ui"
-                ><strong>UI Library:</strong> TailwindCSS & Shadcn/UI -
-                美しく一貫性のあるデザインシステムを構築。</span
-              >
-            </div>
-            <!-- Auth -->
-            <div
-              style="
+              ">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9333ea" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="3" y1="9" x2="21" y2="9"></line>
+              <line x1="9" y1="21" x2="9" y2="9"></line>
+            </svg>
+            <span style="font-size: 0.9rem; color: #ccc; line-height: 1.4" data-i18n="ucfitness_page.tech_ui"><strong>UI
+                Library:</strong> TailwindCSS & Shadcn/UI -
+              美しく一貫性のあるデザインシステムを構築。</span>
+          </div>
+          <!-- Auth -->
+          <div style="
                 display: flex;
                 align-items: center;
                 gap: 0.75rem;
@@ -418,32 +283,18 @@
                 background: rgba(255, 255, 255, 0.04);
                 border-radius: 8px;
                 border: 1px solid rgba(255, 255, 255, 0.06);
-              "
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#06b6d4"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                style="flex-shrink: 0"
-              >
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-              </svg>
-              <span
-                style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
-                data-i18n="ucfitness_page.tech_auth"
-                ><strong>Authentication:</strong> OAuth 2.0 (Fitbit Web API) -
-                セキュアなトークン管理と自動リフレッシュ機能。</span
-              >
-            </div>
-            <!-- DB -->
-            <div
-              style="
+              ">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            <span style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
+              data-i18n="ucfitness_page.tech_auth"><strong>Authentication:</strong> OAuth 2.0 (Fitbit Web API) -
+              セキュアなトークン管理と自動リフレッシュ機能。</span>
+          </div>
+          <!-- DB -->
+          <div style="
                 display: flex;
                 align-items: center;
                 gap: 0.75rem;
@@ -451,33 +302,19 @@
                 background: rgba(255, 255, 255, 0.04);
                 border-radius: 8px;
                 border: 1px solid rgba(255, 255, 255, 0.06);
-              "
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#22c55e"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                style="flex-shrink: 0"
-              >
-                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
-                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
-              </svg>
-              <span
-                style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
-                data-i18n="ucfitness_page.tech_db"
-                ><strong>Database & Realtime:</strong> Supabase (PostgreSQL) -
-                ランキングのリアルタイム更新（Live Subscription）に使用。</span
-              >
-            </div>
-            <!-- Deploy -->
-            <div
-              style="
+              ">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0">
+              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+            </svg>
+            <span style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
+              data-i18n="ucfitness_page.tech_db"><strong>Database & Realtime:</strong> Supabase (PostgreSQL) -
+              ランキングのリアルタイム更新（Live Subscription）に使用。</span>
+          </div>
+          <!-- Deploy -->
+          <div style="
                 display: flex;
                 align-items: center;
                 gap: 0.75rem;
@@ -485,77 +322,47 @@
                 background: rgba(255, 255, 255, 0.04);
                 border-radius: 8px;
                 border: 1px solid rgba(255, 255, 255, 0.06);
-              "
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="#f59e0b"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                style="flex-shrink: 0"
-              >
-                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-              </svg>
-              <span
-                style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
-                data-i18n="ucfitness_page.tech_deploy"
-                ><strong>Deployment:</strong> Vercel + Cloudflare -
-                エッジネットワークを活用したグローバル配信。</span
-              >
-            </div>
+              ">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0">
+              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+            </svg>
+            <span style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
+              data-i18n="ucfitness_page.tech_deploy"><strong>Deployment:</strong> Vercel + Cloudflare -
+              エッジネットワークを活用したグローバル配信。</span>
           </div>
         </div>
-
-        <h2 data-i18n="ucfitness_page.arch_title">Architecture Highlights</h2>
-        <p>
-          <strong data-i18n="ucfitness_page.arch_subtitle"
-            >Fitbit API Rate Limit 対策:</strong
-          >
-        </p>
-        <p data-i18n="ucfitness_page.arch_desc">
-          ユーザー数が増加してもAPI制限に抵触しないよう、独自のキャッシングレイヤーを実装しています。個別のユーザーリクエストごとにAPIを叩くのではなく、サーバーサイドワーカーが定期的にデータを収集・集計し、データベースを更新する「非同期集計アーキテクチャ」を採用しました。
-        </p>
       </div>
-    </main>
 
-    <footer class="site-footer">
-      <p>&copy; 2026 Studio344</p>
-      <div
-        style="
+      <h2 data-i18n="ucfitness_page.arch_title">Architecture Highlights</h2>
+      <p>
+        <strong data-i18n="ucfitness_page.arch_subtitle">Fitbit API Rate Limit 対策:</strong>
+      </p>
+      <p data-i18n="ucfitness_page.arch_desc">
+        ユーザー数が増加してもAPI制限に抵触しないよう、独自のキャッシングレイヤーを実装しています。個別のユーザーリクエストごとにAPIを叩くのではなく、サーバーサイドワーカーが定期的にデータを収集・集計し、データベースを更新する「非同期集計アーキテクチャ」を採用しました。
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Studio344</p>
+    <div style="
           margin-top: 0.5rem;
           display: flex;
           gap: 1rem;
           justify-content: center;
           font-size: 0.8rem;
-        "
-      >
-        <a
-          href="../privacy-policy.html"
-          style="color: #666; text-decoration: none"
-          >Privacy Policy</a
-        >
-        <a href="../terms.html" style="color: #666; text-decoration: none"
-          >Terms</a
-        >
-        <a href="../contact.html" style="color: #666; text-decoration: none"
-          >Contact</a
-        >
-      </div>
-    </footer>
+        ">
+      <a href="../privacy-policy.html" style="color: #666; text-decoration: none">Privacy Policy</a>
+      <a href="../terms.html" style="color: #666; text-decoration: none">Terms</a>
+      <a href="../contact.html" style="color: #666; text-decoration: none">Contact</a>
+    </div>
+  </footer>
 
-    <script>
-      document.addEventListener("mousemove", (e) => {
-        const x = e.clientX;
-        const y = e.clientY;
-        document.documentElement.style.setProperty("--mouse-x", `${x}px`);
-        document.documentElement.style.setProperty("--mouse-y", `${y}px`);
-      });
-    </script>
-    <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js"></script>
-    <script src="../i18n.js"></script>
-  </body>
+  <script src="../assets/js/ui.js"></script>
+  <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js"></script>
+  <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.min.js"></script>
+  <script src="../i18n.js"></script>
+</body>
+
 </html>

@@ -1,0 +1,150 @@
+{
+   "nav": {
+      "about": "About",
+      "blog": "Blog",
+      "projects": "Projects",
+      "contact": "Contact"
+   },
+   "about": {
+      "title": "About",
+      "content": "Engineer at a global IT company. I build web apps and tools as a hobby."
+   },
+   "projects": {
+      "title": "Projects"
+   },
+   "contact": {
+      "title": "Contact"
+   },
+   "disclaimer": "[Disclaimer] This is a personal hobby portfolio. Opinions are my own and do not represent my employer.",
+   "home": {
+      "about_content": "Working as an engineer at a global IT company.<br>Outside of work, I enjoy building things as a personal hobby.<br><br>This site serves as a log of my hobby projects and engineering insights.",
+      "more_about": "More about me →",
+      "hero_tagline": "A personal hobby portfolio exploring technology and building things",
+      "skills_title": "Tech Stack",
+      "stat_projects": "Projects",
+      "stat_posts": "Blog Posts",
+      "stat_tech": "Technologies",
+      "projects_title": "Projects",
+      "projects_desc": "works →",
+      "blog_title": "Blog",
+      "blog_desc": "posts →",
+      "connect_title": "Let's Connect",
+      "gh_label": "GitHub",
+      "email_label": "Email"
+   },
+   "about_page": {
+      "title": "About Studio344",
+      "tagline": "A personal hobby account for someone who loves technology and building things.",
+      "mission_title": "What is Studio344?",
+      "mission_desc": "Studio344 is a personal hobby account for someone who loves technology and building things.<br>It's a space where I freely experiment with interesting tech and enjoy personal development, separate from work.<br><br>If something looks fun, I just start building it.<br>With that mindset, I casually create web apps, tools, and whatever else catches my interest.",
+      "profile_title": "Profile",
+      "profile_desc": "Working as an engineer at a global IT company.<br><br>In my free time, I tinker with technologies that catch my eye (React, Next.js, WebGL, etc.)<br>and build small tools to solve everyday inconveniences.",
+      "skills_title": "Technical Skills",
+      "philosophy_title": "Philosophy",
+      "philosophy_desc": "Rather than aiming for perfection, I prefer to just make something that works first.<br>Because it's a hobby, I can challenge new things without worrying about failure."
+   },
+   "contact_page": {
+      "title": "Contact",
+      "desc": "This is a personal portfolio site.<br>For technical exchanges or feedback, please feel free to contact me via the links below.",
+      "social_title": "Social Media",
+      "github_text": "GitHub",
+      "x_text": "X (Twitter)",
+      "instagram_text": "Instagram"
+   },
+   "blog_page": {
+      "title": "Blog & Updates",
+      "desc": "I update development logs and technical insights irregularly."
+   },
+   "blog_post": {
+      "back": "← Back to Blog"
+   },
+   "projects_page": {
+      "title": "All Projects",
+      "desc": "A list of hobby projects built under Studio344.",
+      "view_project": "View Project →"
+   },
+   "portfolio_page": {
+      "title": "Portfolio",
+      "subtitle": "An immersive portfolio site featuring Bento Grid design",
+      "view_source": "View Source Code →",
+      "features_title": "Core Features",
+      "feature1_title": "Vanilla Implementation",
+      "feature1_desc": "Built with pure JavaScript and CSS only, without React or Vue. Achieved near-perfect Lighthouse scores with ultra-fast load times.",
+      "feature2_title": "Dynamic Aesthetics",
+      "feature2_desc": "Linking CSS variables with JS to create a spotlight effect that follows mouse movement and noise textures via SVG filters.",
+      "feature3_title": "i18n Support",
+      "feature3_desc": "Smooth Japanese/English language switching powered by the i18next library. Designed with global content delivery in mind.",
+      "design_title": "Design Concept",
+      "design_desc": "Designed with the concept of being modern and futuristic while maintaining information readability. Adopting the trending Bento Grid layout to balance accessibility and visual beauty.",
+      "tech_title": "Tech Stack",
+      "tech_intro": "Built on web standards without framework dependencies. Lightweight yet capable of rich visual expression.",
+      "tech_html": "<strong>HTML5 / CSS3:</strong> Semantic markup with CSS variables, Grid, and Flexbox for responsive layouts.",
+      "tech_js": "<strong>Vanilla JavaScript:</strong> All features built with plain JS. Zero bundle size overhead.",
+      "tech_gsap": "<strong>GSAP + ScrollTrigger:</strong> Scroll-driven animations and smooth transitions.",
+      "tech_i18n": "<strong>i18next:</strong> Bilingual (JA/EN) support with dynamic language switching — no page reload needed.",
+      "tech_hosting": "<strong>GitHub Pages:</strong> Zero-cost static hosting with custom domain + HTTPS.",
+      "perf_title": "Performance",
+      "perf_desc": "Thanks to the framework-free approach, the site achieves high Lighthouse scores. External dependencies are kept minimal for fast initial loads.",
+      "perf_score": "Lighthouse Score: <strong>95+</strong> (Performance / Accessibility / Best Practices / SEO)",
+      "perf_size": "Page Size: <strong>< 200KB</strong> (initial transfer excluding images)",
+      "perf_deps": "External Deps: <strong>GSAP + i18next only</strong> (no bundler configuration)"
+   },
+   "ucfitness_page": {
+      "title": "UCFitness",
+      "subtitle": "A group fitness tracking platform powered by the Fitbit API",
+      "visit_site": "Visit Live Site →",
+      "features_title": "Core Features",
+      "features_intro": "UCFitness serves as the ultimate social fitness dashboard, offering three core features.",
+      "feature1_title": "Real-time Leaderboard",
+      "feature1_desc": "Track rankings in real time. Compare steps and activity levels with colleagues and friends on a daily, weekly, and monthly basis.",
+      "feature2_title": "Group Battles",
+      "feature2_desc": "Join a group and compete in team battles. Compete not just on individual scores, but on the combined totals of your entire team.",
+      "feature3_title": "Badge Collection",
+      "feature3_desc": "Unlock unique badges by reaching milestones or maintaining streaks. Visualize your achievements.",
+      "tech_title": "Tech Stack Detail",
+      "tech_intro": "Built with a modern web technology stack for a fast and scalable application.",
+      "tech_frontend": "<strong>Frontend Framework:</strong> Next.js (App Router) - Fast initial rendering with server components.",
+      "tech_ui": "<strong>UI Library:</strong> TailwindCSS & Shadcn/UI - A beautiful and consistent design system.",
+      "tech_auth": "<strong>Authentication:</strong> OAuth 2.0 (Fitbit Web API) - Secure token management with automatic refresh.",
+      "tech_db": "<strong>Database & Realtime:</strong> Supabase (PostgreSQL) - Used for real-time leaderboard updates (Live Subscription).",
+      "tech_deploy": "<strong>Deployment:</strong> Vercel + Cloudflare - Global delivery via edge networks.",
+      "arch_title": "Architecture Highlights",
+      "arch_subtitle": "Fitbit API Rate Limit Strategy:",
+      "arch_desc": "A custom caching layer is implemented to avoid hitting API limits as user count grows. Instead of making API calls per individual user request, a server-side worker periodically collects and aggregates data, updating the database via an asynchronous aggregation architecture."
+   },
+   "privacy": {
+      "title": "Privacy Policy",
+      "info_title": "1. Information Collection",
+      "info_desc": "Studio344 (hereinafter \"this site\") may collect user information primarily through the following methods.",
+      "info_cookies": "<strong>Cookies</strong>: This site uses Google Analytics and Google AdSense to collect traffic data. This data is collected anonymously and does not identify individuals.",
+      "usage_title": "2. Use of Information",
+      "usage_desc": "Information collected on this site is used for the following purposes.",
+      "usage_analytics": "Analysis to improve site usability and functionality",
+      "usage_ads": "Delivery of relevant advertisements (e.g., Google AdSense)",
+      "ads_title": "3. Advertising",
+      "ads_desc": "This site uses third-party advertising services (Google AdSense). These advertisers may use cookies (which do not include your name, address, email, or phone number) to display ads for products and services relevant to your interests based on your visits to this and other sites.",
+      "ads_link": "For more details about Google AdSense, please see <a href=\"https://policies.google.com/technologies/ads?hl=en\" target=\"_blank\">Google Policies & Terms</a>.",
+      "disclaimer_title": "4. Disclaimer",
+      "disclaimer_desc": "While we strive to post accurate information on this site, there may be errors or outdated content. We accept no responsibility for any damages arising from the content published on this site.",
+      "contact_title": "5. Contact",
+      "contact_desc": "For inquiries regarding this policy, please contact us via the <a href=\"contact.html\">Contact page</a>.",
+      "updated": "Last updated: February 4, 2026"
+   },
+   "terms": {
+      "title": "Terms of Service",
+      "intro": "These Terms of Service (hereinafter \"Terms\") set forth the conditions for use of the services (hereinafter \"Service\") provided by Studio344 (hereinafter \"we/us\") on this website.",
+      "scope_title": "1. Application",
+      "scope_desc": "These Terms apply to all aspects of the relationship between the user and us regarding the use of the Service.",
+      "prohibited_title": "2. Prohibited Actions",
+      "prohibited_desc": "Users shall not engage in the following actions when using the Service.",
+      "prohibited_law": "Actions that violate laws or public order and morals",
+      "prohibited_crime": "Actions related to criminal activity",
+      "prohibited_disrupt": "Actions that may interfere with the operation of our Service",
+      "prohibited_access": "Unauthorized access or attempts thereof",
+      "disclaimer_title": "3. Disclaimer",
+      "disclaimer_desc": "We shall be exempt from liability for non-performance of obligations unless caused by our intentional or gross negligence. We accept no responsibility for any transactions, communications, or disputes between users or between users and third parties in connection with the Service.",
+      "copyright_title": "4. Copyright",
+      "copyright_desc": "All content published on this site is owned by us. Use beyond personal purposes without written permission is prohibited.",
+      "updated": "Last updated: February 4, 2026"
+   }
+}
