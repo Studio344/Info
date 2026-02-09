@@ -306,7 +306,7 @@ function extractTitle(mdText) {
 /**
  * Extract a plain-text excerpt from markdown (skip headings, code blocks, tables)
  */
-function extractExcerpt(mdText, maxLength = 120) {
+function extractExcerpt(mdText, maxLength = 70) {
   const lines = mdText.split("\n");
   let excerpt = "";
   let inCodeBlock = false;
@@ -480,6 +480,7 @@ async function loadBlogPosts(langOverride) {
           .join("");
 
         card.innerHTML = `
+                  <div class="blog-preview-accent"></div>
                   <div class="blog-preview-header">
                       <span class="blog-preview-emoji">${post.emoji}</span>
                       <span class="blog-preview-date">${post.date}</span>
