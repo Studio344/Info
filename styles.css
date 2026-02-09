@@ -35,6 +35,31 @@ body {
 
 /* --- UI Polish --- */
 
+/* Active Nav Link */
+.nav-links a.active {
+  color: #fff;
+  border-bottom: 2px solid #6366f1;
+}
+
+/* Breadcrumbs */
+.breadcrumb-nav,
+.breadcrumb-nav a {
+  color: #aaa;
+  /* Gray per user request */
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.breadcrumb-nav a:hover {
+  text-decoration: underline;
+  color: #fff !important;
+}
+
+.breadcrumb-nav span {
+  color: #fff;
+  /* Current page is white */
+}
+
 /* 1. Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -222,9 +247,9 @@ html {
   opacity: 0.6;
 }
 
-.bento-card:hover {
+a.bento-card:hover {
   border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-4px);
+  /* transform: translateY(-4px);  <-- REMOVED to prevent conflict with JS Tilt */
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
@@ -371,6 +396,7 @@ html {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -520,7 +546,7 @@ html {
 
 /* Projects Main Page Grid */
 .projects-page-grid {
-  display: contents;
+  /* display: contents; REMOVED to fix grid alignment */
 }
 
 .projects-page-grid>.project-card {
@@ -687,6 +713,7 @@ html {
   border: 1px solid rgba(110, 118, 129, 0.3);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
 }
+
 .sns-github:hover {
   background: linear-gradient(135deg, rgba(110, 118, 129, 0.22) 0%, rgba(110, 118, 129, 0.1) 100%);
   border-color: rgba(110, 118, 129, 0.5);
@@ -699,6 +726,7 @@ html {
   border: 1px solid rgba(29, 161, 242, 0.25);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
 }
+
 .sns-x:hover {
   background: linear-gradient(135deg, rgba(29, 161, 242, 0.2) 0%, rgba(29, 161, 242, 0.08) 100%);
   border-color: rgba(29, 161, 242, 0.45);
@@ -711,6 +739,7 @@ html {
   border: 1px solid rgba(193, 53, 132, 0.25);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
 }
+
 .sns-instagram:hover {
   background: linear-gradient(135deg, rgba(193, 53, 132, 0.2) 0%, rgba(252, 176, 69, 0.12) 100%);
   border-color: rgba(193, 53, 132, 0.45);
@@ -722,6 +751,7 @@ html {
     flex-direction: column;
     align-items: center;
   }
+
   .sns-card {
     width: 100%;
     max-width: 280px;
@@ -1086,6 +1116,7 @@ html {
 }
 
 @media (max-width: 600px) {
+
   .project-card,
   .contact-card {
     grid-column: 1 / -1 !important;
@@ -1139,7 +1170,7 @@ html {
 }
 
 .blog-preview-card,
-.blog-preview-card *  {
+.blog-preview-card * {
   text-decoration: none !important;
 }
 
@@ -1154,6 +1185,7 @@ html {
     opacity: 0;
     transform: translateY(16px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1388,4 +1420,166 @@ html {
     padding: 0.8rem;
     font-size: 0.8rem;
   }
+}
+
+/* --- View Transitions (Phase 2) --- */
+@media (prefers-reduced-motion: no-preference) {
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.5s;
+    mix-blend-mode: normal;
+  }
+}
+
+/* --- 3D Tilt Effect Utility (Phase 2) --- */
+.bento-card {
+  transform-style: preserve-3d;
+  /* perspective is handled in JS transform or parent */
+}
+
+/* --- Projects Page Layout Fixes --- */
+.text-content-card {
+  grid-column: 1 / -1;
+}
+
+.projects-page-grid {
+  grid-column: 1 / -1;
+  display: grid;
+  display: flex;
+  flex-direction: column;
+}
+
+.projects-page-grid .project-card .card-content-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+/* --- Blog Readability (Phase 4) --- */
+
+/* Table of Contents - 折りたたみ式 */
+.blog-toc {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0.8rem 1.2rem;
+  margin-bottom: 2.5rem;
+  max-width: 360px;
+  transition: max-width 0.3s ease, padding 0.3s ease;
+}
+
+.blog-toc.toc-expanded {
+  max-width: 100%;
+  padding: 1.2rem 1.5rem;
+}
+
+.blog-toc-header {
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.5rem;
+}
+
+.blog-toc-header:hover {
+  opacity: 0.8;
+}
+
+.blog-toc-title {
+  font-weight: bold;
+  margin-bottom: 0;
+  color: #fff;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.blog-toc-icon {
+  font-size: 1.1rem;
+}
+
+.blog-toc-toggle {
+  color: #aaa;
+  font-size: 0.75rem;
+  transition: color 0.2s;
+}
+
+.blog-toc-header:hover .blog-toc-toggle {
+  color: #a5b4fc;
+}
+
+.blog-toc ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.8rem;
+  margin-bottom: 0;
+  animation: tocSlideDown 0.25s ease-out;
+}
+
+@keyframes tocSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.blog-toc li {
+  margin-bottom: 0.4rem;
+}
+
+.blog-toc li a {
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.2s;
+  font-size: 0.9rem;
+  display: block;
+  padding: 0.15rem 0;
+}
+
+.blog-toc li a:hover {
+  text-decoration: underline;
+  color: #a5b4fc;
+}
+
+/* Indent h3 */
+.toc-h3 {
+  padding-left: 1.2rem;
+  font-size: 0.85rem;
+}
+
+/* Blog Headings */
+#blog-single-content h2 {
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+#blog-single-content h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  color: #e0e7ff;
+  /* Lighter indigo tint */
+  padding-left: 0.8rem;
+  border-left: 4px solid #6366f1;
+  /* Indigo accent */
+}
+
+#blog-single-content p,
+#blog-single-content li {
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+  color: #d4d4d4;
 }
