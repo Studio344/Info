@@ -52,6 +52,9 @@ function showPostList() {
   if (controls) controls.style.display = "";
   document.title = "Blog - Studio344";
 
+  // 読書プログレスバーを削除
+  removeReadingProgress();
+
   // Breadcrumbs: List View
   updateBreadcrumbs(null);
 }
@@ -123,8 +126,20 @@ async function showSinglePost(postId) {
     // タグ表示を挿入（h1の直後）
     insertPostTags(content, post.tags || []);
 
+    // 推定読了時間を挿入
+    insertReadingTime(content, mdText);
+
     // 目次を挿入（タグの後）
     generateTOC(content);
+
+    // コードブロックに言語ラベルを追加
+    addCodeLabels(content);
+
+    // コールアウトボックスを変換
+    convertCallouts(content);
+
+    // 読書プログレスバーを追加
+    initReadingProgress();
 
   } catch (e) {
     console.error(e);
@@ -486,4 +501,139 @@ async function loadBlogPosts(langOverride) {
   } catch (err) {
     console.error("Error fetching post list:", err);
   }
+}
+
+// ============================================================
+// 📊 読書プログレスバー
+// ============================================================
+let _readingProgressHandler = null;
+
+function initReadingProgress() {
+  removeReadingProgress(); // 既存を削除
+
+  const bar = document.createElement("div");
+  bar.className = "reading-progress";
+  bar.id = "reading-progress-bar";
+  document.body.appendChild(bar);
+
+  _readingProgressHandler = () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = `${Math.min(progress, 100)}%`;
+  };
+
+  window.addEventListener("scroll", _readingProgressHandler, { passive: true });
+}
+
+function removeReadingProgress() {
+  const existing = document.getElementById("reading-progress-bar");
+  if (existing) existing.remove();
+  if (_readingProgressHandler) {
+    window.removeEventListener("scroll", _readingProgressHandler);
+    _readingProgressHandler = null;
+  }
+}
+
+// ============================================================
+// ⏱ 推定読了時間
+// ============================================================
+function insertReadingTime(contentElement, mdText) {
+  // 日本語: 約500文字/分、英語: 約200語/分
+  const jaChars = (mdText.match(/[\u3000-\u9fff\uf900-\ufaff]/g) || []).length;
+  const enWords = mdText.replace(/[\u3000-\u9fff\uf900-\ufaff]/g, "").split(/\s+/).filter(w => w.length > 0).length;
+
+  const minutes = Math.ceil(jaChars / 500 + enWords / 200);
+  const lang = i18next.language?.startsWith("en") ? "en" : "ja";
+  const label = lang === "en" ? `${minutes} min read` : `約${minutes}分で読めます`;
+
+  const el = document.createElement("div");
+  el.className = "reading-time";
+  el.innerHTML = `<span class="reading-time-icon">⏱</span> ${label}`;
+
+  // h1の後、タグの前に挿入
+  const tags = contentElement.querySelector(".blog-post-tags");
+  const h1 = contentElement.querySelector("h1");
+  const insertBefore = tags || (h1 && h1.nextSibling);
+  if (insertBefore) {
+    contentElement.insertBefore(el, insertBefore);
+  } else {
+    contentElement.insertBefore(el, contentElement.firstChild);
+  }
+}
+
+// ============================================================
+// 🏷️ コードブロック言語ラベル
+// ============================================================
+function addCodeLabels(contentElement) {
+  const pres = contentElement.querySelectorAll("pre");
+  pres.forEach(pre => {
+    const code = pre.querySelector("code");
+    if (!code) return;
+
+    // Prism adds class like "language-javascript"
+    const langClass = Array.from(code.classList).find(c => c.startsWith("language-"));
+    if (!langClass) return;
+
+    const lang = langClass.replace("language-", "");
+    if (!lang || lang === "none") return;
+
+    // Wrap in container
+    const wrapper = document.createElement("div");
+    wrapper.className = "code-block-wrapper";
+
+    const label = document.createElement("span");
+    label.className = "code-lang-label";
+    label.textContent = lang;
+
+    pre.parentNode.insertBefore(wrapper, pre);
+    wrapper.appendChild(label);
+    wrapper.appendChild(pre);
+  });
+}
+
+// ============================================================
+// 📦 コールアウトボックス変換
+// Markdown内の書式: > [!TYPE] テキスト を検出して変換
+// TYPE: info, tip, warning, danger, memo
+// ============================================================
+function convertCallouts(contentElement) {
+  const blockquotes = contentElement.querySelectorAll("blockquote");
+
+  blockquotes.forEach(bq => {
+    const firstP = bq.querySelector("p");
+    if (!firstP) return;
+
+    const text = firstP.innerHTML;
+    // パターン: [!type] で始まる or [!type] Title\n内容
+    const match = text.match(/^\[!(info|tip|warning|danger|memo)\]\s*(.*)/is);
+    if (!match) return;
+
+    const type = match[1].toLowerCase();
+    const rest = match[2];
+
+    const icons = {
+      info: "ℹ️",
+      tip: "💡",
+      warning: "⚠️",
+      danger: "🚫",
+      memo: "📝",
+    };
+
+    // 残りのpを収集
+    const allPs = bq.querySelectorAll("p");
+    let bodyHtml = rest;
+    for (let i = 1; i < allPs.length; i++) {
+      bodyHtml += allPs[i].outerHTML;
+    }
+
+    const callout = document.createElement("div");
+    callout.className = `callout callout-${type}`;
+    callout.innerHTML = `
+      <span class="callout-icon">${icons[type] || "📌"}</span>
+      <div class="callout-body">${bodyHtml}</div>
+    `;
+
+    bq.replaceWith(callout);
+  });
 }

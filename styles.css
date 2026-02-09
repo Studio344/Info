@@ -1580,9 +1580,22 @@ a.bento-card:hover {
   margin-top: 3rem;
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-left: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 4px solid #6366f1;
   font-size: 1.8rem;
   color: #fff;
+  position: relative;
+}
+
+#blog-single-content h2::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #6366f1, transparent);
 }
 
 #blog-single-content h3 {
@@ -1590,10 +1603,8 @@ a.bento-card:hover {
   margin-bottom: 1rem;
   font-size: 1.4rem;
   color: #e0e7ff;
-  /* Lighter indigo tint */
   padding-left: 0.8rem;
   border-left: 4px solid #6366f1;
-  /* Indigo accent */
 }
 
 #blog-single-content p,
@@ -1601,4 +1612,237 @@ a.bento-card:hover {
   line-height: 1.8;
   margin-bottom: 1.2rem;
   color: #d4d4d4;
+}
+
+/* リード文（h1直後の最初の段落を強調） */
+#blog-single-content .blog-post-tags + p,
+#blog-single-content .blog-toc + p,
+#blog-single-content h1 + p {
+  font-size: 1.1rem;
+  color: #b8b8b8;
+  line-height: 1.9;
+  border-left: 3px solid rgba(165, 180, 252, 0.3);
+  padding-left: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* 引用 (blockquote) - コールアウトスタイル */
+#blog-single-content blockquote {
+  background: rgba(99, 102, 241, 0.06);
+  border-left: 4px solid #6366f1;
+  border-radius: 0 12px 12px 0;
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0;
+  position: relative;
+  color: #c4b5fd;
+}
+
+#blog-single-content blockquote::before {
+  content: '\201C';
+  position: absolute;
+  top: -0.2rem;
+  left: 0.6rem;
+  font-size: 3rem;
+  color: rgba(99, 102, 241, 0.2);
+  font-family: Georgia, serif;
+  line-height: 1;
+}
+
+#blog-single-content blockquote p {
+  color: #c4b5fd;
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+#blog-single-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* リスト - カスタムブレット */
+#blog-single-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+#blog-single-content ul > li {
+  position: relative;
+  padding-left: 1.6rem;
+}
+
+#blog-single-content ul > li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: linear-gradient(135deg, #6366f1, #a78bfa);
+  transform: rotate(45deg);
+}
+
+#blog-single-content ol {
+  padding-left: 1.5rem;
+  counter-reset: ol-counter;
+  list-style: none;
+}
+
+#blog-single-content ol > li {
+  counter-increment: ol-counter;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+#blog-single-content ol > li::before {
+  content: counter(ol-counter);
+  position: absolute;
+  left: -0.8rem;
+  top: 0.1em;
+  width: 1.6em;
+  height: 1.6em;
+  border-radius: 50%;
+  background: rgba(99, 102, 241, 0.15);
+  color: #a5b4fc;
+  font-size: 0.75em;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 区切り線 (hr) */
+#blog-single-content hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.4), transparent);
+  margin: 2.5rem 0;
+}
+
+/* 画像スタイリング */
+#blog-single-content img {
+  max-width: 100%;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  margin: 1.5rem 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#blog-single-content img:hover {
+  transform: scale(1.01);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* コールアウトボックス（Markdown内で使用） */
+.callout {
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  margin: 1.5rem 0;
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.callout-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.callout-body {
+  flex: 1;
+}
+
+.callout-body p {
+  margin: 0 !important;
+  font-size: 0.95rem !important;
+}
+
+.callout-body strong {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.callout-info {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+}
+
+.callout-tip {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+}
+
+.callout-warning {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  color: #fcd34d;
+}
+
+.callout-danger {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+}
+
+.callout-memo {
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  color: #c4b5fd;
+}
+
+/* コードブロック言語ラベル */
+.code-block-wrapper {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.code-lang-label {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(99, 102, 241, 0.2);
+  color: #a5b4fc;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.6rem;
+  border-radius: 0 12px 0 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+.code-block-wrapper pre {
+  margin-bottom: 0;
+}
+
+/* 読書プログレスバー */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: linear-gradient(90deg, #6366f1, #a78bfa, #c4b5fd);
+  z-index: 9999;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.4);
+}
+
+/* 推定読了時間 */
+.reading-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: #888;
+  margin-bottom: 1.5rem;
+}
+
+.reading-time-icon {
+  font-size: 1rem;
 }
