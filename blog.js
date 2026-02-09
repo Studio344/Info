@@ -46,8 +46,10 @@ function showPostList() {
   if (single) single.style.display = "none";
   const title = document.querySelector(".bento-card.text-content-card > h1");
   const desc = document.querySelector(".bento-card.text-content-card > p");
+  const controls = document.querySelector(".blog-controls");
   if (title) title.style.display = "";
   if (desc) desc.style.display = "";
+  if (controls) controls.style.display = "";
   document.title = "Blog - Studio344";
 
   // Breadcrumbs: List View
@@ -64,12 +66,14 @@ async function showSinglePost(postId) {
 
   if (!grid || !single || !content) return;
 
-  // グリッドとタイトル・説明文を非表示
+  // グリッドとタイトル・説明文・コントロールを非表示
   grid.style.display = "none";
   const title = document.querySelector(".bento-card.text-content-card > h1");
   const desc = document.querySelector(".bento-card.text-content-card > p");
+  const controls = document.querySelector(".blog-controls");
   if (title) title.style.display = "none";
   if (desc) desc.style.display = "none";
+  if (controls) controls.style.display = "none";
 
   // 記事ビューを表示
   single.style.display = "";
@@ -116,7 +120,10 @@ async function showSinglePost(postId) {
       window.Prism.highlightAll();
     }
 
-    // Generate Table of Contents
+    // タグ表示を挿入（h1の直後）
+    insertPostTags(content, post.tags || []);
+
+    // 目次を挿入（タグの後）
     generateTOC(content);
 
   } catch (e) {
@@ -193,51 +200,40 @@ function generateTOC(contentElement) {
     }
   };
 
-  // Insert TOC at the top of content
-  contentElement.insertBefore(tocContainer, contentElement.firstChild);
+  // Insert TOC after h1 and tags (h1 → tags → TOC → body)
+  const h1 = contentElement.querySelector("h1");
+  const tagsEl = contentElement.querySelector(".blog-post-tags");
+  // 挿入位置: タグがあればその後、なければh1の後、どちらもなければ先頭
+  const insertAfter = tagsEl || h1;
+  if (insertAfter && insertAfter.nextSibling) {
+    contentElement.insertBefore(tocContainer, insertAfter.nextSibling);
+  } else if (insertAfter) {
+    contentElement.appendChild(tocContainer);
+  } else {
+    contentElement.insertBefore(tocContainer, contentElement.firstChild);
+  }
 }
 
 /**
- * Generate Table of Contents from h2, h3
+ * 記事のタグをh1の直後に挿入する
  */
-function generateTOC(contentElement) {
-  const headings = contentElement.querySelectorAll("h2, h3");
-  if (headings.length === 0) return;
+function insertPostTags(contentElement, tags) {
+  if (!tags || tags.length === 0) return;
 
-  const tocContainer = document.createElement("div");
-  tocContainer.className = "blog-toc";
-  tocContainer.innerHTML = `<div class="blog-toc-title">目次</div>`;
+  const tagsDiv = document.createElement("div");
+  tagsDiv.className = "blog-post-tags";
+  tagsDiv.innerHTML = tags
+    .map(tag => `<span class="blog-post-tag">${tag}</span>`)
+    .join("");
 
-  const ul = document.createElement("ul");
-
-  headings.forEach((heading, index) => {
-    // Assign ID if missing
-    if (!heading.id) {
-      heading.id = `heading-${index}`;
-    }
-
-    const li = document.createElement("li");
-    li.className = `toc-${heading.tagName.toLowerCase()}`;
-
-    const a = document.createElement("a");
-    a.href = `#${heading.id}`;
-    a.textContent = heading.textContent;
-
-    // Smooth scroll
-    a.onclick = (e) => {
-      e.preventDefault();
-      document.getElementById(heading.id).scrollIntoView({ behavior: "smooth" });
-      history.pushState(null, "", `#${heading.id}`);
-    };
-
-    li.appendChild(a);
-    ul.appendChild(li);
-  });
-
-  tocContainer.appendChild(ul);
-
-  // Insert TOC at the top of content
-  contentElement.insertBefore(tocContainer, contentElement.firstChild);
+  const h1 = contentElement.querySelector("h1");
+  if (h1 && h1.nextSibling) {
+    contentElement.insertBefore(tagsDiv, h1.nextSibling);
+  } else if (h1) {
+    contentElement.appendChild(tagsDiv);
+  } else {
+    contentElement.insertBefore(tagsDiv, contentElement.firstChild);
+  }
 }
 
 function updateBreadcrumbs(postTitle) {
@@ -389,7 +385,6 @@ async function loadBlogPosts(langOverride) {
 
     // --- Filter Logic Setup ---
     let activeTag = null;
-    const searchInput = document.getElementById("blog-search");
     const tagsContainer = document.getElementById("blog-tags");
 
     // 1. Generate Tags
@@ -425,17 +420,10 @@ async function loadBlogPosts(langOverride) {
       });
     }
 
-    // 2. Search Handler
-    if (searchInput) {
-      searchInput.addEventListener("input", () => {
-        renderGrid();
-      });
-    }
-
-    // 3. Render Grid Function
+    // 2. Render Grid Function
     function renderGrid() {
       container.innerHTML = "";
-      const query = searchInput ? searchInput.value.toLowerCase() : "";
+      const query = "";
 
       const filtered = validPosts.filter(post => {
         const matchesTag = activeTag ? post.tags.includes(activeTag) : true;

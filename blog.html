@@ -1,210 +1,164 @@
 <!doctype html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog - Studio344</title>
-    <meta
-      name="description"
-      content="Studio344の開発ログや技術的な知見を発信するブログ。"
-    />
-    <script
-      async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
-      crossorigin="anonymous"
-    ></script>
-    <meta property="og:title" content="Blog - Studio344" />
-    <meta property="og:description" content="Studio344の開発ログや技術的な知見を発信するブログ。" />
-    <meta property="og:image" content="https://studio344.net/assets/logo-banner-black.png" />
-    <meta property="og:url" content="https://studio344.net/blog.html" />
-    <meta property="og:type" content="website" />
-    <link rel="canonical" href="https://studio344.net/blog.html" />
-    <link rel="icon" type="image/png" href="assets/logo-black.png" />
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  </head>
-  <body>
-    <div class="aurora-container">
-      <div class="aurora-orb orb-1"></div>
-      <div class="aurora-orb orb-2"></div>
-      <div class="aurora-orb orb-3"></div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="view-transition" content="same-origin" />
+  <title>Blog - Studio344</title>
+  <meta name="description" content="Studio344の開発ログや技術的な知見を発信するブログ。" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
+    crossorigin="anonymous"></script>
+  <meta property="og:title" content="Blog - Studio344" />
+  <meta property="og:description" content="Studio344の開発ログや技術的な知見を発信するブログ。" />
+  <meta property="og:image" content="https://studio344.net/assets/logo-banner-black.png" />
+  <meta property="og:url" content="https://studio344.net/blog.html" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://studio344.net/blog.html" />
+  <link rel="icon" type="image/png" href="assets/logo-black.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+
+<body>
+  <div class="aurora-container">
+    <div class="aurora-orb orb-1"></div>
+    <div class="aurora-orb orb-2"></div>
+    <div class="aurora-orb orb-3"></div>
+  </div>
+  <div class="grid-overlay"></div>
+  <div class="noise-overlay"></div>
+  <div class="spotlight-overlay"></div>
+
+  <header class="header">
+    <div class="logo">
+      <a href="index.html" style="color: white; text-decoration: none">Studio344</a>
     </div>
-    <div class="grid-overlay"></div>
-    <div class="noise-overlay"></div>
-    <div class="spotlight-overlay"></div>
-
-    <header class="header">
-      <div class="logo">
-        <a href="index.html" style="color: white; text-decoration: none"
-          >Studio344</a
-        >
-      </div>
-      <button class="hamburger" aria-label="メニュー" aria-expanded="false">
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <line x1="3" y1="6" x2="21" y2="6" />
-          <line x1="3" y1="12" x2="21" y2="12" />
-          <line x1="3" y1="18" x2="21" y2="18" />
+    <button class="hamburger" aria-label="メニュー" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+    <nav class="nav-menu">
+      <a href="about.html" class="nav-btn" data-i18n="nav.about">About</a>
+      <a href="blog.html" class="nav-btn" data-i18n="nav.blog">Blog</a>
+      <a href="projects.html" class="nav-btn" data-i18n="nav.projects">Projects</a>
+      <a href="contact.html" class="nav-btn" data-i18n="nav.contact">Contact</a>
+      <button id="lang-toggle" class="nav-btn">EN</button>
+      <a href="https://github.com/Studio344" target="_blank" class="nav-icon" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path
+            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+          </path>
         </svg>
-      </button>
-      <nav class="nav-menu">
-        <a href="about.html" class="nav-btn" data-i18n="nav.about">About</a>
-        <a href="blog.html" class="nav-btn" data-i18n="nav.blog">Blog</a>
-        <a href="projects.html" class="nav-btn" data-i18n="nav.projects"
-          >Projects</a
-        >
-        <a href="contact.html" class="nav-btn" data-i18n="nav.contact"
-          >Contact</a
-        >
-        <button id="lang-toggle" class="nav-btn">EN</button>
-        <a
-          href="https://github.com/Studio344"
-          target="_blank"
-          class="nav-icon"
-          aria-label="GitHub"
-        >
-          <svg
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
-            stroke="currentColor"
-            stroke-width="2"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path
-              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-            ></path>
-          </svg>
-        </a>
-      </nav>
-    </header>
-    <div class="nav-menu-overlay"></div>
+      </a>
+    </nav>
+  </header>
+  <div class="nav-menu-overlay"></div>
 
-    <main class="bento-grid">
-      <div class="bento-card text-content-card">
-        <h1 data-i18n="blog_page.title">Blog & Updates</h1>
-        <p data-i18n="blog_page.desc" style="margin-bottom: 2rem; color: #aaa">
-          開発ログや技術的な知見を不定期に更新します。
-        </p>
+  <main class="bento-grid">
+    <div class="bento-card text-content-card">
+      <h1 data-i18n="blog_page.title">Blog & Updates</h1>
+      <p data-i18n="blog_page.desc" style="margin-bottom: 2rem; color: #aaa">
+        開発ログや技術的な知見を不定期に更新します。
+      </p>
 
-        <div id="blog-container" class="blog-preview-grid">
-          <!-- Preview cards will be injected here by blog.js -->
-        </div>
-
-        <!-- クローラー向け静的フォールバック -->
-        <noscript>
-          <h2>記事一覧 / Blog Articles</h2>
-          <ul style="list-style: none; padding: 0">
-            <li style="margin-bottom: 1rem">
-              <strong>2026.02.07</strong> — ✨ GitHub
-              Pagesで作る、GSAPアニメーション付きポートフォリオサイト
-              <br /><small>Tags: GSAP, CSS Grid, GitHub Pages</small>
-            </li>
-            <li style="margin-bottom: 1rem">
-              <strong>2026.02.04</strong> — 🔄
-              ポートフォリオサイトを全面リニューアルしました <br /><small
-                >Tags: Design, Architecture</small
-              >
-            </li>
-            <li style="margin-bottom: 1rem">
-              <strong>2026.02.01</strong> — 🌍
-              静的HTMLサイトにi18nextで多言語対応を実装する方法 <br /><small
-                >Tags: i18next, JA/EN</small
-              >
-            </li>
-            <li style="margin-bottom: 1rem">
-              <strong>2026.01.27</strong> — 🔐 Next.js + Supabase + Fitbit
-              OAuthで認証基盤を構築した話 <br /><small
-                >Tags: Next.js, Supabase, OAuth</small
-              >
-            </li>
-            <li style="margin-bottom: 1rem">
-              <strong>2026.01.20</strong> — ⌚ UCFitness開発ログ: Fitbit
-              APIの「Rate Limit」との戦い <br /><small
-                >Tags: Fitbit API, Rate Limit</small
-              >
-            </li>
-            <li style="margin-bottom: 1rem">
-              <strong>2026.01.15</strong> — 🍱
-              CSSグリッドで作る「Bento Layout」の設計パターン <br /><small
-                >Tags: CSS Grid, Bento Layout, Responsive</small
-              >
-            </li>
-            <li style="margin-bottom: 1rem">
-              <strong>2026.01.10</strong> — 🚀
-              GitHub Pagesで静的サイトをデプロイする際に知っておくべきこと <br /><small
-                >Tags: GitHub Pages, Deploy, DNS</small
-              >
-            </li>
-            <li style="margin-bottom: 1rem">
-              <strong>2026.01.05</strong> — ⚡
-              静的サイトのパフォーマンス最適化: Lighthouseスコア改善戦略 <br /><small
-                >Tags: Lighthouse, Performance, SEO</small
-              >
-            </li>
-          </ul>
-        </noscript>
-
-        <!-- SPA: 記事全文表示エリア (デフォルト非表示) -->
-        <div id="blog-single-view" style="display: none">
-          <a
-            href="#"
-            id="blog-back-btn"
-            class="blog-back-link"
-            data-i18n="blog_post.back"
-            >← ブログ一覧に戻る</a
-          >
-          <div
-            id="blog-single-content"
-            class="markdown-content"
-            style="margin-top: 1.5rem"
-          ></div>
-        </div>
+      <!-- Breadcrumbs -->
+      <div id="breadcrumbs" class="breadcrumb-nav" style="display: none;">
+        <a href="index.html">Home</a> &gt;
+        <a href="#" id="breadcrumb-blog">Blog</a>
+        <span id="breadcrumb-separator" style="display:none"> &gt; </span>
+        <span id="breadcrumb-current"></span>
       </div>
-    </main>
 
-    <footer class="site-footer">
-      <p>&copy; 2026 Studio344</p>
-      <div
-        style="
+      <!-- Blog Controls -->
+      <div class="blog-controls" style="margin-bottom: 2rem;">
+        <div id="blog-tags" style="display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
+      </div>
+
+      <div id="blog-container" class="blog-preview-grid">
+        <!-- Preview cards will be injected here by blog.js -->
+      </div>
+
+      <!-- クローラー向け静的フォールバック -->
+      <noscript>
+        <h2>記事一覧 / Blog Articles</h2>
+        <ul style="list-style: none; padding: 0">
+          <li style="margin-bottom: 1rem">
+            <strong>2026.02.07</strong> — ✨ GitHub
+            Pagesで作る、GSAPアニメーション付きポートフォリオサイト
+            <br /><small>Tags: GSAP, CSS Grid, GitHub Pages</small>
+          </li>
+          <li style="margin-bottom: 1rem">
+            <strong>2026.02.04</strong> — 🔄
+            ポートフォリオサイトを全面リニューアルしました <br /><small>Tags: Design, Architecture</small>
+          </li>
+          <li style="margin-bottom: 1rem">
+            <strong>2026.02.01</strong> — 🌍
+            静的HTMLサイトにi18nextで多言語対応を実装する方法 <br /><small>Tags: i18next, JA/EN</small>
+          </li>
+          <li style="margin-bottom: 1rem">
+            <strong>2026.01.27</strong> — 🔐 Next.js + Supabase + Fitbit
+            OAuthで認証基盤を構築した話 <br /><small>Tags: Next.js, Supabase, OAuth</small>
+          </li>
+          <li style="margin-bottom: 1rem">
+            <strong>2026.01.20</strong> — ⌚ UCFitness開発ログ: Fitbit
+            APIの「Rate Limit」との戦い <br /><small>Tags: Fitbit API, Rate Limit</small>
+          </li>
+          <li style="margin-bottom: 1rem">
+            <strong>2026.01.15</strong> — 🍱
+            CSSグリッドで作る「Bento Layout」の設計パターン <br /><small>Tags: CSS Grid, Bento Layout, Responsive</small>
+          </li>
+          <li style="margin-bottom: 1rem">
+            <strong>2026.01.10</strong> — 🚀
+            GitHub Pagesで静的サイトをデプロイする際に知っておくべきこと <br /><small>Tags: GitHub Pages, Deploy, DNS</small>
+          </li>
+          <li style="margin-bottom: 1rem">
+            <strong>2026.01.05</strong> — ⚡
+            静的サイトのパフォーマンス最適化: Lighthouseスコア改善戦略 <br /><small>Tags: Lighthouse, Performance, SEO</small>
+          </li>
+        </ul>
+      </noscript>
+
+      <!-- SPA: 記事全文表示エリア (デフォルト非表示) -->
+      <div id="blog-single-view" style="display: none">
+
+        <div id="blog-single-content" class="markdown-content" style="margin-top: 1.5rem"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="copyright-year">2026</span> Studio344</p>
+    <div style="
           margin-top: 0.5rem;
           display: flex;
           gap: 1rem;
           justify-content: center;
           font-size: 0.8rem;
-        "
-      >
-        <a href="privacy-policy.html" style="color: #666; text-decoration: none"
-          >Privacy Policy</a
-        >
-        <a href="terms.html" style="color: #666; text-decoration: none"
-          >Terms</a
-        >
-        <a href="contact.html" style="color: #666; text-decoration: none"
-          >Contact</a
-        >
-      </div>
-    </footer>
+        ">
+      <a href="privacy-policy.html" style="color: #666; text-decoration: none">Privacy Policy</a>
+      <a href="terms.html" style="color: #666; text-decoration: none">Terms</a>
+      <a href="contact.html" style="color: #666; text-decoration: none">Contact</a>
+    </div>
+  </footer>
 
-    <script>
-      document.addEventListener("mousemove", (e) => {
-        const x = e.clientX;
-        const y = e.clientY;
-        document.documentElement.style.setProperty("--mouse-x", `${x}px`);
-        document.documentElement.style.setProperty("--mouse-y", `${y}px`);
-      });
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js"></script>
-    <script src="i18n.js"></script>
-    <script src="blog.js"></script>
-  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" />
+  <script src="assets/js/ui.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js"></script>
+  <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.min.js"></script>
+  <script src="i18n.js"></script>
+  <script src="blog.js"></script>
+</body>
+
 </html>

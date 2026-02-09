@@ -1460,6 +1460,25 @@ a.bento-card:hover {
 
 /* --- Blog Readability (Phase 4) --- */
 
+/* 記事内タグ表示 */
+.blog-post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.blog-post-tag {
+  padding: 0.3rem 0.7rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #aaa;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
 /* Table of Contents - 折りたたみ式 */
 .blog-toc {
   background: rgba(255, 255, 255, 0.03);
