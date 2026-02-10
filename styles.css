@@ -394,40 +394,52 @@ a.bento-card:hover {
   z-index: 2;
 }
 
-/* Desktop: ロゴとタイトルは縦並び (中央揃え) */
-.hero-top-row {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  width: 100%;
-}
-
-.hero-title-group {
-  text-align: center;
-}
-
 .hero-logo-wrapper {
   margin-bottom: 0.5rem;
   position: relative;
 }
 
+/* ロゴ背後のグローリング */
+.hero-logo-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180%;
+  height: 180%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+  animation: pulseGlow 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+}
+
 .hero-logo {
   width: 150px;
   height: 150px;
-  /* Fixed height for perfect circle */
   border-radius: 50%;
-  /* Make it round */
   object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(165, 180, 252, 0.25);
+  box-shadow: 
+    0 4px 24px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(99, 102, 241, 0.15),
+    0 0 60px rgba(99, 102, 241, 0.05);
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
     box-shadow 0.5s ease;
 }
 
 .hero-logo:hover {
   transform: scale(1.05) rotate(5deg);
-  box-shadow: 0 8px 36px rgba(0, 0, 0, 0.5);
+  box-shadow: 
+    0 8px 36px rgba(0, 0, 0, 0.5),
+    0 0 50px rgba(99, 102, 241, 0.3),
+    0 0 80px rgba(99, 102, 241, 0.1);
+}
 }
 
 /* Hero Tagline */
@@ -1017,74 +1029,77 @@ a.bento-card:hover {
     grid-column: span 12 !important;
   }
 
-  /* ヒーロー */
+  /* ヒーロー: インパクト重視 */
   .hero-card {
-    min-height: auto;
+    min-height: 85vh;
+    min-height: 85dvh;
     margin-bottom: 0;
     border-radius: 14px;
-    padding: 2rem 1.2rem 1.2rem;
+    padding: 2rem 1rem;
     position: relative;
     overflow: hidden;
+    background: 
+      radial-gradient(ellipse at 50% 30%, rgba(99, 102, 241, 0.08) 0%, transparent 60%),
+      rgba(255, 255, 255, 0.02);
   }
 
-  /* 左ロゴ + 右タイトル の横並び */
+  /* ヒーロー下部のグラデーションライン */
+  .hero-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(165, 180, 252, 0.3), transparent);
+  }
+
   .hero-content {
-    gap: 0;
-  }
-
-  .hero-top-row {
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .hero-title-group {
-    text-align: left;
+    gap: 1.2rem;
   }
 
   .hero-logo-wrapper {
     margin-bottom: 0;
-    flex-shrink: 0;
   }
 
   .hero-logo {
-    width: 64px;
-    height: 64px;
-    border: 1.5px solid rgba(165, 180, 252, 0.3);
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2), 0 0 40px rgba(99, 102, 241, 0.05);
+    width: 110px;
+    height: 110px;
+    border: 2px solid rgba(165, 180, 252, 0.2);
+    box-shadow: 
+      0 0 30px rgba(99, 102, 241, 0.2),
+      0 0 60px rgba(99, 102, 241, 0.08),
+      0 4px 20px rgba(0, 0, 0, 0.4);
   }
 
   .hero-content h1 {
-    font-size: clamp(2rem, 10vw, 3rem);
-    margin-bottom: 0.2rem;
-    text-align: left;
+    font-size: clamp(2.8rem, 13vw, 4rem);
+    margin-bottom: 0;
+    letter-spacing: -0.03em;
   }
 
   .typing-text {
-    font-size: 0.78rem;
-    text-align: left;
-    min-height: 1.2em;
+    font-size: 0.85rem;
   }
 
   .hero-tagline {
-    font-size: 0.78rem;
-    margin-top: 0.8rem;
-    text-align: center;
-    letter-spacing: 0.02em;
-    opacity: 1;
+    font-size: 0.82rem;
+    margin-top: 0.5rem;
+    max-width: 280px;
+    line-height: 1.6;
   }
 
   .scroll-indicator {
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
 
   .scroll-indicator span {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
   }
 
   .mouse-icon {
-    width: 18px;
-    height: 28px;
+    width: 20px;
+    height: 30px;
   }
 
   /* --- 本文テキスト全体のモバイル縮小 --- */
