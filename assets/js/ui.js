@@ -60,29 +60,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const currentPath = window.location.pathname;
   const page = currentPath.split("/").pop() || "index.html";
 
-  // Select both desktop (.nav-menu) and mobile (.nav-links - if exists, but structure seems to use nav-menu)
-  const navLinks = document.querySelectorAll(".nav-menu a, .nav-links a");
+  const navLinks = document.querySelectorAll(".nav-menu a.nav-btn");
 
   navLinks.forEach(link => {
     const href = link.getAttribute("href");
-    if (!href) return;
+    if (!href || href.startsWith("http") || href === "#") return;
 
-    // Normalize logic
+    // href のファイル名部分を抽出（「../about.html」→「about.html」）
+    const hrefFile = href.split("/").pop();
+
     let isActive = false;
 
-    // 1. Exact filename match (e.g. "about.html")
-    if (href === page || (page === "" && href === "index.html")) {
+    // 1. ファイル名の完全一致
+    if (hrefFile === page) {
       isActive = true;
     }
 
-    // 2. Subdirectory handling for Projects
-    // If current path contains "/projects/" and link is "projects.html" or "../projects.html"
-    if (currentPath.includes("/projects/") && (href.includes("projects.html") || href === "../projects.html")) {
+    // 2. トップページ: pathname が "/" や "" の場合
+    if ((page === "" || page === "/" || currentPath === "/") && hrefFile === "index.html") {
       isActive = true;
     }
 
-    // 3. Handle relative paths from subdirectories (e.g. "../about.html" should match "about.html")
-    if (href.startsWith("../") && href.includes(page)) {
+    // 3. サブディレクトリ（/projects/portfolio.html 等）→ 親カテゴリをハイライト
+    if (currentPath.includes("/projects/") && hrefFile === "projects.html") {
       isActive = true;
     }
 

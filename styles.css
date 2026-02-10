@@ -100,14 +100,7 @@ body {
 
 /* --- UI Polish --- */
 
-/* Active Nav Link */
-.nav-menu a.active,
-.nav-btn.active {
-  color: #fff;
-  background: rgba(99, 102, 241, 0.18);
-  border-color: rgba(99, 102, 241, 0.5);
-  box-shadow: 0 0 8px rgba(99, 102, 241, 0.25);
-}
+/* Active Nav Link — 定義は .nav-btn の後に配置（下記参照） */
 
 /* Breadcrumbs */
 .breadcrumb-nav,
@@ -1338,6 +1331,13 @@ a.bento-card:hover {
   background: rgba(99, 102, 241, 0.15);
   border-color: rgba(99, 102, 241, 0.3);
   color: #fff;
+}
+
+.nav-menu a.nav-btn.active {
+  color: #fff;
+  background: rgba(99, 102, 241, 0.22);
+  border-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
 }
 
 .nav-icon {
