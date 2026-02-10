@@ -372,15 +372,50 @@ a.bento-card:hover {
 /* Hero: Full Width */
 .hero-card {
   grid-column: span 12;
-  min-height: 400px;
+  min-height: 85vh;
   height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: rgba(255, 255, 255, 0.02);
-  /* Very subtle fill */
+  background: 
+    radial-gradient(ellipse at 50% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(168, 85, 247, 0.06) 0%, transparent 40%),
+    rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 下部の光のアクセントライン */
+.hero-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(165, 180, 252, 0.4), rgba(168, 85, 247, 0.3), transparent);
+}
+
+/* 上部の微かなグロー */
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  animation: heroAmbient 8s ease-in-out infinite;
+}
+
+@keyframes heroAmbient {
+  0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+  50% { opacity: 1; transform: translateX(-50%) scale(1.2); }
 }
 
 /* Hero Content Layout */
@@ -424,32 +459,35 @@ a.bento-card:hover {
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid rgba(165, 180, 252, 0.25);
+  border: 2px solid rgba(165, 180, 252, 0.2);
   box-shadow: 
     0 4px 24px rgba(0, 0, 0, 0.4),
-    0 0 30px rgba(99, 102, 241, 0.15),
-    0 0 60px rgba(99, 102, 241, 0.05);
+    0 0 40px rgba(99, 102, 241, 0.2),
+    0 0 80px rgba(99, 102, 241, 0.08);
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
-    box-shadow 0.5s ease;
+    box-shadow 0.5s ease,
+    border-color 0.5s ease;
 }
 
 .hero-logo:hover {
-  transform: scale(1.05) rotate(5deg);
+  transform: scale(1.08) rotate(5deg);
+  border-color: rgba(165, 180, 252, 0.4);
   box-shadow: 
     0 8px 36px rgba(0, 0, 0, 0.5),
-    0 0 50px rgba(99, 102, 241, 0.3),
-    0 0 80px rgba(99, 102, 241, 0.1);
-}
+    0 0 60px rgba(99, 102, 241, 0.35),
+    0 0 100px rgba(99, 102, 241, 0.15);
 }
 
 /* Hero Tagline */
 .hero-tagline {
-  font-size: 1rem;
-  color: rgba(165, 180, 252, 0.7);
+  font-size: 1.05rem;
+  color: rgba(165, 180, 252, 0.6);
   margin-top: 0.5rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   opacity: 0;
   animation: fadeInUp 1s ease forwards 2s;
+  font-weight: 300;
+  max-width: 500px;
 }
 
 @keyframes fadeInUp {
@@ -551,12 +589,31 @@ a.bento-card:hover {
   letter-spacing: -0.04em;
   line-height: 1;
   margin-bottom: 1rem;
-  background: linear-gradient(to bottom right, #fff 30%, #a5b4fc 100%);
+  background: linear-gradient(135deg, #fff 0%, #e0e7ff 40%, #a5b4fc 70%, #c4b5fd 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: #fff;
-  /* Fallback */
+  filter: drop-shadow(0 0 40px rgba(99, 102, 241, 0.15));
+  position: relative;
+}
+
+/* グリッチエフェクト (ホバー時) */
+.hero-content h1.glitch-text {
+  transition: filter 0.3s ease;
+}
+
+.hero-content h1.glitch-text:hover {
+  filter: drop-shadow(0 0 60px rgba(99, 102, 241, 0.3));
+  animation: glitchShake 0.3s ease;
+}
+
+@keyframes glitchShake {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 1px); }
+  40% { transform: translate(2px, -1px); }
+  60% { transform: translate(-1px, -1px); }
+  80% { transform: translate(1px, 1px); }
 }
 
 .typing-text {
