@@ -1,17 +1,82 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;900&display=swap');
+/* Google Fonts は各HTMLの <link> タグで読み込み (パフォーマンス最適化) */
+
+/* ===== Skip Link (A11y) ===== */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 10000;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent-glow);
+  color: #fff;
+  border-radius: 0 0 8px 8px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ===== Footer Link ===== */
+.footer-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: var(--text-light);
+}
+
+/* ===== Focus Visible ===== */
+:focus-visible {
+  outline: 2px solid rgba(165, 180, 252, 0.8);
+  outline-offset: 2px;
+}
 
 :root {
+  /* === カラートークン === */
   --bg-color: #030303;
   --card-bg: rgba(20, 20, 20, 0.4);
-  /* More transparent for effects */
   --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.3);
+
+  /* テキスト (WCAG AA 4.5:1 準拠 on #030303) */
   --text-primary: #ededed;
-  --text-secondary: #888888;
+  --text-light: #cccccc;
+  --text-secondary: #a0a0a0;
+  --text-muted: #888888;
+
+  /* アクセントカラー */
+  --accent-indigo: #6366f1;
+  --accent-violet: #a78bfa;
+  --accent-lavender: #a5b4fc;
+  --accent-purple: #c4b5fd;
   --accent-glow: rgba(255, 255, 255, 0.15);
+
+  /* タイポグラフィ */
   --font-main: 'Inter', sans-serif;
   --font-heading: 'Outfit', sans-serif;
+  --font-blog-heading: 'Sora', 'Outfit', sans-serif;
+  --font-mono: 'Courier New', monospace;
 
-  /* Dynamic Mouse Variables (updated by JS) */
+  /* フォントサイズ (最小 0.75rem = 12px) */
+  --text-xs: 0.75rem;
+  --text-sm: 0.8rem;
+  --text-base: 0.875rem;
+  --text-md: 0.95rem;
+  --text-lg: 1.05rem;
+
+  /* ボーダー半径 */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-full: 50px;
+
+  /* マウス位置 (JSで更新) */
   --mouse-x: 50%;
   --mouse-y: 50%;
 }
@@ -36,23 +101,23 @@ body {
 /* --- UI Polish --- */
 
 /* Active Nav Link */
-.nav-links a.active {
+.nav-links a.active,
+.nav-btn.active {
   color: #fff;
-  border-bottom: 2px solid #6366f1;
+  border-bottom: 2px solid var(--accent-indigo);
 }
 
 /* Breadcrumbs */
 .breadcrumb-nav,
 .breadcrumb-nav a {
-  color: #aaa;
-  /* Gray per user request */
+  color: var(--text-secondary);
   text-decoration: none;
   font-size: 0.9rem;
 }
 
 .breadcrumb-nav a:hover {
   text-decoration: underline;
-  color: #fff !important;
+  color: #fff;
 }
 
 .breadcrumb-nav span {
@@ -140,7 +205,7 @@ html {
   top: 40%;
   left: 30%;
   animation-delay: -10s;
-  opacity: 0.4;
+  opacity: 0.35;
 }
 
 @keyframes float {
@@ -163,8 +228,8 @@ html {
   z-index: 1;
   background-size: 60px 60px;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   pointer-events: none;
   mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
   -webkit-mask-image: radial-gradient(circle at center, black 60%, transparent 100%);
@@ -192,7 +257,7 @@ html {
   pointer-events: none;
   z-index: 3;
   background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y),
-      rgba(255, 255, 255, 0.03),
+      rgba(255, 255, 255, 0.05),
       transparent 40%);
 }
 
@@ -214,16 +279,22 @@ html {
 /* --- Cards --- */
 
 .bento-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border-color);
+  background: rgba(15, 15, 20, 0.65);
+  border: 1px solid rgba(165, 180, 252, 0.1);
   border-radius: 24px;
   padding: 2.5rem;
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(24px);
-  /* Stronger blur */
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.3s;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.35s ease,
+    box-shadow 0.45s ease,
+    background 0.35s ease;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 /* Inner Glow on Hover */
@@ -236,30 +307,50 @@ html {
   bottom: 0;
   border-radius: 24px;
   padding: 1px;
-  background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
-      rgba(255, 255, 255, 0.4),
+  background: radial-gradient(700px circle at var(--mouse-x) var(--mouse-y),
+      rgba(165, 180, 252, 0.3),
       transparent 40%);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
-  opacity: 0.6;
+  opacity: 0.3;
+  transition: opacity 0.4s ease;
+}
+
+.bento-card:hover::before {
+  opacity: 1;
 }
 
 a.bento-card:hover {
-  border-color: rgba(255, 255, 255, 0.3);
-  /* transform: translateY(-4px);  <-- REMOVED to prevent conflict with JS Tilt */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  border-color: rgba(165, 180, 252, 0.35);
+  transform: translateY(-5px);
+  background: rgba(20, 20, 28, 0.75);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.25),
+    0 24px 64px rgba(0, 0, 0, 0.2),
+    0 0 40px rgba(99, 102, 241, 0.08);
 }
 
 /* --- Rich Project Cards --- */
 .project-card {
-  padding: 0 !important;
-  /* Reset padding for full-bleed image */
-  display: flex !important;
-  flex-direction: column !important;
-  background: var(--card-bg);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background: rgba(15, 15, 20, 0.65);
+  transition:
+    transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.35s ease,
+    box-shadow 0.4s ease;
+}
+
+.project-card:hover {
+  border-color: rgba(165, 180, 252, 0.35);
+  transform: translateY(-6px);
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(99, 102, 241, 0.1);
 }
 
 .card-visual-header {
@@ -287,17 +378,17 @@ a.bento-card:hover {
   position: relative;
   z-index: 2;
   color: #fff;
-  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
-  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.5s ease;
 }
 
 .project-card:hover .card-visual-icon {
-  transform: scale(1.1) rotate(5deg);
+  transform: scale(1.12) rotate(3deg);
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.6));
 }
 
 .card-content-body {
-  padding: 0.8rem 1.5rem;
-  /* Standardized side padding */
+  padding: 1rem 1.5rem 1.2rem;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -336,15 +427,52 @@ a.bento-card:hover {
 /* Hero: Full Width */
 .hero-card {
   grid-column: span 12;
-  min-height: 400px;
+  min-height: 70vh;
   height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: rgba(255, 255, 255, 0.02);
-  /* Very subtle fill */
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: 
+    radial-gradient(ellipse at 50% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 40%),
+    radial-gradient(ellipse at 20% 60%, rgba(6, 182, 212, 0.06) 0%, transparent 40%),
+    rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(165, 180, 252, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 下部の光のアクセントライン */
+.hero-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.6), rgba(168, 85, 247, 0.5), rgba(6, 182, 212, 0.4), transparent);
+  filter: blur(0.5px);
+}
+
+/* 上部の微かなグロー */
+.hero-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  animation: heroAmbient 8s ease-in-out infinite;
+}
+
+@keyframes heroAmbient {
+  0%, 100% { opacity: 0.5; transform: translateX(-50%) scale(1); }
+  50% { opacity: 1; transform: translateX(-50%) scale(1.2); }
 }
 
 /* Hero Content Layout */
@@ -352,7 +480,7 @@ a.bento-card:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
   width: 100%;
   position: relative;
   z-index: 2;
@@ -361,24 +489,93 @@ a.bento-card:hover {
 .hero-logo-wrapper {
   margin-bottom: 0.5rem;
   position: relative;
+  /* オービタルリングのスペース確保 */
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ロゴ背後のグローリング */
+.hero-logo-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 180%;
+  height: 180%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+  animation: pulseGlow 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* オービタルリング 1 (外側・遅回転) */
+.hero-logo-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 190px;
+  height: 190px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-top-color: rgba(165, 180, 252, 0.2);
+  border-right-color: rgba(168, 85, 247, 0.1);
+  animation: orbitSpin 12s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes orbitSpin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* オービタルリング 2 (内側・逆回転) */
+.orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 170px;
+  height: 170px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-bottom-color: rgba(168, 85, 247, 0.18);
+  border-left-color: rgba(99, 102, 241, 0.1);
+  animation: orbitSpin 8s linear infinite reverse;
+  pointer-events: none;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
 }
 
 .hero-logo {
   width: 150px;
   height: 150px;
-  /* Fixed height for perfect circle */
   border-radius: 50%;
-  /* Make it round */
   object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(165, 180, 252, 0.3);
+  box-shadow: 
+    0 4px 24px rgba(0, 0, 0, 0.4),
+    0 0 50px rgba(99, 102, 241, 0.3),
+    0 0 100px rgba(99, 102, 241, 0.12);
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
-    box-shadow 0.5s ease;
+    box-shadow 0.5s ease,
+    border-color 0.5s ease;
 }
 
 .hero-logo:hover {
-  transform: scale(1.05) rotate(5deg);
-  box-shadow: 0 8px 36px rgba(0, 0, 0, 0.5);
+  transform: scale(1.08) rotate(5deg);
+  border-color: rgba(165, 180, 252, 0.4);
+  box-shadow: 
+    0 8px 36px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(99, 102, 241, 0.35),
+    0 0 100px rgba(99, 102, 241, 0.15);
 }
 
 /* Hero Tagline */
@@ -386,9 +583,12 @@ a.bento-card:hover {
   font-size: 1rem;
   color: rgba(165, 180, 252, 0.7);
   margin-top: 0.5rem;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   opacity: 0;
   animation: fadeInUp 1s ease forwards 2s;
+  font-weight: 300;
+  max-width: 460px;
+  line-height: 1.7;
 }
 
 @keyframes fadeInUp {
@@ -434,25 +634,27 @@ a.bento-card:hover {
 
 /* Scroll Indicator */
 .scroll-indicator {
-  margin-top: 4rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  opacity: 0.7;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards 2.8s;
 }
 
 .scroll-indicator span {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-weight: 500;
+  letter-spacing: 0.25em;
+  font-weight: 400;
+  color: var(--text-muted);
 }
 
 .mouse-icon {
   width: 24px;
   height: 36px;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(165, 180, 252, 0.4);
   border-radius: 12px;
   position: relative;
 }
@@ -489,23 +691,49 @@ a.bento-card:hover {
   font-weight: 800;
   letter-spacing: -0.04em;
   line-height: 1;
-  margin-bottom: 1rem;
-  background: linear-gradient(to bottom right, #fff 30%, #a5b4fc 100%);
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #fff 0%, #e0e7ff 25%, #a5b4fc 50%, #818cf8 75%, #6366f1 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: #fff;
-  /* Fallback */
+  filter: drop-shadow(0 0 40px rgba(99, 102, 241, 0.2));
+  position: relative;
+  animation: shimmerText 6s ease-in-out infinite;
+}
+
+@keyframes shimmerText {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+/* グリッチエフェクト (ホバー時) */
+.hero-content h1.glitch-text {
+  transition: filter 0.3s ease;
+}
+
+.hero-content h1.glitch-text:hover {
+  filter: drop-shadow(0 0 60px rgba(99, 102, 241, 0.3));
+  animation: glitchShake 0.3s ease;
+}
+
+@keyframes glitchShake {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 1px); }
+  40% { transform: translate(2px, -1px); }
+  60% { transform: translate(-1px, -1px); }
+  80% { transform: translate(1px, 1px); }
 }
 
 .typing-text {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   color: var(--text-secondary);
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-mono);
   min-height: 1.5em;
+  letter-spacing: 0.03em;
 }
 
-/* About: Smaller Side Card */
 /* About: Smaller Side Card */
 .about-wrapper {
   grid-column: span 6;
@@ -518,20 +746,28 @@ a.bento-card:hover {
   width: 100%;
   height: auto;
   flex: 1;
-  /* Grow to fill wrapper */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
-/* Removed intermediate breakpoint to keep side-by-side longer */
+/* About Card: フラットレイアウト（本文 → フッター行） */
+.about-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(165, 180, 252, 0.1);
+  color: #a5b4fc;
+  margin-bottom: 0.6rem;
+}
 
-.about-card h2,
-.contact-card h2,
-.project-card h3 {
+.about-card h2 {
   font-family: var(--font-heading);
   font-size: 1.75rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   background: linear-gradient(to right, #fff, #cbd5e1);
   -webkit-background-clip: text;
   background-clip: text;
@@ -541,7 +777,117 @@ a.bento-card:hover {
 .about-card p {
   color: var(--text-secondary);
   line-height: 1.7;
-  font-size: 1.05rem;
+  font-size: var(--text-md);
+}
+
+/* フッター行: ボタン + 区切り + バッジ横並び */
+.about-footer {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.about-card-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 1.2rem;
+  background: rgba(165, 180, 252, 0.08);
+  border: 1px solid rgba(165, 180, 252, 0.15);
+  border-radius: 8px;
+  color: #a5b4fc;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.about-card-link:hover {
+  background: rgba(165, 180, 252, 0.15);
+  border-color: rgba(165, 180, 252, 0.3);
+  transform: translateX(4px);
+}
+
+/* Tech Stack ストリップ（横一列） */
+.about-stack-strip {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.about-stack-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.about-stack-badges {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.about-stack-count {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+/* モバイル: About */
+@media (max-width: 768px) {
+  .about-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .about-stack-strip {
+    gap: 0.6rem;
+  }
+
+  .about-stack-divider {
+    display: none;
+  }
+
+  .about-card h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .about-card p {
+    font-size: 0.85rem;
+    line-height: 1.65;
+  }
+
+  .about-card p br {
+    display: none;
+  }
+
+  .about-card-link {
+    margin-top: 0.8rem;
+    padding: 0.45rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .about-stack-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.4rem;
+  }
+}
+
+.contact-card h2,
+.project-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #fff, #cbd5e1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Projects Main Page Grid */
@@ -564,8 +910,47 @@ a.bento-card:hover {
 
 @media (max-width: 768px) {
   .projects-page-grid>.project-card {
-    grid-column: span 12 !important;
-    /* Stack on mobile */
+    grid-column: span 12;
+    flex-direction: row;
+    max-height: 160px;
+    border-radius: var(--radius-md);
+  }
+
+  .projects-page-grid>.project-card .card-visual-header {
+    height: auto;
+    width: 110px;
+    min-width: 110px;
+    border-bottom: none;
+    border-right: 1px solid var(--border-color);
+    border-radius: 13px 0 0 13px;
+  }
+
+  .projects-page-grid>.project-card .card-visual-icon svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .projects-page-grid>.project-card .card-content-body {
+    padding: 0.8rem 1rem;
+  }
+
+  .projects-page-grid>.project-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .projects-page-grid>.project-card p {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .projects-page-grid>.project-card a {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -612,19 +997,21 @@ a.bento-card:hover {
 
 .project-card a {
   display: inline-block;
-  padding: 0.6rem 1.2rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.55rem 1.2rem;
+  background: rgba(165, 180, 252, 0.06);
+  border: 1px solid rgba(165, 180, 252, 0.15);
   border-radius: 8px;
-  color: #fff;
+  color: var(--accent-lavender);
   text-decoration: none;
-  font-size: 0.9rem;
-  transition: all 0.2s;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
 }
 
 .project-card a:hover {
-  background: rgba(255, 255, 255, 0.15);
-  transform: scale(1.02);
+  background: rgba(165, 180, 252, 0.15);
+  border-color: rgba(165, 180, 252, 0.3);
+  transform: translateX(3px);
 }
 
 /* Contact: Full Width */
@@ -658,7 +1045,10 @@ a.bento-card:hover {
   min-width: 150px;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
 }
 
 .sns-card::before {
@@ -671,7 +1061,7 @@ a.bento-card:hover {
 }
 
 .sns-card:hover {
-  transform: translateY(-6px) scale(1.03);
+  transform: translateY(-5px);
 }
 
 .sns-card:hover::before {
@@ -761,11 +1151,20 @@ a.bento-card:hover {
 /* Page Footer */
 .site-footer {
   text-align: center;
-  padding: 2rem;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
+  padding: 3rem 2rem 2rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
   position: relative;
   z-index: 10;
+}
+
+.site-footer::before {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), rgba(168, 85, 247, 0.3), transparent);
+  margin: 0 auto 1.5rem;
 }
 
 /* --- Header --- */
@@ -774,14 +1173,35 @@ a.bento-card:hover {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.5rem 3rem;
+  padding: 1.2rem 3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 100;
   mix-blend-mode: normal;
-  /* Changed from difference for better legibility depending on bg */
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(3, 3, 3, 0.5);
+  border-bottom: 1px solid rgba(165, 180, 252, 0.08);
+  transition: background 0.3s ease, padding 0.3s ease;
+}
+
+/* ヘッダー下部のグラデーションライン */
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg, 
+    transparent 0%, 
+    rgba(99, 102, 241, 0.3) 20%, 
+    rgba(168, 85, 247, 0.4) 50%, 
+    rgba(6, 182, 212, 0.3) 80%, 
+    transparent 100%
+  );
 }
 
 .logo {
@@ -799,18 +1219,22 @@ a.bento-card:hover {
 }
 
 .nav-btn {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
-  padding: 0.5rem 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 1.1rem;
   border-radius: 50px;
   cursor: pointer;
-  font-size: 0.85rem;
-  transition: all 0.2s;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  letter-spacing: 0.01em;
 }
 
 .nav-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(99, 102, 241, 0.15);
+  border-color: rgba(99, 102, 241, 0.3);
+  color: #fff;
 }
 
 .nav-icon {
@@ -839,76 +1263,421 @@ a.bento-card:hover {
   height: 28px;
 }
 
-/* Mobile Adjustments */
+/* ===== Mobile Adjustments ===== */
 @media (max-width: 768px) {
+  /* メニュー展開時のスクロールロック */
+  body.menu-open {
+    overflow: hidden;
+  }
+
   .hamburger {
     display: block;
   }
 
+  /* --- フルスクリーン ナビメニュー --- */
   .nav-menu {
     position: fixed;
-    top: 0;
-    right: -100%;
-    width: 70%;
-    max-width: 300px;
+    inset: 0;
+    width: 100%;
     height: 100vh;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(20px);
+    height: 100dvh;
+    background: rgba(5, 5, 5, 0.97);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem;
-    transition: right 0.3s ease;
+    gap: 0;
     z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
   }
 
   .nav-menu.open {
-    right: 0;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .nav-menu .nav-btn {
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 0;
+    padding: 1.2rem 2rem;
+    width: 80%;
+    max-width: 320px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.75);
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .nav-menu .nav-btn:last-of-type {
+    border-bottom: none;
+  }
+
+  .nav-menu .nav-btn:hover,
+  .nav-menu .nav-btn.active {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .nav-menu .nav-icon {
+    margin-top: 2rem;
+    opacity: 0.4;
   }
 
   .nav-menu-overlay {
     display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 99;
   }
 
-  .nav-menu-overlay.open {
-    display: block;
-  }
-
+  /* --- レイアウト: 画面幅いっぱい --- */
   .bento-grid {
-    padding: 6rem 2rem 2rem;
-    gap: 1.5rem;
+    padding: 4rem max(0.8rem, env(safe-area-inset-left)) 1.5rem;
+    gap: 0.7rem;
   }
 
-  /* Stack earlier on tablet */
-  .about-wrapper,
-  .projects-subgrid,
   .bento-card {
-    grid-column: span 12 !important;
+    grid-column: span 12;
+    border-radius: 16px;
+    padding: 1.3rem 1.1rem;
+  }
+
+  .about-wrapper,
+  .projects-subgrid {
+    grid-column: span 12;
+  }
+
+  /* ヒーロー: インパクト重視 */
+  .hero-card {
+    min-height: 65vh;
+    min-height: 65dvh;
+    margin-bottom: 0;
+    border-radius: 16px;
+    padding: 2rem 1.2rem;
+    position: relative;
+    overflow: hidden;
+    background: 
+      radial-gradient(ellipse at 50% 30%, rgba(99, 102, 241, 0.06) 0%, transparent 60%),
+      rgba(255, 255, 255, 0.02);
+  }
+
+  /* ヒーロー下部のグラデーションライン */
+  .hero-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(165, 180, 252, 0.3), transparent);
+  }
+
+  .hero-content {
+    gap: 0.8rem;
+  }
+
+  .hero-logo-wrapper {
+    margin-bottom: 0;
+    width: 150px;
+    height: 150px;
+  }
+
+  .hero-logo-wrapper::after,
+  .orbit-ring {
+    display: none;
+  }
+
+  .hero-logo {
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgba(165, 180, 252, 0.3);
+    box-shadow: 
+      0 0 40px rgba(99, 102, 241, 0.3),
+      0 0 80px rgba(99, 102, 241, 0.1),
+      0 4px 20px rgba(0, 0, 0, 0.4);
   }
 
   .hero-content h1 {
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 12vw, 3.5rem);
+    margin-bottom: 0;
+    letter-spacing: -0.03em;
   }
 
-  .hero-card {
-    margin-bottom: 2rem;
+  .typing-text {
+    font-size: 0.85rem;
   }
 
+  .hero-tagline {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    max-width: 280px;
+    line-height: 1.65;
+  }
+
+  .scroll-indicator {
+    margin-top: 2rem;
+  }
+
+  .scroll-indicator span {
+    font-size: var(--text-xs);
+  }
+
+  .mouse-icon {
+    width: 20px;
+    height: 30px;
+  }
+
+  /* --- 本文テキスト全体のモバイル縮小 --- */
+  .about-card p,
+  .contact-card p,
+  .contact-card li,
+  .bento-card p,
+  .bento-card li {
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+
+  .hero-tagline {
+    font-size: 0.82rem;
+  }
+
+  .project-card p {
+    font-size: 0.85rem;
+  }
+
+  .project-card a {
+    font-size: 0.8rem;
+  }
+
+  .sns-label {
+    font-size: 0.95rem;
+  }
+
+  .sns-handle {
+    font-size: 0.72rem;
+  }
+
+  .scroll-indicator {
+    margin-top: 2rem;
+  }
+
+  .scroll-indicator span {
+    font-size: 0.7rem;
+  }
+
+  /* コンタクト */
   .contact-card {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     text-align: center;
+    padding: 1.2rem 1rem;
   }
 
+  /* Index: プロジェクトカード横型 */
+  .projects-subgrid .project-card {
+    flex-direction: row;
+    max-height: 130px;
+    border-radius: var(--radius-md);
+    padding: 0;
+  }
+
+  .projects-subgrid .project-card .card-visual-header {
+    height: auto;
+    width: 90px;
+    min-width: 90px;
+    border-bottom: none;
+    border-right: 1px solid var(--border-color);
+    border-radius: 13px 0 0 13px;
+  }
+
+  .projects-subgrid .project-card .card-visual-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .projects-subgrid .project-card .card-content-body {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .projects-subgrid .project-card h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .projects-subgrid .project-card p {
+    font-size: 0.78rem;
+    margin-bottom: 0.3rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .projects-subgrid .project-card a {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.72rem;
+  }
+
+  /* ホームナビカード: モバイルでフル幅 */
+  .home-nav-card--projects,
+  .home-nav-card--blog,
+  .home-nav-card--connect {
+    grid-column: span 12;
+  }
+
+  /* ヘッダー */
   .header {
-    padding: 1rem 1.5rem;
+    padding: 0.5rem 0.8rem;
+    background: rgba(3, 3, 3, 0.65);
+    border-bottom-color: rgba(165, 180, 252, 0.06);
+  }
+
+  .logo {
+    font-size: 1.15rem;
+  }
+
+  /* テキストコンテンツ */
+  .text-content-card {
+    padding: 1.2rem 1rem;
+  }
+
+  .text-content-card h1 {
+    font-size: 1.7rem;
+    padding-left: 0;
+  }
+
+  .text-content-card h1::before {
+    display: none;
+  }
+
+  .blog-page-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.4rem;
+    padding-bottom: 0.4rem;
+  }
+
+  .blog-page-desc {
+    font-size: var(--text-xs);
+  }
+
+  .blog-controls {
+    margin-bottom: 1rem;
+  }
+
+  .filter-tag {
+    padding: 0.25rem 0.55rem;
+    font-size: var(--text-xs);
+  }
+
+  .text-content-card h2 {
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+  }
+
+  .text-content-card p,
+  .text-content-card li {
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+
+  /* ブログ / Markdown コンテンツ */
+  .blog-preview-grid {
+    gap: 0.8rem;
+  }
+
+  .blog-preview-card {
+    border-radius: 12px;
+  }
+
+  .blog-preview-header,
+  .blog-preview-title,
+  .blog-preview-excerpt,
+  .blog-preview-footer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .blog-preview-header {
+    padding-top: 0.8rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .blog-preview-emoji {
+    font-size: 1rem;
+  }
+
+  .blog-preview-title {
+    font-size: 0.85rem;
+  }
+
+  .blog-preview-excerpt {
+    font-size: var(--text-xs);
+    -webkit-line-clamp: 2;
+    margin-bottom: 0.6rem;
+  }
+
+  .blog-preview-readmore {
+    font-size: var(--text-xs);
+  }
+
+  .blog-preview-tag {
+    font-size: var(--text-xs);
+    padding: 0.15rem 0.4rem;
+  }
+
+  .blog-preview-date {
+    font-size: var(--text-xs);
+  }
+
+  .blog-preview-footer {
+    padding-bottom: 0.8rem;
+  }
+
+  .markdown-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .markdown-content h2 {
+    font-size: 1.15rem;
+  }
+
+  .markdown-content h3 {
+    font-size: 1rem;
+  }
+
+  .markdown-content p,
+  .markdown-content li {
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+
+  .markdown-content pre code {
+    font-size: 0.78rem;
+  }
+
+  .markdown-content table {
+    font-size: 0.8rem;
+  }
+
+  .blog-back-link {
+    font-size: 0.78rem;
+  }
+
+  /* フッター */
+  .site-footer {
+    padding: 2rem 0.8rem 1.5rem;
+    font-size: 0.75rem;
+  }
+
+  .site-footer::before {
+    margin-bottom: 1rem;
+    width: 60px;
   }
 }
 
@@ -918,17 +1687,15 @@ a.bento-card:hover {
   text-align: left;
   display: block;
   padding: 2.5rem 2rem;
-  /* Adjusted for alignment */
   line-height: 1.8;
 }
 
-
-
 .text-content-card h1 {
   font-family: var(--font-heading);
-  font-size: 3rem;
+  font-size: 3.2rem;
   margin-bottom: 2rem;
-  background: linear-gradient(135deg, #fff 0%, #a5b4fc 50%, #c4b5fd 100%);
+  background: linear-gradient(135deg, #fff 0%, #c7d2fe 30%, #a5b4fc 55%, #818cf8 80%, #6366f1 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -937,6 +1704,7 @@ a.bento-card:hover {
   letter-spacing: -0.02em;
   line-height: 1.2;
   padding-bottom: 0.8rem;
+  filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.15));
 }
 
 /* h1 の下部にアクセントライン */
@@ -945,10 +1713,10 @@ a.bento-card:hover {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 60px;
-  height: 4px;
+  width: 72px;
+  height: 3px;
   border-radius: 2px;
-  background: linear-gradient(90deg, #6366f1, #a78bfa, transparent);
+  background: linear-gradient(90deg, var(--accent-indigo), var(--accent-violet), rgba(6, 182, 212, 0.5));
 }
 
 /* h1 の左にアクセントドット */
@@ -958,30 +1726,94 @@ a.bento-card:hover {
   left: -1.5rem;
   top: 50%;
   transform: translateY(-70%);
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #6366f1;
-  box-shadow: 0 0 12px rgba(99, 102, 241, 0.6);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.8), 0 0 40px rgba(99, 102, 241, 0.3);
 }
 
 /* ページ説明文のスタイル強化 */
 .text-content-card > p {
   position: relative;
   padding-left: 1rem;
-  border-left: 2px solid rgba(99, 102, 241, 0.3);
+  border-left: 2px solid rgba(99, 102, 241, 0.4);
 }
 
-@media (max-width: 768px) {
-  .text-content-card h1 {
-    font-size: 2rem;
-    padding-left: 0;
-  }
-
-  .text-content-card h1::before {
-    display: none;
-  }
+/* ==================== */
+/* Blog ページヘッダー   */
+/* ==================== */
+.blog-page-header {
+  margin-bottom: 1.2rem;
 }
+
+.blog-page-header h1 {
+  font-family: 'Sora', var(--font-main);
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.6rem;
+  background: linear-gradient(135deg, #fff 0%, #a5b4fc 60%, #818cf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.blog-page-desc {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  margin-bottom: 0;
+  padding-left: 0.8rem;
+  border-left: 2px solid rgba(99, 102, 241, 0.25);
+  line-height: 1.5;
+}
+
+/* Blog タグフィルター */
+.blog-controls {
+  margin-bottom: 1.5rem;
+}
+
+.blog-tag-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.4rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 0.3rem;
+}
+
+.blog-tag-list::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-tag {
+  padding: 0.3rem 0.7rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.filter-tag:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+}
+
+.filter-tag.active {
+  background: rgba(165, 180, 252, 0.15);
+  border-color: rgba(165, 180, 252, 0.25);
+  color: #a5b4fc;
+}
+
+/* text-content-card h1 モバイル対応は上記 main mobile block 内で統合済み */
 
 .text-content-card h2 {
   font-family: var(--font-heading);
@@ -993,8 +1825,8 @@ a.bento-card:hover {
 
 .text-content-card p,
 .text-content-card li {
-  color: #ccc;
-  font-size: 1.05rem;
+  color: var(--text-light);
+  font-size: var(--text-lg);
   margin-bottom: 1rem;
 }
 
@@ -1055,14 +1887,24 @@ a.bento-card:hover {
   flex-shrink: 0;
   width: 140px;
   height: 140px;
-  border-radius: 20px;
+  border-radius: 22px;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(99, 102, 241, 0.06);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-hero-logo:hover {
+  transform: scale(1.03);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    0 0 60px rgba(99, 102, 241, 0.1);
 }
 
 .about-hero-logo img {
@@ -1102,7 +1944,11 @@ a.bento-card:hover {
 }
 
 .about-section {
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.about-section:last-child {
+  margin-bottom: 0;
 }
 
 .about-section h2 {
@@ -1129,7 +1975,7 @@ a.bento-card:hover {
 }
 
 .about-section p {
-  color: #ccc;
+  color: var(--text-light);
   line-height: 1.8;
 }
 
@@ -1141,10 +1987,16 @@ a.bento-card:hover {
 }
 
 .skill-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
   padding: 1.2rem;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.skill-card:hover {
+  border-color: rgba(165, 180, 252, 0.15);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .skill-card .skill-label {
@@ -1157,15 +2009,15 @@ a.bento-card:hover {
 }
 
 .skill-card .skill-items {
-  color: #ccc;
-  font-size: 0.95rem;
+  color: var(--text-light);
+  font-size: var(--text-md);
   line-height: 1.6;
 }
 
 .about-quote {
-  background: rgba(165, 180, 252, 0.05);
-  border-left: 3px solid #a5b4fc;
-  border-radius: 0 12px 12px 0;
+  background: rgba(99, 102, 241, 0.04);
+  border-left: 3px solid rgba(165, 180, 252, 0.5);
+  border-radius: 0 14px 14px 0;
   padding: 1.5rem 2rem;
   margin-top: 1rem;
 }
@@ -1178,7 +2030,7 @@ a.bento-card:hover {
 }
 
 .about-quote .quote-desc {
-  color: #aaa;
+  color: var(--text-secondary);
   line-height: 1.7;
 }
 
@@ -1186,30 +2038,125 @@ a.bento-card:hover {
 
   .project-card,
   .contact-card {
-    grid-column: 1 / -1 !important;
+    grid-column: 1 / -1;
   }
 
   .hero-tagline {
     font-size: 0.85rem;
   }
 
+  /* --- About ページ モバイル最適化 --- */
+
+  /* brタグを無効化: テキストを自然にリフローさせる */
+  .about-section p br,
+  .about-quote .quote-desc br,
+  .about-tagline br {
+    display: none;
+  }
+
   .about-hero {
     flex-direction: column;
     text-align: center;
-    gap: 1.5rem;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.2rem;
   }
 
   .about-hero-logo {
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
   }
 
   .about-hero-text h1 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    padding-bottom: 0.4rem;
+  }
+
+  .about-hero-text h1::after {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 36px;
+    height: 2px;
+  }
+
+  .about-hero-text .about-tagline {
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+
+  .about-section {
+    margin-bottom: 0;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    padding: 1rem 1rem;
+  }
+
+  .about-section + .about-section {
+    margin-top: 0.5rem;
+  }
+
+  .about-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.35rem;
+    gap: 0.5rem;
+  }
+
+  .about-section h2 .section-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+  }
+
+  .about-section h2 .section-icon svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .about-section p {
+    font-size: 0.85rem;
+    line-height: 1.7;
   }
 
   .skills-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+  }
+
+  .skill-card {
+    padding: 0.75rem 0.7rem;
+    border-radius: 10px;
+  }
+
+  .skill-card .skill-label {
+    font-size: var(--text-xs);
+    margin-bottom: 0.3rem;
+  }
+
+  .skill-card .skill-items {
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+
+  .about-quote {
+    padding: 0.8rem 1rem;
+    border-radius: 0 10px 10px 0;
+    border-left-width: 2px;
+    margin-top: 0.6rem;
+  }
+
+  .about-quote .quote-text {
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .about-quote .quote-desc {
+    font-size: 0.82rem;
+    line-height: 1.6;
   }
 }
 
@@ -1217,14 +2164,14 @@ a.bento-card:hover {
 .blog-preview-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 
 .blog-preview-card {
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 15, 20, 0.6);
+  border: 1px solid rgba(99, 102, 241, 0.1);
   border-radius: 16px;
   padding: 0;
   text-decoration: none !important;
@@ -1233,19 +2180,26 @@ a.bento-card:hover {
   position: relative;
   z-index: 5;
   overflow: hidden;
-  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  transition:
+    background 0.35s ease,
+    border-color 0.35s ease,
+    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.35s ease;
   animation: blogCardFadeIn 0.5s ease both;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.15),
+    0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 /* カード上部アクセントバー */
 .blog-preview-accent {
   height: 3px;
-  background: linear-gradient(90deg, #6366f1, #a78bfa, #c4b5fd, transparent);
-  transition: height 0.3s ease;
+  background: linear-gradient(90deg, var(--accent-indigo), var(--accent-violet), rgba(6, 182, 212, 0.6));
+  transition: height 0.35s ease;
 }
 
 .blog-preview-card:hover .blog-preview-accent {
-  height: 4px;
+  height: 5px;
 }
 
 /* カードの内側paddingは内容部分で */
@@ -1253,19 +2207,26 @@ a.bento-card:hover {
 .blog-preview-title,
 .blog-preview-excerpt,
 .blog-preview-footer {
-  padding-left: 1.4rem;
-  padding-right: 1.4rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+}
+
+.blog-preview-card {
+  text-decoration: none;
 }
 
 .blog-preview-card,
 .blog-preview-card * {
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
 .blog-preview-card:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(25, 25, 35, 0.8);
   border-color: rgba(99, 102, 241, 0.4);
-  transform: translateY(-2px);
+  transform: translateY(-5px);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.25),
+    0 0 40px rgba(99, 102, 241, 0.1);
 }
 
 @keyframes blogCardFadeIn {
@@ -1283,13 +2244,13 @@ a.bento-card:hover {
 .blog-preview-header {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.6rem;
-  padding-top: 1.2rem;
+  gap: 0.4rem;
+  margin-bottom: 0.4rem;
+  padding-top: 1rem;
 }
 
 .blog-preview-emoji {
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   line-height: 1;
   filter: grayscale(0.2);
   transition: transform 0.3s ease, filter 0.3s ease;
@@ -1301,31 +2262,36 @@ a.bento-card:hover {
 }
 
 .blog-preview-date {
-  font-size: 0.8rem;
-  color: #6366f1;
+  font-size: var(--text-xs);
+  color: var(--accent-indigo);
   font-weight: 500;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
 }
 
 .blog-preview-title {
   font-family: var(--font-heading);
-  font-size: 1.05rem;
+  font-size: var(--text-md);
   font-weight: 600;
-  color: #ededed;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
-  line-height: 1.4;
+  line-height: 1.45;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  transition: color 0.3s ease;
+}
+
+.blog-preview-card:hover .blog-preview-title {
+  color: #fff;
 }
 
 .blog-preview-excerpt {
-  font-size: 0.82rem;
-  color: #888;
-  line-height: 1.6;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  line-height: 1.5;
   flex: 1;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -1337,9 +2303,9 @@ a.bento-card:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5rem;
+  gap: 0.4rem;
   flex-wrap: wrap;
-  padding-bottom: 1.2rem;
+  padding-bottom: 1rem;
   margin-top: auto;
 }
 
@@ -1350,14 +2316,14 @@ a.bento-card:hover {
 }
 
 .blog-preview-tag {
-  font-size: 0.65rem;
-  padding: 0.2rem 0.5rem;
+  font-size: var(--text-xs);
+  padding: 0.15rem 0.45rem;
   border-radius: 20px;
-  background: rgba(99, 102, 241, 0.12);
+  background: rgba(99, 102, 241, 0.1);
   color: #a5b4fc;
   font-weight: 500;
   letter-spacing: 0.02em;
-  border: 1px solid rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.12);
   transition: all 0.2s ease;
 }
 
@@ -1367,16 +2333,19 @@ a.bento-card:hover {
 }
 
 .blog-preview-readmore {
-  font-size: 0.8rem;
-  color: #a5b4fc;
+  font-size: var(--text-xs);
+  color: var(--accent-lavender);
   font-weight: 500;
   white-space: nowrap;
-  transition: color 0.2s ease, transform 0.2s ease;
+  transition: color 0.25s ease, transform 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
 }
 
 .blog-preview-card:hover .blog-preview-readmore {
   color: #c4b5fd;
-  transform: translateX(3px);
+  transform: translateX(4px);
 }
 
 /* --- Blog Post Page --- */
@@ -1410,7 +2379,7 @@ a.bento-card:hover {
   margin-bottom: 0.8rem;
   padding-bottom: 0.4rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  color: #a5b4fc;
+  color: var(--accent-lavender);
 }
 
 .markdown-content h3 {
@@ -1419,18 +2388,18 @@ a.bento-card:hover {
   font-weight: 600;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
-  color: #c4b5fd;
+  color: var(--accent-purple);
 }
 
 .markdown-content p {
-  color: #ccc;
+  color: var(--text-light);
   line-height: 1.8;
   margin-bottom: 1rem;
 }
 
 .markdown-content ul,
 .markdown-content ol {
-  color: #ccc;
+  color: var(--text-light);
   line-height: 1.8;
   margin-bottom: 1rem;
   padding-left: 1.5rem;
@@ -1485,21 +2454,21 @@ a.bento-card:hover {
 }
 
 .markdown-content td {
-  color: #ccc;
+  color: var(--text-light);
 }
 
 .markdown-content strong {
-  color: #ededed;
+  color: var(--text-primary);
   font-weight: 600;
 }
 
 .markdown-content a {
-  color: #a5b4fc;
+  color: var(--accent-lavender);
   text-decoration: none;
 }
 
 .markdown-content a:hover {
-  color: #c4b5fd;
+  color: var(--accent-purple);
   text-decoration: underline;
 }
 
@@ -1574,8 +2543,8 @@ a.bento-card:hover {
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.05);
-  color: #aaa;
-  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
   letter-spacing: 0.02em;
 }
 
@@ -1656,7 +2625,7 @@ a.bento-card:hover {
 }
 
 .blog-toc li a {
-  color: #aaa;
+  color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.2s;
   font-size: 0.9rem;
@@ -1666,7 +2635,7 @@ a.bento-card:hover {
 
 .blog-toc li a:hover {
   text-decoration: underline;
-  color: #a5b4fc;
+  color: var(--accent-lavender);
 }
 
 /* Indent h3 */
@@ -1709,7 +2678,7 @@ a.bento-card:hover {
 #blog-single-content li {
   line-height: 1.8;
   margin-bottom: 1.2rem;
-  color: #d4d4d4;
+  color: var(--text-light);
 }
 
 /* リード文（h1直後の最初の段落を強調） */
@@ -1937,10 +2906,301 @@ a.bento-card:hover {
   align-items: center;
   gap: 0.4rem;
   font-size: 0.85rem;
-  color: #888;
+  color: var(--text-muted);
   margin-bottom: 1.5rem;
 }
 
 .reading-time-icon {
   font-size: 1rem;
+}
+
+/* ============================================ */
+/* インラインスタイル置換用クラス               */
+/* ============================================ */
+
+/* ロゴリンク */
+.logo-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* フッターリンク行 */
+.footer-links {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  font-size: var(--text-sm);
+}
+
+/* ホーム: ナビカード共通 */
+.home-nav-card {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.35s ease,
+    box-shadow 0.4s ease;
+}
+
+.home-nav-card:hover {
+  transform: translateY(-5px);
+}
+
+.home-nav-card--projects {
+  grid-column: span 4;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(49, 46, 129, 0.8) 100%);
+  border-color: rgba(99, 102, 241, 0.2);
+}
+
+.home-nav-card--projects:hover {
+  border-color: rgba(165, 180, 252, 0.5);
+  background: linear-gradient(135deg, rgba(15, 23, 42, 1) 0%, rgba(49, 46, 129, 0.95) 100%);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(99, 102, 241, 0.15);
+}
+
+.home-nav-card--blog {
+  grid-column: span 4;
+  background: linear-gradient(135deg, rgba(6, 78, 59, 0.7) 0%, rgba(5, 150, 105, 0.35) 100%);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.home-nav-card--blog:hover {
+  border-color: rgba(16, 185, 129, 0.5);
+  background: linear-gradient(135deg, rgba(6, 78, 59, 0.85) 0%, rgba(5, 150, 105, 0.5) 100%);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(16, 185, 129, 0.12);
+}
+
+.home-nav-card--connect {
+  grid-column: span 4;
+  background: linear-gradient(135deg, rgba(88, 28, 135, 0.5) 0%, rgba(168, 85, 247, 0.2) 100%);
+  border-color: rgba(168, 85, 247, 0.15);
+}
+
+.home-nav-card--connect:hover {
+  border-color: rgba(168, 85, 247, 0.4);
+  background: linear-gradient(135deg, rgba(88, 28, 135, 0.65) 0%, rgba(168, 85, 247, 0.35) 100%);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.3),
+    0 0 40px rgba(168, 85, 247, 0.1);
+}
+
+.home-nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.home-nav-label {
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: #fff;
+}
+
+.home-nav-count {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.home-nav-count--indigo {
+  color: var(--accent-lavender);
+}
+
+.home-nav-count--white {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.home-nav-arrow {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.home-nav-card:hover .home-nav-arrow {
+  transform: translateX(3px);
+  color: var(--text-light);
+}
+
+.home-nav-arrow--light {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: var(--text-xs);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.home-nav-card:hover .home-nav-arrow--light {
+  transform: translateX(3px);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Connect ソーシャルリンク */
+.home-social-link {
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  text-decoration: none;
+  font-size: var(--text-xs);
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.home-social-link:hover {
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* Connect タイトル */
+.home-connect-label {
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: #fff;
+  flex: 1;
+}
+
+/* About カード full width */
+.about-card--home {
+  grid-column: 1 / -1;
+  height: auto;
+}
+
+/* Contact ページ */
+.contact-content {
+  text-align: center;
+}
+
+.contact-desc {
+  margin: 0.5rem auto 0;
+}
+
+/* Projects ページ */
+.projects-desc {
+  margin-bottom: 0;
+  color: var(--text-secondary);
+}
+
+.projects-header {
+  margin-bottom: 0;
+}
+
+/* プロジェクトカードリンク */
+.project-link {
+  margin-top: 1rem;
+  align-self: flex-start;
+}
+
+/* 法的ページ（Privacy/Terms）の border-left 無効化 */
+.text-content-card--legal > p {
+  border-left: none;
+  padding-left: 0;
+}
+
+/* 最終更新日 */
+.legal-updated {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ============================================ */
+/* prefers-reduced-motion (アクセシビリティ)     */
+/* ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .aurora-orb {
+    animation: none;
+    opacity: 0.3;
+  }
+
+  .hero-tagline {
+    opacity: 1;
+    animation: none;
+  }
+
+  .orbit-ring,
+  .hero-logo-wrapper::after {
+    animation: none;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+
+  .blog-preview-card {
+    animation: none;
+  }
+}
+
+/* ============================================ */
+/* タブレット対応 (769px - 1024px)              */
+/* ============================================ */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .bento-grid {
+    padding: 6rem 1.5rem 3rem;
+    gap: 1rem;
+  }
+
+  .bento-card {
+    border-radius: var(--radius-lg);
+  }
+
+  .hero-card {
+    min-height: 50vh;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+  }
+
+  .home-nav-card--projects,
+  .home-nav-card--blog,
+  .home-nav-card--connect {
+    grid-column: span 4;
+  }
+
+  .text-content-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .text-content-card h1 {
+    font-size: 2.4rem;
+  }
+
+  .about-hero {
+    gap: 1.5rem;
+  }
+
+  .about-hero-logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sns-card {
+    padding: 1.5rem 1.8rem;
+    min-width: 130px;
+  }
+
+  .blog-preview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

@@ -14,13 +14,31 @@
   <meta property="og:image" content="https://studio344.net/assets/logo-banner-black.png" />
   <meta property="og:url" content="https://studio344.net/about.html" />
   <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@studio0344" />
   <link rel="canonical" href="https://studio344.net/about.html" />
   <link rel="icon" type="image/png" href="assets/logo-black.png" />
+  <!-- Google Fonts preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;900&family=Sora:wght@600;700;800&display=swap" />
   <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About - Studio344",
+    "description": "Studio344のプロフィール。趣味で個人開発を楽しむエンジニアのポートフォリオ。",
+    "url": "https://studio344.net/about.html",
+    "publisher": { "@type": "Organization", "name": "Studio344", "url": "https://studio344.net" }
+  }
+  </script>
 </head>
 
 <body>
+  <!-- Skip Link -->
+  <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
+
   <div class="aurora-container">
     <div class="aurora-orb orb-1"></div>
     <div class="aurora-orb orb-2"></div>
@@ -32,7 +50,7 @@
 
   <header class="header">
     <div class="logo">
-      <a href="index.html" style="color: white; text-decoration: none">Studio344</a>
+      <a href="index.html" class="logo-link">Studio344</a>
     </div>
     <button class="hamburger" aria-label="メニュー" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -47,8 +65,8 @@
       <a href="blog.html" class="nav-btn" data-i18n="nav.blog">Blog</a>
       <a href="projects.html" class="nav-btn" data-i18n="nav.projects">Projects</a>
       <a href="contact.html" class="nav-btn" data-i18n="nav.contact">Contact</a>
-      <button id="lang-toggle" class="nav-btn">EN</button>
-      <a href="https://github.com/Studio344" target="_blank" class="nav-icon" aria-label="GitHub">
+      <button id="lang-toggle" class="nav-btn" aria-label="言語を切り替え / Switch language">EN</button>
+      <a href="https://github.com/Studio344" target="_blank" rel="noopener noreferrer" class="nav-icon" aria-label="GitHub">
         <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
           stroke-linecap="round" stroke-linejoin="round">
           <path
@@ -60,7 +78,7 @@
   </header>
   <div class="nav-menu-overlay"></div>
 
-  <main class="bento-grid">
+  <main id="main-content" class="bento-grid">
     <div class="bento-card text-content-card">
       <!-- ヒーローセクション: ロゴ + タイトル -->
       <div class="about-hero">
@@ -172,22 +190,16 @@
 
   <footer class="site-footer">
     <p>&copy; <span id="copyright-year">2026</span> Studio344</p>
-    <div style="
-          margin-top: 0.5rem;
-          display: flex;
-          gap: 1rem;
-          justify-content: center;
-          font-size: 0.8rem;
-        ">
-      <a href="privacy-policy.html" style="color: #666; text-decoration: none">Privacy Policy</a>
-      <a href="terms.html" style="color: #666; text-decoration: none">Terms</a>
-      <a href="contact.html" style="color: #666; text-decoration: none">Contact</a>
+    <div class="footer-links">
+      <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+      <a href="terms.html" class="footer-link">Terms</a>
+      <a href="contact.html" class="footer-link">Contact</a>
     </div>
   </footer>
 
   <script src="assets/js/ui.js"></script>
-  <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js"></script>
-  <script src="https://unpkg.com/i18next-http-backend/i18nextHttpBackend.min.js"></script>
+  <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js" integrity="sha384-vxUZOB7ych7Y7ndQtM2RKTsr+2fHukXPfoTo1s0+7o9Q/Bx3oWY0aTwenFnmrcJz" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/i18next-http-backend@3.0.2/i18nextHttpBackend.min.js" integrity="sha384-mylaL1fxuX3DZgdMqG9QvOyXoU/N9yUKXiYZH/5Ykx6+DUDdzQAxI8Gwqh2HBe8T" crossorigin="anonymous"></script>
   <script src="i18n.js"></script>
 </body>
 

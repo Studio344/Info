@@ -19,7 +19,7 @@
   "home": {
     "about_content": "某グローバルIT企業でエンジニアをしています。<br>仕事とは別に、趣味として個人開発を楽しんでいます。<br>このサイトでは、趣味で作ったものや技術的な学び（Engineering Logs）を発信していきます。",
     "more_about": "More about me →",
-    "hero_tagline": "テクノロジーとものづくりを楽しむ、個人の趣味ポートフォリオ",
+    "hero_tagline": "テクノロジーとものづくりを楽しむ、<br>個人の趣味ポートフォリオ",
     "skills_title": "Tech Stack",
     "stat_projects": "Projects",
     "stat_posts": "Blog Posts",
@@ -30,7 +30,8 @@
     "blog_desc": "posts →",
     "connect_title": "Let's Connect",
     "gh_label": "GitHub",
-    "email_label": "Email"
+    "x_label": "X",
+    "ig_label": "Instagram"
   },
   "about_page": {
     "title": "About Studio344",

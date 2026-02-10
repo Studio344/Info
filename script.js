@@ -103,20 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
           container.appendChild(clone);
         });
 
-        // アニメーション (Debug: Legacy GSAP disabled to prevent layout misalignment)
-        /*
-        if (animate && typeof gsap !== "undefined") {
-          gsap.from(".project-card", {
-            y: animate === "initial" ? 50 : 30,
-            opacity: 0,
-            duration: animate === "initial" ? 0.8 : 0.5,
-            stagger: animate === "initial" ? 0.1 : 0.08,
-            ease: "power3.out",
-          });
-        }
-        */
-
-        // Re-init 3D Tilt for new elements (Enabled: Should work with Grid Stretch now)
+        // 3D Tilt 再初期化
         if (typeof window.initTilt === "function") {
           window.initTilt();
         }
