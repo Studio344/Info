@@ -101,7 +101,7 @@ body {
 /* --- UI Polish --- */
 
 /* Active Nav Link */
-.nav-links a.active,
+.nav-menu a.active,
 .nav-btn.active {
   color: #fff;
   border-bottom: 2px solid var(--accent-indigo);
