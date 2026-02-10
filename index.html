@@ -117,92 +117,84 @@
       </div>
     </div>
 
-    <!-- About: Full Width (Tech Stack + Stats 内包) -->
+    <!-- About: Full Width - リッチレイアウト -->
     <div class="bento-card about-card" style="grid-column: 1 / -1; height: auto">
-      <h2 data-i18n="about.title">About</h2>
-      <p data-i18n="home.about_content" style="font-size: 1rem; line-height: 1.7">
-        某グローバルIT企業に勤務。<br />
-        "人の役に立ってこそ技術"
-        という信念のもと、最新のWeb技術からバックエンドアーキテクチャまで幅広く探求しています。<br />
-        このサイトでは、これまでの制作物や技術的な学び（Engineering
-        Logs）を発信していきます。
-      </p>
-      <div style="margin-top: 1.2rem">
-        <a href="about.html" class="nav-btn" style="
-              background: rgba(255, 255, 255, 0.1);
-              border-color: rgba(255, 255, 255, 0.2);
-            " data-i18n="home.more_about">More about me &rarr;</a>
-      </div>
-
-      <!-- Tech Stack (About内: アイコンのみ) -->
-      <div style="
-            margin-top: 1.2rem;
-            padding-top: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-          ">
-        <div style="display: flex; flex-wrap: wrap; gap: 0.4rem">
-          <span class="skill-badge" style="--badge-color: #f97316"><svg width="14" height="14" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="16 18 22 12 16 6"></polyline>
-              <polyline points="8 6 2 12 8 18"></polyline>
-            </svg></span>
-          <span class="skill-badge" style="--badge-color: #3b82f6"><svg width="14" height="14" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-              <path d="M2 17l10 5 10-5"></path>
-              <path d="M2 12l10 5 10-5"></path>
-            </svg></span>
-          <span class="skill-badge" style="--badge-color: #eab308"><svg width="14" height="14" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-            </svg></span>
-          <span class="skill-badge" style="--badge-color: #06b6d4"><svg width="14" height="14" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="3"></circle>
-              <path
-                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42">
-              </path>
-            </svg></span>
-          <span class="skill-badge" style="--badge-color: #8b5cf6"><svg width="14" height="14" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-            </svg></span>
-          <span class="skill-badge" style="--badge-color: #22c55e"><svg width="14" height="14" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-            </svg></span>
-          <span class="skill-badge" style="--badge-color: #ec4899"><svg width="14" height="14" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2">
-              <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
-              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
-            </svg></span>
-          <span class="skill-badge" style="--badge-color: #14b8a6"><svg width="14" height="14" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-              </path>
-            </svg></span>
-          <span class="skill-badge" style="--badge-color: #a855f7"><svg width="14" height="14" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-              <line x1="8" y1="21" x2="16" y2="21"></line>
-              <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg></span>
-          <span class="skill-badge" style="--badge-color: #f43f5e"><svg width="14" height="14" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2">
-              <path
-                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-              </path>
-            </svg></span>
-          <span id="stat-tech-count" style="
-                font-size: 0.7rem;
-                color: #888;
-                margin-left: 0.3rem;
-                align-self: center;
-                letter-spacing: 0.05em;
-              " data-i18n-suffix="home.stat_tech_suffix">10+ tech</span>
+      <div class="about-card-inner">
+        <!-- 左: テキスト -->
+        <div class="about-card-text">
+          <div class="about-card-label">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            <span>About</span>
+          </div>
+          <h2 data-i18n="about.title">About</h2>
+          <p data-i18n="home.about_content">
+            某グローバルIT企業に勤務。<br />
+            仕事とは別に、趣味として個人開発を楽しんでいます。<br />
+            このサイトでは、趣味で作ったものや技術的な学び（Engineering
+            Logs）を発信していきます。
+          </p>
+          <a href="about.html" class="about-card-link" data-i18n="home.more_about">More about me &rarr;</a>
+        </div>
+        <!-- 右: Tech Stack -->
+        <div class="about-card-stack">
+          <div class="about-stack-label" data-i18n="home.skills_title">Tech Stack</div>
+          <div class="about-stack-grid">
+            <span class="skill-badge" style="--badge-color: #f97316"><svg width="14" height="14" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg></span>
+            <span class="skill-badge" style="--badge-color: #3b82f6"><svg width="14" height="14" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                <path d="M2 17l10 5 10-5"></path>
+                <path d="M2 12l10 5 10-5"></path>
+              </svg></span>
+            <span class="skill-badge" style="--badge-color: #eab308"><svg width="14" height="14" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg></span>
+            <span class="skill-badge" style="--badge-color: #06b6d4"><svg width="14" height="14" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+              </svg></span>
+            <span class="skill-badge" style="--badge-color: #8b5cf6"><svg width="14" height="14" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+              </svg></span>
+            <span class="skill-badge" style="--badge-color: #22c55e"><svg width="14" height="14" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg></span>
+            <span class="skill-badge" style="--badge-color: #ec4899"><svg width="14" height="14" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
+                <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+              </svg></span>
+            <span class="skill-badge" style="--badge-color: #14b8a6"><svg width="14" height="14" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg></span>
+            <span class="skill-badge" style="--badge-color: #a855f7"><svg width="14" height="14" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg></span>
+            <span class="skill-badge" style="--badge-color: #f43f5e"><svg width="14" height="14" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg></span>
+          </div>
+          <span class="about-stack-count" id="stat-tech-count">10+ tech</span>
         </div>
       </div>
     </div>
