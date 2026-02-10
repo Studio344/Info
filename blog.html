@@ -80,10 +80,12 @@
 
   <main id="main-content" class="bento-grid">
     <div class="bento-card text-content-card">
-      <h1 data-i18n="blog_page.title">Blog & Updates</h1>
-      <p data-i18n="blog_page.desc" style="margin-bottom: 2rem; color: #aaa">
-        開発ログや技術的な知見を不定期に更新します。
-      </p>
+      <div class="blog-page-header">
+        <h1 data-i18n="blog_page.title">Blog & Updates</h1>
+        <p class="blog-page-desc" data-i18n="blog_page.desc">
+          開発ログや技術的な知見を不定期に更新します。
+        </p>
+      </div>
 
       <!-- Breadcrumbs -->
       <div id="breadcrumbs" class="breadcrumb-nav" style="display: none;">
@@ -94,8 +96,8 @@
       </div>
 
       <!-- Blog Controls -->
-      <div class="blog-controls" style="margin-bottom: 2rem;">
-        <div id="blog-tags" style="display: flex; flex-wrap: wrap; gap: 0.5rem;"></div>
+      <div class="blog-controls">
+        <div id="blog-tags" class="blog-tag-list"></div>
       </div>
 
       <div id="blog-container" class="blog-preview-grid">

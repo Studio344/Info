@@ -407,10 +407,10 @@ async function loadBlogPosts(langOverride) {
       const allTags = new Set();
       validPosts.forEach(post => post.tags.forEach(tag => allTags.add(tag)));
 
-      let tagsHtml = `<button class="filter-tag active" data-tag="all" style="padding: 0.4rem 0.8rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.1); color: #fff; cursor: pointer;">All</button>`;
+      let tagsHtml = `<button class="filter-tag active" data-tag="all">All</button>`;
 
       Array.from(allTags).sort().forEach(tag => {
-        tagsHtml += `<button class="filter-tag" data-tag="${tag}" style="padding: 0.4rem 0.8rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: #aaa; cursor: pointer;">${tag}</button>`;
+        tagsHtml += `<button class="filter-tag" data-tag="${tag}">${tag}</button>`;
       });
       tagsContainer.innerHTML = tagsHtml;
 
@@ -420,12 +420,8 @@ async function loadBlogPosts(langOverride) {
           // Update UI
           tagsContainer.querySelectorAll(".filter-tag").forEach(b => {
             b.classList.remove("active");
-            b.style.background = "rgba(255,255,255,0.05)";
-            b.style.color = "#aaa";
           });
           e.target.classList.add("active");
-          e.target.style.background = "rgba(255,255,255,0.2)";
-          e.target.style.color = "#fff";
 
           // Update State
           const tag = e.target.dataset.tag;

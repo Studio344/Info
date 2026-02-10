@@ -1440,6 +1440,25 @@ a.bento-card:hover {
     display: none;
   }
 
+  .blog-page-header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.4rem;
+    padding-bottom: 0.4rem;
+  }
+
+  .blog-page-desc {
+    font-size: 0.8rem;
+  }
+
+  .blog-controls {
+    margin-bottom: 1rem;
+  }
+
+  .filter-tag {
+    padding: 0.25rem 0.55rem;
+    font-size: 0.7rem;
+  }
+
   .text-content-card h2 {
     font-size: 1.3rem;
     margin-top: 1.5rem;
@@ -1516,11 +1535,8 @@ a.bento-card:hover {
   text-align: left;
   display: block;
   padding: 2.5rem 2rem;
-  /* Adjusted for alignment */
   line-height: 1.8;
 }
-
-
 
 .text-content-card h1 {
   font-family: var(--font-heading);
@@ -1568,6 +1584,62 @@ a.bento-card:hover {
   position: relative;
   padding-left: 1rem;
   border-left: 2px solid rgba(99, 102, 241, 0.3);
+}
+
+/* ==================== */
+/* Blog ページヘッダー   */
+/* ==================== */
+.blog-page-header {
+  margin-bottom: 1.2rem;
+}
+
+.blog-page-header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+
+.blog-page-desc {
+  color: #999;
+  font-size: 0.88rem;
+  margin-bottom: 0;
+  padding-left: 0.8rem;
+  border-left: 2px solid rgba(99, 102, 241, 0.25);
+  line-height: 1.5;
+}
+
+/* Blog タグフィルター */
+.blog-controls {
+  margin-bottom: 1.5rem;
+}
+
+.blog-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.filter-tag {
+  padding: 0.3rem 0.7rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: #999;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.filter-tag:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ccc;
+}
+
+.filter-tag.active {
+  background: rgba(165, 180, 252, 0.15);
+  border-color: rgba(165, 180, 252, 0.25);
+  color: #a5b4fc;
 }
 
 /* text-content-card h1 モバイル対応は上記 main mobile block 内で統合済み */
