@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     hamburger.addEventListener("click", () => {
       const isOpen = navMenu.classList.toggle("open");
       hamburger.setAttribute("aria-expanded", isOpen);
+      document.body.classList.toggle("menu-open", isOpen);
       if (overlay) overlay.classList.toggle("open", isOpen);
       // ハンバーガーアイコンを × に切り替え
       hamburger.innerHTML = isOpen
@@ -96,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
       overlay.addEventListener("click", () => {
         navMenu.classList.remove("open");
         overlay.classList.remove("open");
+        document.body.classList.remove("menu-open");
         hamburger.setAttribute("aria-expanded", "false");
         hamburger.innerHTML =
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
@@ -108,6 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (link.id === "lang-toggle") return; // 言語切替は閉じない
         navMenu.classList.remove("open");
         if (overlay) overlay.classList.remove("open");
+        document.body.classList.remove("menu-open");
         hamburger.setAttribute("aria-expanded", "false");
         hamburger.innerHTML =
           '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';

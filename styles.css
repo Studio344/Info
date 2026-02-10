@@ -603,7 +603,7 @@ a.bento-card:hover {
     grid-column: span 12 !important;
     flex-direction: row !important;
     max-height: 160px;
-    border-radius: 16px;
+    border-radius: 14px;
   }
 
   .projects-page-grid>.project-card .card-visual-header {
@@ -612,7 +612,7 @@ a.bento-card:hover {
     min-width: 110px;
     border-bottom: none;
     border-right: 1px solid var(--border-color);
-    border-radius: 15px 0 0 15px;
+    border-radius: 13px 0 0 13px;
   }
 
   .projects-page-grid>.project-card .card-visual-icon svg {
@@ -914,93 +914,144 @@ a.bento-card:hover {
   height: 28px;
 }
 
-/* Mobile Adjustments */
+/* ===== Mobile Adjustments ===== */
 @media (max-width: 768px) {
+  /* メニュー展開時のスクロールロック */
+  body.menu-open {
+    overflow: hidden;
+  }
+
   .hamburger {
     display: block;
   }
 
+  /* --- フルスクリーン ナビメニュー --- */
   .nav-menu {
     position: fixed;
-    top: 0;
-    right: -100%;
-    width: 70%;
-    max-width: 300px;
+    inset: 0;
+    width: 100%;
     height: 100vh;
-    background: rgba(10, 10, 10, 0.95);
-    backdrop-filter: blur(20px);
+    height: 100dvh;
+    background: rgba(5, 5, 5, 0.97);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1.5rem;
-    transition: right 0.3s ease;
+    gap: 0;
     z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
   }
 
   .nav-menu.open {
-    right: 0;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .nav-menu .nav-btn {
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 0;
+    padding: 1.2rem 2rem;
+    width: 80%;
+    max-width: 320px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: rgba(255, 255, 255, 0.75);
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .nav-menu .nav-btn:last-of-type {
+    border-bottom: none;
+  }
+
+  .nav-menu .nav-btn:hover,
+  .nav-menu .nav-btn.active {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .nav-menu .nav-icon {
+    margin-top: 2rem;
+    opacity: 0.4;
   }
 
   .nav-menu-overlay {
     display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 99;
   }
 
-  .nav-menu-overlay.open {
-    display: block;
-  }
-
+  /* --- レイアウト: 画面幅いっぱい --- */
   .bento-grid {
-    padding: 6rem 2rem 2rem;
-    gap: 1.5rem;
+    padding: 4.5rem 0.6rem 1.5rem;
+    gap: 0.6rem;
   }
 
-  /* Stack earlier on tablet */
-  .about-wrapper,
-  .projects-subgrid,
   .bento-card {
+    grid-column: span 12 !important;
+    border-radius: 14px;
+    padding: 1.2rem 1rem;
+  }
+
+  .about-wrapper,
+  .projects-subgrid {
     grid-column: span 12 !important;
   }
 
-  .hero-content h1 {
-    font-size: 3.5rem;
-  }
-
+  /* ヒーロー */
   .hero-card {
-    margin-bottom: 2rem;
+    min-height: 240px;
+    margin-bottom: 0;
+    border-radius: 14px;
+    padding: 1.5rem 1rem;
   }
 
+  .hero-content h1 {
+    font-size: clamp(2.5rem, 11vw, 3.5rem);
+  }
+
+  .hero-content {
+    gap: 1rem;
+  }
+
+  .typing-text {
+    font-size: 0.95rem;
+  }
+
+  /* コンタクト */
   .contact-card {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     text-align: center;
+    padding: 1.2rem 1rem;
   }
 
-  /* Index page project cards: compact horizontal layout */
+  /* Index: プロジェクトカード横型 */
   .projects-subgrid .project-card {
     flex-direction: row !important;
-    max-height: 140px;
-    border-radius: 16px;
+    max-height: 130px;
+    border-radius: 14px;
+    padding: 0 !important;
   }
 
   .projects-subgrid .project-card .card-visual-header {
     height: auto;
-    width: 100px;
-    min-width: 100px;
+    width: 90px;
+    min-width: 90px;
     border-bottom: none;
     border-right: 1px solid var(--border-color);
-    border-radius: 15px 0 0 15px;
+    border-radius: 13px 0 0 13px;
   }
 
   .projects-subgrid .project-card .card-visual-icon svg {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
   }
 
   .projects-subgrid .project-card .card-content-body {
@@ -1008,13 +1059,13 @@ a.bento-card:hover {
   }
 
   .projects-subgrid .project-card h3 {
-    font-size: 1rem;
-    margin-bottom: 0.2rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
   }
 
   .projects-subgrid .project-card p {
-    font-size: 0.8rem;
-    margin-bottom: 0.4rem;
+    font-size: 0.78rem;
+    margin-bottom: 0.3rem;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -1022,12 +1073,47 @@ a.bento-card:hover {
   }
 
   .projects-subgrid .project-card a {
-    padding: 0.3rem 0.7rem;
-    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.72rem;
   }
 
+  /* ヘッダー */
   .header {
-    padding: 1rem 1.5rem;
+    padding: 0.6rem 0.8rem;
+  }
+
+  .logo {
+    font-size: 1.15rem;
+  }
+
+  /* テキストコンテンツ */
+  .text-content-card {
+    padding: 1.2rem 1rem !important;
+  }
+
+  .text-content-card h1 {
+    font-size: 1.7rem;
+    padding-left: 0;
+  }
+
+  .text-content-card h1::before {
+    display: none;
+  }
+
+  .text-content-card h2 {
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+  }
+
+  .text-content-card p,
+  .text-content-card li {
+    font-size: 0.95rem;
+  }
+
+  /* フッター */
+  .site-footer {
+    padding: 1.2rem 0.8rem;
+    font-size: 0.78rem;
   }
 }
 
@@ -1091,16 +1177,7 @@ a.bento-card:hover {
   border-left: 2px solid rgba(99, 102, 241, 0.3);
 }
 
-@media (max-width: 768px) {
-  .text-content-card h1 {
-    font-size: 2rem;
-    padding-left: 0;
-  }
-
-  .text-content-card h1::before {
-    display: none;
-  }
-}
+/* text-content-card h1 モバイル対応は上記 main mobile block 内で統合済み */
 
 .text-content-card h2 {
   font-family: var(--font-heading);
