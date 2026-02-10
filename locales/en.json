@@ -30,7 +30,8 @@
       "blog_desc": "posts →",
       "connect_title": "Let's Connect",
       "gh_label": "GitHub",
-      "email_label": "Email"
+      "x_label": "X",
+      "ig_label": "Instagram"
    },
    "about_page": {
       "title": "About Studio344",
