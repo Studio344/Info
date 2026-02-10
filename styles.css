@@ -1447,7 +1447,7 @@ a.bento-card:hover {
   }
 
   .blog-page-desc {
-    font-size: 0.72rem;
+    font-size: 0.65rem;
   }
 
   .blog-controls {
@@ -1640,7 +1640,7 @@ a.bento-card:hover {
 
 .blog-page-desc {
   color: #888;
-  font-size: 0.78rem;
+  font-size: 0.7rem;
   margin-bottom: 0;
   padding-left: 0.8rem;
   border-left: 2px solid rgba(99, 102, 241, 0.25);
