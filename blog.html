@@ -17,6 +17,9 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@studio0344" />
   <link rel="canonical" href="https://studio344.net/blog.html" />
+  <link rel="alternate" hreflang="ja" href="https://studio344.net/blog.html" />
+  <link rel="alternate" hreflang="en" href="https://studio344.net/blog.html" />
+  <link rel="alternate" hreflang="x-default" href="https://studio344.net/blog.html" />
   <link rel="icon" type="image/png" href="assets/logo-black.png" />
   <!-- Google Fonts preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -60,7 +63,7 @@
         <line x1="3" y1="18" x2="21" y2="18" />
       </svg>
     </button>
-    <nav class="nav-menu">
+    <nav class="nav-menu" aria-label="メインナビゲーション">
       <a href="about.html" class="nav-btn" data-i18n="nav.about">About</a>
       <a href="blog.html" class="nav-btn" data-i18n="nav.blog">Blog</a>
       <a href="projects.html" class="nav-btn" data-i18n="nav.projects">Projects</a>
@@ -68,7 +71,7 @@
       <button id="lang-toggle" class="nav-btn" aria-label="言語を切り替え / Switch language">EN</button>
       <a href="https://github.com/Studio344" target="_blank" rel="noopener noreferrer" class="nav-icon" aria-label="GitHub">
         <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
-          stroke-linecap="round" stroke-linejoin="round">
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path
             d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
           </path>
@@ -155,9 +158,14 @@
   <footer class="site-footer">
     <p>&copy; <span id="copyright-year">2026</span> Studio344</p>
     <div class="footer-links">
+      <a href="about.html" class="footer-link" data-i18n="nav.about">About</a>
+      <a href="blog.html" class="footer-link" data-i18n="nav.blog">Blog</a>
+      <a href="projects.html" class="footer-link" data-i18n="nav.projects">Projects</a>
+      <a href="contact.html" class="footer-link" data-i18n="nav.contact">Contact</a>
+    </div>
+    <div class="footer-links footer-links--legal">
       <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
       <a href="terms.html" class="footer-link">Terms</a>
-      <a href="contact.html" class="footer-link">Contact</a>
     </div>
   </footer>
 
@@ -168,6 +176,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js" integrity="sha384-9WmlN8ABpoFSSHvBGGjhvB3E/D8UkNB9HpLJjBQFC2VSQsM1odiQDv4NbEo+7l15" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" integrity="sha384-wFjoQjtV1y5jVHbt0p35Ui8aV8GVpEZkyF99OXWqP/eNJDU93D3Ugxkoyh6Y2I4A" crossorigin="anonymous" />
   <script src="assets/js/ui.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.2.4/dist/purify.min.js" integrity="sha384-xQLTM4bZ7tMbcxQbMJEdYkR0y0b4FYe6RZjjBig+PX68fSOOsLVmBnMIJYhwRkA" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked@15.0.12/marked.min.js" integrity="sha384-948ahk4ZmxYVYOc+rxN1H2gM1EJ2Duhp7uHtZ4WSLkV4Vtx5MUqnV+l7u9B+jFv+" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js" integrity="sha384-vxUZOB7ych7Y7ndQtM2RKTsr+2fHukXPfoTo1s0+7o9Q/Bx3oWY0aTwenFnmrcJz" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/i18next-http-backend@3.0.2/i18nextHttpBackend.min.js" integrity="sha384-mylaL1fxuX3DZgdMqG9QvOyXoU/N9yUKXiYZH/5Ykx6+DUDdzQAxI8Gwqh2HBe8T" crossorigin="anonymous"></script>

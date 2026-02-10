@@ -46,4 +46,46 @@
     <lastmod>2026-02-04</lastmod>
     <priority>0.5</priority>
   </url>
+
+  <!-- ブログ記事 -->
+  <url>
+    <loc>https://studio344.net/blog.html#post/gsap-portfolio</loc>
+    <lastmod>2026-02-07</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://studio344.net/blog.html#post/renewal</loc>
+    <lastmod>2026-02-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://studio344.net/blog.html#post/i18n-multilingual</loc>
+    <lastmod>2026-02-01</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://studio344.net/blog.html#post/nextjs-supabase-auth</loc>
+    <lastmod>2026-01-27</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://studio344.net/blog.html#post/fitbit</loc>
+    <lastmod>2026-01-20</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://studio344.net/blog.html#post/css-bento-layout</loc>
+    <lastmod>2026-01-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://studio344.net/blog.html#post/github-pages-deploy</loc>
+    <lastmod>2026-01-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://studio344.net/blog.html#post/web-performance</loc>
+    <lastmod>2026-01-05</lastmod>
+    <priority>0.7</priority>
+  </url>
 </urlset>

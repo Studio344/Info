@@ -10,18 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     statTech.textContent = badges.length > 0 ? badges.length + "+ tech" : "";
   }
 
-  // Projects: projects.jsonからカウント
-  if (statProjects) {
-    fetch("projects.json")
-      .then((r) => r.json())
-      .then((data) => {
-        statProjects.textContent = data.length;
-      })
-      .catch(() => {
-        statProjects.textContent = "-";
-      });
-  }
-
   // Blog Posts: assets/posts/list.jsonからカウント
   if (statPosts) {
     fetch("assets/posts/list.json")
@@ -34,10 +22,14 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // --- Projects Loading ---
+  // --- Projects Loading (統合: カウント + カード描画を1回のfetchで実行) ---
   fetch("projects.json")
     .then((res) => res.json())
     .then((projects) => {
+      // プロジェクト数のスタットを更新
+      if (statProjects) {
+        statProjects.textContent = projects.length;
+      }
       const container = document.getElementById("projects-wrapper");
       const template = document.getElementById("project-card-template");
 
