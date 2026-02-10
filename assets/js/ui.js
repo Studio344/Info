@@ -19,27 +19,21 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // --- 2. Typing Animation (多言語対応) ---
+  // --- 2. Typing Animation ---
   const typingTarget = document.getElementById("typing");
   if (typingTarget) {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    // 言語に応じたテキストを選択
-    function getTypingText() {
-      const lang = (typeof i18next !== 'undefined' && i18next.language) ? i18next.language.substring(0, 2) : 'ja';
-      return lang === 'en' ? 'Engineer / Rookie Dad' : 'Engineer / 新米パパ';
-    }
+    const typingText = 'Engineer / Rookie Dad';
 
     function runTyping() {
-      const text = getTypingText();
       if (prefersReducedMotion) {
-        typingTarget.textContent = text;
+        typingTarget.textContent = typingText;
       } else {
         typingTarget.textContent = '';
         let index = 0;
         function typeWriter() {
-          if (index < text.length) {
-            typingTarget.textContent += text.charAt(index);
+          if (index < typingText.length) {
+            typingTarget.textContent += typingText.charAt(index);
             index++;
             setTimeout(typeWriter, 80);
           }
@@ -49,13 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     runTyping();
-
-    // 言語切替え時に再実行
-    if (typeof i18next !== 'undefined') {
-      i18next.on('languageChanged', () => {
-        typingTarget.textContent = getTypingText();
-      });
-    }
   }
 
   // --- 3. 3D Tilt Effect (現在無効) ---
