@@ -16,5 +16,15 @@
     "link": "projects/ucfitness.html",
     "visualClass": "visual-ucfitness",
     "icon": "pulse"
+  },
+  {
+    "title": "Coming Soon",
+    "title_ja": "Coming Soon",
+    "description": "New projects are currently in development. Stay tuned for updates!",
+    "description_ja": "新しいプロジェクトを開発中です。アップデートをお楽しみに！",
+    "link": "#",
+    "visualClass": "visual-coming-soon",
+    "icon": "code",
+    "comingSoon": true
   }
 ]

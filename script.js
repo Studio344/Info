@@ -26,9 +26,10 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("projects.json")
     .then((res) => res.json())
     .then((projects) => {
-      // プロジェクト数のスタットを更新
+      // プロジェクト数のスタットを更新（Coming Soonを除外）
       if (statProjects) {
-        statProjects.textContent = projects.length;
+        const publishedCount = projects.filter((p) => !p.comingSoon).length;
+        statProjects.textContent = publishedCount;
       }
       const container = document.getElementById("projects-wrapper");
       const template = document.getElementById("project-card-template");
@@ -88,8 +89,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
           const linkEl = card.querySelector("a");
           if (linkEl) {
-            linkEl.href = project.link;
-            linkEl.textContent = viewText;
+            if (project.comingSoon) {
+              linkEl.removeAttribute("href");
+              linkEl.classList.add("disabled");
+              linkEl.textContent =
+                lang === "ja" ? "準備中…" : "Coming Soon…";
+              linkEl.setAttribute("aria-disabled", "true");
+              card.classList.add("coming-soon");
+            } else {
+              linkEl.href = project.link;
+              linkEl.textContent = viewText;
+            }
           }
 
           container.appendChild(clone);

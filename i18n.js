@@ -67,11 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
   if (langToggle) {
     // Initialize button text based on current state
     langToggle.textContent = currentLang === "ja" ? "EN" : "JP";
+    langToggle.setAttribute("aria-label", currentLang === "ja" ? "Switch to English" : "日本語に切り替え");
 
     langToggle.addEventListener("click", () => {
       const newLang = i18next.language === "ja" ? "en" : "ja";
       i18next.changeLanguage(newLang);
       langToggle.textContent = newLang === "ja" ? "EN" : "JP";
+      langToggle.setAttribute("aria-label", newLang === "ja" ? "Switch to English" : "日本語に切り替え");
     });
   }
 

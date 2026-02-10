@@ -19,28 +19,42 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
-  // --- 2. Typing Animation ---
+  // --- 2. Typing Animation (多言語対応) ---
   const typingTarget = document.getElementById("typing");
   if (typingTarget) {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const text = "Engineer / Rookie Dad";
 
-    if (prefersReducedMotion) {
-      // アニメーション不要: テキストを即座に表示
-      typingTarget.textContent = text;
-    } else {
-      let index = 0;
+    // 言語に応じたテキストを選択
+    function getTypingText() {
+      const lang = (typeof i18next !== 'undefined' && i18next.language) ? i18next.language.substring(0, 2) : 'ja';
+      return lang === 'en' ? 'Engineer / Rookie Dad' : 'Engineer / 新米パパ';
+    }
 
-      function typeWriter() {
-        if (index < text.length) {
-          typingTarget.textContent += text.charAt(index);
-          index++;
-          setTimeout(typeWriter, 80);
+    function runTyping() {
+      const text = getTypingText();
+      if (prefersReducedMotion) {
+        typingTarget.textContent = text;
+      } else {
+        typingTarget.textContent = '';
+        let index = 0;
+        function typeWriter() {
+          if (index < text.length) {
+            typingTarget.textContent += text.charAt(index);
+            index++;
+            setTimeout(typeWriter, 80);
+          }
         }
+        setTimeout(typeWriter, 1000);
       }
+    }
 
-      // Start slightly delayed
-      setTimeout(typeWriter, 1000);
+    runTyping();
+
+    // 言語切替え時に再実行
+    if (typeof i18next !== 'undefined') {
+      i18next.on('languageChanged', () => {
+        typingTarget.textContent = getTypingText();
+      });
     }
   }
 

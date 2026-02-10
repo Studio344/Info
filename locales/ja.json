@@ -31,7 +31,9 @@
     "connect_title": "Let's Connect",
     "gh_label": "GitHub",
     "x_label": "X",
-    "ig_label": "Instagram"
+    "ig_label": "Instagram",
+    "cta_projects": "Projects を見る",
+    "cta_blog": "Blog を読む"
   },
   "about_page": {
     "title": "About Studio344",
@@ -50,7 +52,10 @@
     "social_title": "Social Media",
     "github_text": "GitHub",
     "x_text": "X (Twitter)",
-    "instagram_text": "Instagram"
+    "instagram_text": "Instagram",
+    "form_title": "お問い合わせフォーム",
+    "form_desc": "直接メッセージを送りたい場合は、以下のフォームをご利用ください。",
+    "form_btn": "お問い合わせフォームを開く →"
   },
   "blog_page": {
     "title": "Blog & Updates",

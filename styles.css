@@ -175,6 +175,8 @@ html {
   filter: blur(100px);
   opacity: 0.6;
   animation: float 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  contain: layout style;
 }
 
 .orb-1 {
@@ -420,6 +422,27 @@ a.bento-card:hover {
     linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.05) 75%, rgba(255, 255, 255, 0.05));
   background-size: 20px 20px;
   background-position: 0 0, 10px 10px;
+}
+
+/* Coming Soon */
+.visual-coming-soon {
+  background: linear-gradient(135deg, #1e1b4b 0%, #374151 100%);
+}
+
+.visual-coming-soon .card-visual-icon {
+  opacity: 0.4;
+}
+
+.project-card.coming-soon {
+  opacity: 0.65;
+  pointer-events: none;
+  filter: grayscale(0.3);
+}
+
+.project-card.coming-soon a.disabled {
+  color: var(--muted);
+  cursor: default;
+  pointer-events: none;
 }
 
 /* --- Specific Cards --- */
@@ -684,6 +707,50 @@ a.bento-card:hover {
   }
 }
 
+/* Hero CTA Buttons */
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards 2.2s;
+}
+
+.hero-cta-btn {
+  padding: 0.75rem 2rem;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  letter-spacing: 0.02em;
+}
+
+.hero-cta-btn--primary {
+  background: linear-gradient(135deg, var(--accent-indigo), var(--accent-violet));
+  color: #fff;
+  border: 1px solid rgba(165, 180, 252, 0.3);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
+}
+
+.hero-cta-btn--primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.45);
+  border-color: rgba(165, 180, 252, 0.5);
+}
+
+.hero-cta-btn--secondary {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-light);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.hero-cta-btn--secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.3);
+}
 
 .hero-content h1 {
   font-family: var(--font-heading);
@@ -888,11 +955,6 @@ a.bento-card:hover {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-/* Projects Main Page Grid */
-.projects-page-grid {
-  /* display: contents; REMOVED to fix grid alignment */
 }
 
 .projects-page-grid>.project-card {
@@ -1134,6 +1196,45 @@ a.bento-card:hover {
   background: linear-gradient(135deg, rgba(193, 53, 132, 0.2) 0%, rgba(252, 176, 69, 0.12) 100%);
   border-color: rgba(193, 53, 132, 0.45);
   box-shadow: 0 6px 24px rgba(193, 53, 132, 0.15);
+}
+
+/* Contact Form Section */
+.contact-form-section {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.contact-form-section h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: #fff;
+}
+
+.contact-form-section p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  font-size: var(--text-md);
+}
+
+.contact-form-btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 50px;
+  color: var(--accent-lavender);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.contact-form-btn:hover {
+  background: rgba(99, 102, 241, 0.22);
+  border-color: rgba(99, 102, 241, 0.5);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.2);
 }
 
 @media (max-width: 600px) {
@@ -1384,8 +1485,8 @@ a.bento-card:hover {
 
   .hero-logo-wrapper {
     margin-bottom: 0;
-    width: 150px;
-    height: 150px;
+    width: 120px;
+    height: 120px;
   }
 
   .hero-logo-wrapper::after,
@@ -1431,6 +1532,20 @@ a.bento-card:hover {
   .mouse-icon {
     width: 20px;
     height: 30px;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .hero-cta-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.82rem;
+    width: 200px;
+    text-align: center;
   }
 
   /* --- 本文テキスト全体のモバイル縮小 --- */
@@ -2211,10 +2326,6 @@ a.bento-card:hover {
   padding-right: 1.2rem;
 }
 
-.blog-preview-card {
-  text-decoration: none;
-}
-
 .blog-preview-card,
 .blog-preview-card * {
   text-decoration: none;
@@ -2933,6 +3044,12 @@ a.bento-card:hover {
   font-size: var(--text-sm);
 }
 
+.footer-links--legal {
+  margin-top: 0.3rem;
+  font-size: calc(var(--text-sm) - 0.05rem);
+  opacity: 0.7;
+}
+
 /* ホーム: ナビカード共通 */
 .home-nav-card {
   padding: 1.5rem;
@@ -3111,6 +3228,69 @@ a.bento-card:hover {
 }
 
 /* ============================================ */
+/* 前後記事ナビゲーション                       */
+/* ============================================ */
+.blog-prev-next {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.blog-prev-next-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.blog-prev-next-link:hover {
+  background: rgba(99, 102, 241, 0.08);
+  border-color: rgba(99, 102, 241, 0.2);
+  transform: translateY(-2px);
+}
+
+.blog-prev-next-link--next {
+  text-align: right;
+}
+
+.blog-prev-next-label {
+  font-size: var(--text-xs);
+  color: var(--accent-indigo);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.blog-prev-next-title {
+  font-size: var(--text-sm);
+  color: var(--text-light);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .blog-prev-next {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    margin-top: 2rem;
+  }
+
+  .blog-prev-next-link--next {
+    text-align: left;
+  }
+}
+
+/* ============================================ */
 /* prefers-reduced-motion (アクセシビリティ)     */
 /* ============================================ */
 @media (prefers-reduced-motion: reduce) {
@@ -3129,6 +3309,11 @@ a.bento-card:hover {
   }
 
   .hero-tagline {
+    opacity: 1;
+    animation: none;
+  }
+
+  .hero-cta {
     opacity: 1;
     animation: none;
   }

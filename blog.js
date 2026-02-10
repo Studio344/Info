@@ -1,6 +1,70 @@
 document.addEventListener("DOMContentLoaded", () => {
   loadBlogPosts();
 
+  // --- Prism.js 遅延ローダー ---
+  let prismLoaded = false;
+  window.loadPrism = function () {
+    if (prismLoaded) {
+      return Promise.resolve();
+    }
+    return new Promise((resolve) => {
+      // CSS
+      const link = document.createElement("link");
+      link.rel = "stylesheet";
+      link.href =
+        "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css";
+      link.integrity =
+        "sha384-wFjoQjtV1y5jVHbt0p35Ui8aV8GVpEZkyF99OXWqP/eNJDU93D3Ugxkoyh6Y2I4A";
+      link.crossOrigin = "anonymous";
+      document.head.appendChild(link);
+
+      // Core + components（順番に読み込む）
+      const scripts = [
+        {
+          src: "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
+          integrity:
+            "sha384-06z5D//U/xpvxZHuUz92xBvq3DqBBFi7Up53HRrbV7Jlv7Yvh/MZ7oenfUe9iCEt",
+        },
+        {
+          src: "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js",
+          integrity:
+            "sha384-D44bgYYKvaiDh4cOGlj1dbSDpSctn2FSUj118HZGmZEShZcO2v//Q5vvhNy206pp",
+        },
+        {
+          src: "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js",
+          integrity:
+            "sha384-0mV13Neu0xhJFylI+HV43C+XiR13bGSeL7D0/7e6hK7sJgvyvK6HVjeQwmvXTstY",
+        },
+        {
+          src: "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js",
+          integrity:
+            "sha384-RhrmFFMb0ZCHImjFMpR/UE3VEtIVTCtNrtKQqXCzqXZNJala02N3UbVhi+qzw3CY",
+        },
+        {
+          src: "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js",
+          integrity:
+            "sha384-9WmlN8ABpoFSSHvBGGjhvB3E/D8UkNB9HpLJjBQFC2VSQsM1odiQDv4NbEo+7l15",
+        },
+      ];
+
+      function loadNext(i) {
+        if (i >= scripts.length) {
+          prismLoaded = true;
+          resolve();
+          return;
+        }
+        const s = document.createElement("script");
+        s.src = scripts[i].src;
+        s.integrity = scripts[i].integrity;
+        s.crossOrigin = "anonymous";
+        s.onload = () => loadNext(i + 1);
+        s.onerror = () => loadNext(i + 1);
+        document.body.appendChild(s);
+      }
+      loadNext(0);
+    });
+  };
+
   // 言語切替時に再読み込み
   i18next.on("languageChanged", (lng) => {
     loadBlogPosts(lng);
@@ -111,16 +175,19 @@ async function showSinglePost(postId) {
     if (!mdRes.ok) throw new Error("Markdown not found");
     const mdText = await mdRes.text();
 
-    // Render Markdown
-    content.innerHTML = marked.parse(mdText);
+    // Render Markdown (DOMPurifyでサニタイズ)
+    const rawHtml = marked.parse(mdText);
+    content.innerHTML = typeof DOMPurify !== 'undefined' ? DOMPurify.sanitize(rawHtml) : rawHtml;
 
     // Breadcrumbs: Update with actual title from MD if available
     const extractedTitle = extractTitle(mdText);
     if (extractedTitle) updateBreadcrumbs(extractedTitle);
 
-    // Syntax Highlighting
-    if (window.Prism) {
-      window.Prism.highlightAll();
+    // Syntax Highlighting（遅延ロード）
+    if (content.querySelector("pre code")) {
+      window.loadPrism().then(() => {
+        if (window.Prism) window.Prism.highlightAll();
+      });
     }
 
     // タグ表示を挿入（h1の直後）
@@ -138,12 +205,16 @@ async function showSinglePost(postId) {
     // コールアウトボックスを変換
     convertCallouts(content);
 
+    // 前後記事ナビゲーションを挿入
+    await insertPrevNextNav(content, postId);
+
     // 読書プログレスバーを追加
     initReadingProgress();
 
   } catch (e) {
     console.error(e);
-    content.innerHTML = '<p style="color: #888;">読み込みエラーが発生しました。</p>';
+    const lang = (i18next.language || 'ja').substring(0, 2);
+    content.innerHTML = `<p style="color: #888;">${lang === 'en' ? 'An error occurred while loading the article.' : '読み込みエラーが発生しました。'}</p>`;
   }
 }
 
@@ -501,7 +572,61 @@ async function loadBlogPosts(langOverride) {
 }
 
 // ============================================================
-// 📊 読書プログレスバー
+// � 前後記事ナビゲーション
+// ============================================================
+async function insertPrevNextNav(contentElement, currentPostId) {
+  try {
+    const res = await fetch('assets/posts/list.json');
+    const posts = await res.json();
+    const idx = posts.findIndex(p => p.id === currentPostId);
+    if (idx === -1) return;
+
+    const lang = (i18next.language || 'ja').substring(0, 2);
+    const prevPost = idx < posts.length - 1 ? posts[idx + 1] : null;
+    const nextPost = idx > 0 ? posts[idx - 1] : null;
+
+    // タイトルを取得するためにMDファイルから抽出
+    async function getPostTitle(post) {
+      try {
+        const mdRes = await fetch(`assets/posts/${post.baseFilename}.${lang}.md`);
+        if (!mdRes.ok) return post.id;
+        const mdText = await mdRes.text();
+        return extractTitle(mdText) || post.id;
+      } catch { return post.id; }
+    }
+
+    const nav = document.createElement('nav');
+    nav.className = 'blog-prev-next';
+    nav.setAttribute('aria-label', lang === 'en' ? 'Article navigation' : '記事ナビゲーション');
+
+    if (prevPost) {
+      const title = await getPostTitle(prevPost);
+      nav.innerHTML += `<a href="#post/${prevPost.id}" class="blog-prev-next-link blog-prev-next-link--prev" onclick="event.preventDefault(); history.pushState(null,'','#post/${prevPost.id}'); showSinglePost('${prevPost.id}');">
+        <span class="blog-prev-next-label">${lang === 'en' ? '← Previous' : '← 前の記事'}</span>
+        <span class="blog-prev-next-title">${title}</span>
+      </a>`;
+    } else {
+      nav.innerHTML += '<span></span>';
+    }
+
+    if (nextPost) {
+      const title = await getPostTitle(nextPost);
+      nav.innerHTML += `<a href="#post/${nextPost.id}" class="blog-prev-next-link blog-prev-next-link--next" onclick="event.preventDefault(); history.pushState(null,'','#post/${nextPost.id}'); showSinglePost('${nextPost.id}');">
+        <span class="blog-prev-next-label">${lang === 'en' ? 'Next →' : '次の記事 →'}</span>
+        <span class="blog-prev-next-title">${title}</span>
+      </a>`;
+    } else {
+      nav.innerHTML += '<span></span>';
+    }
+
+    contentElement.appendChild(nav);
+  } catch (e) {
+    console.error('Prev/Next nav error:', e);
+  }
+}
+
+// ============================================================
+// �📊 読書プログレスバー
 // ============================================================
 let _readingProgressHandler = null;
 
