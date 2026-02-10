@@ -683,18 +683,7 @@ a.bento-card:hover {
   justify-content: flex-start;
 }
 
-/* About Card: 2カラムレイアウト */
-.about-card-inner {
-  display: flex;
-  gap: 2.5rem;
-  align-items: stretch;
-}
-
-.about-card-text {
-  flex: 1;
-  min-width: 0;
-}
-
+/* About Card: フラットレイアウト（本文 → フッター行） */
 .about-card-label {
   display: inline-flex;
   align-items: center;
@@ -727,10 +716,18 @@ a.bento-card:hover {
   font-size: 0.95rem;
 }
 
+/* フッター行: ボタン + 区切り + バッジ横並び */
+.about-footer {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1.4rem;
+  flex-wrap: wrap;
+}
+
 .about-card-link {
   display: inline-flex;
   align-items: center;
-  margin-top: 1.2rem;
   padding: 0.55rem 1.2rem;
   background: rgba(165, 180, 252, 0.08);
   border: 1px solid rgba(165, 180, 252, 0.15);
@@ -740,6 +737,7 @@ a.bento-card:hover {
   font-weight: 500;
   text-decoration: none;
   transition: all 0.25s ease;
+  white-space: nowrap;
 }
 
 .about-card-link:hover {
@@ -748,55 +746,47 @@ a.bento-card:hover {
   transform: translateX(4px);
 }
 
-/* Tech Stack サイドパネル */
-.about-card-stack {
-  flex-shrink: 0;
-  width: 200px;
+/* Tech Stack ストリップ（横一列） */
+.about-stack-strip {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
-  text-align: center;
+  gap: 1rem;
 }
 
-.about-stack-label {
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #888;
-  margin-bottom: 1rem;
-  font-weight: 600;
+.about-stack-divider {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
 }
 
-.about-stack-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 0.5rem;
-  justify-items: center;
+.about-stack-badges {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
 }
 
 .about-stack-count {
   font-size: 0.65rem;
   color: #666;
-  margin-top: 0.8rem;
   letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 
-/* モバイル: About 縦積み */
+/* モバイル: About */
 @media (max-width: 768px) {
-  .about-card-inner {
+  .about-footer {
     flex-direction: column;
+    align-items: flex-start;
     gap: 1rem;
   }
 
-  .about-card-stack {
-    width: 100%;
-    padding: 1rem;
-    border-radius: 12px;
+  .about-stack-strip {
+    gap: 0.6rem;
+  }
+
+  .about-stack-divider {
+    display: none;
   }
 
   .about-card h2 {
