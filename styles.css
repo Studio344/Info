@@ -684,6 +684,18 @@ a.bento-card:hover {
 }
 
 /* About Card: フラットレイアウト（本文 → フッター行） */
+.about-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(165, 180, 252, 0.1);
+  color: #a5b4fc;
+  margin-bottom: 0.6rem;
+}
+
 .about-card h2 {
   font-family: var(--font-heading);
   font-size: 1.75rem;
