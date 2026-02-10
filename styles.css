@@ -684,22 +684,6 @@ a.bento-card:hover {
 }
 
 /* About Card: フラットレイアウト（本文 → フッター行） */
-.about-card-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: #a5b4fc;
-  margin-bottom: 0.6rem;
-  font-weight: 600;
-}
-
-.about-card-label svg {
-  opacity: 0.7;
-}
-
 .about-card h2 {
   font-family: var(--font-heading);
   font-size: 1.75rem;
@@ -720,8 +704,8 @@ a.bento-card:hover {
 .about-footer {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  margin-top: 1.4rem;
+  gap: 1.8rem;
+  margin-top: 1.6rem;
   flex-wrap: wrap;
 }
 
