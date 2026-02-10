@@ -961,7 +961,7 @@ a.bento-card:hover {
     width: 80%;
     max-width: 320px;
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 500;
     letter-spacing: 0.04em;
     color: rgba(255, 255, 255, 0.75);
@@ -1021,7 +1021,45 @@ a.bento-card:hover {
   }
 
   .typing-text {
+    font-size: 0.85rem;
+  }
+
+  /* --- 本文テキスト全体のモバイル縮小 --- */
+  .about-card p,
+  .contact-card p,
+  .contact-card li,
+  .bento-card p,
+  .bento-card li {
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+
+  .hero-tagline {
+    font-size: 0.82rem;
+  }
+
+  .project-card p {
+    font-size: 0.85rem;
+  }
+
+  .project-card a {
+    font-size: 0.8rem;
+  }
+
+  .sns-label {
     font-size: 0.95rem;
+  }
+
+  .sns-handle {
+    font-size: 0.72rem;
+  }
+
+  .scroll-indicator {
+    margin-top: 2rem;
+  }
+
+  .scroll-indicator span {
+    font-size: 0.7rem;
   }
 
   /* コンタクト */
@@ -1107,7 +1145,60 @@ a.bento-card:hover {
 
   .text-content-card p,
   .text-content-card li {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
+    line-height: 1.65;
+  }
+
+  /* ブログ / Markdown コンテンツ */
+  .blog-preview-title {
+    font-size: 0.92rem;
+  }
+
+  .blog-preview-excerpt {
+    font-size: 0.75rem;
+    -webkit-line-clamp: 2;
+  }
+
+  .blog-preview-readmore {
+    font-size: 0.72rem;
+  }
+
+  .blog-preview-tag {
+    font-size: 0.6rem;
+  }
+
+  .blog-preview-date {
+    font-size: 0.7rem;
+  }
+
+  .markdown-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .markdown-content h2 {
+    font-size: 1.15rem;
+  }
+
+  .markdown-content h3 {
+    font-size: 1rem;
+  }
+
+  .markdown-content p,
+  .markdown-content li {
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+
+  .markdown-content pre code {
+    font-size: 0.78rem;
+  }
+
+  .markdown-content table {
+    font-size: 0.8rem;
+  }
+
+  .blog-back-link {
+    font-size: 0.78rem;
   }
 
   /* フッター */
