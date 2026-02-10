@@ -394,6 +394,19 @@ a.bento-card:hover {
   z-index: 2;
 }
 
+/* Desktop: ロゴとタイトルは縦並び (中央揃え) */
+.hero-top-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  width: 100%;
+}
+
+.hero-title-group {
+  text-align: center;
+}
+
 .hero-logo-wrapper {
   margin-bottom: 0.5rem;
   position: relative;
@@ -1006,22 +1019,72 @@ a.bento-card:hover {
 
   /* ヒーロー */
   .hero-card {
-    min-height: 240px;
+    min-height: auto;
     margin-bottom: 0;
     border-radius: 14px;
-    padding: 1.5rem 1rem;
+    padding: 2rem 1.2rem 1.2rem;
+    position: relative;
+    overflow: hidden;
   }
 
-  .hero-content h1 {
-    font-size: clamp(2.5rem, 11vw, 3.5rem);
-  }
-
+  /* 左ロゴ + 右タイトル の横並び */
   .hero-content {
+    gap: 0;
+  }
+
+  .hero-top-row {
+    flex-direction: row;
+    align-items: center;
     gap: 1rem;
   }
 
+  .hero-title-group {
+    text-align: left;
+  }
+
+  .hero-logo-wrapper {
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .hero-logo {
+    width: 64px;
+    height: 64px;
+    border: 1.5px solid rgba(165, 180, 252, 0.3);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2), 0 0 40px rgba(99, 102, 241, 0.05);
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2rem, 10vw, 3rem);
+    margin-bottom: 0.2rem;
+    text-align: left;
+  }
+
   .typing-text {
-    font-size: 0.85rem;
+    font-size: 0.78rem;
+    text-align: left;
+    min-height: 1.2em;
+  }
+
+  .hero-tagline {
+    font-size: 0.78rem;
+    margin-top: 0.8rem;
+    text-align: center;
+    letter-spacing: 0.02em;
+    opacity: 1;
+  }
+
+  .scroll-indicator {
+    margin-top: 1rem;
+  }
+
+  .scroll-indicator span {
+    font-size: 0.6rem;
+  }
+
+  .mouse-icon {
+    width: 18px;
+    height: 28px;
   }
 
   /* --- 本文テキスト全体のモバイル縮小 --- */
