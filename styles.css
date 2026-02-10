@@ -21,33 +21,62 @@
 
 /* ===== Footer Link ===== */
 .footer-link {
-  color: #999;
+  color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .footer-link:hover {
-  color: #ccc;
+  color: var(--text-light);
 }
 
 /* ===== Focus Visible ===== */
 :focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline: 2px solid rgba(165, 180, 252, 0.8);
   outline-offset: 2px;
 }
 
 :root {
+  /* === カラートークン === */
   --bg-color: #030303;
   --card-bg: rgba(20, 20, 20, 0.4);
-  /* More transparent for effects */
   --border-color: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.3);
+
+  /* テキスト (WCAG AA 4.5:1 準拠 on #030303) */
   --text-primary: #ededed;
-  --text-secondary: #888888;
+  --text-light: #cccccc;
+  --text-secondary: #a0a0a0;
+  --text-muted: #888888;
+
+  /* アクセントカラー */
+  --accent-indigo: #6366f1;
+  --accent-violet: #a78bfa;
+  --accent-lavender: #a5b4fc;
+  --accent-purple: #c4b5fd;
   --accent-glow: rgba(255, 255, 255, 0.15);
+
+  /* タイポグラフィ */
   --font-main: 'Inter', sans-serif;
   --font-heading: 'Outfit', sans-serif;
+  --font-blog-heading: 'Sora', 'Outfit', sans-serif;
+  --font-mono: 'Courier New', monospace;
 
-  /* Dynamic Mouse Variables (updated by JS) */
+  /* フォントサイズ (最小 0.75rem = 12px) */
+  --text-xs: 0.75rem;
+  --text-sm: 0.8rem;
+  --text-base: 0.875rem;
+  --text-md: 0.95rem;
+  --text-lg: 1.05rem;
+
+  /* ボーダー半径 */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-full: 50px;
+
+  /* マウス位置 (JSで更新) */
   --mouse-x: 50%;
   --mouse-y: 50%;
 }
@@ -72,23 +101,23 @@ body {
 /* --- UI Polish --- */
 
 /* Active Nav Link */
-.nav-links a.active {
+.nav-links a.active,
+.nav-btn.active {
   color: #fff;
-  border-bottom: 2px solid #6366f1;
+  border-bottom: 2px solid var(--accent-indigo);
 }
 
 /* Breadcrumbs */
 .breadcrumb-nav,
 .breadcrumb-nav a {
-  color: #aaa;
-  /* Gray per user request */
+  color: var(--text-secondary);
   text-decoration: none;
   font-size: 0.9rem;
 }
 
 .breadcrumb-nav a:hover {
   text-decoration: underline;
-  color: #fff !important;
+  color: #fff;
 }
 
 .breadcrumb-nav span {
@@ -284,17 +313,16 @@ html {
 }
 
 a.bento-card:hover {
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: var(--border-hover);
   /* transform: translateY(-4px);  <-- REMOVED to prevent conflict with JS Tilt */
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 }
 
 /* --- Rich Project Cards --- */
 .project-card {
-  padding: 0 !important;
-  /* Reset padding for full-bleed image */
-  display: flex !important;
-  flex-direction: column !important;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
   background: var(--card-bg);
 }
 
@@ -662,7 +690,7 @@ a.bento-card:hover {
 .typing-text {
   font-size: 1.25rem;
   color: var(--text-secondary);
-  font-family: 'Courier New', monospace;
+  font-family: var(--font-mono);
   min-height: 1.5em;
 }
 
@@ -709,7 +737,7 @@ a.bento-card:hover {
 .about-card p {
   color: var(--text-secondary);
   line-height: 1.7;
-  font-size: 0.95rem;
+  font-size: var(--text-md);
 }
 
 /* フッター行: ボタン + 区切り + バッジ横並び */
@@ -763,8 +791,8 @@ a.bento-card:hover {
 }
 
 .about-stack-count {
-  font-size: 0.65rem;
-  color: #666;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
   letter-spacing: 0.05em;
   white-space: nowrap;
 }
@@ -842,10 +870,10 @@ a.bento-card:hover {
 
 @media (max-width: 768px) {
   .projects-page-grid>.project-card {
-    grid-column: span 12 !important;
-    flex-direction: row !important;
+    grid-column: span 12;
+    flex-direction: row;
     max-height: 160px;
-    border-radius: 14px;
+    border-radius: var(--radius-md);
   }
 
   .projects-page-grid>.project-card .card-visual-header {
@@ -1231,19 +1259,19 @@ a.bento-card:hover {
 
   /* --- レイアウト: 画面幅いっぱい --- */
   .bento-grid {
-    padding: 4.5rem 0.6rem 1.5rem;
+    padding: 4.5rem max(0.6rem, env(safe-area-inset-left)) 1.5rem;
     gap: 0.6rem;
   }
 
   .bento-card {
-    grid-column: span 12 !important;
-    border-radius: 14px;
+    grid-column: span 12;
+    border-radius: var(--radius-md);
     padding: 1.2rem 1rem;
   }
 
   .about-wrapper,
   .projects-subgrid {
-    grid-column: span 12 !important;
+    grid-column: span 12;
   }
 
   /* ヒーロー: インパクト重視 */
@@ -1318,7 +1346,7 @@ a.bento-card:hover {
   }
 
   .scroll-indicator span {
-    font-size: 0.65rem;
+    font-size: var(--text-xs);
   }
 
   .mouse-icon {
@@ -1374,10 +1402,10 @@ a.bento-card:hover {
 
   /* Index: プロジェクトカード横型 */
   .projects-subgrid .project-card {
-    flex-direction: row !important;
+    flex-direction: row;
     max-height: 130px;
-    border-radius: 14px;
-    padding: 0 !important;
+    border-radius: var(--radius-md);
+    padding: 0;
   }
 
   .projects-subgrid .project-card .card-visual-header {
@@ -1417,6 +1445,13 @@ a.bento-card:hover {
     font-size: 0.72rem;
   }
 
+  /* ホームナビカード: モバイルでフル幅 */
+  .home-nav-card--projects,
+  .home-nav-card--blog,
+  .home-nav-card--connect {
+    grid-column: span 12;
+  }
+
   /* ヘッダー */
   .header {
     padding: 0.6rem 0.8rem;
@@ -1428,7 +1463,7 @@ a.bento-card:hover {
 
   /* テキストコンテンツ */
   .text-content-card {
-    padding: 1.2rem 1rem !important;
+    padding: 1.2rem 1rem;
   }
 
   .text-content-card h1 {
@@ -1447,7 +1482,7 @@ a.bento-card:hover {
   }
 
   .blog-page-desc {
-    font-size: 0.65rem;
+    font-size: var(--text-xs);
   }
 
   .blog-controls {
@@ -1456,7 +1491,7 @@ a.bento-card:hover {
 
   .filter-tag {
     padding: 0.25rem 0.55rem;
-    font-size: 0.7rem;
+    font-size: var(--text-xs);
   }
 
   .text-content-card h2 {
@@ -1501,22 +1536,22 @@ a.bento-card:hover {
   }
 
   .blog-preview-excerpt {
-    font-size: 0.6rem;
+    font-size: var(--text-xs);
     -webkit-line-clamp: 2;
     margin-bottom: 0.6rem;
   }
 
   .blog-preview-readmore {
-    font-size: 0.68rem;
+    font-size: var(--text-xs);
   }
 
   .blog-preview-tag {
-    font-size: 0.55rem;
-    padding: 0.12rem 0.35rem;
+    font-size: var(--text-xs);
+    padding: 0.15rem 0.4rem;
   }
 
   .blog-preview-date {
-    font-size: 0.65rem;
+    font-size: var(--text-xs);
   }
 
   .blog-preview-footer {
@@ -1639,8 +1674,8 @@ a.bento-card:hover {
 }
 
 .blog-page-desc {
-  color: #888;
-  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-size: var(--text-xs);
   margin-bottom: 0;
   padding-left: 0.8rem;
   border-left: 2px solid rgba(99, 102, 241, 0.25);
@@ -1672,8 +1707,8 @@ a.bento-card:hover {
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(255, 255, 255, 0.04);
-  color: #999;
-  font-size: 0.78rem;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
@@ -1681,7 +1716,7 @@ a.bento-card:hover {
 
 .filter-tag:hover {
   background: rgba(255, 255, 255, 0.1);
-  color: #ccc;
+  color: var(--text-light);
 }
 
 .filter-tag.active {
@@ -1702,8 +1737,8 @@ a.bento-card:hover {
 
 .text-content-card p,
 .text-content-card li {
-  color: #ccc;
-  font-size: 1.05rem;
+  color: var(--text-light);
+  font-size: var(--text-lg);
   margin-bottom: 1rem;
 }
 
@@ -1842,7 +1877,7 @@ a.bento-card:hover {
 }
 
 .about-section p {
-  color: #ccc;
+  color: var(--text-light);
   line-height: 1.8;
 }
 
@@ -1870,8 +1905,8 @@ a.bento-card:hover {
 }
 
 .skill-card .skill-items {
-  color: #ccc;
-  font-size: 0.95rem;
+  color: var(--text-light);
+  font-size: var(--text-md);
   line-height: 1.6;
 }
 
@@ -1891,7 +1926,7 @@ a.bento-card:hover {
 }
 
 .about-quote .quote-desc {
-  color: #aaa;
+  color: var(--text-secondary);
   line-height: 1.7;
 }
 
@@ -1899,7 +1934,7 @@ a.bento-card:hover {
 
   .project-card,
   .contact-card {
-    grid-column: 1 / -1 !important;
+    grid-column: 1 / -1;
   }
 
   .hero-tagline {
@@ -1994,7 +2029,7 @@ a.bento-card:hover {
   }
 
   .skill-card .skill-label {
-    font-size: 0.68rem;
+    font-size: var(--text-xs);
     margin-bottom: 0.3rem;
   }
 
@@ -2048,12 +2083,12 @@ a.bento-card:hover {
 /* カード上部アクセントバー */
 .blog-preview-accent {
   height: 3px;
-  background: linear-gradient(90deg, #6366f1, #a78bfa, #c4b5fd, transparent);
+  background: linear-gradient(90deg, var(--accent-indigo), var(--accent-violet), var(--accent-purple), transparent);
   transition: height 0.3s ease;
 }
 
 .blog-preview-card:hover .blog-preview-accent {
-  height: 4px;
+  height: 5px;
 }
 
 /* カードの内側paddingは内容部分で */
@@ -2065,9 +2100,13 @@ a.bento-card:hover {
   padding-right: 1.2rem;
 }
 
+.blog-preview-card {
+  text-decoration: none;
+}
+
 .blog-preview-card,
 .blog-preview-card * {
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
 .blog-preview-card:hover {
@@ -2109,17 +2148,17 @@ a.bento-card:hover {
 }
 
 .blog-preview-date {
-  font-size: 0.72rem;
-  color: #6366f1;
+  font-size: var(--text-xs);
+  color: var(--accent-indigo);
   font-weight: 500;
   letter-spacing: 0.03em;
 }
 
 .blog-preview-title {
   font-family: var(--font-heading);
-  font-size: 0.95rem;
+  font-size: var(--text-md);
   font-weight: 600;
-  color: #ededed;
+  color: var(--text-primary);
   margin-bottom: 0.4rem;
   line-height: 1.4;
   display: -webkit-box;
@@ -2129,8 +2168,8 @@ a.bento-card:hover {
 }
 
 .blog-preview-excerpt {
-  font-size: 0.65rem;
-  color: #666;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
   line-height: 1.5;
   flex: 1;
   margin-bottom: 0.8rem;
@@ -2158,7 +2197,7 @@ a.bento-card:hover {
 }
 
 .blog-preview-tag {
-  font-size: 0.6rem;
+  font-size: var(--text-xs);
   padding: 0.15rem 0.45rem;
   border-radius: 20px;
   background: rgba(99, 102, 241, 0.1);
@@ -2175,8 +2214,8 @@ a.bento-card:hover {
 }
 
 .blog-preview-readmore {
-  font-size: 0.75rem;
-  color: #a5b4fc;
+  font-size: var(--text-xs);
+  color: var(--accent-lavender);
   font-weight: 500;
   white-space: nowrap;
   transition: color 0.2s ease, transform 0.2s ease;
@@ -2218,7 +2257,7 @@ a.bento-card:hover {
   margin-bottom: 0.8rem;
   padding-bottom: 0.4rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  color: #a5b4fc;
+  color: var(--accent-lavender);
 }
 
 .markdown-content h3 {
@@ -2227,18 +2266,18 @@ a.bento-card:hover {
   font-weight: 600;
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
-  color: #c4b5fd;
+  color: var(--accent-purple);
 }
 
 .markdown-content p {
-  color: #ccc;
+  color: var(--text-light);
   line-height: 1.8;
   margin-bottom: 1rem;
 }
 
 .markdown-content ul,
 .markdown-content ol {
-  color: #ccc;
+  color: var(--text-light);
   line-height: 1.8;
   margin-bottom: 1rem;
   padding-left: 1.5rem;
@@ -2293,21 +2332,21 @@ a.bento-card:hover {
 }
 
 .markdown-content td {
-  color: #ccc;
+  color: var(--text-light);
 }
 
 .markdown-content strong {
-  color: #ededed;
+  color: var(--text-primary);
   font-weight: 600;
 }
 
 .markdown-content a {
-  color: #a5b4fc;
+  color: var(--accent-lavender);
   text-decoration: none;
 }
 
 .markdown-content a:hover {
-  color: #c4b5fd;
+  color: var(--accent-purple);
   text-decoration: underline;
 }
 
@@ -2382,8 +2421,8 @@ a.bento-card:hover {
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.05);
-  color: #aaa;
-  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
   letter-spacing: 0.02em;
 }
 
@@ -2464,7 +2503,7 @@ a.bento-card:hover {
 }
 
 .blog-toc li a {
-  color: #aaa;
+  color: var(--text-secondary);
   text-decoration: none;
   transition: color 0.2s;
   font-size: 0.9rem;
@@ -2474,7 +2513,7 @@ a.bento-card:hover {
 
 .blog-toc li a:hover {
   text-decoration: underline;
-  color: #a5b4fc;
+  color: var(--accent-lavender);
 }
 
 /* Indent h3 */
@@ -2517,7 +2556,7 @@ a.bento-card:hover {
 #blog-single-content li {
   line-height: 1.8;
   margin-bottom: 1.2rem;
-  color: #d4d4d4;
+  color: var(--text-light);
 }
 
 /* リード文（h1直後の最初の段落を強調） */
@@ -2745,10 +2784,251 @@ a.bento-card:hover {
   align-items: center;
   gap: 0.4rem;
   font-size: 0.85rem;
-  color: #888;
+  color: var(--text-muted);
   margin-bottom: 1.5rem;
 }
 
 .reading-time-icon {
   font-size: 1rem;
+}
+
+/* ============================================ */
+/* インラインスタイル置換用クラス               */
+/* ============================================ */
+
+/* ロゴリンク */
+.logo-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* フッターリンク行 */
+.footer-links {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  font-size: var(--text-sm);
+}
+
+/* ホーム: ナビカード共通 */
+.home-nav-card {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.home-nav-card--projects {
+  grid-column: span 4;
+  background: linear-gradient(135deg, #0f172a 0%, #312e81 100%);
+}
+
+.home-nav-card--blog {
+  grid-column: span 4;
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.25) 0%, rgba(5, 150, 105, 0.2) 100%);
+}
+
+.home-nav-card--connect {
+  grid-column: span 4;
+}
+
+.home-nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex: 1;
+}
+
+.home-nav-label {
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: #fff;
+}
+
+.home-nav-count {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.home-nav-count--indigo {
+  color: var(--accent-lavender);
+}
+
+.home-nav-count--white {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.home-nav-arrow {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+}
+
+.home-nav-arrow--light {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: var(--text-xs);
+}
+
+/* Connect ソーシャルリンク */
+.home-social-link {
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  text-decoration: none;
+  font-size: var(--text-xs);
+}
+
+.home-social-link:hover {
+  color: #fff;
+}
+
+/* Connect タイトル */
+.home-connect-label {
+  font-size: var(--text-md);
+  font-weight: 600;
+  color: #fff;
+  flex: 1;
+}
+
+/* About カード full width */
+.about-card--home {
+  grid-column: 1 / -1;
+  height: auto;
+}
+
+/* Contact ページ */
+.contact-content {
+  text-align: center;
+}
+
+.contact-desc {
+  margin: 0.5rem auto 0;
+}
+
+/* Projects ページ */
+.projects-desc {
+  margin-bottom: 0;
+  color: var(--text-secondary);
+}
+
+.projects-header {
+  margin-bottom: 0;
+}
+
+/* プロジェクトカードリンク */
+.project-link {
+  margin-top: 1rem;
+  align-self: flex-start;
+}
+
+/* 法的ページ（Privacy/Terms）の border-left 無効化 */
+.text-content-card--legal > p {
+  border-left: none;
+  padding-left: 0;
+}
+
+/* 最終更新日 */
+.legal-updated {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ============================================ */
+/* prefers-reduced-motion (アクセシビリティ)     */
+/* ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .aurora-orb {
+    animation: none;
+    opacity: 0.3;
+  }
+
+  .hero-tagline {
+    opacity: 1;
+    animation: none;
+  }
+
+  .orbit-ring,
+  .hero-logo-wrapper::after {
+    animation: none;
+  }
+
+  .scroll-indicator {
+    display: none;
+  }
+
+  .blog-preview-card {
+    animation: none;
+  }
+}
+
+/* ============================================ */
+/* タブレット対応 (769px - 1024px)              */
+/* ============================================ */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .bento-grid {
+    padding: 6rem 1.5rem 3rem;
+    gap: 1rem;
+  }
+
+  .bento-card {
+    border-radius: var(--radius-lg);
+  }
+
+  .hero-card {
+    min-height: 50vh;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(3rem, 8vw, 5rem);
+  }
+
+  .home-nav-card--projects,
+  .home-nav-card--blog,
+  .home-nav-card--connect {
+    grid-column: span 4;
+  }
+
+  .text-content-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .text-content-card h1 {
+    font-size: 2.4rem;
+  }
+
+  .about-hero {
+    gap: 1.5rem;
+  }
+
+  .about-hero-logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sns-card {
+    padding: 1.5rem 1.8rem;
+    min-width: 130px;
+  }
+
+  .blog-preview-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
