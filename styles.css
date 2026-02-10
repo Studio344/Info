@@ -104,7 +104,9 @@ body {
 .nav-menu a.active,
 .nav-btn.active {
   color: #fff;
-  border-bottom: 2px solid var(--accent-indigo);
+  background: rgba(99, 102, 241, 0.18);
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow: 0 0 8px rgba(99, 102, 241, 0.25);
 }
 
 /* Breadcrumbs */
@@ -1425,7 +1427,7 @@ a.bento-card:hover {
   .nav-menu .nav-btn:hover,
   .nav-menu .nav-btn.active {
     color: #fff;
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(99, 102, 241, 0.15);
   }
 
   .nav-menu .nav-icon {
