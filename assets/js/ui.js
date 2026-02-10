@@ -56,40 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     copyrightYear.textContent = new Date().getFullYear();
   }
 
-  // --- 5. Active Link Highlighting ---
-  const currentPath = window.location.pathname;
-  const page = currentPath.split("/").pop() || "index.html";
-
-  const navLinks = document.querySelectorAll(".nav-menu a.nav-btn");
-
-  navLinks.forEach(link => {
-    const href = link.getAttribute("href");
-    if (!href || href.startsWith("http") || href === "#") return;
-
-    // href のファイル名部分を抽出（「../about.html」→「about.html」）
-    const hrefFile = href.split("/").pop();
-
-    let isActive = false;
-
-    // 1. ファイル名の完全一致
-    if (hrefFile === page) {
-      isActive = true;
-    }
-
-    // 2. トップページ: pathname が "/" や "" の場合
-    if ((page === "" || page === "/" || currentPath === "/") && hrefFile === "index.html") {
-      isActive = true;
-    }
-
-    // 3. サブディレクトリ（/projects/portfolio.html 等）→ 親カテゴリをハイライト
-    if (currentPath.includes("/projects/") && hrefFile === "projects.html") {
-      isActive = true;
-    }
-
-    if (isActive) {
-      link.classList.add("active");
-    }
-  });
+  // --- 5. Active Link: CSS-only (body[data-page] で制御) ---
 
   // Run initially for static content
   // initTilt();

@@ -100,7 +100,16 @@ body {
 
 /* --- UI Polish --- */
 
-/* Active Nav Link — 定義は .nav-btn の後に配置（下記参照） */
+/* Active Nav Link — CSS-only: body[data-page] + data-i18n セレクタで判定 */
+body[data-page="about"] .nav-btn[data-i18n="nav.about"],
+body[data-page="blog"] .nav-btn[data-i18n="nav.blog"],
+body[data-page="projects"] .nav-btn[data-i18n="nav.projects"],
+body[data-page="contact"] .nav-btn[data-i18n="nav.contact"] {
+  color: #fff;
+  background: rgba(99, 102, 241, 0.22);
+  border-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+}
 
 /* Breadcrumbs */
 .breadcrumb-nav,
@@ -1333,13 +1342,6 @@ a.bento-card:hover {
   color: #fff;
 }
 
-.nav-menu a.nav-btn.active {
-  color: #fff;
-  background: rgba(99, 102, 241, 0.22);
-  border-color: rgba(99, 102, 241, 0.6);
-  box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
-}
-
 .nav-icon {
   color: #fff;
   opacity: 0.7;
@@ -1424,8 +1426,7 @@ a.bento-card:hover {
     border-bottom: none;
   }
 
-  .nav-menu .nav-btn:hover,
-  .nav-menu .nav-btn.active {
+  .nav-menu .nav-btn:hover {
     color: #fff;
     background: rgba(99, 102, 241, 0.15);
   }
@@ -1836,19 +1837,7 @@ a.bento-card:hover {
   background: linear-gradient(90deg, var(--accent-indigo), var(--accent-violet), rgba(6, 182, 212, 0.5));
 }
 
-/* h1 の左にアクセントドット */
-.text-content-card h1::before {
-  content: '';
-  position: absolute;
-  left: -1.5rem;
-  top: 50%;
-  transform: translateY(-70%);
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #6366f1;
-  box-shadow: 0 0 20px rgba(99, 102, 241, 0.8), 0 0 40px rgba(99, 102, 241, 0.3);
-}
+/* h1 アクセントドット — 削除済み */
 
 /* ページ説明文のスタイル強化 */
 .text-content-card > p {
