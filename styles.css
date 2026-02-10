@@ -601,7 +601,46 @@ a.bento-card:hover {
 @media (max-width: 768px) {
   .projects-page-grid>.project-card {
     grid-column: span 12 !important;
-    /* Stack on mobile */
+    flex-direction: row !important;
+    max-height: 160px;
+    border-radius: 16px;
+  }
+
+  .projects-page-grid>.project-card .card-visual-header {
+    height: auto;
+    width: 110px;
+    min-width: 110px;
+    border-bottom: none;
+    border-right: 1px solid var(--border-color);
+    border-radius: 15px 0 0 15px;
+  }
+
+  .projects-page-grid>.project-card .card-visual-icon svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .projects-page-grid>.project-card .card-content-body {
+    padding: 0.8rem 1rem;
+  }
+
+  .projects-page-grid>.project-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .projects-page-grid>.project-card p {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .projects-page-grid>.project-card a {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
   }
 }
 
@@ -941,6 +980,50 @@ a.bento-card:hover {
     flex-direction: column;
     gap: 1.5rem;
     text-align: center;
+  }
+
+  /* Index page project cards: compact horizontal layout */
+  .projects-subgrid .project-card {
+    flex-direction: row !important;
+    max-height: 140px;
+    border-radius: 16px;
+  }
+
+  .projects-subgrid .project-card .card-visual-header {
+    height: auto;
+    width: 100px;
+    min-width: 100px;
+    border-bottom: none;
+    border-right: 1px solid var(--border-color);
+    border-radius: 15px 0 0 15px;
+  }
+
+  .projects-subgrid .project-card .card-visual-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .projects-subgrid .project-card .card-content-body {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .projects-subgrid .project-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .projects-subgrid .project-card p {
+    font-size: 0.8rem;
+    margin-bottom: 0.4rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .projects-subgrid .project-card a {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.75rem;
   }
 
   .header {
