@@ -21,7 +21,7 @@
   <!-- Google Fonts preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;900&family=Sora:wght@600;700;800&display=swap" />
   <link rel="stylesheet" href="styles.css" />
   <script type="application/ld+json">
   {
@@ -50,7 +50,7 @@
 
   <header class="header">
     <div class="logo">
-      <a href="index.html" style="color: white; text-decoration: none">Studio344</a>
+      <a href="index.html" class="logo-link">Studio344</a>
     </div>
     <button class="hamburger" aria-label="メニュー" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -79,15 +79,15 @@
   <div class="nav-menu-overlay"></div>
 
   <main id="main-content" class="bento-grid">
-    <div class="bento-card text-content-card" style="text-align: center">
-      <h1 data-i18n="contact_page.title" style="font-size: 2.4rem">Contact</h1>
-      <p data-i18n="contact_page.desc" style="margin: 0.5rem auto 0">
+    <div class="bento-card text-content-card contact-content">
+      <h1 data-i18n="contact_page.title">Contact</h1>
+      <p data-i18n="contact_page.desc" class="contact-desc">
         当サイトは個人のポートフォリオサイトです。技術的な交流やご感想などがございましたら、以下のリンクよりお気軽にご連絡ください。
       </p>
 
       <div class="sns-cards-wrapper">
         <!-- GitHub -->
-        <a href="https://github.com/Studio344" target="_blank" rel="noopener noreferrer" class="sns-card sns-github">
+        <a href="https://github.com/Studio344" target="_blank" rel="noopener noreferrer" class="sns-card sns-github" aria-label="GitHub @Studio344">
           <div class="sns-icon-circle">
             <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none"
               stroke-linecap="round" stroke-linejoin="round">
@@ -100,7 +100,7 @@
           <span class="sns-handle">@Studio344</span>
         </a>
         <!-- X (Twitter) -->
-        <a href="https://x.com/studio0344" target="_blank" rel="noopener noreferrer" class="sns-card sns-x">
+        <a href="https://x.com/studio0344" target="_blank" rel="noopener noreferrer" class="sns-card sns-x" aria-label="X (Twitter) @studio0344">
           <div class="sns-icon-circle">
             <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
               <path
@@ -113,7 +113,7 @@
         </a>
         <!-- Instagram -->
         <a href="https://www.instagram.com/studio.344/" target="_blank" rel="noopener noreferrer"
-          class="sns-card sns-instagram">
+          class="sns-card sns-instagram" aria-label="Instagram @studio.344">
           <div class="sns-icon-circle">
             <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none"
               stroke-linecap="round" stroke-linejoin="round">
@@ -131,13 +131,7 @@
 
   <footer class="site-footer">
     <p>&copy; <span id="copyright-year">2026</span> Studio344</p>
-    <div style="
-          margin-top: 0.5rem;
-          display: flex;
-          gap: 1rem;
-          justify-content: center;
-          font-size: 0.8rem;
-        ">
+    <div class="footer-links">
       <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
       <a href="terms.html" class="footer-link">Terms</a>
       <a href="contact.html" class="footer-link">Contact</a>

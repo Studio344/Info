@@ -21,7 +21,7 @@
   <!-- Google Fonts preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;900&family=Sora:wght@600;700;800&display=swap" />
 
   <link rel="stylesheet" href="styles.css" />
   <script type="application/ld+json">
@@ -50,7 +50,7 @@
 
   <header class="header">
     <div class="logo">
-      <a href="index.html" style="color: white; text-decoration: none">Studio344</a>
+      <a href="index.html" class="logo-link">Studio344</a>
     </div>
     <button class="hamburger" aria-label="メニュー" aria-expanded="false">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -79,7 +79,7 @@
   <div class="nav-menu-overlay"></div>
 
   <main id="main-content" class="bento-grid">
-    <div class="bento-card text-content-card">
+    <div class="bento-card text-content-card text-content-card--legal">
       <h1 data-i18n="terms.title">利用規約</h1>
       <p data-i18n="terms.intro">
         この利用規約（以下「本規約」）は、Studio344（以下「当方」）がこのウェブサイト上で提供するサービス（以下「本サービス」）の利用条件を定めるものです。
@@ -117,7 +117,7 @@
         本サイトに掲載されている全てのコンテンツは、当方が所有しています。書面による許可なく、個人的な目的以外で使用することは禁止されています。
       </p>
 
-      <p style="margin-top: 3rem; font-size: 0.9rem; color: #666" data-i18n="terms.updated">
+      <p class="legal-updated" data-i18n="terms.updated">
         最終更新日: 2026年2月4日
       </p>
     </div>
@@ -125,15 +125,9 @@
 
   <footer class="site-footer">
     <p>&copy; <span id="copyright-year">2026</span> Studio344</p>
-    <div style="
-          margin-top: 0.5rem;
-          display: flex;
-          gap: 1rem;
-          justify-content: center;
-          font-size: 0.8rem;
-        ">
+    <div class="footer-links">
       <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
-      <a href="terms.html" style="color: #aaa; text-decoration: none">Terms</a>
+      <a href="terms.html" class="footer-link">Terms</a>
       <a href="contact.html" class="footer-link">Contact</a>
     </div>
   </footer>

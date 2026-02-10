@@ -22,19 +22,26 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- 2. Typing Animation ---
   const typingTarget = document.getElementById("typing");
   if (typingTarget) {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const text = "Engineer / Rookie Dad";
-    let index = 0;
 
-    function typeWriter() {
-      if (index < text.length) {
-        typingTarget.textContent += text.charAt(index);
-        index++;
-        setTimeout(typeWriter, 80);
+    if (prefersReducedMotion) {
+      // アニメーション不要: テキストを即座に表示
+      typingTarget.textContent = text;
+    } else {
+      let index = 0;
+
+      function typeWriter() {
+        if (index < text.length) {
+          typingTarget.textContent += text.charAt(index);
+          index++;
+          setTimeout(typeWriter, 80);
+        }
       }
-    }
 
-    // Start slightly delayed
-    setTimeout(typeWriter, 1000);
+      // Start slightly delayed
+      setTimeout(typeWriter, 1000);
+    }
   }
 
   // --- 3. 3D Tilt Effect (現在無効) ---
