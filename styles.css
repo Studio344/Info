@@ -76,6 +76,7 @@
 
   /* タイポグラフィ */
   --font-main: 'Inter', sans-serif;
+  --font-logo: 'Outfit', sans-serif;
   --font-heading: 'Sora', 'Inter', sans-serif;
   --font-blog-heading: 'Sora', 'Inter', sans-serif;
   --font-mono: 'Courier New', monospace;
@@ -790,7 +791,7 @@ a.bento-card:hover {
 }
 
 .hero-content h1 {
-  font-family: var(--font-heading);
+  font-family: var(--font-logo);
   font-size: clamp(3rem, 8vw, 5.5rem);
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -1312,7 +1313,7 @@ a.bento-card:hover {
 }
 
 .footer-logo {
-  font-family: var(--font-heading);
+  font-family: var(--font-logo);
   font-weight: 700;
   font-size: 1.3rem;
   color: #fff;
@@ -1437,7 +1438,7 @@ a.bento-card:hover {
 }
 
 .logo {
-  font-family: var(--font-heading);
+  font-family: var(--font-logo);
   font-weight: 700;
   font-size: 1.5rem;
   letter-spacing: -0.02em;
