@@ -33,7 +33,14 @@
     "x_label": "X",
     "ig_label": "Instagram",
     "cta_projects": "Projects を見る",
-    "cta_blog": "Blog を読む"
+    "cta_blog": "Blog を読む",
+    "featured_title": "注目プロジェクト",
+    "view_all_projects": "すべて見る →",
+    "latest_blog_title": "最新の投稿",
+    "view_all_posts": "すべて見る →"
+  },
+  "footer": {
+    "tagline": "テクノロジーとものづくりを楽しむ、個人の趣味ポートフォリオ。"
   },
   "about_page": {
     "title": "About Studio344",

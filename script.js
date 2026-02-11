@@ -118,5 +118,95 @@ document.addEventListener("DOMContentLoaded", () => {
       if (typeof i18next !== "undefined") {
         i18next.on("languageChanged", () => renderProjects("switch"));
       }
+
+      // --- ホームページ: Featured Projects セクション ---
+      const homeFeatured = document.getElementById("home-featured-projects");
+      if (homeFeatured && template) {
+        const featured = projects.filter((p) => !p.comingSoon).slice(0, 2);
+        function renderHomeFeatured() {
+          const lang = typeof i18next !== "undefined" && i18next.language ? i18next.language : "ja";
+          const viewText = typeof i18next !== "undefined" ? i18next.t("projects_page.view_project") : "詳細を見る →";
+          homeFeatured.innerHTML = "";
+          featured.forEach((project) => {
+            const clone = template.content.cloneNode(true);
+            const card = clone.querySelector(".project-card");
+            const visualClass = project.visualClass || "visual-portfolio";
+            const iconSvg = iconMap[project.icon] || iconMap["code"];
+            card.querySelector(".card-visual-header").classList.add(visualClass);
+            card.querySelector(".card-visual-icon").innerHTML = iconSvg;
+            const title = lang === "ja" && project.title_ja ? project.title_ja : project.title;
+            const desc = lang === "ja" && project.description_ja ? project.description_ja : project.description;
+            const titleEl = card.querySelector("h3");
+            if (titleEl) titleEl.textContent = title;
+            const descEl = card.querySelector("p");
+            if (descEl) descEl.textContent = desc;
+            const linkEl = card.querySelector("a");
+            if (linkEl) { linkEl.href = project.link; linkEl.textContent = viewText; }
+            homeFeatured.appendChild(clone);
+          });
+        }
+        renderHomeFeatured();
+        if (typeof i18next !== "undefined") {
+          i18next.on("languageChanged", renderHomeFeatured);
+        }
+      }
     });
+
+  // --- ホームページ: Latest Blog セクション ---
+  const homeBlog = document.getElementById("home-latest-blog");
+  if (homeBlog) {
+    fetch("assets/posts/list.json")
+      .then((r) => r.json())
+      .then(async (posts) => {
+        const latest = posts.slice(0, 3);
+
+        // マークダウンからタイトルを抽出するヘルパー
+        function extractTitle(mdText) {
+          const match = mdText.match(/^#\s+(.+)$/m);
+          return match ? match[1].trim() : "Untitled";
+        }
+
+        // 各言語のタイトルを事前に取得
+        async function loadTitles(lang) {
+          const titles = {};
+          await Promise.all(latest.map(async (post) => {
+            try {
+              const res = await fetch(`assets/posts/${post.baseFilename}.${lang}.md`);
+              if (res.ok) {
+                const md = await res.text();
+                titles[post.id] = extractTitle(md);
+              }
+            } catch (e) { /* ignore */ }
+          }));
+          return titles;
+        }
+
+        // 初期ロード: 両言語を並列取得
+        const [titlesJa, titlesEn] = await Promise.all([loadTitles("ja"), loadTitles("en")]);
+
+        function renderHomeBlog() {
+          const lang = typeof i18next !== "undefined" && i18next.language ? i18next.language : "ja";
+          const titles = lang === "ja" ? titlesJa : titlesEn;
+          homeBlog.innerHTML = "";
+          latest.forEach((post) => {
+            const title = titles[post.id] || post.id;
+            const card = document.createElement("a");
+            card.href = `blog.html#post/${post.id}`;
+            card.className = "home-blog-card";
+            card.innerHTML = `
+              <span class="home-blog-emoji">${post.emoji || "📝"}</span>
+              <span class="home-blog-date">${post.date}</span>
+              <span class="home-blog-title">${title}</span>
+              <span class="home-blog-tags">${(post.tags || []).slice(0, 2).map(t => `<span class="blog-preview-tag">${t}</span>`).join("")}</span>
+            `;
+            homeBlog.appendChild(card);
+          });
+        }
+        renderHomeBlog();
+        if (typeof i18next !== "undefined") {
+          i18next.on("languageChanged", renderHomeBlog);
+        }
+      })
+      .catch(() => {});
+  }
 });
