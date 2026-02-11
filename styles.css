@@ -75,10 +75,11 @@
   --accent-glow: rgba(255, 255, 255, 0.15);
 
   /* タイポグラフィ */
-  --font-main: 'Inter', sans-serif;
+  --font-ja: 'Murecho', sans-serif;
+  --font-main: 'Inter', 'Murecho', sans-serif;
   --font-logo: 'Russo One', sans-serif;
-  --font-heading: 'Sora', 'Inter', sans-serif;
-  --font-blog-heading: 'Sora', 'Inter', sans-serif;
+  --font-heading: 'Sora', 'Murecho', sans-serif;
+  --font-blog-heading: 'Sora', 'Murecho', sans-serif;
   --font-mono: 'Courier New', monospace;
 
   /* フォントサイズ (最小 0.75rem = 12px) */
