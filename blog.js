@@ -520,12 +520,25 @@ async function loadBlogPosts(langOverride) {
         return;
       }
 
+      // バナーグラデーションパターン（カードごとに異なる視覚的アクセント）
+      const bannerGradients = [
+        'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%)',
+        'linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%)',
+        'linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #6366f1 100%)',
+        'linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #f43f5e 100%)',
+        'linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #3b82f6 100%)',
+        'linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #ec4899 100%)',
+        'linear-gradient(135deg, #6366f1 0%, #06b6d4 50%, #10b981 100%)',
+        'linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #6366f1 100%)',
+      ];
+
       filtered.forEach((post, index) => {
         const card = document.createElement("div");
-        card.className = "blog-preview-card";
+        const isHero = index === 0 && !activeTag && !query;
+        card.className = isHero ? "blog-preview-card blog-hero-card" : "blog-preview-card";
         card.setAttribute("role", "button");
         card.setAttribute("tabindex", "0");
-        card.style.animationDelay = `${index * 0.05}s`; // Faster stagger for re-renders
+        card.style.animationDelay = `${index * 0.05}s`;
 
         // クリックで記事を表示（SPA方式）
         card.addEventListener("click", () => {
@@ -546,17 +559,22 @@ async function loadBlogPosts(langOverride) {
           .map((t) => `<span class="blog-preview-tag">${t}</span>`)
           .join("");
 
+        const gradient = bannerGradients[index % bannerGradients.length];
+
         card.innerHTML = `
-                  <div class="blog-preview-accent"></div>
-                  <div class="blog-preview-header">
-                      <span class="blog-preview-emoji">${post.emoji}</span>
-                      <span class="blog-preview-date">${post.date}</span>
+                  <div class="blog-preview-banner" style="background: ${gradient}">
+                      <span class="blog-banner-emoji">${post.emoji}</span>
                   </div>
-                  <h3 class="blog-preview-title">${post.title}</h3>
-                  <p class="blog-preview-excerpt">${post.excerpt}</p>
-                  <div class="blog-preview-footer">
-                      <div class="blog-preview-tags">${tagsHtml}</div>
-                      <span class="blog-preview-readmore">${readMoreText}</span>
+                  <div class="blog-preview-body">
+                      <div class="blog-preview-header">
+                          <span class="blog-preview-date">${post.date}</span>
+                      </div>
+                      <h3 class="blog-preview-title">${post.title}</h3>
+                      <p class="blog-preview-excerpt">${post.excerpt}</p>
+                      <div class="blog-preview-footer">
+                          <div class="blog-preview-tags">${tagsHtml}</div>
+                          <span class="blog-preview-readmore">${readMoreText}</span>
+                      </div>
                   </div>
               `;
         container.appendChild(card);

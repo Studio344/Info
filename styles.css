@@ -1879,21 +1879,50 @@ a.bento-card:hover {
     border-radius: 12px;
   }
 
-  .blog-preview-header,
-  .blog-preview-title,
-  .blog-preview-excerpt,
-  .blog-preview-footer {
-    padding-left: 1.1rem;
-    padding-right: 1.1rem;
+  /* ヒーローカードはモバイルで縦並びに */
+  .blog-hero-card {
+    flex-direction: column;
+  }
+
+  .blog-hero-card .blog-preview-banner {
+    width: 100%;
+    min-width: auto;
+    height: 100px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .blog-hero-card .blog-banner-emoji {
+    font-size: 2.2rem;
+  }
+
+  .blog-hero-card .blog-preview-body {
+    padding: 1rem 1.1rem;
+  }
+
+  .blog-hero-card .blog-preview-title {
+    font-size: 1.05rem;
+  }
+
+  .blog-hero-card .blog-preview-excerpt {
+    font-size: var(--text-sm);
+    -webkit-line-clamp: 3;
+  }
+
+  /* バナー */
+  .blog-preview-banner {
+    height: 80px;
+  }
+
+  .blog-banner-emoji {
+    font-size: 2rem;
+  }
+
+  .blog-preview-body {
+    padding: 1rem 1.1rem;
   }
 
   .blog-preview-header {
-    padding-top: 1rem;
     margin-bottom: 0.4rem;
-  }
-
-  .blog-preview-emoji {
-    font-size: 1rem;
   }
 
   .blog-preview-title {
@@ -2499,24 +2528,83 @@ a.bento-card:hover {
     0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
-/* カード上部アクセントバー */
-.blog-preview-accent {
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent-indigo), var(--accent-violet), rgba(6, 182, 212, 0.6));
-  transition: height 0.35s ease;
+/* カード上部バナーエリア */
+.blog-preview-banner {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 
-.blog-preview-card:hover .blog-preview-accent {
-  height: 5px;
+.blog-preview-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(15, 15, 20, 0.8) 100%);
+  pointer-events: none;
 }
 
-/* カードの内側paddingは内容部分で */
-.blog-preview-header,
-.blog-preview-title,
-.blog-preview-excerpt,
-.blog-preview-footer {
-  padding-left: 1.4rem;
-  padding-right: 1.4rem;
+.blog-banner-emoji {
+  font-size: 2.5rem;
+  line-height: 1;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.blog-preview-card:hover .blog-banner-emoji {
+  transform: scale(1.3) rotate(-8deg);
+}
+
+/* カード本体 */
+.blog-preview-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.2rem 1.4rem 1.2rem;
+}
+
+.blog-preview-body .blog-preview-header,
+.blog-preview-body .blog-preview-title,
+.blog-preview-body .blog-preview-excerpt,
+.blog-preview-body .blog-preview-footer {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* ヒーローカード（最新記事を大きく表示） */
+.blog-hero-card {
+  grid-column: 1 / -1;
+  flex-direction: row;
+}
+
+.blog-hero-card .blog-preview-banner {
+  width: 280px;
+  min-width: 280px;
+  height: auto;
+  min-height: 200px;
+  border-radius: 16px 0 0 16px;
+}
+
+.blog-hero-card .blog-banner-emoji {
+  font-size: 3.5rem;
+}
+
+.blog-hero-card .blog-preview-body {
+  padding: 1.6rem 1.8rem;
+}
+
+.blog-hero-card .blog-preview-title {
+  font-size: 1.35rem;
+  -webkit-line-clamp: 3;
+}
+
+.blog-hero-card .blog-preview-excerpt {
+  -webkit-line-clamp: 4;
+  font-size: var(--text-base);
 }
 
 .blog-preview-card,
@@ -2549,20 +2637,7 @@ a.bento-card:hover {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.6rem;
-  padding-top: 1.2rem;
-}
-
-.blog-preview-emoji {
-  font-size: 1.2rem;
-  line-height: 1;
-  filter: grayscale(0.2);
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.blog-preview-card:hover .blog-preview-emoji {
-  transform: scale(1.2) rotate(-5deg);
-  filter: grayscale(0);
+  margin-bottom: 0.5rem;
 }
 
 .blog-preview-date {
