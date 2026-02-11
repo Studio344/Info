@@ -3466,6 +3466,39 @@ a.bento-card:hover {
   gap: 1.2rem;
 }
 
+/* ホーム用プロジェクトカードのコンパクト化 */
+.home-featured-grid .project-card .card-visual-header {
+  height: 120px;
+}
+
+.home-featured-grid .project-card .card-visual-icon svg {
+  width: 36px;
+  height: 36px;
+}
+
+.home-featured-grid .project-card .card-content-body {
+  padding: 0.8rem 1.2rem 1rem;
+}
+
+.home-featured-grid .project-card .card-content-body h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+}
+
+.home-featured-grid .project-card .card-content-body p {
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.home-featured-grid .project-card .card-content-body a {
+  font-size: var(--text-xs);
+  margin-top: 0.5rem;
+}
+
 /* Latest Blog Grid (ホーム用) */
 .home-blog-grid {
   display: grid;
