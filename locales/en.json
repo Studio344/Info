@@ -33,7 +33,14 @@
       "x_label": "X",
       "ig_label": "Instagram",
       "cta_projects": "View Projects",
-      "cta_blog": "Read Blog"
+      "cta_blog": "Read Blog",
+      "featured_title": "Featured Projects",
+      "view_all_projects": "View All →",
+      "latest_blog_title": "Latest Posts",
+      "view_all_posts": "View All →"
+   },
+   "footer": {
+      "tagline": "Personal hobby portfolio exploring technology and building things."
    },
    "about_page": {
       "title": "About Studio344",

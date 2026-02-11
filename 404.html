@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="view-transition" content="same-origin" />
+  <title>404 - Page Not Found | Studio344</title>
+  <meta name="description" content="お探しのページが見つかりませんでした。" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="assets/logo-black.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@600;700;800&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* 404ページ専用スタイル */
+    .error-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .error-code {
+      font-family: var(--font-heading);
+      font-size: clamp(6rem, 20vw, 12rem);
+      font-weight: 800;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 50%, var(--accent-tertiary) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: float-code 3s ease-in-out infinite;
+      user-select: none;
+    }
+
+    @keyframes float-code {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .error-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0.5rem 0 1rem;
+    }
+
+    .error-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 400px;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .error-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .error-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1.5rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .error-btn--primary {
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: #fff;
+      border: none;
+    }
+
+    .error-btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 24px rgba(99, 102, 241, 0.3);
+    }
+
+    .error-btn--ghost {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+    }
+
+    .error-btn--ghost:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .error-decoration {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .error-decoration--1 {
+      top: 10%;
+      left: -5%;
+    }
+
+    .error-decoration--2 {
+      bottom: 10%;
+      right: -5%;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .error-code {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Aurora BG -->
+  <div class="aurora-bg" aria-hidden="true">
+    <div class="aurora-orb orb-1"></div>
+    <div class="aurora-orb orb-2"></div>
+    <div class="aurora-orb orb-3"></div>
+  </div>
+  <div class="noise-overlay"></div>
+
+  <header class="header">
+    <div class="logo">
+      <a href="index.html" class="logo-link">Studio344</a>
+    </div>
+    <nav class="nav-menu" aria-label="メインナビゲーション">
+      <a href="about.html" class="nav-btn">About</a>
+      <a href="blog.html" class="nav-btn">Blog</a>
+      <a href="projects.html" class="nav-btn">Projects</a>
+      <a href="contact.html" class="nav-btn">Contact</a>
+    </nav>
+  </header>
+
+  <main class="error-page">
+    <div class="error-decoration error-decoration--1"></div>
+    <div class="error-decoration error-decoration--2"></div>
+    <div class="error-code">404</div>
+    <h1 class="error-title">Page Not Found</h1>
+    <p class="error-desc">
+      お探しのページは存在しないか、移動した可能性があります。<br />
+      The page you're looking for doesn't exist or has been moved.
+    </p>
+    <div class="error-actions">
+      <a href="index.html" class="error-btn error-btn--primary">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+        ホームに戻る
+      </a>
+      <a href="projects.html" class="error-btn error-btn--ghost">Projects</a>
+      <a href="blog.html" class="error-btn error-btn--ghost">Blog</a>
+    </div>
+  </main>
+</body>
+
+</html>
