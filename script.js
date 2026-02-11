@@ -157,15 +157,41 @@ document.addEventListener("DOMContentLoaded", () => {
   if (homeBlog) {
     fetch("assets/posts/list.json")
       .then((r) => r.json())
-      .then((posts) => {
+      .then(async (posts) => {
         const latest = posts.slice(0, 3);
+
+        // マークダウンからタイトルを抽出するヘルパー
+        function extractTitle(mdText) {
+          const match = mdText.match(/^#\s+(.+)$/m);
+          return match ? match[1].trim() : "Untitled";
+        }
+
+        // 各言語のタイトルを事前に取得
+        async function loadTitles(lang) {
+          const titles = {};
+          await Promise.all(latest.map(async (post) => {
+            try {
+              const res = await fetch(`assets/posts/${post.baseFilename}.${lang}.md`);
+              if (res.ok) {
+                const md = await res.text();
+                titles[post.id] = extractTitle(md);
+              }
+            } catch (e) { /* ignore */ }
+          }));
+          return titles;
+        }
+
+        // 初期ロード: 両言語を並列取得
+        const [titlesJa, titlesEn] = await Promise.all([loadTitles("ja"), loadTitles("en")]);
+
         function renderHomeBlog() {
           const lang = typeof i18next !== "undefined" && i18next.language ? i18next.language : "ja";
+          const titles = lang === "ja" ? titlesJa : titlesEn;
           homeBlog.innerHTML = "";
           latest.forEach((post) => {
-            const title = lang === "ja" ? post.title : (post.title_en || post.title);
+            const title = titles[post.id] || post.id;
             const card = document.createElement("a");
-            card.href = "blog.html#" + post.slug;
+            card.href = `blog.html#post/${post.id}`;
             card.className = "home-blog-card";
             card.innerHTML = `
               <span class="home-blog-emoji">${post.emoji || "📝"}</span>
