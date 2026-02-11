@@ -3411,6 +3411,7 @@ a.bento-card:hover {
   font-weight: 600;
   color: #fff;
   flex: 1;
+  white-space: nowrap;
 }
 
 /* About カード full width */
