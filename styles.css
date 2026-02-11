@@ -3397,6 +3397,7 @@ a.bento-card:hover {
   gap: 0.3rem;
   text-decoration: none;
   font-size: var(--text-xs);
+  white-space: nowrap;
   transition: color 0.25s ease, transform 0.25s ease;
 }
 
