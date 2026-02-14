@@ -4201,18 +4201,37 @@ body.blog-single-active .blog-toc-sidebar {
 /* ============================================ */
 /* 日本語テキスト最適化                         */
 /* ============================================ */
+/* ヘッダー・ヒーロー・ナビ・フッターは除外し、  */
+/* 本文コンテンツのみに line-height を適用        */
 :lang(ja) {
   letter-spacing: 0.04em;
   word-break: break-all;
   overflow-wrap: break-word;
+}
+
+:lang(ja) main,
+:lang(ja) .blog-content,
+:lang(ja) .article-body,
+:lang(ja) .card-desc,
+:lang(ja) .project-description {
   line-height: 1.9;
 }
 
-:lang(ja) h1,
-:lang(ja) h2,
-:lang(ja) h3 {
+:lang(ja) main h1,
+:lang(ja) main h2,
+:lang(ja) main h3 {
   letter-spacing: 0.02em;
   line-height: 1.5;
+}
+
+/* ヘッダー・ヒーロー・フッター・ページタイトルの line-height は言語に依存しない */
+:lang(ja) .header,
+:lang(ja) .hero-content,
+:lang(ja) .hero-content h1,
+:lang(ja) .blog-page-header h1,
+:lang(ja) .footer {
+  line-height: inherit;
+  letter-spacing: inherit;
 }
 
 /* ============================================ */
