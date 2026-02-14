@@ -13,18 +13,25 @@ document.addEventListener("DOMContentLoaded", () => {
   // Blog Posts: assets/posts/list.jsonからカウント
   if (statPosts) {
     fetch("assets/posts/list.json")
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
       .then((data) => {
         statPosts.textContent = data.length;
       })
-      .catch(() => {
+      .catch((err) => {
+        console.error('ブログ記事数の取得に失敗:', err.message);
         statPosts.textContent = "-";
       });
   }
 
   // --- Projects Loading (統合: カウント + カード描画を1回のfetchで実行) ---
   fetch("projects.json")
-    .then((res) => res.json())
+    .then((res) => {
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return res.json();
+    })
     .then((projects) => {
       // プロジェクト数のスタットを更新（Coming Soonを除外）
       if (statProjects) {
@@ -156,7 +163,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const homeBlog = document.getElementById("home-latest-blog");
   if (homeBlog) {
     fetch("assets/posts/list.json")
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
       .then(async (posts) => {
         const latest = posts.slice(0, 3);
 
@@ -207,6 +217,9 @@ document.addEventListener("DOMContentLoaded", () => {
           i18next.on("languageChanged", renderHomeBlog);
         }
       })
-      .catch(() => {});
+      .catch((err) => {
+        console.error('最新ブログの取得に失敗:', err.message);
+        if (homeBlog) homeBlog.innerHTML = '<p style="color: var(--text-secondary);">Failed to load posts.</p>';
+      });
   }
 });

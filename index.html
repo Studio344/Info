@@ -26,7 +26,8 @@
   <!-- CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Murecho:wght@400;500;600;700;800&family=Russo+One&family=Sora:wght@600;700;800&display=swap" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Murecho:wght@400;500;600;700;800&family=Russo+One&family=Sora:wght@600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Murecho:wght@400;500;600;700;800&family=Russo+One&family=Sora:wght@600;700;800&display=swap" /></noscript>
   <link rel="stylesheet" href="styles.css" />
 
   <!-- Twitter Card -->
@@ -103,7 +104,7 @@
       <div class="hero-content">
         <div class="hero-logo-wrapper">
           <span class="orbit-ring"></span>
-          <img src="assets/logo-black.png" alt="Studio344 Logo" class="hero-logo" />
+          <img src="assets/logo-black.png" alt="Studio344 Logo" class="hero-logo" width="120" height="120" />
         </div>
         <h1 class="glitch-text" data-text="Studio344">Studio344</h1>
         <p class="typing-text" id="typing" aria-live="polite"></p>
@@ -274,7 +275,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; <span id="copyright-year">2026</span> Studio344</p>
+      <p>&copy; <span id="copyright-year"></span> Studio344</p>
     </div>
   </footer>
 
@@ -301,11 +302,11 @@
   </template>
 
   <!-- Scripts -->
-  <script src="assets/js/ui.js"></script>
-  <script src="script.js"></script>
+  <script defer src="assets/js/ui.js"></script>
+  <script defer src="script.js"></script>
   <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js" integrity="sha384-vxUZOB7ych7Y7ndQtM2RKTsr+2fHukXPfoTo1s0+7o9Q/Bx3oWY0aTwenFnmrcJz" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/i18next-http-backend@3.0.2/i18nextHttpBackend.min.js" integrity="sha384-mylaL1fxuX3DZgdMqG9QvOyXoU/N9yUKXiYZH/5Ykx6+DUDdzQAxI8Gwqh2HBe8T" crossorigin="anonymous"></script>
-  <script src="i18n.js"></script>
+  <script defer src="i18n.js"></script>
 </body>
 
 </html>

@@ -154,6 +154,7 @@ async function showSinglePost(postId) {
 
   try {
     const listRes = await fetch("assets/posts/list.json");
+    if (!listRes.ok) throw new Error(`HTTP ${listRes.status}`);
     const posts = await listRes.json();
     const post = posts.find((p) => p.id === postId);
 
@@ -175,9 +176,15 @@ async function showSinglePost(postId) {
     if (!mdRes.ok) throw new Error("Markdown not found");
     const mdText = await mdRes.text();
 
-    // Render Markdown (DOMPurifyでサニタイズ)
+    // Render Markdown (DOMPurifyでサニタイズ — フォールバック時はプレーンテキスト)
     const rawHtml = marked.parse(mdText);
-    content.innerHTML = typeof DOMPurify !== 'undefined' ? DOMPurify.sanitize(rawHtml) : rawHtml;
+    if (typeof DOMPurify !== 'undefined') {
+      content.innerHTML = DOMPurify.sanitize(rawHtml);
+    } else {
+      // DOMPurify が読み込まれなかった場合、XSS防止のため生テキスト表示
+      content.textContent = mdText;
+      console.error('DOMPurify not loaded — rendering as plain text for security');
+    }
 
     // Breadcrumbs: Update with actual title from MD if available
     const extractedTitle = extractTitle(mdText);
@@ -437,6 +444,7 @@ async function loadBlogPosts(langOverride) {
 
   try {
     const response = await fetch(listUrl);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const posts = await response.json();
 
     // Check if this is still the latest request
@@ -595,6 +603,7 @@ async function loadBlogPosts(langOverride) {
 async function insertPrevNextNav(contentElement, currentPostId) {
   try {
     const res = await fetch('assets/posts/list.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const posts = await res.json();
     const idx = posts.findIndex(p => p.id === currentPostId);
     if (idx === -1) return;
