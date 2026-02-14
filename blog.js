@@ -922,6 +922,10 @@ function insertReadingTime(contentElement, mdText) {
 // 🏷️ コードブロック言語ラベル
 // ============================================================
 function addCodeLabels(contentElement) {
+  const lang = i18next.language || "ja";
+  const copyText = lang === "en" ? "Copy" : "コピー";
+  const copiedText = lang === "en" ? "Copied!" : "コピー済み！";
+
   const pres = contentElement.querySelectorAll("pre");
   pres.forEach((pre) => {
     const code = pre.querySelector("code");
@@ -931,21 +935,44 @@ function addCodeLabels(contentElement) {
     const langClass = Array.from(code.classList).find((c) =>
       c.startsWith("language-"),
     );
-    if (!langClass) return;
-
-    const lang = langClass.replace("language-", "");
-    if (!lang || lang === "none") return;
 
     // Wrap in container
     const wrapper = document.createElement("div");
     wrapper.className = "code-block-wrapper";
 
-    const label = document.createElement("span");
-    label.className = "code-lang-label";
-    label.textContent = lang;
+    // コピーボタン（全コードブロックに追加）
+    const copyBtn = document.createElement("button");
+    copyBtn.className = "code-copy-btn";
+    copyBtn.setAttribute("aria-label", copyText);
+    copyBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg><span>${copyText}</span>`;
+    copyBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(code.textContent);
+        copyBtn.classList.add("copied");
+        const span = copyBtn.querySelector("span");
+        span.textContent = copiedText;
+        setTimeout(() => {
+          copyBtn.classList.remove("copied");
+          span.textContent = copyText;
+        }, 2000);
+      } catch (err) {
+        console.error("コードコピー失敗:", err);
+      }
+    });
+
+    // 言語ラベル（言語指定がある場合のみ）
+    if (langClass) {
+      const langName = langClass.replace("language-", "");
+      if (langName && langName !== "none") {
+        const label = document.createElement("span");
+        label.className = "code-lang-label";
+        label.textContent = langName;
+        wrapper.appendChild(label);
+      }
+    }
 
     pre.parentNode.insertBefore(wrapper, pre);
-    wrapper.appendChild(label);
+    wrapper.appendChild(copyBtn);
     wrapper.appendChild(pre);
   });
 }

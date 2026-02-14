@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ブログ記事リスト",
+  "description": "assets/posts/list.json のスキーマ定義",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "date", "baseFilename", "emoji", "tags"],
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+$",
+        "description": "記事の一意スラッグ（小文字英数字とハイフンのみ）"
+      },
+      "date": {
+        "type": "string",
+        "pattern": "^\\d{4}\\.\\d{2}\\.\\d{2}$",
+        "description": "公開日（YYYY.MM.DD 形式）"
+      },
+      "baseFilename": {
+        "type": "string",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}-[a-z0-9-]+$",
+        "description": "MDファイルのベース名（YYYY-MM-DD-slug 形式）"
+      },
+      "emoji": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4,
+        "description": "記事を象徴する絵文字"
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "minItems": 1,
+        "description": "カテゴリタグ（1つ以上必須）"
+      }
+    }
+  }
+}

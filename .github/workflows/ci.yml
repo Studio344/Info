@@ -28,6 +28,10 @@ jobs:
           node -e "JSON.parse(require('fs').readFileSync('locales/ja.json','utf8'))" || exit 1
           node -e "JSON.parse(require('fs').readFileSync('locales/en.json','utf8'))" || exit 1
       
+      - name: JSONスキーマバリデーション
+        run: |
+          node scripts/validate-json-schema.js
+
       - name: list.json ↔ MDファイル整合性チェック
         run: |
           node scripts/check-post-integrity.js

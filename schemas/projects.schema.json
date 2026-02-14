@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "プロジェクト一覧",
+  "description": "projects.json のスキーマ定義",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["title", "title_ja", "description", "description_ja", "link", "visualClass", "icon"],
+    "additionalProperties": true,
+    "properties": {
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "description": "プロジェクト名（英語）"
+      },
+      "title_ja": {
+        "type": "string",
+        "minLength": 1,
+        "description": "プロジェクト名（日本語）"
+      },
+      "description": {
+        "type": "string",
+        "minLength": 1,
+        "description": "プロジェクト説明（英語）"
+      },
+      "description_ja": {
+        "type": "string",
+        "minLength": 1,
+        "description": "プロジェクト説明（日本語）"
+      },
+      "link": {
+        "type": "string",
+        "minLength": 1,
+        "description": "プロジェクト詳細ページへのリンク"
+      },
+      "visualClass": {
+        "type": "string",
+        "pattern": "^visual-[a-z0-9-]+$",
+        "description": "ビジュアルカードのCSSクラス名"
+      },
+      "icon": {
+        "type": "string",
+        "minLength": 1,
+        "description": "アイコン識別子"
+      },
+      "comingSoon": {
+        "type": "boolean",
+        "description": "開発中フラグ"
+      }
+    }
+  }
+}
