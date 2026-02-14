@@ -36,6 +36,14 @@ jobs:
         run: |
           node scripts/check-i18n-keys.js
       
+      - name: sitemap.xml 整合性チェック
+        run: |
+          node scripts/generate-sitemap.js
+          git diff --exit-code sitemap.xml || {
+            echo "⚠️ sitemap.xml が最新ではありません。node scripts/generate-sitemap.js を実行してコミットしてください。"
+            exit 1
+          }
+      
       - name: リンクチェック
         uses: lycheeverse/lychee-action@v2
         with:

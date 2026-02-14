@@ -648,7 +648,7 @@ a.bento-card:hover {
   letter-spacing: 0.06em;
   opacity: 0;
   animation: fadeInUp 0.6s ease forwards 0.6s;
-  font-weight: 300;
+  font-weight: 400;
   max-width: 460px;
   line-height: var(--lh-body);
 }

@@ -181,15 +181,23 @@ async function showSinglePost(postId) {
     if (!mdRes.ok) throw new Error("Markdown not found");
     const mdText = await mdRes.text();
 
-    // Render Markdown (DOMPurifyでサニタイズ — フォールバック時はプレーンテキスト)
-    const rawHtml = marked.parse(mdText);
-    if (typeof DOMPurify !== "undefined") {
-      content.innerHTML = DOMPurify.sanitize(rawHtml);
+    // Render Markdown (marked + DOMPurify — CDN障害時はプレーンテキストに降格)
+    if (typeof marked !== "undefined") {
+      const rawHtml = marked.parse(mdText);
+      if (typeof DOMPurify !== "undefined") {
+        content.innerHTML = DOMPurify.sanitize(rawHtml);
+      } else {
+        // DOMPurify が読み込まれなかった場合、XSS防止のため生テキスト表示
+        content.textContent = mdText;
+        console.error(
+          "DOMPurify not loaded — rendering as plain text for security",
+        );
+      }
     } else {
-      // DOMPurify が読み込まれなかった場合、XSS防止のため生テキスト表示
+      // marked.js が読み込まれなかった場合、Markdownソースをそのまま表示
       content.textContent = mdText;
       console.error(
-        "DOMPurify not loaded — rendering as plain text for security",
+        "marked.js not loaded — rendering as plain text",
       );
     }
 
