@@ -4201,37 +4201,35 @@ body.blog-single-active .blog-toc-sidebar {
 /* ============================================ */
 /* 日本語テキスト最適化                         */
 /* ============================================ */
-/* ヘッダー・ヒーロー・ナビ・フッターは除外し、  */
-/* 本文コンテンツのみに line-height を適用        */
+/* レイアウト要素(ヘッダー/ヒーロー/ナビ/フッター */
+/* /CTA)には影響させず、本文テキストのみに適用    */
+
+/* word-break のみグローバル（レイアウトに影響小） */
 :lang(ja) {
-  letter-spacing: 0.04em;
   word-break: break-all;
   overflow-wrap: break-word;
 }
 
-:lang(ja) main,
-:lang(ja) .blog-content,
+/* 本文テキスト用: line-height/letter-spacing を適用 */
 :lang(ja) .article-body,
+:lang(ja) .blog-content,
 :lang(ja) .card-desc,
-:lang(ja) .project-description {
+:lang(ja) .project-desc,
+:lang(ja) .project-description,
+:lang(ja) .about-card p,
+:lang(ja) .privacy-content p,
+:lang(ja) .terms-content p {
   line-height: 1.9;
+  letter-spacing: 0.04em;
 }
 
-:lang(ja) main h1,
-:lang(ja) main h2,
-:lang(ja) main h3 {
+/* コンテンツ見出し用 */
+:lang(ja) .article-body h2,
+:lang(ja) .article-body h3,
+:lang(ja) .blog-content h2,
+:lang(ja) .blog-content h3 {
   letter-spacing: 0.02em;
   line-height: 1.5;
-}
-
-/* ヘッダー・ヒーロー・フッター・ページタイトルの line-height は言語に依存しない */
-:lang(ja) .header,
-:lang(ja) .hero-content,
-:lang(ja) .hero-content h1,
-:lang(ja) .blog-page-header h1,
-:lang(ja) .footer {
-  line-height: inherit;
-  letter-spacing: inherit;
 }
 
 /* ============================================ */
