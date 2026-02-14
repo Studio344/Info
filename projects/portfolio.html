@@ -1,260 +1,446 @@
 <!doctype html>
 <html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' https://unpkg.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://pagead2.googlesyndication.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self'; frame-src https://giscus.app;"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta
+      http-equiv="Permissions-Policy"
+      content="camera=(), microphone=(), geolocation=()"
+    />
+    <meta name="view-transition" content="same-origin" />
+    <title>Portfolio Site - Project Details</title>
+    <meta
+      name="description"
+      content="Studio344ポートフォリオサイトの技術詳細。HTML/CSS/JS、GSAP、ScrollTriggerを活用したモダンなBento Grid UIの設計と実装。"
+    />
+    <meta property="og:title" content="Portfolio Site Project | Studio344" />
+    <meta
+      property="og:description"
+      content="Bento Gridデザイン、マウス追従エフェクト、Vanilla JSによる実装詳細。"
+    />
+    <meta
+      property="og:image"
+      content="https://studio344.net/assets/logo-banner-black.png"
+    />
+    <meta
+      property="og:url"
+      content="https://studio344.net/projects/portfolio.html"
+    />
+    <meta property="og:type" content="article" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@studio0344" />
+    <link
+      rel="canonical"
+      href="https://studio344.net/projects/portfolio.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="ja"
+      href="https://studio344.net/projects/portfolio.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://studio344.net/projects/portfolio.html"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://studio344.net/projects/portfolio.html"
+    />
+    <link rel="icon" type="image/png" href="../assets/logo-black.png" />
+    <link rel="manifest" href="../manifest.json" />
+    <meta name="theme-color" content="#6366f1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <!-- Google Fonts preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://unpkg.com" />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Murecho:wght@400;500;600;700;800&family=Russo+One&family=Sora:wght@600;700;800&display=swap"
+      as="style"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
+    />
+    <noscript
+      ><link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Murecho:wght@400;500;600;700;800&family=Russo+One&family=Sora:wght@600;700;800&display=swap"
+    /></noscript>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="view-transition" content="same-origin" />
-  <title>Portfolio Site - Project Details</title>
-  <meta name="description"
-    content="Studio344ポートフォリオサイトの技術詳細。HTML/CSS/JS、GSAP、ScrollTriggerを活用したモダンなBento Grid UIの設計と実装。" />
-  <meta property="og:title" content="Portfolio Site Project | Studio344" />
-  <meta property="og:description" content="Bento Gridデザイン、マウス追従エフェクト、Vanilla JSによる実装詳細。" />
-  <meta property="og:image" content="https://studio344.net/assets/logo-banner-black.png" />
-  <meta property="og:url" content="https://studio344.net/projects/portfolio.html" />
-  <meta property="og:type" content="article" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@studio0344" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3044810068333301"
-    crossorigin="anonymous"></script>
-  <link rel="canonical" href="https://studio344.net/projects/portfolio.html" />
-  <link rel="alternate" hreflang="ja" href="https://studio344.net/projects/portfolio.html" />
-  <link rel="alternate" hreflang="en" href="https://studio344.net/projects/portfolio.html" />
-  <link rel="alternate" hreflang="x-default" href="https://studio344.net/projects/portfolio.html" />
-  <link rel="icon" type="image/png" href="../assets/logo-black.png" />
-  <!-- Google Fonts preconnect -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Murecho:wght@400;500;600;700;800&family=Russo+One&family=Sora:wght@600;700;800&display=swap" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Portfolio Site - Studio344",
+        "description": "HTML/CSS/JS、GSAP、ScrollTriggerを活用したモダンなBento Grid UIの設計と実装。",
+        "url": "https://studio344.net/projects/portfolio.html",
+        "author": { "@type": "Organization", "name": "Studio344" }
+      }
+    </script>
+  </head>
 
-  <link rel="stylesheet" href="../styles.css" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Portfolio Site - Studio344",
-    "description": "HTML/CSS/JS、GSAP、ScrollTriggerを活用したモダンなBento Grid UIの設計と実装。",
-    "url": "https://studio344.net/projects/portfolio.html",
-    "author": { "@type": "Organization", "name": "Studio344" }
-  }
-  </script>
-</head>
+  <body data-page="projects">
+    <!-- Skip Link -->
+    <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
 
-<body data-page="projects">
-  <!-- Skip Link -->
-  <a href="#main-content" class="skip-link">メインコンテンツへスキップ</a>
-
-  <div class="aurora-container">
-    <div class="aurora-orb orb-1"></div>
-    <div class="aurora-orb orb-2"></div>
-    <div class="aurora-orb orb-3"></div>
-  </div>
-  <div class="grid-overlay"></div>
-  <div class="noise-overlay"></div>
-  <div class="spotlight-overlay"></div>
-
-  <header class="header">
-    <div class="logo">
-      <a href="../index.html" class="logo-link">Studio344</a>
+    <div class="aurora-container">
+      <div class="aurora-orb orb-1"></div>
+      <div class="aurora-orb orb-2"></div>
+      <div class="aurora-orb orb-3"></div>
     </div>
-    <button class="hamburger" aria-label="メニュー" aria-expanded="false">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-        stroke-linejoin="round">
-        <line x1="3" y1="6" x2="21" y2="6" />
-        <line x1="3" y1="12" x2="21" y2="12" />
-        <line x1="3" y1="18" x2="21" y2="18" />
-      </svg>
-    </button>
-    <nav class="nav-menu" aria-label="メインナビゲーション">
-      <a href="../about.html" class="nav-btn" data-i18n="nav.about">About</a>
-      <a href="../blog.html" class="nav-btn" data-i18n="nav.blog">Blog</a>
-      <a href="../projects.html" class="nav-btn" data-i18n="nav.projects">Projects</a>
-      <a href="../contact.html" class="nav-btn" data-i18n="nav.contact">Contact</a>
-      <button id="lang-toggle" class="nav-btn lang-btn" aria-label="言語を切り替え / Switch language"><svg class="lang-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span class="lang-label">EN</span></button>
-      <a href="https://github.com/Studio344" target="_blank" rel="noopener noreferrer" class="nav-icon" aria-label="GitHub">
-        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
-          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path
-            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-          </path>
+    <div class="grid-overlay"></div>
+    <div class="noise-overlay"></div>
+    <div class="spotlight-overlay"></div>
+
+    <header class="header">
+      <div class="logo">
+        <a href="../index.html" class="logo-link">Studio344</a>
+      </div>
+      <button class="hamburger" aria-label="メニュー" aria-expanded="false">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
         </svg>
-      </a>
-    </nav>
-  </header>
-  <div class="nav-menu-overlay"></div>
-
-  <main id="main-content" class="bento-grid">
-    <div class="bento-card text-content-card">
-      <nav class="breadcrumb-nav">
-        <a href="../index.html">Home</a>
-        &gt; <a href="../projects.html">Projects</a> &gt;
-        <span>Portfolio Site</span>
+      </button>
+      <nav class="nav-menu" aria-label="メインナビゲーション">
+        <a href="../about.html" class="nav-btn" data-i18n="nav.about">About</a>
+        <a href="../blog.html" class="nav-btn" data-i18n="nav.blog">Blog</a>
+        <a href="../projects.html" class="nav-btn" data-i18n="nav.projects"
+          >Projects</a
+        >
+        <a href="../contact.html" class="nav-btn" data-i18n="nav.contact"
+          >Contact</a
+        >
+        <button
+          id="lang-toggle"
+          class="nav-btn lang-btn"
+          aria-label="言語を切り替え / Switch language"
+        >
+          <svg
+            class="lang-icon"
+            viewBox="0 0 24 24"
+            width="16"
+            height="16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <line x1="2" y1="12" x2="22" y2="12" />
+            <path
+              d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+            /></svg
+          ><span class="lang-label">EN</span>
+        </button>
+        <a
+          href="https://github.com/Studio344"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="nav-icon"
+          aria-label="GitHub"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+            ></path>
+          </svg>
+        </a>
       </nav>
+    </header>
+    <div class="nav-menu-overlay"></div>
 
-      <h1 data-i18n="portfolio_page.title">Portfolio</h1>
-      <p style="font-size: 1.2rem; color: #a5b4fc; margin-bottom: 2rem" data-i18n="portfolio_page.subtitle">
-        Bento Gridデザインを採用した、没入感のあるポートフォリオサイト
-      </p>
+    <main id="main-content" class="bento-grid">
+      <div class="bento-card text-content-card">
+        <nav class="breadcrumb-nav">
+          <a href="../index.html">Home</a>
+          &gt; <a href="../projects.html">Projects</a> &gt;
+          <span>Portfolio Site</span>
+        </nav>
 
-      <div style="margin-bottom: 3rem">
-        <a href="https://github.com/Studio344/Info" target="_blank" class="nav-btn" style="
+        <h1 data-i18n="portfolio_page.title">Portfolio</h1>
+        <p
+          style="font-size: 1.2rem; color: #a5b4fc; margin-bottom: 2rem"
+          data-i18n="portfolio_page.subtitle"
+        >
+          Bento Gridデザインを採用した、没入感のあるポートフォリオサイト
+        </p>
+
+        <div style="margin-bottom: 3rem">
+          <a
+            href="https://github.com/Studio344/Info"
+            target="_blank"
+            class="nav-btn"
+            style="
               display: inline-block;
               text-decoration: none;
               padding: 0.8rem 1.5rem;
               background: #333;
               border: 1px solid #555;
-            ">View Source Code &rarr;</a>
-      </div>
+            "
+            >View Source Code &rarr;</a
+          >
+        </div>
 
-      <!-- サイトプレビュー -->
-      <div style="
+        <!-- サイトプレビュー -->
+        <div
+          style="
             margin-bottom: 3rem;
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.1);
             background: rgba(0, 0, 0, 0.3);
-          ">
-        <div style="
+          "
+        >
+          <div
+            style="
               display: flex;
               align-items: center;
               gap: 6px;
               padding: 0.5rem 0.8rem;
               background: rgba(255, 255, 255, 0.06);
               border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            ">
-          <span style="
+            "
+          >
+            <span
+              style="
                 width: 10px;
                 height: 10px;
                 border-radius: 50%;
                 background: #ff5f57;
-              "></span>
-          <span style="
+              "
+            ></span>
+            <span
+              style="
                 width: 10px;
                 height: 10px;
                 border-radius: 50%;
                 background: #ffbd2e;
-              "></span>
-          <span style="
+              "
+            ></span>
+            <span
+              style="
                 width: 10px;
                 height: 10px;
                 border-radius: 50%;
                 background: #28c840;
-              "></span>
-          <span style="
+              "
+            ></span>
+            <span
+              style="
                 flex: 1;
                 text-align: center;
                 font-size: 0.75rem;
                 color: #888;
-              ">studio344.net</span>
-        </div>
-        <iframe src="https://studio344.net" style="
+              "
+              >studio344.net</span
+            >
+          </div>
+          <iframe
+            src="https://studio344.net"
+            style="
               width: 100%;
               height: 420px;
               border: none;
               pointer-events: none;
-            " loading="lazy" title="Portfolio Preview"></iframe>
-      </div>
+            "
+            loading="lazy"
+            title="Portfolio Preview"
+          ></iframe>
+        </div>
 
-      <h2 data-i18n="portfolio_page.features_title">Core Features</h2>
-      <div style="
+        <h2 data-i18n="portfolio_page.features_title">Core Features</h2>
+        <div
+          style="
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
             margin-bottom: 3rem;
-          ">
-        <!-- Feature 1 -->
-        <div style="
+          "
+        >
+          <!-- Feature 1 -->
+          <div
+            style="
               background: rgba(255, 255, 255, 0.05);
               padding: 1.5rem;
               border-radius: 12px;
               border: 1px solid rgba(255, 255, 255, 0.1);
-            ">
-          <div style="color: #a5b4fc; margin-bottom: 1rem">
-            <!-- Lightning Icon -->
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-            </svg>
+            "
+          >
+            <div style="color: #a5b4fc; margin-bottom: 1rem">
+              <!-- Lightning Icon -->
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polygon
+                  points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+                ></polygon>
+              </svg>
+            </div>
+            <h3
+              style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem"
+              data-i18n="portfolio_page.feature1_title"
+            >
+              Vanilla Implementation
+            </h3>
+            <p
+              style="font-size: 0.9rem; color: #ccc"
+              data-i18n="portfolio_page.feature1_desc"
+            >
+              ReactやVueを使用せず、素のJavaScriptとCSSのみで構築。Lighthouseスコアはほぼ満点を達成し、最軽量のロード時間を実現。
+            </p>
           </div>
-          <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem" data-i18n="portfolio_page.feature1_title">
-            Vanilla Implementation
-          </h3>
-          <p style="font-size: 0.9rem; color: #ccc" data-i18n="portfolio_page.feature1_desc">
-            ReactやVueを使用せず、素のJavaScriptとCSSのみで構築。Lighthouseスコアはほぼ満点を達成し、最軽量のロード時間を実現。
-          </p>
-        </div>
 
-        <!-- Feature 2 -->
-        <div style="
+          <!-- Feature 2 -->
+          <div
+            style="
               background: rgba(255, 255, 255, 0.05);
               padding: 1.5rem;
               border-radius: 12px;
               border: 1px solid rgba(255, 255, 255, 0.1);
-            ">
-          <div style="color: #6366f1; margin-bottom: 1rem">
-            <!-- Sparkles Icon -->
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <path
-                d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
-            </svg>
+            "
+          >
+            <div style="color: #6366f1; margin-bottom: 1rem">
+              <!-- Sparkles Icon -->
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"
+                />
+              </svg>
+            </div>
+            <h3
+              style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem"
+              data-i18n="portfolio_page.feature2_title"
+            >
+              Dynamic Aesthetics
+            </h3>
+            <p
+              style="font-size: 0.9rem; color: #ccc"
+              data-i18n="portfolio_page.feature2_desc"
+            >
+              CSS変数とJSを連携させ、マウス位置に追従するスポットライト効果や、SVGフィルターによるノイズテクスチャを実装。
+            </p>
           </div>
-          <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem" data-i18n="portfolio_page.feature2_title">
-            Dynamic Aesthetics
-          </h3>
-          <p style="font-size: 0.9rem; color: #ccc" data-i18n="portfolio_page.feature2_desc">
-            CSS変数とJSを連携させ、マウス位置に追従するスポットライト効果や、SVGフィルターによるノイズテクスチャを実装。
-          </p>
-        </div>
 
-        <!-- Feature 3 -->
-        <div style="
+          <!-- Feature 3 -->
+          <div
+            style="
               background: rgba(255, 255, 255, 0.05);
               padding: 1.5rem;
               border-radius: 12px;
               border: 1px solid rgba(255, 255, 255, 0.1);
-            ">
-          <div style="color: #0d9488; margin-bottom: 1rem">
-            <!-- Globe Icon -->
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-              </path>
-            </svg>
+            "
+          >
+            <div style="color: #0d9488; margin-bottom: 1rem">
+              <!-- Globe Icon -->
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path
+                  d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                ></path>
+              </svg>
+            </div>
+            <h3
+              style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem"
+              data-i18n="portfolio_page.feature3_title"
+            >
+              i18n Support
+            </h3>
+            <p
+              style="font-size: 0.9rem; color: #ccc"
+              data-i18n="portfolio_page.feature3_desc"
+            >
+              i18next
+              ライブラリを活用した、スムーズな日英言語切り替え機能。コンテンツのグローバル対応を意識した設計。
+            </p>
           </div>
-          <h3 style="font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem" data-i18n="portfolio_page.feature3_title">
-            i18n Support
-          </h3>
-          <p style="font-size: 0.9rem; color: #ccc" data-i18n="portfolio_page.feature3_desc">
-            i18next
-            ライブラリを活用した、スムーズな日英言語切り替え機能。コンテンツのグローバル対応を意識した設計。
-          </p>
         </div>
-      </div>
 
-      <h2 data-i18n="portfolio_page.design_title">Design Concept</h2>
-      <p data-i18n="portfolio_page.design_desc" style="margin-bottom: 3rem">
-        「モダンで未来的、かつ情報の視認性を損なわない」をコンセプトに設計されました。近年トレンドのBento
-        Gridを採用し、アクセスしやすさとビジュアルの美しさを両立しています。
-      </p>
-
-      <!-- 技術スタック -->
-      <h2 data-i18n="portfolio_page.tech_title">技術スタック</h2>
-      <div style="margin-bottom: 2rem">
-        <p data-i18n="portfolio_page.tech_intro">
-          フレームワークに頼らず、Web標準技術をベースに構築。軽量でありながら、リッチなビジュアル表現を実現しています。
+        <h2 data-i18n="portfolio_page.design_title">Design Concept</h2>
+        <p data-i18n="portfolio_page.design_desc" style="margin-bottom: 3rem">
+          「モダンで未来的、かつ情報の視認性を損なわない」をコンセプトに設計されました。近年トレンドのBento
+          Gridを採用し、アクセスしやすさとビジュアルの美しさを両立しています。
         </p>
-        <div style="
+
+        <!-- 技術スタック -->
+        <h2 data-i18n="portfolio_page.tech_title">技術スタック</h2>
+        <div style="margin-bottom: 2rem">
+          <p data-i18n="portfolio_page.tech_intro">
+            フレームワークに頼らず、Web標準技術をベースに構築。軽量でありながら、リッチなビジュアル表現を実現しています。
+          </p>
+          <div
+            style="
               margin-top: 1.2rem;
               display: flex;
               flex-direction: column;
               gap: 0.5rem;
-            ">
-          <!-- HTML5/CSS3 -->
-          <div style="
+            "
+          >
+            <!-- HTML5/CSS3 -->
+            <div
+              style="
                 display: flex;
                 align-items: center;
                 gap: 0.75rem;
@@ -262,18 +448,32 @@
                 background: rgba(255, 255, 255, 0.04);
                 border-radius: 8px;
                 border: 1px solid rgba(255, 255, 255, 0.06);
-              ">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0">
-              <polyline points="16 18 22 12 16 6"></polyline>
-              <polyline points="8 6 2 12 8 18"></polyline>
-            </svg>
-            <span style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
-              data-i18n="portfolio_page.tech_html"><strong>HTML5 / CSS3:</strong>
-              セマンティックなマークアップとCSS変数・Grid・Flexboxによるレスポンシブレイアウト。</span>
-          </div>
-          <!-- Vanilla JS -->
-          <div style="
+              "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#f97316"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="flex-shrink: 0"
+              >
+                <polyline points="16 18 22 12 16 6"></polyline>
+                <polyline points="8 6 2 12 8 18"></polyline>
+              </svg>
+              <span
+                style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
+                data-i18n="portfolio_page.tech_html"
+                ><strong>HTML5 / CSS3:</strong>
+                セマンティックなマークアップとCSS変数・Grid・Flexboxによるレスポンシブレイアウト。</span
+              >
+            </div>
+            <!-- Vanilla JS -->
+            <div
+              style="
                 display: flex;
                 align-items: center;
                 gap: 0.75rem;
@@ -281,21 +481,38 @@
                 background: rgba(255, 255, 255, 0.04);
                 border-radius: 8px;
                 border: 1px solid rgba(255, 255, 255, 0.06);
-              ">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0">
-              <path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"></path>
-              <line x1="8" y1="16" x2="8.01" y2="16"></line>
-              <line x1="8" y1="20" x2="8.01" y2="20"></line>
-              <line x1="12" y1="18" x2="12.01" y2="18"></line>
-              <line x1="12" y1="22" x2="12.01" y2="22"></line>
-              <line x1="16" y1="16" x2="16.01" y2="16"></line>
-              <line x1="16" y1="20" x2="16.01" y2="20"></line>
-            </svg>
-            <span style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
-              data-i18n="portfolio_page.tech_js"><strong>Vanilla JavaScript:</strong>
-              フレームワークなしの素のJSで全機能を実装。バンドルサイズゼロ。</span>
-          </div>          <div style="
+              "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#eab308"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="flex-shrink: 0"
+              >
+                <path
+                  d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"
+                ></path>
+                <line x1="8" y1="16" x2="8.01" y2="16"></line>
+                <line x1="8" y1="20" x2="8.01" y2="20"></line>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                <line x1="12" y1="22" x2="12.01" y2="22"></line>
+                <line x1="16" y1="16" x2="16.01" y2="16"></line>
+                <line x1="16" y1="20" x2="16.01" y2="20"></line>
+              </svg>
+              <span
+                style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
+                data-i18n="portfolio_page.tech_js"
+                ><strong>Vanilla JavaScript:</strong>
+                フレームワークなしの素のJSで全機能を実装。バンドルサイズゼロ。</span
+              >
+            </div>
+            <div
+              style="
                 display: flex;
                 align-items: center;
                 gap: 0.75rem;
@@ -303,17 +520,31 @@
                 background: rgba(255, 255, 255, 0.04);
                 border-radius: 8px;
                 border: 1px solid rgba(255, 255, 255, 0.06);
-              ">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-            </svg>
-            <span style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
-              data-i18n="portfolio_page.tech_gsap"><strong>GSAP + ScrollTrigger:</strong>
-              スクロール連動アニメーションと滑らかなトランジション。</span>
-          </div>
-          <!-- i18next -->
-          <div style="
+              "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#22c55e"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="flex-shrink: 0"
+              >
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+              <span
+                style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
+                data-i18n="portfolio_page.tech_gsap"
+                ><strong>GSAP + ScrollTrigger:</strong>
+                スクロール連動アニメーションと滑らかなトランジション。</span
+              >
+            </div>
+            <!-- i18next -->
+            <div
+              style="
                 display: flex;
                 align-items: center;
                 gap: 0.75rem;
@@ -321,20 +552,35 @@
                 background: rgba(255, 255, 255, 0.04);
                 border-radius: 8px;
                 border: 1px solid rgba(255, 255, 255, 0.06);
-              ">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-              </path>
-            </svg>
-            <span style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
-              data-i18n="portfolio_page.tech_i18n"><strong>i18next:</strong>
-              日英2言語対応。ページリロードなしの動的な言語切り替え。</span>
-          </div>
-          <!-- Hosting -->
-          <div style="
+              "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#06b6d4"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="flex-shrink: 0"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path
+                  d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
+                ></path>
+              </svg>
+              <span
+                style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
+                data-i18n="portfolio_page.tech_i18n"
+                ><strong>i18next:</strong>
+                日英2言語対応。ページリロードなしの動的な言語切り替え。</span
+              >
+            </div>
+            <!-- Hosting -->
+            <div
+              style="
                 display: flex;
                 align-items: center;
                 gap: 0.75rem;
@@ -342,144 +588,295 @@
                 background: rgba(255, 255, 255, 0.04);
                 border-radius: 8px;
                 border: 1px solid rgba(255, 255, 255, 0.06);
-              ">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0">
-              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-            </svg>
-            <span style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
-              data-i18n="portfolio_page.tech_hosting"><strong>GitHub Pages:</strong>
-              静的ホスティングでゼロコスト運用。独自ドメイン +
-              HTTPS対応。</span>
+              "
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#a855f7"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                style="flex-shrink: 0"
+              >
+                <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+              </svg>
+              <span
+                style="font-size: 0.9rem; color: #ccc; line-height: 1.4"
+                data-i18n="portfolio_page.tech_hosting"
+                ><strong>GitHub Pages:</strong>
+                静的ホスティングでゼロコスト運用。独自ドメイン +
+                HTTPS対応。</span
+              >
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- パフォーマンス -->
-      <h2 data-i18n="portfolio_page.perf_title">パフォーマンス</h2>
-      <div style="margin-bottom: 2rem">
-        <p data-i18n="portfolio_page.perf_desc" style="margin-bottom: 1.2rem">
-          フレームワークレスの恩恵により、Lighthouseで高スコアを達成。外部依存を最小限に抑え、初回ロードを高速化しています。
-        </p>
-        <div style="
+        <!-- パフォーマンス -->
+        <h2 data-i18n="portfolio_page.perf_title">パフォーマンス</h2>
+        <div style="margin-bottom: 2rem">
+          <p data-i18n="portfolio_page.perf_desc" style="margin-bottom: 1.2rem">
+            フレームワークレスの恩恵により、Lighthouseで高スコアを達成。外部依存を最小限に抑え、初回ロードを高速化しています。
+          </p>
+          <div
+            style="
               display: grid;
               grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
               gap: 0.8rem;
-            ">
-          <!-- Score -->
-          <div style="
+            "
+          >
+            <!-- Score -->
+            <div
+              style="
                 background: rgba(255, 255, 255, 0.04);
                 padding: 1rem 1.2rem;
                 border-radius: 10px;
                 border: 1px solid rgba(255, 255, 255, 0.06);
                 text-align: center;
-              ">
-            <div style="
+              "
+            >
+              <div
+                style="
                   font-size: 2rem;
                   font-weight: bold;
                   color: #22c55e;
                   margin-bottom: 0.3rem;
-                ">
-              95+
+                "
+              >
+                95+
+              </div>
+              <div
+                style="font-size: 0.8rem; color: #999"
+                data-i18n="portfolio_page.perf_score"
+              >
+                Lighthouse スコア: <strong>95+</strong>（Performance /
+                Accessibility / Best Practices / SEO）
+              </div>
             </div>
-            <div style="font-size: 0.8rem; color: #999" data-i18n="portfolio_page.perf_score">
-              Lighthouse スコア: <strong>95+</strong>（Performance /
-              Accessibility / Best Practices / SEO）
-            </div>
-          </div>
-          <!-- Size -->
-          <div style="
+            <!-- Size -->
+            <div
+              style="
                 background: rgba(255, 255, 255, 0.04);
                 padding: 1rem 1.2rem;
                 border-radius: 10px;
                 border: 1px solid rgba(255, 255, 255, 0.06);
                 text-align: center;
-              ">
-            <div style="
+              "
+            >
+              <div
+                style="
                   font-size: 2rem;
                   font-weight: bold;
                   color: #3b82f6;
                   margin-bottom: 0.3rem;
-                ">
-              &lt; 200KB
+                "
+              >
+                &lt; 200KB
+              </div>
+              <div
+                style="font-size: 0.8rem; color: #999"
+                data-i18n="portfolio_page.perf_size"
+              >
+                ページサイズ: <strong> < 200KB</strong>（画像除く初回転送量）
+              </div>
             </div>
-            <div style="font-size: 0.8rem; color: #999" data-i18n="portfolio_page.perf_size">
-              ページサイズ: <strong>
-                < 200KB</strong>（画像除く初回転送量）
-            </div>
-          </div>
-          <!-- Deps -->
-          <div style="
+            <!-- Deps -->
+            <div
+              style="
                 background: rgba(255, 255, 255, 0.04);
                 padding: 1rem 1.2rem;
                 border-radius: 10px;
                 border: 1px solid rgba(255, 255, 255, 0.06);
                 text-align: center;
-              ">
-            <div style="
+              "
+            >
+              <div
+                style="
                   font-size: 2rem;
                   font-weight: bold;
                   color: #f59e0b;
                   margin-bottom: 0.3rem;
-                ">
-              2
-            </div>
-            <div style="font-size: 0.8rem; color: #999" data-i18n="portfolio_page.perf_deps">
-              外部依存:
-              <strong>GSAP + i18next のみ</strong>（ノーバンドラー構成）
+                "
+              >
+                2
+              </div>
+              <div
+                style="font-size: 0.8rem; color: #999"
+                data-i18n="portfolio_page.perf_deps"
+              >
+                外部依存:
+                <strong>GSAP + i18next のみ</strong>（ノーバンドラー構成）
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <a href="../index.html" class="footer-logo">Studio344</a>
-        <p class="footer-tagline" data-i18n="footer.tagline">テクノロジーとものづくりを楽しむ、個人の趣味ポートフォリオ</p>
-        <div class="footer-social">
-          <a href="https://github.com/Studio344" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="footer-social-link">
-            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-          </a>
-          <a href="https://x.com/studio0344" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)" class="footer-social-link">
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
-          </a>
-          <a href="https://www.instagram.com/studio.344/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-social-link">
-            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-          </a>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="../index.html" class="footer-logo">Studio344</a>
+          <p class="footer-tagline" data-i18n="footer.tagline">
+            テクノロジーとものづくりを楽しむ、個人の趣味ポートフォリオ
+          </p>
+          <div class="footer-social">
+            <a
+              href="https://github.com/Studio344"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              class="footer-social-link"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              >
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                ></path>
+              </svg>
+            </a>
+            <a
+              href="https://x.com/studio0344"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="X (Twitter)"
+              class="footer-social-link"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                fill="currentColor"
+              >
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                ></path>
+              </svg>
+            </a>
+            <a
+              href="https://www.instagram.com/studio.344/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              class="footer-social-link"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="18"
+                height="18"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path
+                  d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                ></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="footer-nav">
+          <div class="footer-nav-group">
+            <span class="footer-nav-heading">Pages</span>
+            <a href="../about.html" class="footer-link" data-i18n="nav.about"
+              >About</a
+            >
+            <a href="../blog.html" class="footer-link" data-i18n="nav.blog"
+              >Blog</a
+            >
+            <a
+              href="../projects.html"
+              class="footer-link"
+              data-i18n="nav.projects"
+              >Projects</a
+            >
+            <a
+              href="../contact.html"
+              class="footer-link"
+              data-i18n="nav.contact"
+              >Contact</a
+            >
+          </div>
+          <div class="footer-nav-group">
+            <span class="footer-nav-heading">Legal</span>
+            <a href="../privacy-policy.html" class="footer-link"
+              >Privacy Policy</a
+            >
+            <a href="../terms.html" class="footer-link">Terms</a>
+            <button
+              id="cookie-settings-btn"
+              class="footer-link cookie-settings-link"
+              data-i18n="cookie.settings"
+            >
+              Cookie Settings
+            </button>
+          </div>
         </div>
       </div>
-      <div class="footer-nav">
-        <div class="footer-nav-group">
-          <span class="footer-nav-heading">Pages</span>
-          <a href="../about.html" class="footer-link" data-i18n="nav.about">About</a>
-          <a href="../blog.html" class="footer-link" data-i18n="nav.blog">Blog</a>
-          <a href="../projects.html" class="footer-link" data-i18n="nav.projects">Projects</a>
-          <a href="../contact.html" class="footer-link" data-i18n="nav.contact">Contact</a>
-        </div>
-        <div class="footer-nav-group">
-          <span class="footer-nav-heading">Legal</span>
-          <a href="../privacy-policy.html" class="footer-link">Privacy Policy</a>
-          <a href="../terms.html" class="footer-link">Terms</a>
-        </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="copyright-year"></span> Studio344</p>
+      </div>
+    </footer>
+
+    <!-- Cookie Consent -->
+    <div
+      id="cookie-consent"
+      class="cookie-consent"
+      role="dialog"
+      aria-label="Cookie consent"
+      style="display: none"
+    >
+      <p class="cookie-consent-text" data-i18n="cookie.message"></p>
+      <div class="cookie-consent-actions">
+        <button
+          id="cookie-accept"
+          class="cookie-btn cookie-btn-accept"
+          data-i18n="cookie.accept"
+        ></button>
+        <button
+          id="cookie-decline"
+          class="cookie-btn cookie-btn-decline"
+          data-i18n="cookie.decline"
+        ></button>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; <span id="copyright-year">2026</span> Studio344</p>
-    </div>
-  </footer>
 
-  <!-- Back to Top -->
-  <button class="back-to-top" aria-label="ページ上部に戻る">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
-  </button>
+    <!-- Back to Top -->
+    <button class="back-to-top" aria-label="ページ上部に戻る">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
 
-  <script src="../assets/js/ui.js"></script>
-  <script src="https://unpkg.com/i18next@23.2.3/i18next.min.js" integrity="sha384-vxUZOB7ych7Y7ndQtM2RKTsr+2fHukXPfoTo1s0+7o9Q/Bx3oWY0aTwenFnmrcJz" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/i18next-http-backend@3.0.2/i18nextHttpBackend.min.js" integrity="sha384-mylaL1fxuX3DZgdMqG9QvOyXoU/N9yUKXiYZH/5Ykx6+DUDdzQAxI8Gwqh2HBe8T" crossorigin="anonymous"></script>
-  <script src="../i18n.js"></script>
-</body>
-
+    <script defer src="../assets/js/ui.js"></script>
+    <script
+      src="https://unpkg.com/i18next@23.2.3/i18next.min.js"
+      integrity="sha384-vxUZOB7ych7Y7ndQtM2RKTsr+2fHukXPfoTo1s0+7o9Q/Bx3oWY0aTwenFnmrcJz"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://unpkg.com/i18next-http-backend@3.0.2/i18nextHttpBackend.min.js"
+      integrity="sha384-mylaL1fxuX3DZgdMqG9QvOyXoU/N9yUKXiYZH/5Ykx6+DUDdzQAxI8Gwqh2HBe8T"
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="../i18n.js"></script>
+    <script defer src="../assets/js/cookie-consent.js"></script>
+  </body>
 </html>

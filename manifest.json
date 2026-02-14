@@ -1,0 +1,21 @@
+{
+  "name": "Studio344",
+  "short_name": "Studio344",
+  "description": "Portfolio of Studio344 - Engineering & Design",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#030303",
+  "theme_color": "#6366f1",
+  "icons": [
+    {
+      "src": "assets/logo-black.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/logo-black.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

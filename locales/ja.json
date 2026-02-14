@@ -40,7 +40,7 @@
     "view_all_posts": "すべて見る →"
   },
   "footer": {
-    "tagline": "テクノロジーとものづくりを楽しむ、個人の趣味ポートフォリオ。"
+    "tagline": "テクノロジーとものづくりを楽しむ、<br>個人の趣味ポートフォリオ。"
   },
   "about_page": {
     "title": "About Studio344",
@@ -70,6 +70,14 @@
   },
   "blog_post": {
     "back": "← ブログ一覧に戻る"
+  },
+  "blog": {
+    "share_label": "シェア",
+    "share_twitter": "X",
+    "share_copy": "リンクをコピー",
+    "share_native": "シェア",
+    "share_copied": "コピー済み！",
+    "related_title": "関連記事"
   },
   "projects_page": {
     "title": "All Projects",
@@ -159,5 +167,11 @@
     "copyright_title": "4. 著作権",
     "copyright_desc": "本サイトに掲載されている全てのコンテンツは、当方が所有しています。書面による許可なく、個人的な目的以外で使用することは禁止されています。",
     "updated": "最終更新日: 2026年2月4日"
+  },
+  "cookie": {
+    "message": "当サイトでは、広告配信のためにCookieを使用しています。「同意する」をクリックすると、Cookieの使用に同意したことになります。",
+    "accept": "同意する",
+    "decline": "拒否する",
+    "settings": "Cookie 設定"
   }
 }

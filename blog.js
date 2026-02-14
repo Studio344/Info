@@ -91,11 +91,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const postId = window.location.hash.replace("#post/", "");
     setTimeout(() => showSinglePost(postId), 300);
   }
-
-
 });
 
 let currentRequestId = 0;
+let showSinglePostId = 0;
 
 /**
  * 記事一覧グリッドを表示し、記事ビューを非表示にする
@@ -108,6 +107,10 @@ function showPostList() {
   const single = document.getElementById("blog-single-view");
   if (grid) grid.style.display = "";
   if (single) single.style.display = "none";
+  // サイドバー目次をクリア & レイアウトクラス解除
+  document.body.classList.remove("blog-single-active");
+  const tocSidebar = document.getElementById("blog-toc-sidebar");
+  if (tocSidebar) tocSidebar.innerHTML = "";
   const title = document.querySelector(".bento-card.text-content-card > h1");
   const desc = document.querySelector(".bento-card.text-content-card > p");
   const controls = document.querySelector(".blog-controls");
@@ -127,6 +130,7 @@ function showPostList() {
  * 記事一覧を非表示にし、単一記事を表示する
  */
 async function showSinglePost(postId) {
+  const thisCallId = ++showSinglePostId;
   const grid = document.getElementById("blog-container");
   const single = document.getElementById("blog-single-view");
   const content = document.getElementById("blog-single-content");
@@ -144,6 +148,7 @@ async function showSinglePost(postId) {
 
   // 記事ビューを表示
   single.style.display = "";
+  document.body.classList.add("blog-single-active");
   content.innerHTML = '<p style="color: #888;">読み込み中...</p>';
 
   // スクロール位置をトップに戻す
@@ -154,6 +159,7 @@ async function showSinglePost(postId) {
 
   try {
     const listRes = await fetch("assets/posts/list.json");
+    if (!listRes.ok) throw new Error(`HTTP ${listRes.status}`);
     const posts = await listRes.json();
     const post = posts.find((p) => p.id === postId);
 
@@ -175,9 +181,17 @@ async function showSinglePost(postId) {
     if (!mdRes.ok) throw new Error("Markdown not found");
     const mdText = await mdRes.text();
 
-    // Render Markdown (DOMPurifyでサニタイズ)
+    // Render Markdown (DOMPurifyでサニタイズ — フォールバック時はプレーンテキスト)
     const rawHtml = marked.parse(mdText);
-    content.innerHTML = typeof DOMPurify !== 'undefined' ? DOMPurify.sanitize(rawHtml) : rawHtml;
+    if (typeof DOMPurify !== "undefined") {
+      content.innerHTML = DOMPurify.sanitize(rawHtml);
+    } else {
+      // DOMPurify が読み込まれなかった場合、XSS防止のため生テキスト表示
+      content.textContent = mdText;
+      console.error(
+        "DOMPurify not loaded — rendering as plain text for security",
+      );
+    }
 
     // Breadcrumbs: Update with actual title from MD if available
     const extractedTitle = extractTitle(mdText);
@@ -205,16 +219,24 @@ async function showSinglePost(postId) {
     // コールアウトボックスを変換
     convertCallouts(content);
 
+    // 重複呼び出しガード（言語切替 + setTimeout 同時発火対策）
+    if (thisCallId !== showSinglePostId) return;
+
     // 前後記事ナビゲーションを挿入
     await insertPrevNextNav(content, postId);
 
+    // 関連記事を挿入
+    await insertRelatedPosts(content, postId, post.tags || []);
+
+    // シェアボタンを挿入（関連記事の直前 = 記事末尾）
+    insertShareButtons(content, postId, extractedTitle || post.id);
+
     // 読書プログレスバーを追加
     initReadingProgress();
-
   } catch (e) {
     console.error(e);
-    const lang = (i18next.language || 'ja').substring(0, 2);
-    content.innerHTML = `<p style="color: #888;">${lang === 'en' ? 'An error occurred while loading the article.' : '読み込みエラーが発生しました。'}</p>`;
+    const lang = (i18next.language || "ja").substring(0, 2);
+    content.innerHTML = `<p style="color: #888;">${lang === "en" ? "An error occurred while loading the article." : "読み込みエラーが発生しました。"}</p>`;
   }
 }
 
@@ -225,25 +247,29 @@ function generateTOC(contentElement) {
   const headings = contentElement.querySelectorAll("h2, h3");
   if (headings.length === 0) return;
 
-  const tocContainer = document.createElement("div");
+  const sidebar = document.getElementById("blog-toc-sidebar");
+  if (!sidebar) return;
+
+  // 前回の目次をクリア
+  sidebar.innerHTML = "";
+
+  const tocContainer = document.createElement("nav");
   tocContainer.className = "blog-toc";
+  tocContainer.setAttribute("aria-label", i18next.language?.startsWith("en") ? "Table of Contents" : "目次");
 
-  // Header with toggle
-  const header = document.createElement("div");
-  header.className = "blog-toc-header";
+  const tocTitle = i18next.language?.startsWith("en")
+    ? "Table of Contents"
+    : "目次";
 
-  const tocTitle = i18next.language?.startsWith("en") ? "Table of Contents" : "目次";
-  header.innerHTML = `
-    <div class="blog-toc-title"><span class="blog-toc-icon">📑</span>${tocTitle}</div>
-    <span class="blog-toc-toggle">▶</span>
-  `;
+  const title = document.createElement("div");
+  title.className = "blog-toc-title";
+  title.innerHTML = `<span class="blog-toc-icon">📑</span>${tocTitle}`;
+  tocContainer.appendChild(title);
 
   const ul = document.createElement("ul");
   ul.id = "blog-toc-list";
-  ul.style.display = "none"; // デフォルトで折りたたみ
 
   headings.forEach((heading, index) => {
-    // Assign ID if missing
     if (!heading.id) {
       heading.id = `heading-${index}`;
     }
@@ -255,10 +281,11 @@ function generateTOC(contentElement) {
     a.href = `#${heading.id}`;
     a.textContent = heading.textContent;
 
-    // Smooth scroll
     a.onclick = (e) => {
       e.preventDefault();
-      document.getElementById(heading.id).scrollIntoView({ behavior: "smooth" });
+      document
+        .getElementById(heading.id)
+        .scrollIntoView({ behavior: "smooth" });
       history.pushState(null, "", `#${heading.id}`);
     };
 
@@ -266,38 +293,25 @@ function generateTOC(contentElement) {
     ul.appendChild(li);
   });
 
-  tocContainer.appendChild(header);
   tocContainer.appendChild(ul);
+  sidebar.appendChild(tocContainer);
 
-  // Toggle Logic（折りたたみ / 展開）
-  let tocOpen = false;
-  header.onclick = () => {
-    const list = document.getElementById("blog-toc-list");
-    const toggle = tocContainer.querySelector(".blog-toc-toggle");
-    tocOpen = !tocOpen;
-    if (tocOpen) {
-      list.style.display = "block";
-      toggle.textContent = "▼";
-      tocContainer.classList.add("toc-expanded");
-    } else {
-      list.style.display = "none";
-      toggle.textContent = "▶";
-      tocContainer.classList.remove("toc-expanded");
-    }
-  };
+  // スクロールに応じて現在のセクションをハイライト
+  const tocLinks = ul.querySelectorAll("a");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach((link) => link.classList.remove("toc-active"));
+          const activeLink = ul.querySelector(`a[href="#${entry.target.id}"]`);
+          if (activeLink) activeLink.classList.add("toc-active");
+        }
+      });
+    },
+    { rootMargin: "-80px 0px -60% 0px", threshold: 0 }
+  );
 
-  // Insert TOC after h1 and tags (h1 → tags → TOC → body)
-  const h1 = contentElement.querySelector("h1");
-  const tagsEl = contentElement.querySelector(".blog-post-tags");
-  // 挿入位置: タグがあればその後、なければh1の後、どちらもなければ先頭
-  const insertAfter = tagsEl || h1;
-  if (insertAfter && insertAfter.nextSibling) {
-    contentElement.insertBefore(tocContainer, insertAfter.nextSibling);
-  } else if (insertAfter) {
-    contentElement.appendChild(tocContainer);
-  } else {
-    contentElement.insertBefore(tocContainer, contentElement.firstChild);
-  }
+  headings.forEach((heading) => observer.observe(heading));
 }
 
 /**
@@ -309,7 +323,7 @@ function insertPostTags(contentElement, tags) {
   const tagsDiv = document.createElement("div");
   tagsDiv.className = "blog-post-tags";
   tagsDiv.innerHTML = tags
-    .map(tag => `<span class="blog-post-tag">${tag}</span>`)
+    .map((tag) => `<span class="blog-post-tag">${tag}</span>`)
     .join("");
 
   const h1 = contentElement.querySelector("h1");
@@ -363,6 +377,180 @@ function updateBreadcrumbs(postTitle) {
       };
       blogLink.style.cursor = "pointer";
     }
+  }
+}
+
+// ============================================================
+// 🔗 SNSシェアボタン
+// ============================================================
+function insertShareButtons(contentElement, postId, postTitle) {
+  const lang = (i18next.language || "ja").substring(0, 2);
+  const shareUrl = `https://studio344.net/blog.html#post/${postId}`;
+  const encodedUrl = encodeURIComponent(shareUrl);
+  const encodedTitle = encodeURIComponent(postTitle);
+
+  const shareLabel = lang === "en" ? "Share" : "シェア";
+  const twitterLabel = "X";
+  const copyLabel = lang === "en" ? "Copy Link" : "リンクをコピー";
+  const copiedLabel = lang === "en" ? "Copied!" : "コピー済み！";
+  const nativeLabel = lang === "en" ? "Share" : "シェア";
+
+  const section = document.createElement("div");
+  section.className = "blog-share-section";
+
+  // ラベル
+  const label = document.createElement("span");
+  label.className = "blog-share-label";
+  label.textContent = shareLabel;
+  section.appendChild(label);
+
+  // X/Twitter ボタン
+  const twitterBtn = document.createElement("button");
+  twitterBtn.className = "blog-share-btn";
+  twitterBtn.setAttribute("aria-label", `Share on ${twitterLabel}`);
+  twitterBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>${twitterLabel}`;
+  twitterBtn.addEventListener("click", () => {
+    window.open(
+      `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}&via=studio0344`,
+      "_blank",
+      "noopener,noreferrer,width=550,height=420",
+    );
+  });
+  section.appendChild(twitterBtn);
+
+  // コピーボタン
+  const copyBtn = document.createElement("button");
+  copyBtn.className = "blog-share-btn";
+  copyBtn.setAttribute("aria-label", copyLabel);
+  copyBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>${copyLabel}`;
+  copyBtn.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      copyBtn.classList.add("copied");
+      const origHtml = copyBtn.innerHTML;
+      copyBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>${copiedLabel}`;
+      setTimeout(() => {
+        copyBtn.classList.remove("copied");
+        copyBtn.innerHTML = origHtml;
+      }, 2000);
+    } catch (e) {
+      console.error("Clipboard copy failed:", e);
+    }
+  });
+  section.appendChild(copyBtn);
+
+  // Web Share API ボタン（対応ブラウザのみ表示）
+  if (navigator.share) {
+    const nativeBtn = document.createElement("button");
+    nativeBtn.className = "blog-share-btn";
+    nativeBtn.setAttribute("aria-label", nativeLabel);
+    nativeBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>${nativeLabel}`;
+    nativeBtn.addEventListener("click", async () => {
+      try {
+        await navigator.share({
+          title: postTitle,
+          url: shareUrl,
+        });
+      } catch (e) {
+        if (e.name !== "AbortError") console.error("Share failed:", e);
+      }
+    });
+    section.appendChild(nativeBtn);
+  }
+
+  // 挿入位置: 記事末尾（関連記事セクションがあればその直前、なければ最後尾）
+  const relatedSection = contentElement.querySelector(".blog-related-section");
+  if (relatedSection) {
+    contentElement.insertBefore(section, relatedSection);
+  } else {
+    contentElement.appendChild(section);
+  }
+}
+
+// ============================================================
+// 📎 関連記事レコメンド
+// ============================================================
+async function insertRelatedPosts(contentElement, currentPostId, currentTags) {
+  try {
+    const res = await fetch("assets/posts/list.json");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const posts = await res.json();
+
+    const lang = (i18next.language || "ja").substring(0, 2);
+    const otherPosts = posts.filter((p) => p.id !== currentPostId);
+    if (otherPosts.length === 0) return;
+
+    // タグの一致数でスコアリング
+    const scored = otherPosts.map((post) => {
+      const shared = (post.tags || []).filter((t) =>
+        currentTags.includes(t),
+      ).length;
+      return { post, score: shared };
+    });
+
+    // スコア降順でソート、同スコアなら日付の新しい順
+    scored.sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return b.post.date.localeCompare(a.post.date);
+    });
+
+    // 上位3件を取得
+    const related = scored.slice(0, 3);
+
+    // 各記事のタイトルをMDファイルから取得
+    const cards = await Promise.all(
+      related.map(async ({ post }) => {
+        let title = post.id;
+        try {
+          const mdRes = await fetch(
+            `assets/posts/${post.baseFilename}.${lang}.md`,
+          );
+          if (mdRes.ok) {
+            const mdText = await mdRes.text();
+            title = extractTitle(mdText) || post.id;
+          }
+        } catch {
+          /* fallback to id */
+        }
+        return { post, title };
+      }),
+    );
+
+    const sectionTitle = lang === "en" ? "Related Articles" : "関連記事";
+
+    const section = document.createElement("div");
+    section.className = "blog-related-section";
+
+    const heading = document.createElement("h3");
+    heading.className = "blog-related-title";
+    heading.textContent = `📎 ${sectionTitle}`;
+    section.appendChild(heading);
+
+    const grid = document.createElement("div");
+    grid.className = "blog-related-grid";
+
+    cards.forEach(({ post, title }) => {
+      const card = document.createElement("a");
+      card.className = "blog-related-card";
+      card.href = `#post/${post.id}`;
+      card.addEventListener("click", (e) => {
+        e.preventDefault();
+        history.pushState(null, "", `#post/${post.id}`);
+        showSinglePost(post.id);
+      });
+
+      card.innerHTML = `
+        <div class="blog-related-card-emoji">${post.emoji || "📝"}</div>
+        <div class="blog-related-card-title">${title}</div>
+        <div class="blog-related-card-date">${post.date}</div>
+      `;
+      grid.appendChild(card);
+    });
+
+    section.appendChild(grid);
+    contentElement.appendChild(section);
+  } catch (e) {
+    console.error("Related posts error:", e);
   }
 }
 
@@ -437,6 +625,7 @@ async function loadBlogPosts(langOverride) {
 
   try {
     const response = await fetch(listUrl);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const posts = await response.json();
 
     // Check if this is still the latest request
@@ -464,7 +653,7 @@ async function loadBlogPosts(langOverride) {
     });
 
     const loadedPosts = await Promise.all(postPromises);
-    const validPosts = loadedPosts.filter(p => p !== null);
+    const validPosts = loadedPosts.filter((p) => p !== null);
 
     // Check again before DOM manipulation
     if (requestId !== currentRequestId) return;
@@ -476,20 +665,24 @@ async function loadBlogPosts(langOverride) {
     // 1. Generate Tags
     if (tagsContainer) {
       const allTags = new Set();
-      validPosts.forEach(post => post.tags.forEach(tag => allTags.add(tag)));
+      validPosts.forEach((post) =>
+        post.tags.forEach((tag) => allTags.add(tag)),
+      );
 
       let tagsHtml = `<button class="filter-tag active" data-tag="all">All</button>`;
 
-      Array.from(allTags).sort().forEach(tag => {
-        tagsHtml += `<button class="filter-tag" data-tag="${tag}">${tag}</button>`;
-      });
+      Array.from(allTags)
+        .sort()
+        .forEach((tag) => {
+          tagsHtml += `<button class="filter-tag" data-tag="${tag}">${tag}</button>`;
+        });
       tagsContainer.innerHTML = tagsHtml;
 
       // Tag Click Handler
-      tagsContainer.querySelectorAll(".filter-tag").forEach(btn => {
+      tagsContainer.querySelectorAll(".filter-tag").forEach((btn) => {
         btn.addEventListener("click", (e) => {
           // Update UI
-          tagsContainer.querySelectorAll(".filter-tag").forEach(b => {
+          tagsContainer.querySelectorAll(".filter-tag").forEach((b) => {
             b.classList.remove("active");
           });
           e.target.classList.add("active");
@@ -507,10 +700,11 @@ async function loadBlogPosts(langOverride) {
       container.innerHTML = "";
       const query = "";
 
-      const filtered = validPosts.filter(post => {
+      const filtered = validPosts.filter((post) => {
         const matchesTag = activeTag ? post.tags.includes(activeTag) : true;
         const matchesSearch = query
-          ? post.title.toLowerCase().includes(query) || post.excerpt.toLowerCase().includes(query)
+          ? post.title.toLowerCase().includes(query) ||
+            post.excerpt.toLowerCase().includes(query)
           : true;
         return matchesTag && matchesSearch;
       });
@@ -522,20 +716,22 @@ async function loadBlogPosts(langOverride) {
 
       // バナーグラデーションパターン（カードごとに異なる視覚的アクセント）
       const bannerGradients = [
-        'linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%)',
-        'linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%)',
-        'linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #6366f1 100%)',
-        'linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #f43f5e 100%)',
-        'linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #3b82f6 100%)',
-        'linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #ec4899 100%)',
-        'linear-gradient(135deg, #6366f1 0%, #06b6d4 50%, #10b981 100%)',
-        'linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #6366f1 100%)',
+        "linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%)",
+        "linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%)",
+        "linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #6366f1 100%)",
+        "linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #f43f5e 100%)",
+        "linear-gradient(135deg, #10b981 0%, #06b6d4 50%, #3b82f6 100%)",
+        "linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #ec4899 100%)",
+        "linear-gradient(135deg, #6366f1 0%, #06b6d4 50%, #10b981 100%)",
+        "linear-gradient(135deg, #ec4899 0%, #8b5cf6 50%, #6366f1 100%)",
       ];
 
       filtered.forEach((post, index) => {
         const card = document.createElement("div");
         const isHero = index === 0 && !activeTag && !query;
-        card.className = isHero ? "blog-preview-card blog-hero-card" : "blog-preview-card";
+        card.className = isHero
+          ? "blog-preview-card blog-hero-card"
+          : "blog-preview-card";
         card.setAttribute("role", "button");
         card.setAttribute("tabindex", "0");
         card.style.animationDelay = `${index * 0.05}s`;
@@ -583,7 +779,6 @@ async function loadBlogPosts(langOverride) {
 
     // Initial Render
     renderGrid();
-
   } catch (err) {
     console.error("Error fetching post list:", err);
   }
@@ -594,52 +789,60 @@ async function loadBlogPosts(langOverride) {
 // ============================================================
 async function insertPrevNextNav(contentElement, currentPostId) {
   try {
-    const res = await fetch('assets/posts/list.json');
+    const res = await fetch("assets/posts/list.json");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const posts = await res.json();
-    const idx = posts.findIndex(p => p.id === currentPostId);
+    const idx = posts.findIndex((p) => p.id === currentPostId);
     if (idx === -1) return;
 
-    const lang = (i18next.language || 'ja').substring(0, 2);
+    const lang = (i18next.language || "ja").substring(0, 2);
     const prevPost = idx < posts.length - 1 ? posts[idx + 1] : null;
     const nextPost = idx > 0 ? posts[idx - 1] : null;
 
     // タイトルを取得するためにMDファイルから抽出
     async function getPostTitle(post) {
       try {
-        const mdRes = await fetch(`assets/posts/${post.baseFilename}.${lang}.md`);
+        const mdRes = await fetch(
+          `assets/posts/${post.baseFilename}.${lang}.md`,
+        );
         if (!mdRes.ok) return post.id;
         const mdText = await mdRes.text();
         return extractTitle(mdText) || post.id;
-      } catch { return post.id; }
+      } catch {
+        return post.id;
+      }
     }
 
-    const nav = document.createElement('nav');
-    nav.className = 'blog-prev-next';
-    nav.setAttribute('aria-label', lang === 'en' ? 'Article navigation' : '記事ナビゲーション');
+    const nav = document.createElement("nav");
+    nav.className = "blog-prev-next";
+    nav.setAttribute(
+      "aria-label",
+      lang === "en" ? "Article navigation" : "記事ナビゲーション",
+    );
 
     if (prevPost) {
       const title = await getPostTitle(prevPost);
       nav.innerHTML += `<a href="#post/${prevPost.id}" class="blog-prev-next-link blog-prev-next-link--prev" onclick="event.preventDefault(); history.pushState(null,'','#post/${prevPost.id}'); showSinglePost('${prevPost.id}');">
-        <span class="blog-prev-next-label">${lang === 'en' ? '← Previous' : '← 前の記事'}</span>
+        <span class="blog-prev-next-label">${lang === "en" ? "← Previous" : "← 前の記事"}</span>
         <span class="blog-prev-next-title">${title}</span>
       </a>`;
     } else {
-      nav.innerHTML += '<span></span>';
+      nav.innerHTML += "<span></span>";
     }
 
     if (nextPost) {
       const title = await getPostTitle(nextPost);
       nav.innerHTML += `<a href="#post/${nextPost.id}" class="blog-prev-next-link blog-prev-next-link--next" onclick="event.preventDefault(); history.pushState(null,'','#post/${nextPost.id}'); showSinglePost('${nextPost.id}');">
-        <span class="blog-prev-next-label">${lang === 'en' ? 'Next →' : '次の記事 →'}</span>
+        <span class="blog-prev-next-label">${lang === "en" ? "Next →" : "次の記事 →"}</span>
         <span class="blog-prev-next-title">${title}</span>
       </a>`;
     } else {
-      nav.innerHTML += '<span></span>';
+      nav.innerHTML += "<span></span>";
     }
 
     contentElement.appendChild(nav);
   } catch (e) {
-    console.error('Prev/Next nav error:', e);
+    console.error("Prev/Next nav error:", e);
   }
 }
 
@@ -658,7 +861,8 @@ function initReadingProgress() {
 
   _readingProgressHandler = () => {
     const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const docHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
     const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
     bar.style.width = `${Math.min(progress, 100)}%`;
   };
@@ -681,11 +885,15 @@ function removeReadingProgress() {
 function insertReadingTime(contentElement, mdText) {
   // 日本語: 約500文字/分、英語: 約200語/分
   const jaChars = (mdText.match(/[\u3000-\u9fff\uf900-\ufaff]/g) || []).length;
-  const enWords = mdText.replace(/[\u3000-\u9fff\uf900-\ufaff]/g, "").split(/\s+/).filter(w => w.length > 0).length;
+  const enWords = mdText
+    .replace(/[\u3000-\u9fff\uf900-\ufaff]/g, "")
+    .split(/\s+/)
+    .filter((w) => w.length > 0).length;
 
   const minutes = Math.ceil(jaChars / 500 + enWords / 200);
   const lang = i18next.language?.startsWith("en") ? "en" : "ja";
-  const label = lang === "en" ? `${minutes} min read` : `約${minutes}分で読めます`;
+  const label =
+    lang === "en" ? `${minutes} min read` : `約${minutes}分で読めます`;
 
   const el = document.createElement("div");
   el.className = "reading-time";
@@ -707,12 +915,14 @@ function insertReadingTime(contentElement, mdText) {
 // ============================================================
 function addCodeLabels(contentElement) {
   const pres = contentElement.querySelectorAll("pre");
-  pres.forEach(pre => {
+  pres.forEach((pre) => {
     const code = pre.querySelector("code");
     if (!code) return;
 
     // Prism adds class like "language-javascript"
-    const langClass = Array.from(code.classList).find(c => c.startsWith("language-"));
+    const langClass = Array.from(code.classList).find((c) =>
+      c.startsWith("language-"),
+    );
     if (!langClass) return;
 
     const lang = langClass.replace("language-", "");
@@ -740,7 +950,7 @@ function addCodeLabels(contentElement) {
 function convertCallouts(contentElement) {
   const blockquotes = contentElement.querySelectorAll("blockquote");
 
-  blockquotes.forEach(bq => {
+  blockquotes.forEach((bq) => {
     const firstP = bq.querySelector("p");
     if (!firstP) return;
 

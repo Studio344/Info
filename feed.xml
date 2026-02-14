@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Studio344 Blog</title>
+    <link>https://studio344.net/blog.html</link>
+    <description>Studio344 の開発ログと技術的な知見を発信するブログ</description>
+    <language>ja</language>
+    <lastBuildDate>Sat, 14 Feb 2026 12:34:47 GMT</lastBuildDate>
+    <atom:link href="https://studio344.net/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GitHub Pagesで作る、GSAPアニメーション付きポートフォリオサイト</title>
+      <link>https://studio344.net/blog.html#post/gsap-portfolio</link>
+      <description>エンジニアのポートフォリオサイトを構築する際、「フレームワークを使うべきか、それとも素のHTML/CSS/JSで十分か？」という問いに直面します。Studio344では後者を選択し、GitHub Pages + GSAP + バニラJS というシンプルな構成で、リッチなアニメーション体験を持つポートフォリオサイトを実現しました。 この記事では、フレームワークなしでモダンなポートフォリオサイトを構築…</description>
+      <pubDate>Fri, 06 Feb 2026 15:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://studio344.net/blog.html#post/gsap-portfolio</guid>
+    </item>
+    <item>
+      <title>ポートフォリオサイトを全面リニューアルしました</title>
+      <link>https://studio344.net/blog.html#post/renewal</link>
+      <description>Studio344のポートフォリオサイトを全面的にリニューアルしました。旧サイトは縦長の1ページ構成で、プロジェクトへのリンクを並べただけのシンプルな構成でした。しかし、開発の知見を蓄積・発信する場として不十分であり、以下の課題を抱えていました。 「単なるリンク集」から「技術的な発信ができるポートフォリオ」への進化を目指して、ゼロからの再設計に踏み切りました。 リニューアルにあたって、以下の技術ス…</description>
+      <pubDate>Tue, 03 Feb 2026 15:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://studio344.net/blog.html#post/renewal</guid>
+    </item>
+    <item>
+      <title>静的HTMLサイトにi18nextで多言語対応を実装する方法</title>
+      <link>https://studio344.net/blog.html#post/i18n-multilingual</link>
+      <description>Studio344のポートフォリオサイトは 日本語（JA） と 英語（EN） の二言語に対応しています。フレームワークを使わない純粋な静的HTMLサイトで多言語化を実現するために、軽量なi18nライブラリ i18next を採用しました。 この記事では、静的HTMLサイトにi18nextを導入して多言語対応を実装する具体的な方法と、その過程で工夫したポイントを詳しく解説します。 フロントエンドの多…</description>
+      <pubDate>Sat, 31 Jan 2026 15:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://studio344.net/blog.html#post/i18n-multilingual</guid>
+    </item>
+    <item>
+      <title>Next.js + Supabase + Fitbit OAuthで認証基盤を構築した話</title>
+      <link>https://studio344.net/blog.html#post/nextjs-supabase-auth</link>
+      <description>UCFitnessの開発において、最初に取り組んだ重要な機能が ユーザー認証 です。Fitbitアカウントでログインし、ウェアラブルデバイスのデータにアクセスするためには、OAuth 2.0による認証フローを正しく実装する必要があります。 この記事では、Next.js（App Router） と Supabase Auth を組み合わせてFitbit OAuth認証を実装した方法と、その過程で得た…</description>
+      <pubDate>Mon, 26 Jan 2026 15:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://studio344.net/blog.html#post/nextjs-supabase-auth</guid>
+    </item>
+    <item>
+      <title>UCFitness開発ログ: Fitbit APIの「Rate Limit」との戦い</title>
+      <link>https://studio344.net/blog.html#post/fitbit</link>
+      <description>個人プロジェクトとして開発中のフィットネストラッカー 「UCFitness」 は、Fitbitのウェアラブルデバイスから取得した歩数・心拍数・消費カロリーなどのデータを集約し、ユーザー間のランキングを表示するWebアプリケーションです。技術スタックには Next.js（App Router）、Supabase、Tailwind CSS を採用しています。 この記事では、開発中に直面した最大の技術的…</description>
+      <pubDate>Mon, 19 Jan 2026 15:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://studio344.net/blog.html#post/fitbit</guid>
+    </item>
+    <item>
+      <title>CSSグリッドで作る「Bento Layout」の設計パターン</title>
+      <link>https://studio344.net/blog.html#post/css-bento-layout</link>
+      <description>Apple が WWDC23 で採用したことで注目を集めた「Bento Layout（弁当箱レイアウト）」は、異なるサイズのカードをグリッド上に美しく配置するデザインパターンです。Studio344 のポートフォリオサイトでもこのレイアウトを採用しており、本記事ではその設計と実装のポイントを解説します。 ポートフォリオサイトを設計する際、以下の要件がありました。 従来のカラムレイアウトでは単調にな…</description>
+      <pubDate>Wed, 14 Jan 2026 15:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://studio344.net/blog.html#post/css-bento-layout</guid>
+    </item>
+    <item>
+      <title>GitHub Pagesで静的サイトをデプロイする際に知っておくべきこと</title>
+      <link>https://studio344.net/blog.html#post/github-pages-deploy</link>
+      <description>Studio344 のポートフォリオサイトは GitHub Pages でホスティングしています。「無料で使えるし、GitHubと統合されているから楽だろう」と思って選びましたが、実際に運用してみると細かな注意点がいくつかありました。本記事では、静的サイトを GitHub Pages にデプロイする際のベストプラクティスと注意点をまとめます。 GitHub Pages にカスタムドメイン（stud…</description>
+      <pubDate>Fri, 09 Jan 2026 15:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://studio344.net/blog.html#post/github-pages-deploy</guid>
+    </item>
+    <item>
+      <title>静的サイトのパフォーマンス最適化: Lighthouse スコア改善戦略</title>
+      <link>https://studio344.net/blog.html#post/web-performance</link>
+      <description>Studio344 のポートフォリオサイトでは、Google Lighthouse のスコアを重視して最適化を行っています。「趣味のサイトだからパフォーマンスはそこまで…」と思いがちですが、AdSense 審査や SEO ランキングにも影響するため、基本的な最適化は押さえておくべきです。本記事では、実際に行った最適化とその効果を紹介します。 Lighthouse は以下の4カテゴリでサイトを評価し…</description>
+      <pubDate>Sun, 04 Jan 2026 15:00:00 GMT</pubDate>
+      <guid isPermaLink="true">https://studio344.net/blog.html#post/web-performance</guid>
+    </item>
+  </channel>
+</rss>

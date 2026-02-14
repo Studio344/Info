@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main, feature/*, fix/*, refactor/*]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      
+      - name: HTMLバリデーション
+        run: |
+          npx html-validate "*.html" "projects/*.html" || true
+      
+      - name: JSONバリデーション
+        run: |
+          node -e "JSON.parse(require('fs').readFileSync('projects.json','utf8'))" || exit 1
+          node -e "JSON.parse(require('fs').readFileSync('assets/posts/list.json','utf8'))" || exit 1
+          node -e "JSON.parse(require('fs').readFileSync('locales/ja.json','utf8'))" || exit 1
+          node -e "JSON.parse(require('fs').readFileSync('locales/en.json','utf8'))" || exit 1
+      
+      - name: list.json ↔ MDファイル整合性チェック
+        run: |
+          node scripts/check-post-integrity.js
+      
+      - name: i18nキー整合性チェック
+        run: |
+          node scripts/check-i18n-keys.js
+      
+      - name: リンクチェック
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --exclude-loopback "*.html" "projects/*.html"
+          fail: false

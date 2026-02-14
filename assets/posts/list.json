@@ -1,5 +1,33 @@
 [
     {
+        "id": "copilot-128-improvements",
+        "date": "2026.02.14",
+        "baseFilename": "2026-02-14-copilot-128-improvements",
+        "emoji": "🤖",
+        "tags": ["AI", "GitHub Copilot", "DX"]
+    },
+    {
+        "id": "pwa-sw-rss",
+        "date": "2026.02.12",
+        "baseFilename": "2026-02-12-pwa-sw-rss",
+        "emoji": "📱",
+        "tags": ["PWA", "Service Worker", "RSS"]
+    },
+    {
+        "id": "static-site-security",
+        "date": "2026.02.11",
+        "baseFilename": "2026-02-11-static-site-security",
+        "emoji": "🔒",
+        "tags": ["Security", "CSP", "GDPR"]
+    },
+    {
+        "id": "css-cascade-trap",
+        "date": "2026.02.10",
+        "baseFilename": "2026-02-10-css-cascade-trap",
+        "emoji": "🎯",
+        "tags": ["CSS", "Mobile", "Debug"]
+    },
+    {
         "id": "gsap-portfolio",
         "date": "2026.02.07",
         "baseFilename": "2026-02-07-gsap-portfolio",
