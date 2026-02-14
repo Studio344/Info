@@ -11,12 +11,12 @@
 
 | 観点 | 🔴 高 | 🟡 中 | 🟢 低 | 合計 | ✅ 完了 |
 |------|--------|--------|--------|------|--------|
-| 🎨 UI/UX 改善 | 5 | 11 | 9 | **25** | 3 |
+| 🎨 UI/UX 改善 | 5 | 11 | 9 | **25** | 10 |
 | ⚡ パフォーマンス | 9 | 14 | 4 | **27** | 8 |
-| 🔒 セキュリティ | 4 | 8 | 10 | **22** | 6 |
+| 🔒 セキュリティ | 4 | 8 | 10 | **22** | 9 |
 | ✨ 新機能 | 3 | 12 | 9 | **24** | 3 |
-| 🛡️ エラー/デプロイ | 12 | 14 | 4 | **30** | 12 |
-| **合計** | **33** | **59** | **36** | **128** | **32** |
+| 🛡️ エラー/デプロイ | 12 | 14 | 4 | **30** | 13 |
+| **合計** | **33** | **59** | **36** | **128** | **43** |
 
 ---
 
@@ -55,10 +55,8 @@
 - **工数:** S
 - **ステータス:** ✅ 実装済み — i18n.js L168-192 にフォーカストラップ＋Escape対応を確認
 
-#### UI-03: エラーステートの統一デザイン
-- **問題:** `script.js` L163 で `catch(() => {})` — エラーを握りつぶしてユーザーに空白を見せている
-- **解決策:** 再試行ボタン付きエラーカードコンポーネントの統一実装
-- **影響:** エラー時のユーザー離脱防止
+#### UI-03: エラーステートの統一デザイン ✅
+- **ステータス:** ✅ 実装済み — `.error-card` CSS コンポーネント + 全エラーハンドラー統一（script.js×2 + blog.js×1）、i18n 対応リトライボタン付き
 - **工数:** S
 
 #### UI-04: モバイル CTA の最適化
@@ -78,16 +76,16 @@
 
 | # | 項目 | 概要 | 工数 |
 |---|------|------|------|
-| UI-06 | View Transitions API 最適化 | `meta[name="view-transition"]` 設定済みだが CSS 定義なし | S |
+| UI-06 | View Transitions API 最適化 ✅ | CSS `::view-transition-*` ルール確認済み、meta設定済み | S |
 | UI-07 | 空ステートデザイン | プロジェクト0件・記事0件時の表示 | S |
-| UI-08 | ブログ検索の UX 改善 | 検索結果0件時のメッセージ、入力中のデバウンス | S |
+| UI-08 | ブログ検索の UX 改善 ✅ | 検索UI実装、250msデバウンス、タグ検索、i18n空ステート | S |
 | UI-09 | コードブロックコピーボタン ✅ | blog.js addCodeLabels() にコピーボタン追加、CSS完備 | S |
 | UI-10 | 404 ページのナビゲーション強化 | 検索候補・類似ページ提案 | M |
 | UI-11 | コンタクトフォーム導入検討 | FormSubmit/Formspree 等の静的サイト対応フォーム | M |
-| UI-12 | 画像の lazy loading 統一 | `loading="lazy"` の全 img タグへの適用確認 | S |
-| UI-13 | ナビゲーションのアクティブ状態の視認性 | `body[data-page]` の CSS を強調 | S |
+| UI-12 | 画像の lazy loading 統一 ✅ | 全img確認済み、Hero画像はLCP最適化のため意図的にeager | S |
+| UI-13 | ナビゲーションのアクティブ状態の視認性 ✅ | `body[data-page]` + `nav-link--active` クラスで実装済み | S |
 | UI-14 | Scroll-to-top ボタンのトランジション改善 | フェードイン/アウトの滑らかさ | S |
-| UI-15 | Typography の行間調整 | ブログ本文の可読性向上（CJK 用 line-height） | S |
+| UI-15 | Typography の行間調整 ✅ | `:lang(ja)` line-height:1.9 + 見出し line-height:1.5 設定 | S |
 | UI-16 | ダークモード/ライトモード切り替え | 現在ダーク固定 → ライトモード選択肢 | L |
 
 ### 🟢 低優先度（9項目）
@@ -99,7 +97,7 @@
 | UI-19 | ブログカード上の読了時間表示 | list.json にメタ追加 or MD から推定 | S |
 | UI-20 | 印刷用スタイルシート | `@media print` 対応 | S |
 | UI-21 | TOC スクロールスパイ | 現在表示中のセクションをハイライト | M |
-| UI-22 | CJK テキストの word-break 設定 | 長い URL 等の overflow 防止 | S |
+| UI-22 | CJK テキストの word-break 設定 ✅ | CJK全体に word-break:break-word 適用済み | S |
 | UI-23 | ページ遷移ローディングインジケーター | View Transitions 用の進捗表示 | S |
 | UI-24 | Bento Grid のドラッグリサイズ | インタラクティブポートフォリオ | L |
 | UI-25 | カスタムスクロールバー | ブランドカラーのスクロールバー | S |
@@ -260,11 +258,11 @@
 
 | # | 項目 | 概要 | 工数 |
 |---|------|------|------|
-| SEC-05 | script.js カードレンダリングでの `textContent` 確認 | `innerHTML` でのアイコン注入のサニタイズ | S |
+| SEC-05 | script.js カードレンダリングでの `textContent` 確認 ✅ | ハードコードSVGマップからの注入のみ、ユーザー入力なし — 安全 | S |
 | SEC-06 | `Referrer-Policy` メタタグ追加 ✅ | 全HTMLに name="referrer" strict-origin-when-cross-origin 設定済み | S |
 | SEC-07 | `X-Content-Type-Options` 相当の対策 | MIME スニッフィング対策（GitHub Pages 限界あり） | S |
 | SEC-08 | CDN 依存の複数ドメイン集約 | unpkg + cdnjs の2系統 → 単一化 or セルフホスト | M |
-| SEC-09 | SRI ハッシュの全外部リソースへの適用 | Google Fonts CSS にも SRI を検討 | S |
+| SEC-09 | SRI ハッシュの全外部リソースへの適用 ✅ | 全CDNリソースにSRI integrity属性適用済み | S |
 | SEC-10 | Permissions-Policy メタタグ ✅ | 全HTMLに camera=(), microphone=(), geolocation=() 設定済み | S |
 | SEC-11 | `target="_blank"` の `rel` 属性の網羅確認 ✅ | 全リンクに noopener noreferrer 確認済み | S |
 | SEC-12 | JSON ロケールファイルの完全性チェック | ビルド時/CI で JSON バリデーション | S |
@@ -275,7 +273,7 @@
 |---|------|------|------|
 | SEC-13 | Google Fonts セルフホスティング | サードパーティへの依存排除 | M |
 | SEC-14 | CDN ライブラリのバージョン固定＆更新監視 | Dependabot 相当の仕組み | M |
-| SEC-15 | robots.txt の Disallow 追加 | `/docs/`, `/assets/posts/` 等の不要クロール防止 | S |
+| SEC-15 | robots.txt の Disallow 追加 ✅ | `/docs/`, `/scripts/`, `/schemas/` をDisallow設定 | S |
 | SEC-16 | HTTPS リダイレクト確認 | GitHub Pages のデフォルト挙動を検証 | S |
 | SEC-17 | サブリソース事前チェックスクリプト | デプロイ前に全 SRI ハッシュの有効性確認 | M |
 | SEC-18 | エラーメッセージの情報漏洩確認 | `console.error` で内部パスが露出していないか | S |
@@ -454,18 +452,8 @@
 - **影響:** 品質の継続的監視
 - **工数:** S
 
-#### DEV-12: Pre-deploy チェックリスト自動化
-- **問題:** 手動チェックに依存
-- **解決策:** PR テンプレート + CI チェックの組み合わせ
-  ```markdown
-  ## デプロイ前チェック
-  - [ ] HTML バリデーション通過
-  - [ ] リンクチェック通過
-  - [ ] JSON 整合性確認
-  - [ ] Lighthouse スコア 80+
-  - [ ] sitemap.xml 更新済み
-  ```
-- **影響:** 人的ミスの排除
+#### DEV-12: Pre-deploy チェックリスト自動化 ✅
+- **ステータス:** ✅ 実装済み — `.github/pull_request_template.md` にデプロイ前チェックリスト設定済み
 - **工数:** S
 
 ### 🟡 中優先度（14項目）
