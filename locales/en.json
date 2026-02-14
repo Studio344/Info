@@ -71,6 +71,14 @@
    "blog_post": {
       "back": "← Back to Blog"
    },
+   "blog": {
+      "share_label": "Share",
+      "share_twitter": "X",
+      "share_copy": "Copy Link",
+      "share_native": "Share",
+      "share_copied": "Copied!",
+      "related_title": "Related Articles"
+   },
    "projects_page": {
       "title": "All Projects",
       "desc": "A list of hobby projects built under Studio344.",

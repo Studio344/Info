@@ -16,9 +16,20 @@ i18next
         // If we invoke this from a script, let's try to find the script tag src?
         // No, simpler: check relative path.
         
+        // DEV-08: ルートからの相対パスを動的に算出（/projects/ 以外のサブディレクトリにも対応）
         let prefix = "";
-        if (path.includes("/projects/")) {
-            prefix = "../";
+        // カスタムドメインの場合: /projects/xxx.html → depth=2
+        // GitHub Pages (user.github.io/repo/) の場合: /repo/projects/xxx.html → depth=3
+        const segments = path.split('/').filter(s => s.length > 0 && s.endsWith('.html') === false);
+        // 最後のセグメントがHTMLファイル名でない場合のみ考慮
+        if (segments.length > 0) {
+          // GitHubPagesのリポジトリプレフィックスを検出
+          const isGhPages = !window.location.hostname.includes('.')  || window.location.hostname.endsWith('.github.io');
+          const baseSegments = isGhPages ? 1 : 0; // github.io/repo/ = 1 base segment
+          const extraDepth = segments.length - baseSegments;
+          if (extraDepth > 0) {
+            prefix = '../'.repeat(extraDepth);
+          }
         }
         
         // If testing locally (npx serve .), root is /

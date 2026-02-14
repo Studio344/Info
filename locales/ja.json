@@ -71,6 +71,14 @@
   "blog_post": {
     "back": "← ブログ一覧に戻る"
   },
+  "blog": {
+    "share_label": "シェア",
+    "share_twitter": "X",
+    "share_copy": "リンクをコピー",
+    "share_native": "シェア",
+    "share_copied": "コピー済み！",
+    "related_title": "関連記事"
+  },
   "projects_page": {
     "title": "All Projects",
     "desc": "Studio344 で趣味として開発したプロジェクト一覧です。",

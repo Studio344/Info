@@ -203,6 +203,9 @@ async function showSinglePost(postId) {
     // 推定読了時間を挿入
     insertReadingTime(content, mdText);
 
+    // シェアボタンを挿入
+    insertShareButtons(content, postId, extractedTitle || post.id);
+
     // 目次を挿入（タグの後）
     generateTOC(content);
 
@@ -214,6 +217,9 @@ async function showSinglePost(postId) {
 
     // 前後記事ナビゲーションを挿入
     await insertPrevNextNav(content, postId);
+
+    // 関連記事を挿入
+    await insertRelatedPosts(content, postId, post.tags || []);
 
     // 読書プログレスバーを追加
     initReadingProgress();
@@ -370,6 +376,176 @@ function updateBreadcrumbs(postTitle) {
       };
       blogLink.style.cursor = "pointer";
     }
+  }
+}
+
+// ============================================================
+// 🔗 SNSシェアボタン
+// ============================================================
+function insertShareButtons(contentElement, postId, postTitle) {
+  const lang = (i18next.language || 'ja').substring(0, 2);
+  const shareUrl = `https://studio344.net/blog.html#post/${postId}`;
+  const encodedUrl = encodeURIComponent(shareUrl);
+  const encodedTitle = encodeURIComponent(postTitle);
+
+  const shareLabel = lang === 'en' ? 'Share' : 'シェア';
+  const twitterLabel = 'X';
+  const copyLabel = lang === 'en' ? 'Copy Link' : 'リンクをコピー';
+  const copiedLabel = lang === 'en' ? 'Copied!' : 'コピー済み！';
+  const nativeLabel = lang === 'en' ? 'Share' : 'シェア';
+
+  const section = document.createElement('div');
+  section.className = 'blog-share-section';
+
+  // ラベル
+  const label = document.createElement('span');
+  label.className = 'blog-share-label';
+  label.textContent = shareLabel;
+  section.appendChild(label);
+
+  // X/Twitter ボタン
+  const twitterBtn = document.createElement('button');
+  twitterBtn.className = 'blog-share-btn';
+  twitterBtn.setAttribute('aria-label', `Share on ${twitterLabel}`);
+  twitterBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>${twitterLabel}`;
+  twitterBtn.addEventListener('click', () => {
+    window.open(
+      `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}&via=studio0344`,
+      '_blank',
+      'noopener,noreferrer,width=550,height=420'
+    );
+  });
+  section.appendChild(twitterBtn);
+
+  // コピーボタン
+  const copyBtn = document.createElement('button');
+  copyBtn.className = 'blog-share-btn';
+  copyBtn.setAttribute('aria-label', copyLabel);
+  copyBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>${copyLabel}`;
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      copyBtn.classList.add('copied');
+      const origHtml = copyBtn.innerHTML;
+      copyBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>${copiedLabel}`;
+      setTimeout(() => {
+        copyBtn.classList.remove('copied');
+        copyBtn.innerHTML = origHtml;
+      }, 2000);
+    } catch (e) {
+      console.error('Clipboard copy failed:', e);
+    }
+  });
+  section.appendChild(copyBtn);
+
+  // Web Share API ボタン（対応ブラウザのみ表示）
+  if (navigator.share) {
+    const nativeBtn = document.createElement('button');
+    nativeBtn.className = 'blog-share-btn';
+    nativeBtn.setAttribute('aria-label', nativeLabel);
+    nativeBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>${nativeLabel}`;
+    nativeBtn.addEventListener('click', async () => {
+      try {
+        await navigator.share({
+          title: postTitle,
+          url: shareUrl,
+        });
+      } catch (e) {
+        if (e.name !== 'AbortError') console.error('Share failed:', e);
+      }
+    });
+    section.appendChild(nativeBtn);
+  }
+
+  // 挿入位置: reading-time の後、または tags の後、または h1 の後
+  const readingTime = contentElement.querySelector('.reading-time');
+  const tags = contentElement.querySelector('.blog-post-tags');
+  const insertAfter = readingTime || tags || contentElement.querySelector('h1');
+  if (insertAfter && insertAfter.nextSibling) {
+    contentElement.insertBefore(section, insertAfter.nextSibling);
+  } else if (insertAfter) {
+    contentElement.appendChild(section);
+  } else {
+    contentElement.insertBefore(section, contentElement.firstChild);
+  }
+}
+
+// ============================================================
+// 📎 関連記事レコメンド
+// ============================================================
+async function insertRelatedPosts(contentElement, currentPostId, currentTags) {
+  try {
+    const res = await fetch('assets/posts/list.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const posts = await res.json();
+
+    const lang = (i18next.language || 'ja').substring(0, 2);
+    const otherPosts = posts.filter(p => p.id !== currentPostId);
+    if (otherPosts.length === 0) return;
+
+    // タグの一致数でスコアリング
+    const scored = otherPosts.map(post => {
+      const shared = (post.tags || []).filter(t => currentTags.includes(t)).length;
+      return { post, score: shared };
+    });
+
+    // スコア降順でソート、同スコアなら日付の新しい順
+    scored.sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return b.post.date.localeCompare(a.post.date);
+    });
+
+    // 上位3件を取得
+    const related = scored.slice(0, 3);
+
+    // 各記事のタイトルをMDファイルから取得
+    const cards = await Promise.all(related.map(async ({ post }) => {
+      let title = post.id;
+      try {
+        const mdRes = await fetch(`assets/posts/${post.baseFilename}.${lang}.md`);
+        if (mdRes.ok) {
+          const mdText = await mdRes.text();
+          title = extractTitle(mdText) || post.id;
+        }
+      } catch { /* fallback to id */ }
+      return { post, title };
+    }));
+
+    const sectionTitle = lang === 'en' ? 'Related Articles' : '関連記事';
+
+    const section = document.createElement('div');
+    section.className = 'blog-related-section';
+
+    const heading = document.createElement('h3');
+    heading.className = 'blog-related-title';
+    heading.textContent = `📎 ${sectionTitle}`;
+    section.appendChild(heading);
+
+    const grid = document.createElement('div');
+    grid.className = 'blog-related-grid';
+
+    cards.forEach(({ post, title }) => {
+      const card = document.createElement('a');
+      card.className = 'blog-related-card';
+      card.href = `#post/${post.id}`;
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
+        history.pushState(null, '', `#post/${post.id}`);
+        showSinglePost(post.id);
+      });
+
+      card.innerHTML = `
+        <div class="blog-related-card-emoji">${post.emoji || '📝'}</div>
+        <div class="blog-related-card-title">${title}</div>
+        <div class="blog-related-card-date">${post.date}</div>
+      `;
+      grid.appendChild(card);
+    });
+
+    section.appendChild(grid);
+    contentElement.appendChild(section);
+  } catch (e) {
+    console.error('Related posts error:', e);
   }
 }
 

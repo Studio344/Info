@@ -41,6 +41,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const container = document.getElementById("projects-wrapper");
       const template = document.getElementById("project-card-template");
 
+      // DEV-09: template要素が存在しない場合のガード
+      if (!template) {
+        console.warn('project-card-template が見つかりません');
+        return;
+      }
+
       // アイコンマップ（共通）
       const iconMap = {
         code: `<svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>`,

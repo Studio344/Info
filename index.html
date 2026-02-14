@@ -10,6 +10,11 @@
   <meta name="view-transition" content="same-origin" />
   <title>Studio344 - Portfolio</title>
   <link rel="icon" type="image/png" href="assets/logo-black.png" />
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#6366f1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="alternate" type="application/rss+xml" title="Studio344 Blog RSS" href="feed.xml">
 
   <!-- Meta Tags for SEO & Social -->
   <meta name="description" content="Portfolio of Studio344 - Engineering & Design" />
@@ -172,7 +177,8 @@
         <a href="projects.html" class="home-section-link" data-i18n="home.view_all_projects">View All →</a>
       </div>
       <div id="home-featured-projects" class="home-featured-grid">
-        <!-- JSで注入 -->
+        <div class="skeleton-card"><div class="skeleton-banner"></div><div class="skeleton-body"><div class="skeleton-line w-60"></div><div class="skeleton-line w-80"></div><div class="skeleton-line w-40"></div></div></div>
+        <div class="skeleton-card"><div class="skeleton-banner"></div><div class="skeleton-body"><div class="skeleton-line w-60"></div><div class="skeleton-line w-80"></div><div class="skeleton-line w-40"></div></div></div>
       </div>
     </section>
 
@@ -183,7 +189,9 @@
         <a href="blog.html" class="home-section-link" data-i18n="home.view_all_posts">View All →</a>
       </div>
       <div id="home-latest-blog" class="home-blog-grid">
-        <!-- JSで注入 -->
+        <div class="skeleton-blog-card"><div class="skeleton-line w-20"></div><div class="skeleton-line w-60"></div><div class="skeleton-line w-80"></div></div>
+        <div class="skeleton-blog-card"><div class="skeleton-line w-20"></div><div class="skeleton-line w-60"></div><div class="skeleton-line w-80"></div></div>
+        <div class="skeleton-blog-card"><div class="skeleton-line w-20"></div><div class="skeleton-line w-60"></div><div class="skeleton-line w-80"></div></div>
       </div>
     </section>
 

@@ -9,14 +9,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Update CSS variables for mouse position
   // This allows CSS radial-gradients to follow the mouse
+  // requestAnimationFrame でバッチ処理（PERF-08: 高頻度リペイント防止）
+  let mouseX = 0, mouseY = 0, mouseTicking = false;
   document.addEventListener("mousemove", (e) => {
-    const x = e.clientX;
-    const y = e.clientY;
-
-    // Set custom properties on body (or documentElement for broader support)
-    document.documentElement.style.setProperty("--mouse-x", `${x}px`);
-    document.documentElement.style.setProperty("--mouse-y", `${y}px`);
-  });
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    if (!mouseTicking) {
+      requestAnimationFrame(() => {
+        document.documentElement.style.setProperty("--mouse-x", `${mouseX}px`);
+        document.documentElement.style.setProperty("--mouse-y", `${mouseY}px`);
+        mouseTicking = false;
+      });
+      mouseTicking = true;
+    }
+  }, { passive: true });
 
 
   // --- 2. Typing Animation ---
@@ -126,4 +132,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Run initially for static content
   // initTilt();
+
+  // --- 9. Service Worker 登録 ---
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js').catch(() => {
+      // Service Worker 登録失敗（ローカル開発時は無視）
+    });
+  }
 });
