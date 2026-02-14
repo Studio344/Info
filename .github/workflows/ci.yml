@@ -28,6 +28,10 @@ jobs:
           node -e "JSON.parse(require('fs').readFileSync('locales/ja.json','utf8'))" || exit 1
           node -e "JSON.parse(require('fs').readFileSync('locales/en.json','utf8'))" || exit 1
       
+      - name: JSONスキーマバリデーション
+        run: |
+          node scripts/validate-json-schema.js
+
       - name: list.json ↔ MDファイル整合性チェック
         run: |
           node scripts/check-post-integrity.js
@@ -35,6 +39,14 @@ jobs:
       - name: i18nキー整合性チェック
         run: |
           node scripts/check-i18n-keys.js
+      
+      - name: sitemap.xml 整合性チェック
+        run: |
+          node scripts/generate-sitemap.js
+          git diff --exit-code sitemap.xml || {
+            echo "⚠️ sitemap.xml が最新ではありません。node scripts/generate-sitemap.js を実行してコミットしてください。"
+            exit 1
+          }
       
       - name: リンクチェック
         uses: lycheeverse/lychee-action@v2

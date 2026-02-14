@@ -181,15 +181,23 @@ async function showSinglePost(postId) {
     if (!mdRes.ok) throw new Error("Markdown not found");
     const mdText = await mdRes.text();
 
-    // Render Markdown (DOMPurifyでサニタイズ — フォールバック時はプレーンテキスト)
-    const rawHtml = marked.parse(mdText);
-    if (typeof DOMPurify !== "undefined") {
-      content.innerHTML = DOMPurify.sanitize(rawHtml);
+    // Render Markdown (marked + DOMPurify — CDN障害時はプレーンテキストに降格)
+    if (typeof marked !== "undefined") {
+      const rawHtml = marked.parse(mdText);
+      if (typeof DOMPurify !== "undefined") {
+        content.innerHTML = DOMPurify.sanitize(rawHtml);
+      } else {
+        // DOMPurify が読み込まれなかった場合、XSS防止のため生テキスト表示
+        content.textContent = mdText;
+        console.error(
+          "DOMPurify not loaded — rendering as plain text for security",
+        );
+      }
     } else {
-      // DOMPurify が読み込まれなかった場合、XSS防止のため生テキスト表示
+      // marked.js が読み込まれなかった場合、Markdownソースをそのまま表示
       content.textContent = mdText;
       console.error(
-        "DOMPurify not loaded — rendering as plain text for security",
+        "marked.js not loaded — rendering as plain text",
       );
     }
 
@@ -235,8 +243,9 @@ async function showSinglePost(postId) {
     initReadingProgress();
   } catch (e) {
     console.error(e);
-    const lang = (i18next.language || "ja").substring(0, 2);
-    content.innerHTML = `<p style="color: #888;">${lang === "en" ? "An error occurred while loading the article." : "読み込みエラーが発生しました。"}</p>`;
+    const msg = typeof i18next !== "undefined" ? i18next.t("errors.article_load_failed") : "読み込みエラーが発生しました。";
+    const retryLabel = typeof i18next !== "undefined" ? i18next.t("errors.retry") : "再試行";
+    content.innerHTML = `<div class="error-card"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p>${DOMPurify.sanitize(msg)}</p><button class="error-retry-btn" onclick="location.reload()">${retryLabel}</button></div>`;
   }
 }
 
@@ -660,7 +669,21 @@ async function loadBlogPosts(langOverride) {
 
     // --- Filter Logic Setup ---
     let activeTag = null;
+    let searchQuery = "";
     const tagsContainer = document.getElementById("blog-tags");
+    const searchInput = document.getElementById("blog-search");
+
+    // Search input with debounce
+    if (searchInput) {
+      let debounceTimer = null;
+      searchInput.addEventListener("input", () => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          searchQuery = searchInput.value.trim().toLowerCase();
+          renderGrid();
+        }, 250);
+      });
+    }
 
     // 1. Generate Tags
     if (tagsContainer) {
@@ -698,19 +721,27 @@ async function loadBlogPosts(langOverride) {
     // 2. Render Grid Function
     function renderGrid() {
       container.innerHTML = "";
-      const query = "";
+      const query = searchQuery;
+      const lang = i18next.language || "ja";
 
       const filtered = validPosts.filter((post) => {
         const matchesTag = activeTag ? post.tags.includes(activeTag) : true;
         const matchesSearch = query
           ? post.title.toLowerCase().includes(query) ||
-            post.excerpt.toLowerCase().includes(query)
+            post.excerpt.toLowerCase().includes(query) ||
+            (post.tags || []).some((t) => t.toLowerCase().includes(query))
           : true;
         return matchesTag && matchesSearch;
       });
 
       if (filtered.length === 0) {
-        container.innerHTML = `<p style="color: #666; width: 100%; text-align: center; padding: 2rem;">No posts found.</p>`;
+        const noResultsMsg = lang === "en"
+          ? "No posts found matching your criteria."
+          : "条件に一致する記事が見つかりませんでした。";
+        container.innerHTML = `<div class="blog-empty-state">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          <p>${noResultsMsg}</p>
+        </div>`;
         return;
       }
 
@@ -914,6 +945,10 @@ function insertReadingTime(contentElement, mdText) {
 // 🏷️ コードブロック言語ラベル
 // ============================================================
 function addCodeLabels(contentElement) {
+  const lang = i18next.language || "ja";
+  const copyText = lang === "en" ? "Copy" : "コピー";
+  const copiedText = lang === "en" ? "Copied!" : "コピー済み！";
+
   const pres = contentElement.querySelectorAll("pre");
   pres.forEach((pre) => {
     const code = pre.querySelector("code");
@@ -923,21 +958,44 @@ function addCodeLabels(contentElement) {
     const langClass = Array.from(code.classList).find((c) =>
       c.startsWith("language-"),
     );
-    if (!langClass) return;
-
-    const lang = langClass.replace("language-", "");
-    if (!lang || lang === "none") return;
 
     // Wrap in container
     const wrapper = document.createElement("div");
     wrapper.className = "code-block-wrapper";
 
-    const label = document.createElement("span");
-    label.className = "code-lang-label";
-    label.textContent = lang;
+    // コピーボタン（全コードブロックに追加）
+    const copyBtn = document.createElement("button");
+    copyBtn.className = "code-copy-btn";
+    copyBtn.setAttribute("aria-label", copyText);
+    copyBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg><span>${copyText}</span>`;
+    copyBtn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(code.textContent);
+        copyBtn.classList.add("copied");
+        const span = copyBtn.querySelector("span");
+        span.textContent = copiedText;
+        setTimeout(() => {
+          copyBtn.classList.remove("copied");
+          span.textContent = copyText;
+        }, 2000);
+      } catch (err) {
+        console.error("コードコピー失敗:", err);
+      }
+    });
+
+    // 言語ラベル（言語指定がある場合のみ）
+    if (langClass) {
+      const langName = langClass.replace("language-", "");
+      if (langName && langName !== "none") {
+        const label = document.createElement("span");
+        label.className = "code-lang-label";
+        label.textContent = langName;
+        wrapper.appendChild(label);
+      }
+    }
 
     pre.parentNode.insertBefore(wrapper, pre);
-    wrapper.appendChild(label);
+    wrapper.appendChild(copyBtn);
     wrapper.appendChild(pre);
   });
 }

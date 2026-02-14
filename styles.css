@@ -648,7 +648,7 @@ a.bento-card:hover {
   letter-spacing: 0.06em;
   opacity: 0;
   animation: fadeInUp 0.6s ease forwards 0.6s;
-  font-weight: 300;
+  font-weight: 400;
   max-width: 460px;
   line-height: var(--lh-body);
 }
@@ -2071,6 +2071,87 @@ a.bento-card:hover {
 /* Blog タグフィルター */
 .blog-controls {
   margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* ブログ検索入力 */
+.blog-search-wrapper {
+  position: relative;
+  max-width: 400px;
+}
+
+.blog-search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted, #64748b);
+  pointer-events: none;
+}
+
+.blog-search-input {
+  width: 100%;
+  padding: 0.6rem 0.75rem 0.6rem 2.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md, 8px);
+  color: var(--text-primary, #f1f5f9);
+  font-size: 0.9rem;
+  font-family: var(--font-main, "Inter", sans-serif);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.blog-search-input::placeholder {
+  color: var(--text-muted, #64748b);
+}
+
+.blog-search-input:focus {
+  outline: none;
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+/* iOS ズーム防止 */
+@supports (-webkit-touch-callout: none) {
+  .blog-search-input {
+    font-size: 16px;
+  }
+}
+
+/* ブログ空ステート */
+.blog-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 3rem 1rem;
+  width: 100%;
+  text-align: center;
+  color: var(--text-muted, #64748b);
+}
+
+.blog-empty-state svg {
+  opacity: 0.4;
+}
+
+.blog-empty-state p {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+  .blog-search-wrapper {
+    max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blog-search-input {
+    transition: none;
+  }
 }
 
 .blog-tag-list {
@@ -3283,6 +3364,81 @@ body.blog-single-active .blog-toc-sidebar {
   z-index: 1;
 }
 
+/* コードブロック コピーボタン */
+.code-copy-btn {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(30, 30, 40, 0.8);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: var(--text-secondary, #94a3b8);
+  font-size: 0.75rem;
+  font-family: var(--font-main, "Inter", sans-serif);
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-sm, 6px);
+  cursor: pointer;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.2s, background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.code-block-wrapper:hover .code-copy-btn,
+.code-copy-btn:focus-visible {
+  opacity: 1;
+}
+
+.code-copy-btn:hover {
+  background: rgba(99, 102, 241, 0.2);
+  color: #a5b4fc;
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+.code-copy-btn:focus-visible {
+  outline: 3px solid #a5b4fc;
+  outline-offset: 2px;
+}
+
+.code-copy-btn.copied {
+  background: rgba(34, 197, 94, 0.2);
+  color: #4ade80;
+  border-color: rgba(34, 197, 94, 0.4);
+  opacity: 1;
+}
+
+.code-copy-btn svg {
+  flex-shrink: 0;
+}
+
+/* 言語ラベルとコピーボタンの共存時: ラベルを左に移動 */
+.code-block-wrapper .code-lang-label + .code-copy-btn {
+  /* コピーボタンは右上に配置済み */
+}
+
+.code-block-wrapper .code-lang-label:first-child {
+  right: auto;
+  left: 0;
+  border-radius: 12px 0 8px 0;
+}
+
+/* モバイル: コピーボタン常時表示 */
+@media (max-width: 768px) {
+  .code-copy-btn {
+    opacity: 1;
+    padding: 0.25rem 0.5rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .code-copy-btn {
+    transition: none;
+  }
+}
+
 .code-block-wrapper pre {
   margin-bottom: 0;
 }
@@ -3984,18 +4140,96 @@ body.blog-single-active .blog-toc-sidebar {
 }
 
 /* ============================================ */
+/* エラーステート統一コンポーネント             */
+/* ============================================ */
+.error-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2.5rem 1.5rem;
+  width: 100%;
+  text-align: center;
+  background: rgba(239, 68, 68, 0.04);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+  border-radius: var(--radius-md, 8px);
+}
+
+.error-card svg {
+  color: rgba(239, 68, 68, 0.5);
+}
+
+.error-card p {
+  color: var(--text-secondary, #94a3b8);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.error-retry-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1.2rem;
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: var(--radius-sm, 6px);
+  color: #a5b4fc;
+  font-size: 0.85rem;
+  font-family: var(--font-main, "Inter", sans-serif);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.error-retry-btn:hover {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+.error-retry-btn:focus-visible {
+  outline: 3px solid #a5b4fc;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .error-retry-btn {
+    transition: none;
+  }
+}
+
+/* ============================================ */
 /* 日本語テキスト最適化                         */
 /* ============================================ */
+/* レイアウト要素(ヘッダー/ヒーロー/ナビ/フッター */
+/* /CTA)には影響させず、本文テキストのみに適用    */
+
+/* word-break のみグローバル（レイアウトに影響小） */
 :lang(ja) {
-  letter-spacing: 0.04em;
   word-break: break-all;
   overflow-wrap: break-word;
 }
 
-:lang(ja) h1,
-:lang(ja) h2,
-:lang(ja) h3 {
+/* 本文テキスト用: line-height/letter-spacing を適用 */
+:lang(ja) .article-body,
+:lang(ja) .blog-content,
+:lang(ja) .card-desc,
+:lang(ja) .project-desc,
+:lang(ja) .project-description,
+:lang(ja) .about-card p,
+:lang(ja) .privacy-content p,
+:lang(ja) .terms-content p {
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+}
+
+/* コンテンツ見出し用 */
+:lang(ja) .article-body h2,
+:lang(ja) .article-body h3,
+:lang(ja) .blog-content h2,
+:lang(ja) .blog-content h3 {
   letter-spacing: 0.02em;
+  line-height: 1.5;
 }
 
 /* ============================================ */

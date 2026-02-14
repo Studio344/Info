@@ -1,0 +1,11 @@
+# Studio344 ポートフォリオサイト — コードオーナー定義
+# PRレビュー必須化のためのファイル
+
+# デフォルト: 全ファイルのオーナー
+* @Studio344
+
+# CI/CD 設定
+.github/ @Studio344
+
+# セキュリティ関連
+assets/js/cookie-consent.js @Studio344

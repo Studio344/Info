@@ -83,6 +83,12 @@ function updateContent() {
       el.textContent = value;
     }
   });
+
+  // placeholder 属性の翻訳
+  document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    el.placeholder = i18next.t(key);
+  });
 }
 
 // --- Language Toggle Logic (Moved from script.js) ---

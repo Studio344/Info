@@ -69,7 +69,7 @@
     <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
     <link
       rel="preload"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Murecho:wght@400;500;600;700;800&family=Russo+One&family=Sora:wght@600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Murecho:wght@400;500;600;700&family=Russo+One&family=Sora:wght@600;700;800&display=swap"
       as="style"
       onload="
         this.onload = null;
@@ -79,7 +79,7 @@
     <noscript
       ><link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Murecho:wght@400;500;600;700;800&family=Russo+One&family=Sora:wght@600;700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Murecho:wght@400;500;600;700&family=Russo+One&family=Sora:wght@600;700;800&display=swap"
     /></noscript>
     <link rel="stylesheet" href="styles.css" />
     <script type="application/ld+json">
@@ -207,6 +207,17 @@
 
         <!-- Blog Controls -->
         <div class="blog-controls">
+          <div class="blog-search-wrapper">
+            <svg class="blog-search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input
+              type="search"
+              id="blog-search"
+              class="blog-search-input"
+              data-i18n-placeholder="blog.searchPlaceholder"
+              placeholder="記事を検索..."
+              autocomplete="off"
+            />
+          </div>
           <div id="blog-tags" class="blog-tag-list"></div>
         </div>
 
@@ -450,21 +461,25 @@
 
     <script defer src="assets/js/ui.js"></script>
     <script
+      defer
       src="https://cdn.jsdelivr.net/npm/dompurify@3.2.4/dist/purify.min.js"
       integrity="sha384-eEu5CTj3qGvu9PdJuS+YlkNi7d2XxQROAFYOr59zgObtlcux1ae1Il3u7jvdCSWu"
       crossorigin="anonymous"
     ></script>
     <script
+      defer
       src="https://cdn.jsdelivr.net/npm/marked@15.0.12/marked.min.js"
       integrity="sha384-948ahk4ZmxYVYOc+rxN1H2gM1EJ2Duhp7uHtZ4WSLkV4Vtx5MUqnV+l7u9B+jFv+"
       crossorigin="anonymous"
     ></script>
     <script
+      defer
       src="https://unpkg.com/i18next@23.2.3/i18next.min.js"
       integrity="sha384-vxUZOB7ych7Y7ndQtM2RKTsr+2fHukXPfoTo1s0+7o9Q/Bx3oWY0aTwenFnmrcJz"
       crossorigin="anonymous"
     ></script>
     <script
+      defer
       src="https://unpkg.com/i18next-http-backend@3.0.2/i18nextHttpBackend.min.js"
       integrity="sha384-mylaL1fxuX3DZgdMqG9QvOyXoU/N9yUKXiYZH/5Ykx6+DUDdzQAxI8Gwqh2HBe8T"
       crossorigin="anonymous"

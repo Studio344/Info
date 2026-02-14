@@ -77,7 +77,8 @@
       "share_copy": "Copy Link",
       "share_native": "Share",
       "share_copied": "Copied!",
-      "related_title": "Related Articles"
+      "related_title": "Related Articles",
+      "searchPlaceholder": "Search articles..."
    },
    "projects_page": {
       "title": "All Projects",
@@ -173,5 +174,10 @@
       "accept": "Accept",
       "decline": "Decline",
       "settings": "Cookie Settings"
+   },
+   "errors": {
+      "load_failed": "Failed to load data.",
+      "article_load_failed": "An error occurred while loading the article.",
+      "retry": "Retry"
    }
 }
