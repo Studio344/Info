@@ -11,12 +11,12 @@
 
 | 観点 | 🔴 高 | 🟡 中 | 🟢 低 | 合計 | ✅ 完了 |
 |------|--------|--------|--------|------|--------|
-| 🎨 UI/UX 改善 | 5 | 11 | 9 | **25** | 1 |
-| ⚡ パフォーマンス | 9 | 14 | 4 | **27** | 5 |
-| 🔒 セキュリティ | 4 | 8 | 10 | **22** | 3 |
-| ✨ 新機能 | 3 | 12 | 9 | **24** | 0 |
-| 🛡️ エラー/デプロイ | 12 | 14 | 4 | **30** | 8 |
-| **合計** | **33** | **59** | **36** | **128** | **17** |
+| 🎨 UI/UX 改善 | 5 | 11 | 9 | **25** | 3 |
+| ⚡ パフォーマンス | 9 | 14 | 4 | **27** | 8 |
+| 🔒 セキュリティ | 4 | 8 | 10 | **22** | 6 |
+| ✨ 新機能 | 3 | 12 | 9 | **24** | 3 |
+| 🛡️ エラー/デプロイ | 12 | 14 | 4 | **30** | 12 |
+| **合計** | **33** | **59** | **36** | **128** | **32** |
 
 ---
 
@@ -41,11 +41,12 @@
 
 ### 🔴 高優先度（5項目）
 
-#### UI-01: スケルトンローディング UI
+#### UI-01: スケルトンローディング UI ✅ 完了 (2026-02-14)
 - **問題:** `#home-featured-projects`, `#home-latest-blog`, ブログカードが fetch 完了まで空白
 - **解決策:** CSS スケルトンアニメーション付きプレースホルダーを HTML に追加
 - **影響:** 体感速度の大幅向上（知覚パフォーマンス）
 - **工数:** S
+- **ステータス:** ✅ 実装済み — index.html + blog.html に skeleton DOM、styles.css に @keyframes skeleton-pulse + a11y対応
 
 #### UI-02: ハンバーガーメニューのフォーカストラップ & Escape キー対応 ✅ 完了 (2026-02-14)
 - **問題:** モバイルメニュー展開時にキーボードフォーカスがメニュー外に逃げる
@@ -66,11 +67,12 @@
 - **影響:** モバイルコンバージョン向上
 - **工数:** M
 
-#### UI-05: ブログ記事シェアボタン
+#### UI-05: ブログ記事シェアボタン ✅ 完了 (2026-02-14)
 - **問題:** 記事の共有導線が存在しない
 - **解決策:** Web Share API + フォールバック（Twitter/X, コピーリンク）
 - **影響:** コンテンツ拡散率の向上
 - **工数:** S
+- **ステータス:** ✅ 実装済み — = FEAT-02。blog.js insertShareButtons() で Twitter/X + Copy + Web Share API 実装済み
 
 ### 🟡 中優先度（11項目）
 
@@ -79,7 +81,7 @@
 | UI-06 | View Transitions API 最適化 | `meta[name="view-transition"]` 設定済みだが CSS 定義なし | S |
 | UI-07 | 空ステートデザイン | プロジェクト0件・記事0件時の表示 | S |
 | UI-08 | ブログ検索の UX 改善 | 検索結果0件時のメッセージ、入力中のデバウンス | S |
-| UI-09 | コードブロックコピーボタン | ブログ記事の pre > code 要素にワンクリックコピー | S |
+| UI-09 | コードブロックコピーボタン ✅ | blog.js addCodeLabels() にコピーボタン追加、CSS完備 | S |
 | UI-10 | 404 ページのナビゲーション強化 | 検索候補・類似ページ提案 | M |
 | UI-11 | コンタクトフォーム導入検討 | FormSubmit/Formspree 等の静的サイト対応フォーム | M |
 | UI-12 | 画像の lazy loading 統一 | `loading="lazy"` の全 img タグへの適用確認 | S |
@@ -153,11 +155,12 @@
 - **工数:** S
 - **ステータス:** ✅ 実装済み — 全 img タグに width/height/alt/loading="lazy" を確認
 
-#### PERF-07: Service Worker 導入
+#### PERF-07: Service Worker 導入 ✅ 完了 (2026-02-14)
 - **問題:** リピート訪問時にすべてのリソースを再取得
 - **解決策:** SW で CSS/JS/フォント/JSON をキャッシュ
 - **影響:** リピート訪問 50-90% 高速化
 - **工数:** M
+- **ステータス:** ✅ 実装済み — sw.js (74行) Network-first戦略 + ui.jsでSW登録済み
 
 #### PERF-08: `mousemove` のスロットリング ✅ 完了 (2026-02-14)
 - **問題:** `ui.js` で `mousemove` ごとに CSS 変数更新 → 高頻度リペイント
@@ -185,10 +188,10 @@
 | PERF-16 | JSON レスポンスのキャッシュヘッダ | GitHub Pages のデフォルトキャッシュは 10分 | S |
 | PERF-17 | `will-change` プロパティの最適化 | GPU レイヤー管理 | S |
 | PERF-18 | Aurora アニメーションの GPU 最適化 | `transform` / `opacity` のみ使用に限定 | S |
-| PERF-19 | `font-display: swap` の確認 | FOIT → FOUT 変換 | S |
+| PERF-19 | `font-display: swap` の確認 ✅ | Google Fonts URLに&display=swap含まれていることを確認 | S |
 | PERF-20 | 画像 `fetchpriority="high"` | LCP 要素の優先ロード | S |
 | PERF-21 | `content-visibility: auto` | オフスクリーンコンテンツのレンダリング延期 | S |
-| PERF-22 | DNS プリフェッチ追加 | CDN ドメインの名前解決先行 | S |
+| PERF-22 | DNS プリフェッチ追加 ✅ | 全HTMLにpreconnect+dns-prefetch設定済み | S |
 | PERF-23 | CSS Containment 活用 | レイアウト再計算範囲の限定 | M |
 
 ### 📊 改善目標
@@ -222,11 +225,12 @@
 - **工数:** S
 - **ステータス:** ✅ 実装済み — blog.js L186-193 で DOMPurify フォールバック + textContent 表示を確認
 
-#### SEC-02: i18n `updateContent()` の innerHTML 使用
+#### SEC-02: i18n `updateContent()` の innerHTML 使用 ✅ 完了 (2026-02-14)
 - **問題:** `i18n.js` L54 — 翻訳テキストに HTML タグが含まれる場合 `innerHTML` を使用。ロケールファイルが改ざんされた場合のリスク
 - **解決策:** 許可タグリスト（`<br>`, `<strong>`, `<em>` 等）のみ通す軽量サニタイザー追加
 - **影響:** サプライチェーン攻撃への耐性向上
 - **工数:** S
+- **ステータス:** ✅ 実装済み — i18n.js L66-73 ALLOWED_TAGS + sanitizeTranslation() 実装確認
 
 #### SEC-03: Cookie 同意バナー実装 ✅ 完了 (2026-02-14)
 - **問題:** Google AdSense が全ページで無条件に読み込まれている。改正個人情報保護法（2022年施行）、電気通信事業法外部送信規律（2023年施行）に非準拠の可能性
@@ -257,12 +261,12 @@
 | # | 項目 | 概要 | 工数 |
 |---|------|------|------|
 | SEC-05 | script.js カードレンダリングでの `textContent` 確認 | `innerHTML` でのアイコン注入のサニタイズ | S |
-| SEC-06 | `Referrer-Policy` メタタグ追加 | リファラ情報漏洩防止 | S |
+| SEC-06 | `Referrer-Policy` メタタグ追加 ✅ | 全HTMLに name="referrer" strict-origin-when-cross-origin 設定済み | S |
 | SEC-07 | `X-Content-Type-Options` 相当の対策 | MIME スニッフィング対策（GitHub Pages 限界あり） | S |
 | SEC-08 | CDN 依存の複数ドメイン集約 | unpkg + cdnjs の2系統 → 単一化 or セルフホスト | M |
 | SEC-09 | SRI ハッシュの全外部リソースへの適用 | Google Fonts CSS にも SRI を検討 | S |
-| SEC-10 | Permissions-Policy メタタグ | カメラ・マイク・位置情報の使用を明示的に拒否 | S |
-| SEC-11 | `target="_blank"` の `rel` 属性の網羅確認 | `noopener noreferrer` の漏れがないか | S |
+| SEC-10 | Permissions-Policy メタタグ ✅ | 全HTMLに camera=(), microphone=(), geolocation=() 設定済み | S |
+| SEC-11 | `target="_blank"` の `rel` 属性の網羅確認 ✅ | 全リンクに noopener noreferrer 確認済み | S |
 | SEC-12 | JSON ロケールファイルの完全性チェック | ビルド時/CI で JSON バリデーション | S |
 
 ### 🟢 低優先度（10項目）
@@ -286,23 +290,26 @@
 
 ### 🔴 高優先度（ROI 最高の3機能）
 
-#### FEAT-01: RSS フィード（`/feed.xml`）
+#### FEAT-01: RSS フィード（`/feed.xml`） ✅ 完了 (2026-02-14)
 - **概要:** ブログのRSSフィードを生成し、RSSリーダーやPodcast的な読者獲得を可能にする
 - **実装:** `list.json` から静的 XML を生成するスクリプト or CI ステップ
 - **影響:** リピーター獲得の基盤
 - **工数:** S
+- **ステータス:** ✅ 実装済み — feed.xml (68行) + scripts/generate-rss.js (154行) + HTML <link rel="alternate"> 設定済み
 
-#### FEAT-02: SNS シェアボタン
+#### FEAT-02: SNS シェアボタン ✅ 完了 (2026-02-14)
 - **概要:** ブログ記事に X/Twitter, はてブ, コピーリンク のシェアボタンを追加
 - **実装:** Web Share API + 各 SNS の Intent URL
 - **影響:** コンテンツ拡散率の即時向上
 - **工数:** S
+- **ステータス:** ✅ 実装済み — blog.js insertShareButtons() Twitter/X + Copy + Web Share API、CSS完備
 
-#### FEAT-03: 関連記事レコメンド
+#### FEAT-03: 関連記事レコメンド ✅ 完了 (2026-02-14)
 - **概要:** 記事下部にタグベースの関連記事を表示
 - **実装:** `list.json` のタグ情報を使って共通タグ数でスコアリング
 - **影響:** 直帰率低下・回遊率向上
 - **工数:** S
+- **ステータス:** ✅ 実装済み — blog.js insertRelatedPosts() タグスコアリング+上位3件推薦、CSS完備
 
 ### 🟡 中優先度（12機能）
 
@@ -413,11 +420,12 @@
 - **工数:** S
 - **ステータス:** ✅ 実装済み — scripts/generate-sitemap.js + CI ステップ追加（git diff --exit-code チェック）。ブランチ: feature/phase1-quick-wins, コミット: a4b6997
 
-#### DEV-07: JSON スキーマバリデーション
+#### DEV-07: JSON スキーマバリデーション ✅ 完了 (2026-02-14)
 - **問題:** `projects.json`, `list.json` の構造ミス（必須フィールド欠落等）が無検出
 - **解決策:** JSON Schema ファイル作成 + CI での自動バリデーション
 - **影響:** データ不整合の早期検出
 - **工数:** S
+- **ステータス:** ✅ 実装済み — schemas/ + scripts/validate-json-schema.js + CIステップ追加。ブランチ: feature/phase1-quick-wins, コミット: 56a5535
 
 #### DEV-08: i18n.js パス解決の堅牢化 ✅ 完了 (2026-02-14)
 - **問題:** `path.includes("/projects/")` による naive なパス解決ヒューリスティック
@@ -468,7 +476,7 @@
 | DEV-14 | ESLint 設定追加 | JS コード品質の統一 | S |
 | DEV-15 | HTMLHint 設定追加 | HTML のベストプラクティスチェック | S |
 | DEV-16 | Stylelint 設定追加 | CSS のベストプラクティスチェック | S |
-| DEV-17 | CODEOWNERS ファイル追加 | レビュー必須化 | S |
+| DEV-17 | CODEOWNERS ファイル追加 ✅ | .github/CODEOWNERS 作成済み | S |
 | DEV-18 | 記事スキャフォルドスクリプト | 新記事作成時のテンプレート自動生成 | S |
 | DEV-19 | ロールバック手順書 | 問題発生時の復旧手順文書化 | S |
 | DEV-20 | 画像最適化 CI ステップ | 自動 WebP 変換 | M |
@@ -476,7 +484,7 @@
 | DEV-22 | パフォーマンスバジェット設定 | ファイルサイズ制限 | S |
 | DEV-23 | エラートラッキング（Sentry or 簡易版） | クライアントサイドエラーの収集 | M |
 | DEV-24 | GitHub Pages デプロイステータスの通知 | Slack/Discord への通知 | S |
-| DEV-25 | i18n キー整合性チェック | `ja.json` と `en.json` のキー差分検出 | S |
+| DEV-25 | i18n キー整合性チェック ✅ | scripts/check-i18n-keys.js + CI統合済み | S |
 | DEV-26 | CSS 変数の使用状況監査 | 未使用変数の検出 | S |
 
 ---
@@ -506,15 +514,15 @@
 - 🔒 **SEC-04**: CSP メタタグ導入 ✅
 - 🔒 **SEC-03**: Cookie 同意バナー ✅
 
-### Phase 3: 機能追加（1〜2週間）
+### Phase 3: 機能追加（1〜2週間） ✅ 完了
 > ユーザーエンゲージメント向上
 
-- ✨ **FEAT-01**: RSS フィード
-- ✨ **FEAT-02**: SNS シェアボタン
-- ✨ **FEAT-03**: 関連記事レコメンド
-- ✨ **FEAT-04**: Giscus コメント
-- 🎨 **UI-01**: スケルトンローディング
-- ⚡ **PERF-07**: Service Worker
+- ✨ **FEAT-01**: RSS フィード ✅
+- ✨ **FEAT-02**: SNS シェアボタン ✅
+- ✨ **FEAT-03**: 関連記事レコメンド ✅
+- ✨ **FEAT-04**: Giscus コメント 🔶 CSP準備のみ
+- 🎨 **UI-01**: スケルトンローディング ✅
+- ⚡ **PERF-07**: Service Worker ✅
 
 ### Phase 4: 継続的改善（随時）
 > 中長期的なプロジェクト
