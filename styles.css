@@ -2573,6 +2573,49 @@ a.bento-card:hover {
   text-decoration: none;
 }
 
+/* ヒーローカード: モバイル対応（ベーススタイル直後に配置 — カスケード順序対策） */
+@media (max-width: 768px) {
+  .blog-hero-card {
+    flex-direction: column;
+  }
+
+  .blog-hero-card .blog-preview-banner {
+    width: 100%;
+    min-width: auto;
+    height: 100px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .blog-hero-card .blog-banner-emoji {
+    font-size: 2.2rem;
+  }
+
+  .blog-hero-card .blog-preview-body {
+    padding: 1rem 1.1rem;
+  }
+
+  .blog-hero-card .blog-preview-title {
+    font-size: 1.05rem;
+  }
+
+  .blog-hero-card .blog-preview-excerpt {
+    font-size: var(--text-sm);
+    -webkit-line-clamp: 3;
+  }
+
+  .blog-preview-banner {
+    height: 80px;
+  }
+
+  .blog-banner-emoji {
+    font-size: 2rem;
+  }
+
+  .blog-preview-body {
+    padding: 1rem 1.1rem;
+  }
+}
+
 .blog-preview-card:hover {
   background: rgba(25, 25, 35, 0.8);
   border-color: rgba(99, 102, 241, 0.4);
@@ -2889,100 +2932,116 @@ a.bento-card:hover {
 }
 
 /* Table of Contents - 折りたたみ式 */
+/* ============================================ */
+/* ブログ: 目次サイドバー                       */
+/* ============================================ */
+
+/* 記事表示時のグリッドレイアウトは JS で body.blog-single-active を付与して制御 */
+body.blog-single-active .bento-grid {
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 0;
+  align-items: start;
+}
+
+body.blog-single-active .bento-card.text-content-card {
+  grid-column: 1;
+}
+
+.blog-toc-sidebar {
+  display: none; /* 記事一覧時は非表示 */
+}
+
+body.blog-single-active .blog-toc-sidebar {
+  display: block;
+  grid-column: 2;
+  position: sticky;
+  top: 5rem;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(165, 180, 252, 0.2) transparent;
+  padding-top: 8rem; /* ヘッダー分 + タイトル分の余白 */
+}
+
 .blog-toc {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 0.8rem 1.2rem;
-  margin-bottom: 2.5rem;
-  max-width: 360px;
-  transition: max-width 0.3s ease, padding 0.3s ease;
-}
-
-.blog-toc.toc-expanded {
-  max-width: 100%;
-  padding: 1.2rem 1.5rem;
-}
-
-.blog-toc-header {
-  -webkit-user-select: none;
-  user-select: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  gap: 0.5rem;
-}
-
-.blog-toc-header:hover {
-  opacity: 0.8;
+  background: transparent;
+  border: none;
+  padding: 0 0.5rem;
 }
 
 .blog-toc-title {
-  font-weight: bold;
-  margin-bottom: 0;
-  color: #fff;
-  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  white-space: nowrap;
 }
 
 .blog-toc-icon {
-  font-size: 1.1rem;
-}
-
-.blog-toc-toggle {
-  color: #aaa;
-  font-size: 0.75rem;
-  transition: color 0.2s;
-}
-
-.blog-toc-header:hover .blog-toc-toggle {
-  color: #a5b4fc;
+  font-size: 0.8rem;
 }
 
 .blog-toc ul {
   list-style: none;
   padding-left: 0;
-  margin-top: 0.8rem;
-  margin-bottom: 0;
-  animation: tocSlideDown 0.25s ease-out;
-}
-
-@keyframes tocSlideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  margin: 0;
 }
 
 .blog-toc li {
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.1rem;
 }
 
 .blog-toc li a {
-  color: var(--text-secondary);
+  color: var(--text-muted);
   text-decoration: none;
-  transition: color 0.2s;
-  font-size: 0.9rem;
+  transition: color 0.2s, border-color 0.2s;
+  font-size: 0.75rem;
   display: block;
-  padding: 0.15rem 0;
+  padding: 0.15rem 0 0.15rem 0.6rem;
+  line-height: 1.45;
+  border-left: 2px solid transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .blog-toc li a:hover {
-  text-decoration: underline;
   color: var(--accent-lavender);
+  white-space: normal;
 }
 
-/* Indent h3 */
+.blog-toc li a.toc-active {
+  color: var(--accent-lavender);
+  border-left-color: var(--accent-lavender);
+  font-weight: 500;
+}
+
+/* h3 インデント */
 .toc-h3 {
-  padding-left: 1.2rem;
-  font-size: 0.85rem;
+  padding-left: 0.6rem;
+}
+
+.toc-h3 a {
+  font-size: 0.7rem !important;
+}
+
+/* モバイル/タブレット: サイドバー非表示 */
+@media (max-width: 1024px) {
+  body.blog-single-active .bento-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.blog-single-active .blog-toc-sidebar {
+    display: none;
+  }
 }
 
 /* Blog Headings */
@@ -3024,7 +3083,7 @@ a.bento-card:hover {
 
 /* リード文（h1直後の最初の段落を強調） */
 #blog-single-content .blog-post-tags + p,
-#blog-single-content .blog-toc + p,
+#blog-single-content .reading-time + p,
 #blog-single-content h1 + p {
   font-size: 1.1rem;
   color: #b8b8b8;
@@ -3421,6 +3480,24 @@ a.bento-card:hover {
   font-weight: 600;
   color: #fff;
   white-space: nowrap;
+}
+
+/* モバイル: ナビカードをフル幅に（カスケード順序修正） */
+@media (max-width: 768px) {
+  .home-nav-card--projects,
+  .home-nav-card--blog,
+  .home-nav-card--connect {
+    grid-column: span 12;
+  }
+
+  .home-nav-card {
+    padding: 1.2rem 1rem;
+  }
+
+  .home-connect-sns-row {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
 }
 
 /* About カード full width */
@@ -4054,6 +4131,7 @@ a.bento-card:hover {
   padding: 0;
   font: inherit;
   cursor: pointer;
+  text-align: left;
   color: var(--text-muted, #888);
   transition: color 0.2s ease;
 }

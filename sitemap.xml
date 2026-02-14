@@ -49,6 +49,26 @@
 
   <!-- ブログ記事 -->
   <url>
+    <loc>https://studio344.net/blog.html#post/copilot-128-improvements</loc>
+    <lastmod>2026-02-14</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://studio344.net/blog.html#post/pwa-sw-rss</loc>
+    <lastmod>2026-02-12</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://studio344.net/blog.html#post/static-site-security</loc>
+    <lastmod>2026-02-11</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://studio344.net/blog.html#post/css-cascade-trap</loc>
+    <lastmod>2026-02-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://studio344.net/blog.html#post/gsap-portfolio</loc>
     <lastmod>2026-02-07</lastmod>
     <priority>0.7</priority>

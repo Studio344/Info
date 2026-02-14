@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         statPosts.textContent = data.length;
       })
       .catch((err) => {
-        console.error('ブログ記事数の取得に失敗:', err.message);
+        console.error("ブログ記事数の取得に失敗:", err.message);
         statPosts.textContent = "-";
       });
   }
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // DEV-09: template要素が存在しない場合のガード
       if (!template) {
-        console.warn('project-card-template が見つかりません');
+        console.warn("project-card-template が見つかりません");
         return;
       }
 
@@ -105,8 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (project.comingSoon) {
               linkEl.removeAttribute("href");
               linkEl.classList.add("disabled");
-              linkEl.textContent =
-                lang === "ja" ? "準備中…" : "Coming Soon…";
+              linkEl.textContent = lang === "ja" ? "準備中…" : "Coming Soon…";
               linkEl.setAttribute("aria-disabled", "true");
               card.classList.add("coming-soon");
             } else {
@@ -137,24 +136,41 @@ document.addEventListener("DOMContentLoaded", () => {
       if (homeFeatured && template) {
         const featured = projects.filter((p) => !p.comingSoon).slice(0, 2);
         function renderHomeFeatured() {
-          const lang = typeof i18next !== "undefined" && i18next.language ? i18next.language : "ja";
-          const viewText = typeof i18next !== "undefined" ? i18next.t("projects_page.view_project") : "詳細を見る →";
+          const lang =
+            typeof i18next !== "undefined" && i18next.language
+              ? i18next.language
+              : "ja";
+          const viewText =
+            typeof i18next !== "undefined"
+              ? i18next.t("projects_page.view_project")
+              : "詳細を見る →";
           homeFeatured.innerHTML = "";
           featured.forEach((project) => {
             const clone = template.content.cloneNode(true);
             const card = clone.querySelector(".project-card");
             const visualClass = project.visualClass || "visual-portfolio";
             const iconSvg = iconMap[project.icon] || iconMap["code"];
-            card.querySelector(".card-visual-header").classList.add(visualClass);
+            card
+              .querySelector(".card-visual-header")
+              .classList.add(visualClass);
             card.querySelector(".card-visual-icon").innerHTML = iconSvg;
-            const title = lang === "ja" && project.title_ja ? project.title_ja : project.title;
-            const desc = lang === "ja" && project.description_ja ? project.description_ja : project.description;
+            const title =
+              lang === "ja" && project.title_ja
+                ? project.title_ja
+                : project.title;
+            const desc =
+              lang === "ja" && project.description_ja
+                ? project.description_ja
+                : project.description;
             const titleEl = card.querySelector("h3");
             if (titleEl) titleEl.textContent = title;
             const descEl = card.querySelector("p");
             if (descEl) descEl.textContent = desc;
             const linkEl = card.querySelector("a");
-            if (linkEl) { linkEl.href = project.link; linkEl.textContent = viewText; }
+            if (linkEl) {
+              linkEl.href = project.link;
+              linkEl.textContent = viewText;
+            }
             homeFeatured.appendChild(clone);
           });
         }
@@ -185,23 +201,35 @@ document.addEventListener("DOMContentLoaded", () => {
         // 各言語のタイトルを事前に取得
         async function loadTitles(lang) {
           const titles = {};
-          await Promise.all(latest.map(async (post) => {
-            try {
-              const res = await fetch(`assets/posts/${post.baseFilename}.${lang}.md`);
-              if (res.ok) {
-                const md = await res.text();
-                titles[post.id] = extractTitle(md);
+          await Promise.all(
+            latest.map(async (post) => {
+              try {
+                const res = await fetch(
+                  `assets/posts/${post.baseFilename}.${lang}.md`,
+                );
+                if (res.ok) {
+                  const md = await res.text();
+                  titles[post.id] = extractTitle(md);
+                }
+              } catch (e) {
+                /* ignore */
               }
-            } catch (e) { /* ignore */ }
-          }));
+            }),
+          );
           return titles;
         }
 
         // 初期ロード: 両言語を並列取得
-        const [titlesJa, titlesEn] = await Promise.all([loadTitles("ja"), loadTitles("en")]);
+        const [titlesJa, titlesEn] = await Promise.all([
+          loadTitles("ja"),
+          loadTitles("en"),
+        ]);
 
         function renderHomeBlog() {
-          const lang = typeof i18next !== "undefined" && i18next.language ? i18next.language : "ja";
+          const lang =
+            typeof i18next !== "undefined" && i18next.language
+              ? i18next.language
+              : "ja";
           const titles = lang === "ja" ? titlesJa : titlesEn;
           homeBlog.innerHTML = "";
           latest.forEach((post) => {
@@ -213,7 +241,10 @@ document.addEventListener("DOMContentLoaded", () => {
               <span class="home-blog-emoji">${post.emoji || "📝"}</span>
               <span class="home-blog-date">${post.date}</span>
               <span class="home-blog-title">${title}</span>
-              <span class="home-blog-tags">${(post.tags || []).slice(0, 2).map(t => `<span class="blog-preview-tag">${t}</span>`).join("")}</span>
+              <span class="home-blog-tags">${(post.tags || [])
+                .slice(0, 2)
+                .map((t) => `<span class="blog-preview-tag">${t}</span>`)
+                .join("")}</span>
             `;
             homeBlog.appendChild(card);
           });
@@ -224,8 +255,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       })
       .catch((err) => {
-        console.error('最新ブログの取得に失敗:', err.message);
-        if (homeBlog) homeBlog.innerHTML = '<p style="color: var(--text-secondary);">Failed to load posts.</p>';
+        console.error("最新ブログの取得に失敗:", err.message);
+        if (homeBlog)
+          homeBlog.innerHTML =
+            '<p style="color: var(--text-secondary);">Failed to load posts.</p>';
       });
   }
 });

@@ -1,7 +1,6 @@
 // i18n.js
-i18next
-  .use(i18nextHttpBackend)
-  .init({
+i18next.use(i18nextHttpBackend).init(
+  {
     lng: "ja",
     fallbackLng: "ja",
     backend: {
@@ -15,41 +14,47 @@ i18next
         // Adjust for GitHub Pages which might have a repo prefix
         // If we invoke this from a script, let's try to find the script tag src?
         // No, simpler: check relative path.
-        
+
         // DEV-08: ルートからの相対パスを動的に算出（/projects/ 以外のサブディレクトリにも対応）
         let prefix = "";
         // カスタムドメインの場合: /projects/xxx.html → depth=2
         // GitHub Pages (user.github.io/repo/) の場合: /repo/projects/xxx.html → depth=3
-        const segments = path.split('/').filter(s => s.length > 0 && s.endsWith('.html') === false);
+        const segments = path
+          .split("/")
+          .filter((s) => s.length > 0 && s.endsWith(".html") === false);
         // 最後のセグメントがHTMLファイル名でない場合のみ考慮
         if (segments.length > 0) {
           // GitHubPagesのリポジトリプレフィックスを検出
-          const isGhPages = !window.location.hostname.includes('.')  || window.location.hostname.endsWith('.github.io');
+          const isGhPages =
+            !window.location.hostname.includes(".") ||
+            window.location.hostname.endsWith(".github.io");
           const baseSegments = isGhPages ? 1 : 0; // github.io/repo/ = 1 base segment
           const extraDepth = segments.length - baseSegments;
           if (extraDepth > 0) {
-            prefix = '../'.repeat(extraDepth);
+            prefix = "../".repeat(extraDepth);
           }
         }
-        
+
         // If testing locally (npx serve .), root is /
         // If on GH Pages (studio344.net), root is / (if custom domain)
         // If on GH Pages (user.github.io/Info), root is /Info/
-        
+
         // Let's assume locales is always at the same level as i18n.js (root of app)
         // If i18n.js is loaded via src="../i18n.js" then locales is at "../locales"
-        
+
         return `${prefix}locales/${lng}.json`;
-      }
+      },
     },
     // host on github pages under /Info/, so we might need relative path or absolute path
     // For local dev with `npx serve .`, it is root.
     // To support both, we can try relative path: './locales/{{lng}}.json' if script is in root.
     // But i18n.js is in root.
-  }, function (err, t) {
+  },
+  function (err, t) {
     if (err) return console.error(err);
     updateContent();
-  });
+  },
+);
 
 i18next.on("languageChanged", (lng) => {
   // HTMLのlang属性を更新 (SEO + スクリーンリーダー対応)
@@ -64,7 +69,7 @@ function updateContent() {
   function sanitizeTranslation(html) {
     // 許可リスト外のHTMLタグを除去する
     return html.replace(/<\/?([a-zA-Z][a-zA-Z0-9]*)\b[^>]*>/g, (match, tag) => {
-      return ALLOWED_TAGS.test(tag) ? match : '';
+      return ALLOWED_TAGS.test(tag) ? match : "";
     });
   }
 
@@ -90,13 +95,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const langLabel = langToggle.querySelector(".lang-label");
     const labelTarget = langLabel || langToggle;
     labelTarget.textContent = currentLang === "ja" ? "EN" : "JP";
-    langToggle.setAttribute("aria-label", currentLang === "ja" ? "Switch to English" : "日本語に切り替え");
+    langToggle.setAttribute(
+      "aria-label",
+      currentLang === "ja" ? "Switch to English" : "日本語に切り替え",
+    );
 
     langToggle.addEventListener("click", () => {
       const newLang = i18next.language === "ja" ? "en" : "ja";
       i18next.changeLanguage(newLang);
       labelTarget.textContent = newLang === "ja" ? "EN" : "JP";
-      langToggle.setAttribute("aria-label", newLang === "ja" ? "Switch to English" : "日本語に切り替え");
+      langToggle.setAttribute(
+        "aria-label",
+        newLang === "ja" ? "Switch to English" : "日本語に切り替え",
+      );
     });
   }
 
@@ -106,8 +117,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const overlay = document.querySelector(".nav-menu-overlay");
 
   // ハンバーガーアイコン SVG
-  const ICON_HAMBURGER = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
-  const ICON_CLOSE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+  const ICON_HAMBURGER =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+  const ICON_CLOSE =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
 
   if (hamburger && navMenu) {
     /**
@@ -157,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (e.key !== "Tab" || !navMenu.classList.contains("open")) return;
 
       const focusableEls = navMenu.querySelectorAll(
-        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
       );
       if (focusableEls.length === 0) return;
 
