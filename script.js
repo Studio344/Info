@@ -185,8 +185,9 @@ document.addEventListener("DOMContentLoaded", () => {
       if (statProjects) statProjects.textContent = "-";
       const container = document.getElementById("projects-wrapper");
       if (container) {
-        container.innerHTML =
-          '<p class="error-message" data-i18n="errors.load_failed">データの読み込みに失敗しました。再読み込みしてください。</p>';
+        const msg = typeof i18next !== "undefined" ? i18next.t("errors.load_failed") : "データの読み込みに失敗しました。";
+        const retryLabel = typeof i18next !== "undefined" ? i18next.t("errors.retry") : "再試行";
+        container.innerHTML = `<div class="error-card"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p>${DOMPurify ? DOMPurify.sanitize(msg) : msg}</p><button class="error-retry-btn" onclick="location.reload()">${retryLabel}</button></div>`;
       }
     });
 
@@ -265,9 +266,11 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch((err) => {
         console.error("最新ブログの取得に失敗:", err.message);
-        if (homeBlog)
-          homeBlog.innerHTML =
-            '<p style="color: var(--text-secondary);">Failed to load posts.</p>';
+        if (homeBlog) {
+          const msg = typeof i18next !== "undefined" ? i18next.t("errors.load_failed") : "Failed to load posts.";
+          const retryLabel = typeof i18next !== "undefined" ? i18next.t("errors.retry") : "再試行";
+          homeBlog.innerHTML = `<div class="error-card"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p>${msg}</p><button class="error-retry-btn" onclick="location.reload()">${retryLabel}</button></div>`;
+        }
       });
   }
 });

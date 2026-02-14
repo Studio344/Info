@@ -77,7 +77,8 @@
     "share_copy": "リンクをコピー",
     "share_native": "シェア",
     "share_copied": "コピー済み！",
-    "related_title": "関連記事"
+    "related_title": "関連記事",
+    "searchPlaceholder": "記事を検索..."
   },
   "projects_page": {
     "title": "All Projects",
@@ -173,5 +174,10 @@
     "accept": "同意する",
     "decline": "拒否する",
     "settings": "Cookie 設定"
+  },
+  "errors": {
+    "load_failed": "データの読み込みに失敗しました。",
+    "article_load_failed": "記事の読み込みでエラーが発生しました。",
+    "retry": "再試行"
   }
 }

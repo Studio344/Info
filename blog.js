@@ -243,8 +243,9 @@ async function showSinglePost(postId) {
     initReadingProgress();
   } catch (e) {
     console.error(e);
-    const lang = (i18next.language || "ja").substring(0, 2);
-    content.innerHTML = `<p style="color: #888;">${lang === "en" ? "An error occurred while loading the article." : "読み込みエラーが発生しました。"}</p>`;
+    const msg = typeof i18next !== "undefined" ? i18next.t("errors.article_load_failed") : "読み込みエラーが発生しました。";
+    const retryLabel = typeof i18next !== "undefined" ? i18next.t("errors.retry") : "再試行";
+    content.innerHTML = `<div class="error-card"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p>${DOMPurify.sanitize(msg)}</p><button class="error-retry-btn" onclick="location.reload()">${retryLabel}</button></div>`;
   }
 }
 
@@ -668,7 +669,21 @@ async function loadBlogPosts(langOverride) {
 
     // --- Filter Logic Setup ---
     let activeTag = null;
+    let searchQuery = "";
     const tagsContainer = document.getElementById("blog-tags");
+    const searchInput = document.getElementById("blog-search");
+
+    // Search input with debounce
+    if (searchInput) {
+      let debounceTimer = null;
+      searchInput.addEventListener("input", () => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          searchQuery = searchInput.value.trim().toLowerCase();
+          renderGrid();
+        }, 250);
+      });
+    }
 
     // 1. Generate Tags
     if (tagsContainer) {
@@ -706,19 +721,27 @@ async function loadBlogPosts(langOverride) {
     // 2. Render Grid Function
     function renderGrid() {
       container.innerHTML = "";
-      const query = "";
+      const query = searchQuery;
+      const lang = i18next.language || "ja";
 
       const filtered = validPosts.filter((post) => {
         const matchesTag = activeTag ? post.tags.includes(activeTag) : true;
         const matchesSearch = query
           ? post.title.toLowerCase().includes(query) ||
-            post.excerpt.toLowerCase().includes(query)
+            post.excerpt.toLowerCase().includes(query) ||
+            (post.tags || []).some((t) => t.toLowerCase().includes(query))
           : true;
         return matchesTag && matchesSearch;
       });
 
       if (filtered.length === 0) {
-        container.innerHTML = `<p style="color: #666; width: 100%; text-align: center; padding: 2rem;">No posts found.</p>`;
+        const noResultsMsg = lang === "en"
+          ? "No posts found matching your criteria."
+          : "条件に一致する記事が見つかりませんでした。";
+        container.innerHTML = `<div class="blog-empty-state">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          <p>${noResultsMsg}</p>
+        </div>`;
         return;
       }
 
