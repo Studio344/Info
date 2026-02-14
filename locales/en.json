@@ -159,5 +159,11 @@
       "copyright_title": "4. Copyright",
       "copyright_desc": "All content published on this site is owned by us. Use beyond personal purposes without written permission is prohibited.",
       "updated": "Last updated: February 4, 2026"
+   },
+   "cookie": {
+      "message": "This site uses cookies for advertising purposes. By clicking \"Accept\", you consent to the use of cookies.",
+      "accept": "Accept",
+      "decline": "Decline",
+      "settings": "Cookie Settings"
    }
 }
