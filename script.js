@@ -179,6 +179,15 @@ document.addEventListener("DOMContentLoaded", () => {
           i18next.on("languageChanged", renderHomeFeatured);
         }
       }
+    })
+    .catch((err) => {
+      console.error("プロジェクトデータの取得に失敗:", err.message);
+      if (statProjects) statProjects.textContent = "-";
+      const container = document.getElementById("projects-wrapper");
+      if (container) {
+        container.innerHTML =
+          '<p class="error-message" data-i18n="errors.load_failed">データの読み込みに失敗しました。再読み込みしてください。</p>';
+      }
     });
 
   // --- ホームページ: Latest Blog セクション ---
