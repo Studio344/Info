@@ -9,6 +9,7 @@
  */
 
 const fs = require('fs');
+const { execFileSync } = require('child_process');
 const path = require('path');
 
 const BASE_URL = 'https://studio344.net';
@@ -41,6 +42,20 @@ const STATIC_PAGES = [
  * @returns {string} YYYY-MM-DD 形式の日付
  */
 function getLastMod(filePath) {
+  // ファイルの mtime は「いつ内容が変わったか」ではなく「いつ手元に置かれたか」を表す。
+  // git clone や CI のチェックアウト直後は全ファイルが当日になるため、mtime を使うと
+  // sitemap.xml が実行のたびに変わり、CI の「再生成して差分ゼロ」検証が構造的に通らない。
+  // 最終コミット日はどのチェックアウトでも同じ値になり、内容が変わった日そのものでもある。
+  try {
+    const committed = execFileSync('git', ['log', '-1', '--format=%cs', '--', filePath], {
+      cwd: ROOT_DIR,
+      encoding: 'utf8',
+    }).trim();
+    if (/^\d{4}-\d{2}-\d{2}$/.test(committed)) return committed;
+  } catch {
+    // git が無い環境（ZIP 展開など）では下の mtime にフォールバックする
+  }
+
   try {
     const stat = fs.statSync(filePath);
     return stat.mtime.toISOString().split('T')[0];

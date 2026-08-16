@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # sitemap.xml の lastmod は各ファイルの最終コミット日から求めるため、
+          # 既定の浅いクローンでは全ファイルが同じ日付になってしまう。
+          fetch-depth: 0
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
