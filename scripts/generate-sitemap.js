@@ -31,6 +31,7 @@ const STATIC_PAGES = [
   { path: '/projects/ucfitness.html',  file: 'projects/ucfitness.html', priority: '0.9' },
   { path: '/projects/portfolio.html',  file: 'projects/portfolio.html', priority: '0.7' },
   { path: '/privacy-policy.html',      file: 'privacy-policy.html', priority: '0.5' },
+  { path: '/dual-subtitles-privacy.html', file: 'dual-subtitles-privacy.html', priority: '0.5' },
   { path: '/terms.html',               file: 'terms.html',          priority: '0.5' },
 ];
 
