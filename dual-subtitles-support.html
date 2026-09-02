@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Nothing is loaded from anywhere, and nothing is sent anywhere. The page composes a
+         report and hands it to the reader; they send it themselves. That is not a stylistic
+         choice — the product's whole promise is that watching data stays on the device, and a
+         support form that quietly posted to a third party would be the one place that stopped
+         being true. -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; script-src 'unsafe-inline'; form-action 'none'; base-uri 'none'"
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="robots" content="index, follow" />
+    <title>Dual Subtitles サポート - Studio344</title>
+    <meta
+      name="description"
+      content="Dual Subtitles で字幕が出ない・ずれるといったご報告の窓口です。作品名とエピソードをいただければ、たいてい直せます。入力内容はこのページからどこにも送信されません。"
+    />
+    <link rel="canonical" href="https://studio344.net/dual-subtitles-support.html" />
+    <link rel="icon" type="image/png" href="assets/logo-black.png" />
+    <style>
+      :root {
+        --ink: #07090f;
+        --ink-2: #0c1019;
+        --panel: #111826;
+        --edge: #202a3d;
+        --edge-soft: #18202f;
+        --field: #0c141b;
+        --text: #f2f5fa;
+        --text-2: #aab7c9;
+        --muted: #6f7e97;
+        --line-2: #ffe36e;
+        --accent: #4cb8ff;
+        --ok: #7ee0ac;
+        color-scheme: dark;
+        font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic Medium",
+          "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        font-feature-settings: "palt" 1;
+      }
+      * { box-sizing: border-box; }
+      h1, h2, p, li, label, dd { word-break: auto-phrase; line-break: strict; }
+      body {
+        margin: 0;
+        padding: 0 20px 72px;
+        background:
+          radial-gradient(70% 42% at 82% -6%, rgba(53, 177, 255, .15), transparent 62%),
+          radial-gradient(60% 34% at 10% 104%, rgba(255, 227, 110, .045), transparent 60%),
+          linear-gradient(170deg, #101a24 0%, var(--ink-2) 30%, var(--ink) 100%);
+        background-attachment: fixed;
+        color: var(--text);
+        font-size: 15px;
+        line-height: 1.85;
+      }
+      .wrap { max-width: 720px; margin: 0 auto; }
+
+      header { display: flex; align-items: center; gap: 12px; padding: 26px 0 34px; }
+      header a { display: inline-flex; align-items: center; gap: 10px; color: var(--text-2); font-size: 13px; text-decoration: none; }
+      header a:hover { color: var(--text); }
+      .mark { width: 34px; height: 34px; border-radius: 8px; }
+
+      h1 { margin: 0 0 10px; font-size: 30px; font-weight: 800; letter-spacing: -.015em; line-height: 1.35; }
+      .lede { margin: 0 0 8px; color: var(--text-2); }
+      .lede-en { margin: 0 0 30px; color: var(--muted); font-size: 13px; }
+
+      .card {
+        margin: 0 0 22px;
+        padding: 22px 24px;
+        border: 1px solid var(--edge-soft);
+        border-radius: 16px;
+        background: linear-gradient(180deg, rgba(23, 32, 46, .72), rgba(12, 16, 25, .72));
+        box-shadow: 0 18px 44px rgba(0, 0, 0, .38);
+      }
+      .card h2 { margin: 0 0 6px; color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: .06em; }
+
+      .field { display: grid; gap: 6px; margin: 0 0 18px; }
+      .field > span { font-size: 13.5px; font-weight: 700; }
+      .field .hint { color: var(--muted); font-size: 12.5px; font-weight: 400; }
+      input[type="text"], input[type="email"], textarea, select {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid var(--edge);
+        border-radius: 9px;
+        background: var(--field);
+        color: var(--text);
+        font: inherit;
+        font-size: 14px;
+      }
+      textarea { min-height: 116px; resize: vertical; line-height: 1.8; }
+      input:focus, textarea:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--accent); }
+      .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      @media (max-width: 560px) { .row { grid-template-columns: 1fr; } }
+
+      fieldset { margin: 0 0 18px; padding: 0; border: 0; }
+      legend { padding: 0; font-size: 13.5px; font-weight: 700; }
+      .choices { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+      .choices label {
+        padding: 7px 14px;
+        border: 1px solid var(--edge);
+        border-radius: 999px;
+        background: var(--field);
+        color: var(--text-2);
+        font-size: 13.5px;
+        cursor: pointer;
+      }
+      .choices input { position: absolute; opacity: 0; pointer-events: none; }
+      .choices input:checked + span { color: var(--ink); }
+      .choices label:has(input:checked) { border-color: var(--line-2); background: var(--line-2); color: var(--ink); font-weight: 700; }
+      .choices label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+      .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+      button {
+        padding: 11px 20px;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        font: inherit;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      .primary { background: var(--accent); color: #06121c; }
+      .primary:hover { filter: brightness(1.08); }
+      .secondary { border-color: var(--edge); background: transparent; color: var(--text); }
+      .secondary:hover { background: rgba(255, 255, 255, .06); }
+      button:focus-visible { outline: 2px solid var(--line-2); outline-offset: 2px; }
+
+      .said { margin: 12px 0 0; color: var(--ok); font-size: 13px; min-height: 1.4em; }
+      .said:empty { margin: 0; }
+
+      .preview { margin: 18px 0 0; }
+      .preview summary { color: var(--text-2); font-size: 13px; cursor: pointer; }
+      .preview pre {
+        margin: 10px 0 0;
+        padding: 14px 16px;
+        overflow-x: auto;
+        border: 1px solid var(--edge-soft);
+        border-radius: 10px;
+        background: #060a11;
+        color: var(--text-2);
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-size: 12.5px;
+        line-height: 1.7;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+
+      .note { color: var(--muted); font-size: 13px; }
+      .note strong { color: var(--text-2); }
+      .addr { color: var(--text); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+      a { color: var(--accent); }
+      footer { margin-top: 34px; color: var(--muted); font-size: 12.5px; }
+      footer a { color: var(--muted); }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <a href="https://studio344.net/">
+          <svg class="mark" viewBox="0 0 128 128" role="img" aria-label="Dual Subtitles">
+            <rect width="128" height="128" rx="26" fill="#131924" />
+            <rect x="16" y="44" width="96" height="20" rx="10" fill="#ffffff" />
+            <rect x="34" y="76" width="60" height="20" rx="10" fill="#ffe36e" />
+          </svg>
+          <span>Studio344</span>
+        </a>
+      </header>
+
+      <h1>Dual Subtitles のご報告</h1>
+      <p class="lede">
+        字幕が出ない、ずれる、思った言語にならない。作品名とエピソードをいただければ、たいてい直せます。<span
+          >作品によって収録されている字幕トラックが違うため、どの作品で起きたかが手がかりになります。</span
+        >
+      </p>
+      <p class="lede-en">
+        English is fine too. Tell us the title and episode and we can usually fix it.
+      </p>
+
+      <div class="card">
+        <h2>ご報告の内容</h2>
+
+        <label class="field">
+          <span>作品名 <span class="hint">例：ザ・ボーイズ</span></span>
+          <input id="title" type="text" autocomplete="off" />
+        </label>
+
+        <div class="row">
+          <label class="field">
+            <span>シーズン・エピソード <span class="hint">分かれば</span></span>
+            <input id="episode" type="text" autocomplete="off" placeholder="S2 E4" />
+          </label>
+          <label class="field">
+            <span>返信先メール <span class="hint">任意</span></span>
+            <input id="reply" type="email" autocomplete="email" />
+          </label>
+        </div>
+
+        <fieldset>
+          <legend>サービス</legend>
+          <div class="choices">
+            <label><input type="radio" name="service" value="Prime Video" checked /><span>Prime Video</span></label>
+            <label><input type="radio" name="service" value="Netflix" /><span>Netflix</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>ブラウザ</legend>
+          <div class="choices">
+            <label><input type="radio" name="browser" value="Chrome" checked /><span>Chrome</span></label>
+            <label><input type="radio" name="browser" value="Edge" /><span>Edge</span></label>
+          </div>
+        </fieldset>
+
+        <label class="field">
+          <span>起きたこと</span>
+          <textarea id="detail" placeholder="上段だけ出て、下段が出ませんでした。設定は上段が日本語、下段が英語（CC・SDH優先）です。"></textarea>
+        </label>
+
+        <div class="actions">
+          <button type="button" class="primary" id="send">メールを開いて送る</button>
+          <button type="button" class="secondary" id="copy">内容をコピー</button>
+        </div>
+        <p class="said" id="said" role="status" aria-live="polite"></p>
+
+        <details class="preview">
+          <summary>送られる内容をそのまま見る</summary>
+          <pre id="preview"></pre>
+        </details>
+      </div>
+
+      <div class="card">
+        <h2>この窓口について</h2>
+        <p class="note">
+          <strong>入力した内容は、このページからどこにも送信されません。</strong>
+          ページが本文を組み立てるだけで、送るのはあなた自身のメールです。だから、書いてから送るのをやめても、何も残りません。
+        </p>
+        <p class="note">
+          メールソフトが開かない環境では「内容をコピー」を押し、
+          <span class="addr">studio344.net@gmail.com</span> 宛に貼り付けて送ってください。
+        </p>
+        <p class="note">
+          お返事は数日いただくことがあります。個人で作っているためご容赦ください。
+        </p>
+      </div>
+
+      <footer>
+        <a href="dual-subtitles-privacy.html">プライバシーポリシー</a>
+        ・<a href="https://studio344.net/">Studio344</a>
+      </footer>
+    </div>
+
+    <script>
+      (function () {
+        'use strict';
+        var ADDRESS = 'studio344.net@gmail.com';
+
+        // The extension links here with ?v=<version>, so a report says which build it came
+        // from without the page asking the reader to know that.
+        var version = new URLSearchParams(location.search).get('v') || '';
+        if (!/^[\w.\-]{0,20}$/.test(version)) version = '';
+
+        function value(id) {
+          var node = document.getElementById(id);
+          return node ? node.value.trim() : '';
+        }
+        function chosen(name) {
+          var node = document.querySelector('input[name="' + name + '"]:checked');
+          return node ? node.value : '';
+        }
+
+        function report() {
+          var lines = [
+            '作品名：' + (value('title') || '（未記入）'),
+            'シーズン・エピソード：' + (value('episode') || '（未記入）'),
+            'サービス：' + chosen('service'),
+            'ブラウザ：' + chosen('browser'),
+            '拡張機能のバージョン：' + (version || '（不明）'),
+            '',
+            '起きたこと：',
+            value('detail') || '（未記入）'
+          ];
+          var reply = value('reply');
+          if (reply) lines.push('', '返信先：' + reply);
+          return lines.join('\n');
+        }
+
+        function subject() {
+          var title = value('title');
+          return 'Dual Subtitles のご報告' + (title ? '：' + title : '');
+        }
+
+        function refresh() {
+          document.getElementById('preview').textContent = report();
+        }
+
+        function say(text) {
+          var said = document.getElementById('said');
+          said.textContent = text;
+          window.clearTimeout(say.timer);
+          say.timer = window.setTimeout(function () { said.textContent = ''; }, 6000);
+        }
+
+        document.addEventListener('input', refresh);
+        document.addEventListener('change', refresh);
+        refresh();
+
+        document.getElementById('send').addEventListener('click', function () {
+          location.href =
+            'mailto:' + ADDRESS +
+            '?subject=' + encodeURIComponent(subject()) +
+            '&body=' + encodeURIComponent(report());
+          // A mailto that goes nowhere is silent, and this is the one place that must not be.
+          window.setTimeout(function () {
+            say('メールソフトが開かないときは「内容をコピー」をお使いください。');
+          }, 1200);
+        });
+
+        document.getElementById('copy').addEventListener('click', function () {
+          var text = ADDRESS + '\n\n' + subject() + '\n\n' + report();
+          function fallback() {
+            var box = document.createElement('textarea');
+            box.value = text;
+            box.setAttribute('readonly', '');
+            box.style.position = 'fixed';
+            box.style.opacity = '0';
+            document.body.appendChild(box);
+            box.select();
+            try { document.execCommand('copy'); } catch (error) { /* nothing else to try */ }
+            document.body.removeChild(box);
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(
+              function () { say('コピーしました。' + ADDRESS + ' 宛に貼り付けてください。'); },
+              function () { fallback(); say('コピーしました。' + ADDRESS + ' 宛に貼り付けてください。'); }
+            );
+          } else {
+            fallback();
+            say('コピーしました。' + ADDRESS + ' 宛に貼り付けてください。');
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
