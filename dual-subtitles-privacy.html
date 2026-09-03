@@ -194,16 +194,20 @@
         <p data-i18n="dsPrivacy.access_desc">Prime Video または Netflix の再生ページが開かれている間、本拡張機能は、各サービスが自身のプレイヤーへ配信する再生情報を参照し、その作品が持つ字幕トラックを見つけます。参照するのは、字幕トラックの一覧、その言語と種別、およびサービス自身が公開した字幕URLです。また、表示位置の決定と、選択された言語の公式トラックが存在しない場合の翻訳のために、サービスがページ上に描画している字幕の文字列を読み取ります。これらはすべてページ内および拡張機能内でローカルに処理され、外部へ送信されることはありません。</p>
         <h2 data-i18n="dsPrivacy.transmit_title">3. 収集・送信しない情報</h2>
         <p data-i18n="dsPrivacy.transmit_desc">本拡張機能は、字幕本文、視聴中のURL、視聴履歴、視聴した作品名、設定値を、開発者および第三者へ送信しません。テレメトリー、分析SDK、広告SDK、アカウント機能、外部翻訳API、リモートSDKのいずれも使用しません。</p>
-        <p data-i18n="dsPrivacy.transmit_license">本拡張機能が自ら行う外部通信は1種類だけです。利用者が Pro のライセンスキーを入力して確認を求めたときに限り、<code>api.gumroad.com</code> へ製品識別子とライセンスキーを送信します。それ以外は含みません。字幕本文、URL、作品名、視聴を識別する情報は一切含まれません。ライセンスキーを入力しない無料利用の場合、この通信は発生しません。</p>
+        <p data-i18n="dsPrivacy.transmit_license">本拡張機能が自ら行う外部通信は1種類だけです。api.gumroad.com へ、製品識別子、ライセンスキー、そしてこの確認を有効化として数えるかどうかの true/false を送信します。それ以外は含みません。</p>
+        <p>この通信が起きるのは2つの場合で、いずれも Pro のライセンスキーが入力されていることが前提です。キーを入力して確認を求めたとき。そして、ライセンスが保存されている間、設定画面またはポップアップを開いた際に1日1回まで、解約や失効を検知するため。後者は設定画面を開く以外の操作を必要としません。</p>
+        <p>いずれの場合も、字幕本文、URL、作品名、視聴を識別する情報は一切含まれません。ライセンスキーを入力しない無料利用の場合、この通信は発生しません。</p>
         <p data-i18n="dsPrivacy.transmit_subtitle">字幕ファイル自体は、各サービスが公開した字幕URLから取得します。取得できるのは、そのサービス自身の再生情報から発見した完全一致のURLのみで、発見していないURLはネットワークアクセスの前に拒否されます。</p>
         <h2 data-i18n="dsPrivacy.limited_title">4. Chrome ウェブストア限定使用要件</h2>
         <p data-i18n="dsPrivacy.limited_desc">本拡張機能は、再生情報および字幕データを、明示的に公開された利用者向け機能（2言語同時字幕の表示、字幕の選択、字幕テキストの整形、端末内翻訳）のためだけに使用します。広告、プロファイリング、信用評価、その他無関係な目的には使用しません。これらのデータを開発者または第三者へ販売・譲渡せず、人的アクセスも許可しません。</p>
         <h2 data-i18n="dsPrivacy.storage_title">5. 端末内への保存</h2>
-        <p data-i18n="dsPrivacy.storage_desc">本拡張機能が保存するのは次の3つだけです。</p>
+        <p data-i18n="dsPrivacy.storage_desc">本拡張機能が保存するのは次の5つだけです。</p>
         <ul>
           <li data-i18n="dsPrivacy.storage_list_1"><strong>設定</strong>（<code>chrome.storage.sync</code>）: 選択した2つの字幕言語、行ごとの文字サイズと色、表示位置、CCクリーニングの各設定。これらは利用者自身の Chrome プロファイルを通じて同期されます。開発者が読み取ることはできません。</li>
           <li data-i18n="dsPrivacy.storage_list_2"><strong>ライセンス確認結果</strong>（<code>chrome.storage.sync</code>）: 入力されたライセンスキーと、その確認結果をオフラインで信頼できる期限。</li>
           <li data-i18n="dsPrivacy.storage_list_3"><strong>無料枠の利用時間</strong>（<code>chrome.storage.local</code>）: 本拡張機能の字幕が実際に画面へ表示されていた秒数の、1日ごとの合計。端末外へ出ません。記録されるのは日付と秒数のみで、作品名・URL・時刻は含みません。</li>
+          <li data-i18n="dsPrivacy.storage_list_4"><strong>レビュー依頼の判定</strong>（<code>chrome.storage.local</code>）: 上下2行を作品収録の公式トラックから5分以上表示した日付を、最大3件。設定画面で一度だけレビューをお願いするかどうかの判断に使います。日付と秒数のみで、作品名・URLは含みません。端末外へ出ません。</li>
+          <li data-i18n="dsPrivacy.storage_list_5"><strong>レビュー依頼の状態</strong>（<code>chrome.storage.local</code>）: そのお願いを表示した回数と、今後表示しないかどうか。端末外へ出ません。実際にレビューが書かれたかどうかは記録されず、開発者にも分かりません。</li>
         </ul>
         <p data-i18n="dsPrivacy.storage_memory">字幕本文および再生のために取得した字幕キューは、そのタブのメモリ上に保持され、永続的な保存は行いません。</p>
         <h2 data-i18n="dsPrivacy.translate_title">6. 端末内翻訳</h2>
@@ -225,7 +229,7 @@
         <p data-i18n="dsPrivacy.changes_desc">重要な変更を行う場合は、本ページを更新日とともに改訂し、同じ変更で本拡張機能のバージョンを更新します。</p>
         <h2 data-i18n="dsPrivacy.contact_title">12. お問い合わせ</h2>
         <p data-i18n="dsPrivacy.contact_desc">本ポリシーに関するお問い合わせは、<a href="contact.html">お問い合わせページ</a>よりお願いいたします。</p>
-        <p class="legal-updated" data-i18n="dsPrivacy.updated">最終更新日: 2026年8月16日</p>
+        <p class="legal-updated" data-i18n="dsPrivacy.updated">最終更新日: 2026年9月3日</p>
       </div>
     </main>
 
