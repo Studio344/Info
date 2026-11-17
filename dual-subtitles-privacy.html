@@ -189,22 +189,27 @@
       <div class="bento-card text-content-card text-content-card--legal">
         <h1 data-i18n="dsPrivacy.title">Dual Subtitles プライバシーポリシー</h1>
         <h2 data-i18n="dsPrivacy.scope_title">1. 対象</h2>
-        <p data-i18n="dsPrivacy.scope_desc">本ポリシーは、Studio344 が提供する Google Chrome 拡張機能「Dual Subtitles」（以下「本拡張機能」）を対象とします。Studio344 のウェブサイトについては、<a href="privacy-policy.html">サイトのプライバシーポリシー</a>をご覧ください。本拡張機能は Cookie、Google Analytics、Google AdSense のいずれも使用しません。</p>
+        <p data-i18n="dsPrivacy.scope_desc">本ポリシーは、Studio344 が提供する Google Chrome 拡張機能「Dual Subtitles」のバージョン 1.0.11 を対象とします。Studio344 のウェブサイトについては、<a href="privacy-policy.html">サイトのプライバシーポリシー</a>をご覧ください。本拡張機能は Cookie、Google Analytics、Google AdSense を使用しません。</p>
         <h2 data-i18n="dsPrivacy.access_title">2. 本拡張機能が参照する情報</h2>
-        <p data-i18n="dsPrivacy.access_desc">Prime Video または Netflix の再生ページが開かれている間、本拡張機能は、各サービスが自身のプレイヤーへ配信する再生情報を参照し、その作品が持つ字幕トラックを見つけます。参照するのは、字幕トラックの一覧、その言語と種別、およびサービス自身が公開した字幕URLです。また、表示位置の決定と、選択された言語の公式トラックが存在しない場合の翻訳のために、サービスがページ上に描画している字幕の文字列を読み取ります。これらはすべてページ内および拡張機能内でローカルに処理され、外部へ送信されることはありません。</p>
-        <h2 data-i18n="dsPrivacy.transmit_title">3. 収集・送信しない情報</h2>
-        <p data-i18n="dsPrivacy.transmit_desc">本拡張機能は、字幕本文、視聴中のURL、視聴履歴、視聴した作品名、設定値を、開発者および第三者へ送信しません。テレメトリー、分析SDK、広告SDK、アカウント機能、外部翻訳API、リモートSDKのいずれも使用しません。</p>
-        <p data-i18n="dsPrivacy.transmit_license">本拡張機能が自ら行う外部通信は1種類だけです。api.gumroad.com へ、製品識別子、ライセンスキー、そしてこの確認を有効化として数えるかどうかの true/false を送信します。それ以外は含みません。</p>
-        <p data-i18n="dsPrivacy.transmit_when">この通信が起きるのは2つの場合で、いずれも Pro のライセンスキーが入力されていることが前提です。キーを入力して確認を求めたとき。そして、ライセンスが保存されている間、1日1回まで、メンバーシップの終了や支払いの失敗を検知するため。後者は利用者の操作を必要としません。本拡張機能のサービスワーカーが独自のタイマーで行い、設定画面またはポップアップを開いたときにも、前回から1日が過ぎていれば行います。動画ページを開いたことをきっかけに行うことはないため、この通信がいつ起きたかから、何を視聴しているか、視聴しているかどうかは分かりません。</p>
-        <p data-i18n="dsPrivacy.transmit_contents">いずれの場合も、字幕本文、URL、作品名、視聴を識別する情報は一切含まれません。ライセンスキーを入力しない無料利用の場合、この通信は発生しません。</p>
+        <p data-i18n="dsPrivacy.access_desc">Prime Video または Netflix の再生ページで、本拡張機能はサービスがプレイヤーに配信する字幕トラックの一覧、言語、種別、字幕 URL を参照します。字幕の配置や端末内翻訳のために、プレイヤーが表示している字幕本文も読み取ります。字幕の表示と翻訳に使うデータは、再生タブと拡張機能内で処理します。</p>
+        <h2 data-i18n="dsPrivacy.transmit_title">3. データの収集と送信</h2>
+        <p data-i18n="dsPrivacy.transmit_desc">字幕本文、視聴中のページの URL、視聴履歴は開発者や報告フォームに送信しません。作品名や設定を自動で開発者や第三者に送ることもありません。テレメトリー、分析 SDK、広告 SDK、アカウント機能、外部翻訳 API、リモート SDK は使用しません。</p>
+        <p data-i18n="dsPrivacy.transmit_license">Pro のライセンス確認では、製品識別子、ライセンスキー、確認を有効化として数えるかどうかの情報を api.gumroad.com へ送信します。</p>
+        <p data-i18n="dsPrivacy.transmit_when">キーを入力して確認を求めたときに行います。登録後は、メンバーシップの終了、支払いの失敗、返金を確認するため、24時間に1回まで自動で再確認します。拡張機能のタイマーや設定画面、ポップアップを開いたことがきっかけになります。動画ページを開いたことでは再確認は始まりません。</p>
+        <p data-i18n="dsPrivacy.transmit_contents">ライセンス確認には、字幕本文、視聴ページの URL、作品名など、視聴を識別する情報は含まれません。ライセンスキーを一度も入力していない場合、この確認通信は発生しません。</p>
         <p data-i18n="dsPrivacy.transmit_subtitle">字幕ファイル自体は、各サービスが公開した字幕URLから取得します。取得できるのは、そのサービス自身の再生情報から発見した完全一致のURLのみで、発見していないURLはネットワークアクセスの前に拒否されます。</p>
+        <h3 data-i18n="dsPrivacy.report_title">任意の不具合報告</h3>
+        <p data-i18n="dsPrivacy.report_context">再生タブで「字幕の不具合を報告」を開き、項目の取得を選ぶと、対応サービス、取得できた作品名とシーズン・話数、本編の再生位置、2つの字幕の言語と種類を報告に添えられます。拡張機能のバージョンと、ブラウザーの種類とメジャーバージョンも添えられます。設定画面から報告する場合に添えられるのは、拡張機能とブラウザーの情報だけです。項目はフォームを開く前に確認して外せます。事前入力なしでフォームを開くこともできます。</p>
+        <p data-i18n="dsPrivacy.report_transfer">事前入力つきの Google フォームを開くと、選んだ情報がその時点で Google に渡ります。フォームを開いた後に送信せず閉じた場合も同じです。事前入力には、視聴ページの URL、作品 ID、字幕本文、アカウント情報、ライセンスキーは含まれません。拡張機能は取得した報告用の情報を永続保存しません。自由記入欄には個人情報や認証情報を入力しないでください。</p>
+        <p data-i18n="dsPrivacy.report_handling">送信した回答は非公開の Google スプレッドシートに保管します。開発者は、不具合の再現と改善のために送信された回答を確認します。新着報告の確認と分類には OpenAI Codex を利用します。報告内容は、この対応に必要な期間だけ保管します。</p>
         <h2 data-i18n="dsPrivacy.limited_title">4. Chrome ウェブストア限定使用要件</h2>
-        <p data-i18n="dsPrivacy.limited_desc">本拡張機能は、再生情報および字幕データを、明示的に公開された利用者向け機能（2言語同時字幕の表示、字幕の選択、字幕テキストの整形、端末内翻訳）のためだけに使用します。広告、プロファイリング、信用評価、その他無関係な目的には使用しません。これらのデータを開発者または第三者へ販売・譲渡せず、人的アクセスも許可しません。</p>
+        <p data-i18n="dsPrivacy.limited_desc">本拡張機能は、字幕表示、字幕の選択と整形、端末内翻訳、およびそれらに関する任意の不具合報告への対応に必要な範囲でデータを使います。データの販売、広告、プロファイリング、信用評価には使いません。利用者データの取り扱いは、限定使用要件を含む Chrome ウェブストアの利用者データポリシーに従います。</p>
         <h2 data-i18n="dsPrivacy.storage_title">5. 端末内への保存</h2>
-        <p data-i18n="dsPrivacy.storage_desc">本拡張機能が保存するのは次の6つだけです。</p>
+        <p data-i18n="dsPrivacy.storage_desc">本拡張機能は以下の情報を保存します。</p>
         <ul>
           <li data-i18n="dsPrivacy.storage_list_1"><strong>設定</strong>（<code>chrome.storage.sync</code>）: 選択した2つの字幕言語、行ごとの文字サイズと色、その文字サイズを動画の大きさに合わせるかどうか、表示位置、CCクリーニングの各設定。これらは利用者自身の Chrome プロファイルを通じて同期されます。開発者が読み取ることはできません。</li>
           <li data-i18n="dsPrivacy.storage_list_2"><strong>ライセンス確認結果</strong>（<code>chrome.storage.sync</code>）: 入力されたライセンスキーと、その確認結果をオフラインで信頼できる期限。</li>
+          <li data-i18n="dsPrivacy.storage_list_7"><strong>ライセンスの再確認記録</strong>（<code>chrome.storage.sync</code>）: 登録したライセンスキーと、前回の自動確認を始めた時刻。失敗後やブラウザーの再起動後も、24時間内に同じ確認を繰り返さないために使います。キーを登録し直すか削除すると消去されます。</li>
           <li data-i18n="dsPrivacy.storage_list_6"><strong>ライセンス終了の記録</strong>（<code>chrome.storage.sync</code>）: 保存されていたライセンスが有効でなくなったと Gumroad から返されたときの、その理由（メンバーシップの終了、支払いの失敗、返金）と日時。Pro が終わった理由をプランの欄でお伝えするために使います。ライセンスキーや決済情報は含みません。ライセンスを再び有効化するか、その表示を閉じると削除されます。</li>
           <li data-i18n="dsPrivacy.storage_list_3"><strong>無料枠の利用時間</strong>（<code>chrome.storage.local</code>）: 本拡張機能の字幕が実際に画面へ表示されていた秒数の、1日ごとの合計。端末外へ出ません。記録されるのは日付と秒数のみで、作品名・URL・時刻は含みません。</li>
           <li data-i18n="dsPrivacy.storage_list_4"><strong>レビュー依頼の判定</strong>（<code>chrome.storage.local</code>）: 上下2行を作品収録の公式トラックから5分以上表示した日付を、最大3件。設定画面で一度だけレビューをお願いするかどうかの判断に使います。日付と秒数のみで、作品名・URLは含みません。端末外へ出ません。</li>
@@ -217,21 +222,22 @@
         <p data-i18n="dsPrivacy.drm_desc">本拡張機能は、DRM、映像データ、再生権限の取得・復号・回避を行いません。各サービスの再生リクエストを改変することもありません。各サービスが自身のプレイヤーへ既に配信している字幕情報を読み取るだけです。</p>
         <h2 data-i18n="dsPrivacy.perm_title">8. 権限</h2>
         <ul>
-          <li data-i18n="dsPrivacy.perm_list_1"><code>activeTab</code>: 利用者が開いている再生タブの状態を読み取り、設定画面での表示と変更を行うため。</li>
+          <li data-i18n="dsPrivacy.perm_list_1"><code>activeTab</code> は、ポップアップを開いたときに、現在の対応再生タブの状態を確認し、設定を反映するために使います。不具合報告では、利用者が希望した場合だけ、同じタブから報告用の情報を取得します。</li>
           <li data-i18n="dsPrivacy.perm_list_2"><code>storage</code>: 上記の設定、ライセンス確認結果、無料枠の利用時間を保存するため。</li>
-          <li data-i18n="dsPrivacy.perm_list_3"><code>https://api.gumroad.com/*</code>: 利用者が入力した Pro のライセンスキーの確認と、保存されたキーの1日1回までの再確認のためだけに使用します。他のホストは許可していません。</li>
+          <li data-i18n="dsPrivacy.perm_list_3"><code>https://api.gumroad.com/*</code> は、入力された Pro のライセンスキーを確認するために使います。登録済みキーの自動再確認は24時間に1回までです。</li>
           <li data-i18n="dsPrivacy.perm_list_4"><code>alarms</code>: 数時間ごとに本拡張機能のサービスワーカーを起動し、保存されている Pro のライセンスを1日1回まで再確認するため。視聴とは無関係のタイマーで、ライセンスキーが入力されていない場合は、起動しても何もしません。</li>
+          <li data-i18n="dsPrivacy.perm_list_5"><code>scripting</code> は、ポップアップを開いたとき、現在の対応再生タブで字幕処理がまだ起動していない場合に、そのタブのメインフレームで字幕処理を開始するために使います。</li>
         </ul>
-        <p data-i18n="dsPrivacy.perm_scope">コンテンツスクリプトは Prime Video、Amazon Video、Netflix のアドレスでのみ動作します。広範なホスト権限は持ちません。</p>
+        <p data-i18n="dsPrivacy.perm_scope">コンテンツスクリプトは、対象となる Prime Video、Amazon Video、Netflix の HTTPS ページでのみ動作します。字幕配信 CDN への恒久的なホスト権限は要求しません。</p>
         <h2 data-i18n="dsPrivacy.payment_title">9. 決済</h2>
-        <p data-i18n="dsPrivacy.payment_desc">Pro は Gumroad が販売および請求を行うサブスクリプションです。決済情報、アカウント情報、カード情報は Gumroad 自身のサイトで、Gumroad の規約およびプライバシー慣行のもとに入力されます。これらの情報が本拡張機能へ入力されること、本拡張機能が扱うこと、参照することはありません。本拡張機能が Gumroad へ送るのは、ライセンスキーの確認に必要な情報（入力されたときと、保存されたキーの1日1回までの再確認）だけです。</p>
+        <p data-i18n="dsPrivacy.payment_desc">Pro は Gumroad が販売し、請求するサブスクリプションです。決済やアカウントの情報は Gumroad のサイトで入力します。Gumroad のライセンス確認結果には、購入者のメールアドレス、注文や支払いに関する情報、国情報などが含まれる場合があります。拡張機能は確認の成否とサブスクリプションの利用資格の判定に必要な返金、支払い失敗、契約終了の状態だけを使います。その他の購入情報は使わず、保存や転送もしません。</p>
         <h2 data-i18n="dsPrivacy.children_title">10. 児童について</h2>
-        <p data-i18n="dsPrivacy.children_desc">本拡張機能は児童を対象としておらず、いかなる利用者からも個人情報を収集しません。</p>
+        <p data-i18n="dsPrivacy.children_desc">本拡張機能は児童を対象としていません。</p>
         <h2 data-i18n="dsPrivacy.changes_title">11. 本ポリシーの変更</h2>
         <p data-i18n="dsPrivacy.changes_desc">重要な変更を行う場合は、本ページを更新日とともに改訂し、同じ変更で本拡張機能のバージョンを更新します。</p>
         <h2 data-i18n="dsPrivacy.contact_title">12. お問い合わせ</h2>
-        <p data-i18n="dsPrivacy.contact_desc">本ポリシーに関するお問い合わせは、<a href="contact.html">お問い合わせページ</a>よりお願いいたします。</p>
-        <p class="legal-updated" data-i18n="dsPrivacy.updated">最終更新日: 2026年9月17日</p>
+        <p data-i18n="dsPrivacy.contact_desc">この通知や報告した情報の取り扱いについてのお問い合わせは、<a href="dual-subtitles-support.html">Dual Subtitles のサポートページ</a>にあるフォームをご利用ください。</p>
+        <p class="legal-updated" data-i18n="dsPrivacy.updated">最終更新日 2026年11月17日</p>
       </div>
     </main>
 
